@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Clock, ArrowLeft, Share2, ChevronRight } from 'lucide-react';
 import type { RegionCode, Article, Breadcrumb } from '@/types';
 import { getRegion } from '@/data/regions';
@@ -29,6 +30,13 @@ export function ArticlePage({ region, article, onNavigate, breadcrumbs }: Articl
       navigator.clipboard.writeText(window.location.href);
     }
   }
+
+  const [imgError, setImgError] = useState(false);
+  const placeholder =
+    'data:image/svg+xml;utf8,' +
+    encodeURIComponent(
+      '<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1200\' height=\'675\'><rect width=\'100%\' height=\'100%\' fill=\'#1c1917\'/><text x=\'50%\' y=\'50%\' fill=\'#a8a29e\' font-family=\'sans-serif\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\'>African Ranked</text></svg>'
+    );
 
   return (
     <div className="pb-16">
@@ -97,8 +105,9 @@ export function ArticlePage({ region, article, onNavigate, breadcrumbs }: Articl
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          src={article.image}
+          src={imgError ? placeholder : article.image}
           alt={article.title}
+          onError={() => setImgError(true)}
           className="mt-8 aspect-[16/9] w-full rounded-2xl object-cover"
         />
 

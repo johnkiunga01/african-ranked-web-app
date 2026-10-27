@@ -243,7 +243,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-stone-50 font-sans antialiased">
-      <SeoHead region={region} path={seoPath} meta={meta} schemas={schemas} />
+      <SeoHead region={region} path={seoPath} meta={meta} schemas={schemas} ogType={route.type === 'article' ? 'article' : 'website'} />
       <Header region={region} onNavigate={navigate} onSelectRegion={handleSelectRegion} />
       <main>{content}</main>
       <Footer region={region} onNavigate={navigate} />

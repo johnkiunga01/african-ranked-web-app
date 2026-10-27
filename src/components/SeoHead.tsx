@@ -11,6 +11,7 @@ interface SeoHeadProps {
   path: string;
   meta: MetaTags;
   schemas: object[];
+  ogType?: 'website' | 'article';
 }
 
 function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
@@ -62,7 +63,7 @@ const JSONLD_IDS = [
   'ar-schema-itemlist',
 ];
 
-export function SeoHead({ region, path, meta, schemas }: SeoHeadProps) {
+export function SeoHead({ region, path, meta, schemas, ogType = 'website' }: SeoHeadProps) {
   useEffect(() => {
     document.title = meta.title;
 
@@ -74,7 +75,7 @@ export function SeoHead({ region, path, meta, schemas }: SeoHeadProps) {
     upsertMeta('property', 'og:description', meta.ogDescription);
     upsertMeta('property', 'og:url', meta.ogUrl);
     upsertMeta('property', 'og:image', meta.ogImage);
-    upsertMeta('property', 'og:type', 'article');
+    upsertMeta('property', 'og:type', ogType);
     upsertMeta('property', 'og:site_name', 'African Ranked');
     upsertMeta('property', 'og:locale', region === 'global' ? 'en' : region);
 

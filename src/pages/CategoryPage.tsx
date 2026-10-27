@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react';
 import type { RegionCode, Breadcrumb } from '@/types';
 import { getRegion } from '@/data/regions';
 import { getCategory } from '@/data/categories';
-import { getArticlesByCategory } from '@/data/articles';
+import { getArticlesForRegion } from '@/data/articles';
 import { ArticleCard } from '@/components/ArticleCard';
 import { Newsletter } from '@/components/Newsletter';
 import { StaggerContainer, StaggerItem } from '@/components/Animation';
@@ -23,7 +23,9 @@ export function CategoryPage({
 }: CategoryPageProps) {
   const r = getRegion(region);
   const category = getCategory(categorySlug);
-  const articles = getArticlesByCategory(categorySlug);
+  const articles = getArticlesForRegion(region).filter(
+    (a) => a.category === categorySlug
+  );
 
   if (!category) {
     return (

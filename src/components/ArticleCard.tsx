@@ -10,8 +10,8 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
-import type { Article } from '@/types';
-import type { RegionCode } from '@/types';
+import { useState } from 'react';
+import type { Article, RegionCode } from '@/types';
 import { getRegion } from '@/data/regions';
 import { getCategory } from '@/data/categories';
 import { regionPath } from '@/utils/seo';
@@ -37,6 +37,12 @@ export function ArticleCard({ article, region, onNavigate, featured }: ArticleCa
   const category = getCategory(article.category);
   const Icon = category ? ICON_MAP[category.icon] ?? Plane : Plane;
   const href = `${regionPath(region)}/articles/${article.slug}`;
+  const [imgError, setImgError] = useState(false);
+  const placeholder =
+    'data:image/svg+xml;utf8,' +
+    encodeURIComponent(
+      '<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1200\' height=\'675\'><rect width=\'100%\' height=\'100%\' fill=\'#1c1917\'/><text x=\'50%\' y=\'50%\' fill=\'#a8a29e\' font-family=\'sans-serif\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\'>African Ranked</text></svg>'
+    );
 
   if (featured) {
     return (
@@ -44,13 +50,22 @@ export function ArticleCard({ article, region, onNavigate, featured }: ArticleCa
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="group relative cursor-pointer overflow-hidden rounded-2xl bg-stone-900"
+        className="group relative overflow-hidden rounded-2xl bg-stone-900"
+        role="link"
+        tabIndex={0}
         onClick={() => onNavigate(href)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onNavigate(href);
+          }
+        }}
       >
         <div className="relative h-[420px] overflow-hidden">
           <img
-            src={article.image}
+            src={imgError ? placeholder : article.image}
             alt={article.title}
+            onError={() => setImgError(true)}
             className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
             loading="eager"
           />
@@ -91,13 +106,22 @@ export function ArticleCard({ article, region, onNavigate, featured }: ArticleCa
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className="group flex cursor-pointer flex-col overflow-hidden rounded-xl border border-stone-200 bg-white transition hover:shadow-lg"
+      className="group flex flex-col overflow-hidden rounded-xl border border-stone-200 bg-white transition hover:shadow-lg"
+      role="link"
+      tabIndex={0}
       onClick={() => onNavigate(href)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onNavigate(href);
+        }
+      }}
     >
       <div className="relative h-48 overflow-hidden">
         <img
-          src={article.image}
+          src={imgError ? placeholder : article.image}
           alt={article.title}
+          onError={() => setImgError(true)}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           loading="lazy"
         />
