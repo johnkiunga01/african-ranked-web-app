@@ -12,7 +12,7 @@ import {
   Award,
 } from 'lucide-react';
 import type { RegionCode } from '@/types';
-import { getRegion, REGION_LIST } from '@/data/regions';
+import { getRegion } from '@/data/regions';
 import { CATEGORIES } from '@/data/categories';
 import { Newsletter } from '@/components/Newsletter';
 

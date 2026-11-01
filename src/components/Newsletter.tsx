@@ -60,7 +60,7 @@ export function Newsletter({ region }: NewsletterProps) {
             className="mt-6 flex items-center justify-center gap-2 rounded-xl bg-green-500/20 py-4 text-green-300"
           >
             <Check className="h-5 w-5" />
-            <span className="font-medium">You&apos;re in! Check your inbox for confirmation.</span>
+            <span className="font-medium">You&apos;re subscribed. Thanks for joining.</span>
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">

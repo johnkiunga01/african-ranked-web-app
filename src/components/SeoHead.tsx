@@ -121,7 +121,7 @@ export function SeoHead({ region, path, meta, schemas, ogType = 'website' }: Seo
         .querySelectorAll('link[rel="alternate"][hreflang]')
         .forEach((el) => el.remove());
     };
-  }, [region, path, meta, schemas]);
+  }, [region, path, meta, schemas, ogType]);
 
   return null;
 }

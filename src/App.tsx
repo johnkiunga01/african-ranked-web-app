@@ -73,7 +73,6 @@ function parsePath(pathname: string): Route {
 export default function App() {
   const [path, setPath] = useState(window.location.pathname);
   const [region, setRegion] = useState<RegionCode>('global');
-  const [geoReady, setGeoReady] = useState(false);
 
   const route = parsePath(path);
 
@@ -84,13 +83,11 @@ export default function App() {
 
     if (stored) {
       setRegion(stored);
-      setGeoReady(true);
       return;
     }
 
     if (detected) {
       setRegion(detected);
-      setGeoReady(true);
       return;
     }
 
@@ -104,7 +101,6 @@ export default function App() {
         setPath(newPath);
       }
       setRegion(result.region);
-      setGeoReady(true);
     });
   }, []);
 
