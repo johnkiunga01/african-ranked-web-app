@@ -286,7 +286,7 @@ export const WILDLIFE_ARTICLES: Article[] = [
       { type: 'heading', level: 2, text: '1. Nairobi National Park, Kenya' },
       {
         type: 'paragraph',
-        text: 'Nairobi National Park is the only major wildlife park in the world that sits within a capital city\'s skyline. You can see lions, rhinos, giraffes, and a wide range of plains animals within a short drive of the city centre. It is an excellent first safari, and a half-day drive can be arranged at a fraction of the cost of a multi-day trip. Visiting the nearby animal orphanage and rhino sanctuary adds further value.',
+        text: 'Nairobi National Park sits close to the capital\'s skyline, which is unusual among major wildlife parks. You can see lions, rhinos, giraffes, and a wide range of plains animals within a short drive of the city centre. It is an excellent first safari, and a half-day drive can be arranged at a fraction of the cost of a multi-day trip. Visiting the nearby animal orphanage and rhino sanctuary adds further value.',
       },
       { type: 'heading', level: 2, text: '2. Lake Mburo National Park, Uganda' },
       {

@@ -32,16 +32,19 @@ const CATEGORIES = [
 ];
 
 const ARTICLES = [
-  { slug: 'top-10-safari-destinations-africa-2026', lastmod: '2026-10-20' },
-  { slug: 'best-african-cuisines-ranked-2026', lastmod: '2026-10-18' },
-  { slug: 'top-african-startups-2026', lastmod: '2026-10-25' },
-  { slug: 'best-beaches-africa-ranked', lastmod: '2026-10-12' },
-  { slug: 'top-african-musicians-2026', lastmod: '2026-10-24' },
-  { slug: 'fastest-growing-tech-hubs-africa', lastmod: '2026-10-05' },
+  { slug: 'top-10-safari-destinations-africa-2026', lastmod: '2026-11-01' },
+  { slug: 'best-african-cuisines-ranked-2026', lastmod: '2026-11-01' },
+  { slug: 'top-african-startups-2026', lastmod: '2026-11-01' },
+  { slug: 'best-beaches-africa-ranked', lastmod: '2026-11-01' },
+  { slug: 'top-african-musicians-2026', lastmod: '2026-11-01' },
+  { slug: 'fastest-growing-tech-hubs-africa', lastmod: '2026-11-01' },
   { slug: 'big-five-parks-ranked-where-to-see-all-five', lastmod: '2026-11-01' },
   { slug: 'best-gorilla-trekking-africa-ranked', lastmod: '2026-11-01' },
   { slug: 'great-migration-guide-best-months-viewing-spots', lastmod: '2026-11-01' },
   { slug: 'affordable-safari-parks-ranked', lastmod: '2026-11-01' },
+  { slug: 'best-time-to-visit-african-safari-by-month', lastmod: '2026-11-01' },
+  { slug: 'where-to-see-rhinos-in-africa', lastmod: '2026-11-01' },
+  { slug: 'safari-packing-etiquette-first-timer-guide', lastmod: '2026-11-01' },
 ];
 
 // pagePath is the page-specific path WITHOUT any region prefix
