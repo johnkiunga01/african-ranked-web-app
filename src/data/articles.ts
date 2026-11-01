@@ -1,6 +1,7 @@
 import type { Article } from '@/types';
+import { WILDLIFE_ARTICLES } from '@/data/articles-wildlife';
 
-export const ARTICLES: Article[] = [
+const PILLAR_ARTICLES: Article[] = [
   {
     slug: 'top-10-safari-destinations-africa-2026',
     title: 'Top 10 Safari Destinations in Africa for 2026',
@@ -373,6 +374,8 @@ export const ARTICLES: Article[] = [
     ],
   },
 ];
+
+export const ARTICLES: Article[] = [...PILLAR_ARTICLES, ...WILDLIFE_ARTICLES];
 
 export function getArticle(slug: string): Article | undefined {
   return ARTICLES.find((a) => a.slug === slug);

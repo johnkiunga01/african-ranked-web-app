@@ -6,209 +6,269 @@
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/strategy</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/strategy"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/strategy"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/strategy"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/strategy"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/categories/travel</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/categories/travel"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/categories/travel"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/categories/travel"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/categories/food</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/categories/food"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/categories/food"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/categories/food"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/categories/music</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/categories/music"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/categories/music"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/categories/music"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/categories/business</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/categories/business"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/categories/business"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/categories/business"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/categories/tech</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/categories/tech"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/categories/tech"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/categories/tech"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/categories/wildlife</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/categories/wildlife"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/categories/wildlife"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/categories/wildlife"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/articles/top-10-safari-destinations-africa-2026</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/articles/top-10-safari-destinations-africa-2026"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/top-10-safari-destinations-africa-2026"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/top-10-safari-destinations-africa-2026"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/articles/best-african-cuisines-ranked-2026</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/articles/best-african-cuisines-ranked-2026"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/best-african-cuisines-ranked-2026"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/best-african-cuisines-ranked-2026"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/articles/top-african-startups-2026</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/articles/top-african-startups-2026"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/top-african-startups-2026"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/top-african-startups-2026"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/articles/best-beaches-africa-ranked</loc>
     <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/articles/best-beaches-africa-ranked"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/best-beaches-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/best-beaches-africa-ranked"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/articles/top-african-musicians-2026</loc>
     <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/articles/top-african-musicians-2026"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/top-african-musicians-2026"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/top-african-musicians-2026"/>
   </url>
   <url>
     <loc>https://africanranked.com/za/articles/fastest-growing-tech-hubs-africa</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/za/articles/fastest-growing-tech-hubs-africa"/>
-      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/za/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/fastest-growing-tech-hubs-africa"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/fastest-growing-tech-hubs-africa"/>
+  </url>
+  <url>
+    <loc>https://africanranked.com/za/articles/big-five-parks-ranked-where-to-see-all-five</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/big-five-parks-ranked-where-to-see-all-five"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/big-five-parks-ranked-where-to-see-all-five"/>
+  </url>
+  <url>
+    <loc>https://africanranked.com/za/articles/best-gorilla-trekking-africa-ranked</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/best-gorilla-trekking-africa-ranked"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/best-gorilla-trekking-africa-ranked"/>
+  </url>
+  <url>
+    <loc>https://africanranked.com/za/articles/great-migration-guide-best-months-viewing-spots</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/great-migration-guide-best-months-viewing-spots"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/great-migration-guide-best-months-viewing-spots"/>
+  </url>
+  <url>
+    <loc>https://africanranked.com/za/articles/affordable-safari-parks-ranked</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://africanranked.com/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-US" href="https://africanranked.com/us/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-GB" href="https://africanranked.com/uk/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-AU" href="https://africanranked.com/au/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-CA" href="https://africanranked.com/ca/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-NG" href="https://africanranked.com/ng/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-ZA" href="https://africanranked.com/za/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="en-KE" href="https://africanranked.com/ke/articles/affordable-safari-parks-ranked"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://africanranked.com/articles/affordable-safari-parks-ranked"/>
   </url>
 </urlset>
