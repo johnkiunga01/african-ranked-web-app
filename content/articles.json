@@ -4,8 +4,8 @@
     "title": "Top 10 Safari Destinations in Africa for 2026",
     "excerpt": "Compare ten African safari destinations, from Serengeti migration plains and the Okavango Delta to Ngorongoro, Etosha and Addo, with practical advice on seasons, costs and visitor rules.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-09-15T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 10,
@@ -51,6 +51,10 @@
         "text": "The Okavango Delta is a UNESCO World Heritage Site, where seasonal floodwaters spread across the Kalahari and create islands, lagoons, and channels. Wildlife, including large elephant and buffalo herds, is drawn to the water. Mokoro canoe trips and walking safaris offer a quieter way to see it."
       },
       {
+        "type": "paragraph",
+        "text": "When comparing camps in the Delta, ask specifically whether the itinerary offers permanent-water activities, seasonal floodplain drives or a combination of the two. The experience can change even within Botswana, and an expensive fly-in transfer does not guarantee a better wildlife encounter."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "3. Masai Mara, Kenya"
@@ -60,6 +64,10 @@
         "text": "The Masai Mara is the northern extension of the Serengeti ecosystem. It is known for strong lion sightings and the Mara River crossings, and it is one of the most accessible destinations on this list from Nairobi."
       },
       {
+        "type": "paragraph",
+        "text": "The Mara's international reputation can make parts of the reserve crowded at popular times. Choosing a responsible licensed guide and understanding reserve versus conservancy access may matter more than spending every hour pursuing a reported river crossing. The surrounding community land-use context is part of this ecosystem."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "4. Kruger National Park, South Africa"
@@ -67,6 +75,10 @@
       {
         "type": "paragraph",
         "text": "Kruger is one of Africa's largest national parks and supports a very wide range of mammals and birds. Its well-maintained road network and self-drive options make it one of the most accessible safari destinations on the continent, and it is a strong first choice for many visitors."
+      },
+      {
+        "type": "paragraph",
+        "text": "Kruger's extensive road network enables self-drive visitors to choose a comfortable pace, but congestion, long distances and strict closing times shape the experience. SANParks prohibits leaving vehicles outside designated places and requires adherence to speed restrictions, which should be factored into any realistic plan."
       },
       {
         "type": "heading",
@@ -247,8 +259,8 @@
     "title": "The 15 Best African Cuisines Ranked for 2026",
     "excerpt": "Explore fifteen African culinary traditions, from Nigerian and Ethiopian cooking to Senegalese ceebu jën, Moroccan couscous, Kenyan staples and coastal Mozambican dishes.",
     "category": "food",
-    "author": "Fatima Diallo",
-    "authorTitle": "Food & Culture Editor",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-08-22T09:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 9,
@@ -275,6 +287,10 @@
         "text": "Jollof rice, a long-grain rice dish simmered in a tomato and pepper base, is one of the most recognised African dishes abroad. Its friendly rivalry with Ghanaian jollof has made it a familiar topic in food conversations across the internet."
       },
       {
+        "type": "paragraph",
+        "text": "Nigerian cooking also includes regional traditions far beyond a handful of international restaurant favourites. Soup and swallow combinations, fermented or steamed ingredients and different pepper bases reveal culinary variety within the country. An introductory tasting should include vegetables and starches as well as widely discussed rice dishes."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "2. Ethiopian Cuisine"
@@ -284,6 +300,10 @@
         "text": "Ethiopian food centres on injera, a sourdough flatbread made from teff flour, served with shared stews. Teff is naturally gluten-free, and the Orthodox fasting calendar has shaped a rich tradition of vegetarian and vegan dishes."
       },
       {
+        "type": "paragraph",
+        "text": "Ethiopian and Eritrean food cultures share techniques and histories, but the regional details are important. Injera is not merely an edible plate: its texture and sourness interact with stews, legumes and vegetables. Fasting traditions and communal dining are useful context when trying to understand why the meal is arranged as it is."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "3. South African Cuisine"
@@ -291,6 +311,10 @@
       {
         "type": "paragraph",
         "text": "South Africa's cooking blends indigenous, Malay, Dutch, and Indian influences. Bobotie, bunny chow, and braai (barbecue) culture are central to the national table."
+      },
+      {
+        "type": "paragraph",
+        "text": "South African cooking reflects many communities and histories, including local ingredients, migration and changing urban tastes. Braai culture is one visible tradition, but Cape Malay influences, township foodways, maize-based staples and home-cooked stews deserve comparable attention. No single restaurant style can represent all of them."
       },
       {
         "type": "heading",
@@ -477,6 +501,16 @@
         "type": "link",
         "text": "UNESCO — food and intangible heritage",
         "url": "https://www.unesco.org/en/articles/food-and-intangible-heritage-flavourful-relationship"
+      },
+      {
+        "type": "link",
+        "text": "UNESCO — couscous heritage nomination",
+        "url": "https://ich.unesco.org/en/RL/knowledge-expertise-and-practices-related-to-producing-and-consuming-couscous-01602"
+      },
+      {
+        "type": "link",
+        "text": "UNESCO — formal couscous heritage decision",
+        "url": "https://ich.unesco.org/en/Decisions/15.COM/8.b.14"
       }
     ],
     "faqs": [
@@ -511,8 +545,8 @@
     "title": "African Startups to Watch in 2026: Payments, Energy and Growth",
     "excerpt": "The most useful question is not which startup has the biggest headline valuation but which company is solving a recognisable problem, for whom, at what cost and with what evidence. This editorial watchlist begins with Wave, Moniepoint and M-KOPA.",
     "category": "business",
-    "author": "Kwame Mensah",
-    "authorTitle": "Business & Tech Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-10-01T07:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 10,
@@ -544,6 +578,10 @@
         "text": "Wave offers low-cost mobile money transfers and payments in several West African countries, helping people send money and pay for everyday services without a traditional bank account."
       },
       {
+        "type": "paragraph",
+        "text": "The evaluation should also consider the practical availability of cash-in and cash-out facilities and how customers resolve failed transactions. Fees displayed on a website are one point of evidence, while real-world access across different neighbourhoods is a separate operational question."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "2. Moniepoint (Nigeria): Business Banking"
@@ -553,6 +591,10 @@
         "text": "Moniepoint provides payment and banking tools for small merchants, a segment that is central to Nigeria's economy. Its focus on everyday business transactions has made it one of the country's best-known fintechs."
       },
       {
+        "type": "paragraph",
+        "text": "For merchants, reconciliation and support can be as important as the advertised number of transactions the platform processes. Compare business fees and account features with regulator information, and distinguish the parent's corporate claims from the services provided by a licensed subsidiary."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "3. M-KOPA (Kenya): Pay-As-You-Go Energy"
@@ -560,6 +602,10 @@
       {
         "type": "paragraph",
         "text": "M-KOPA combines solar equipment with flexible, pay-as-you-go financing, allowing households to own power systems and appliances without a large upfront cost. It operates in several African markets."
+      },
+      {
+        "type": "paragraph",
+        "text": "Device financing affects cash flow over time, so customers need clear terms about upfront cost, instalments, ownership, repairs and what happens when payments are interrupted. A startup's social mission should be considered alongside those practical obligations rather than substituted for them."
       },
       {
         "type": "paragraph",
@@ -688,6 +734,11 @@
         "type": "link",
         "text": "Wave — about the company",
         "url": "https://www.wave.com/en/about/"
+      },
+      {
+        "type": "link",
+        "text": "GSMA — 2026 mobile money industry report",
+        "url": "https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/gsma_resources/the-state-of-the-industry-report-on-mobile-money-2026/"
       }
     ],
     "faqs": [
@@ -726,8 +777,8 @@
     "title": "Beautiful Beaches in Africa: Seven Coastal Experiences Compared",
     "excerpt": "Compare seven distinctive beaches across Zanzibar, Seychelles, South Africa, Kenya, Mauritius and Mozambique, with context on scenery, safety, culture and access.",
     "category": "travel",
-    "author": "Zara Ahmed",
-    "authorTitle": "Travel Editor",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-07-10T08:30:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
@@ -755,6 +806,10 @@
         "text": "Nungwi is known for its white sand and warm, clear Indian Ocean water. It is a strong choice for swimming, snorkelling, and relaxing, and it sits at the northern tip of Zanzibar."
       },
       {
+        "type": "paragraph",
+        "text": "The appeal of Nungwi extends beyond a single postcard view. Check the beach's tide and boat traffic, ask which stretches suit your preferred activity, and consider the surrounding village and coastal culture. A sunset photograph cannot show the noise, access or conditions of your chosen accommodation."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "2. Camps Bay, Cape Town (South Africa)"
@@ -762,6 +817,10 @@
       {
         "type": "paragraph",
         "text": "Framed by the Twelve Apostles mountain range, Camps Bay combines a palm-lined promenade with Atlantic waves. The water is cold, so it suits walkers and sunset-watchers more than swimmers, but the views are hard to beat."
+      },
+      {
+        "type": "paragraph",
+        "text": "Camps Bay is best understood as an urban coastal destination with restaurants and amenities close to the beach. The ocean can be cold and wind conditions change quickly. Visitors should avoid interpreting a calm promotional photograph as a safety forecast or a promise of comfortable swimming."
       },
       {
         "type": "heading",
@@ -952,8 +1011,8 @@
     "title": "Influential African Musicians in 2026: Eight Artists and Their Impact",
     "excerpt": "Discover eight influential African musicians, from Burna Boy and Tyla to Tems, Wizkid and Angélique Kidjo, with context on awards, scenes and cultural reach.",
     "category": "music",
-    "author": "Tendai Moyo",
-    "authorTitle": "Music & Culture Writer",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-09-28T10:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 9,
@@ -981,6 +1040,10 @@
         "text": "Burna Boy is one of the most recognised Afrobeats artists internationally, known for blending Afrobeats with dancehall, reggae, and hip-hop. His stadium-scale tours have helped carry the genre to new audiences."
       },
       {
+        "type": "paragraph",
+        "text": "Burna Boy's place in African popular music is not reducible to a chart number. His career provides a case study in connecting Nigerian musical influences with international touring and recorded music markets. Any specific award or commercial claim should identify the recording, year and reporting body."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "2. Tyla (South Africa)"
@@ -988,6 +1051,10 @@
       {
         "type": "paragraph",
         "text": "Tyla's global hit \"Water\" brought Amapiano-influenced pop to international charts, and her rise has made South African sounds a visible part of the global pop conversation."
+      },
+      {
+        "type": "paragraph",
+        "text": "Tyla's Grammy recognition offers a dated milestone: the Recording Academy names Water as the 2024 winner and PUSH 2 START as the 2026 winner in Best African Music Performance. Those achievements are significant but do not imply that one performer created an entire music genre or scene."
       },
       {
         "type": "paragraph",
@@ -1156,6 +1223,16 @@
         "type": "link",
         "text": "Recording Academy — 2025 category results",
         "url": "https://www.grammy.com/awards/categories/best-african-music-performance/2025/"
+      },
+      {
+        "type": "link",
+        "text": "Recording Academy — 2024 African music award",
+        "url": "https://www.grammy.com/awards/categories/best-african-music-performance/2024/"
+      },
+      {
+        "type": "link",
+        "text": "IFPI — 2026 State of the Industry report",
+        "url": "https://www.ifpi.org/wp-content/uploads/2026/03/GMR2026_SOTI.pdf"
       }
     ],
     "faqs": [
@@ -1186,8 +1263,8 @@
     "title": "African Tech Hubs: Lagos, Nairobi, Cape Town and the Growth Story",
     "excerpt": "Calling a city the 'fastest-growing tech hub' requires a consistent measured definition and dates. Public data about technology ecosystems can describe investment activity, employment, companies and infrastructure, but those measures are not.",
     "category": "tech",
-    "author": "Aisha Bello",
-    "authorTitle": "Technology Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-06-18T07:30:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
@@ -1219,6 +1296,10 @@
         "text": "Lagos is one of the continent's largest startup hubs. The Yaba district, nicknamed Yabacon Valley, is home to many well-known companies, including Flutterwave, Andela, and Paystack."
       },
       {
+        "type": "paragraph",
+        "text": "Nigeria's prominence in Partech's 2025 deal-count data provides national context, not a verified Lagos-only growth rate. City-level claims should identify whether they count registered firms, venture-backed companies, deals or jobs, as these produce very different rankings."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "2. Nairobi, Kenya: \"Silicon Savannah\""
@@ -1226,6 +1307,10 @@
       {
         "type": "paragraph",
         "text": "Nairobi pioneered African mobile money through M-Pesa and remains a leading centre for fintech and agritech. Its nickname, Silicon Savannah, reflects its long-standing role in the region's tech scene."
+      },
+      {
+        "type": "paragraph",
+        "text": "A distinctive feature of Nairobi's market is the importance of financial infrastructure and regional networks, but founders still face affordability, customer acquisition and regulatory challenges. Kenya's 2025 funding total was influenced by several very large transactions, so it should not be extrapolated to average startup performance."
       },
       {
         "type": "heading",
@@ -1361,8 +1446,8 @@
       },
       {
         "type": "link",
-        "text": "IFPI — 2026 global recorded music report",
-        "url": "https://www.ifpi.org/global-music-report-2026-global-recorded-music-revenues-grow-6-4-as-record-companies-drive-innovation/"
+        "text": "GSMA — Mobile Money 2026 industry evidence",
+        "url": "https://www.gsma.com/sotir/"
       }
     ],
     "faqs": [
@@ -1397,8 +1482,8 @@
     "title": "Where to See the Big Five in Africa: Five Safari Areas Compared",
     "excerpt": "The expression 'Big Five' refers to elephant, rhinoceros, buffalo, lion and leopard. It originated in the context of hunting rather than a scientific classification of Africa's largest animals or a list of the most important.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 9,
@@ -1643,8 +1728,8 @@
     "title": "Gorilla Trekking in Africa: Rwanda, Uganda and DRC Compared",
     "excerpt": "Mountain gorilla trekking is a guided forest experience undertaken on foot, usually in steep or uneven terrain. It should not be compared directly with a game drive in an open savanna park. The goal is to observe habituated.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
@@ -1696,6 +1781,10 @@
         "text": "Mgahinga is the smallest of the three, and it is often combined with Rwanda or Bwindi in a single trip. It has a small gorilla family, and trekking here is less crowded. The park is also a good base for climbing the Virunga volcanoes and visiting golden monkeys."
       },
       {
+        "type": "paragraph",
+        "text": "Uganda Wildlife Authority identifies Mgahinga as an official trekking location; a visitor should check the availability of permits for the exact proposed date. A smaller park does not guarantee a simpler trail, easier walking conditions or a closer encounter."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "4. Virunga National Park, DR Congo"
@@ -1703,6 +1792,10 @@
       {
         "type": "paragraph",
         "text": "Virunga is the oldest national park in Africa and home to a large share of the world's mountain gorillas. Security conditions have been a serious concern for many years, and travel advice for the region changes frequently. Before considering a visit, check your government's current travel advisory and use only licensed operators who work closely with park authorities."
+      },
+      {
+        "type": "paragraph",
+        "text": "Security conditions in eastern DRC can materially change the feasibility of visiting Virunga. Consult current official travel advice and park announcements before treating it as an available tourism product; a destination's conservation importance is not an assertion that travel is presently advisable."
       },
       {
         "type": "heading",
@@ -1881,8 +1974,8 @@
     "title": "Great Migration Safari Guide: Seasons, Regions and Viewing Plans",
     "excerpt": "The Great Migration describes large-scale movements of wildebeest and other grazing animals across the Serengeti-Mara ecosystem. UNESCO describes it as an extraordinary natural process associated with the Serengeti's protected.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
@@ -2076,13 +2169,18 @@
       },
       {
         "type": "link",
-        "text": "UNESCO — conservation of connected landscapes",
-        "url": "https://whc.unesco.org/en/list/156/"
+        "text": "Kenya Wildlife Service — park information",
+        "url": "https://www.kws.go.ke/"
       },
       {
         "type": "link",
-        "text": "Kenya Wildlife Service — park information",
-        "url": "https://www.kws.go.ke/"
+        "text": "Mara Conservancies Association — migration corridors",
+        "url": "https://maraconservancies.org/mara-conservancies/"
+      },
+      {
+        "type": "link",
+        "text": "Mara Conservancies Association — 2026 conservation strategy",
+        "url": "https://maraconservancies.org/wp-content/uploads/2026/04/MMWCA-Strategic-Plan-Summary_FINAL_WEB.pdf"
       }
     ],
     "faqs": [
@@ -2117,8 +2215,8 @@
     "title": "Affordable Safari Parks in Africa: Five Value-Focused Options",
     "excerpt": "A low advertised park entrance fee does not automatically create a budget safari. Transport, accommodation, vehicle hire, guiding, meals and travel time can outweigh the initial ticket. This comparison considers the possibility.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 7,
@@ -2171,6 +2269,10 @@
         "text": "Lake Mburo is small, compact, and easy to reach from Kampala, making it a good stop on a wider Uganda itinerary. Zebras, impala, and buffalo are common, and boat trips on the lake offer a different perspective on hippos and water birds. Lodging ranges from simple to comfortable, and walking safaris are available."
       },
       {
+        "type": "paragraph",
+        "text": "A lower-cost route only makes sense when Lake Mburo falls naturally within the rest of the journey. If the detour adds a hired vehicle, an overnight stay and another park gate fee, the total may exceed that of a different reserve closer to the visitor's existing route."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "3. Akagera National Park, Rwanda"
@@ -2178,6 +2280,10 @@
       {
         "type": "paragraph",
         "text": "Akagera is Rwanda's only savanna park, and it has been restored in recent years with reintroduced species, including lions and rhinos. Its open landscape and lakes make wildlife easy to spot. The park is well suited to visitors combining gorilla trekking with a second, lower-cost wildlife experience."
+      },
+      {
+        "type": "paragraph",
+        "text": "Akagera's conservation recovery adds value beyond a simple entry-price comparison, but tourists should check the permitted activity types and official fees. A combined visit from Kigali can reduce complexity for some travellers while remaining costly for others."
       },
       {
         "type": "heading",
@@ -2189,6 +2295,10 @@
         "text": "Tarangire is known for its large elephant herds, especially in the dry season, when animals gather along the Tarangire River. The park is a practical choice for visitors on a Serengeti itinerary who want to add a second park at lower cost. Baobab trees and riverine woodland add to the scenery."
       },
       {
+        "type": "paragraph",
+        "text": "Tanzania's northern circuit includes multiple conservation areas with different fees and access arrangements. For Tarangire, ask the operator to break out park entrance, vehicle, guide and transfers before comparing a package with a superficially cheaper one elsewhere."
+      },
+      {
         "type": "heading",
         "level": 2,
         "text": "5. Addo Elephant National Park, South Africa"
@@ -2196,6 +2306,10 @@
       {
         "type": "paragraph",
         "text": "Addo sits close to the city of Gqeberha in the Eastern Cape and is one of the most accessible parks in South Africa. It is known for its dense elephant population and has a broader range of wildlife than its name suggests, including the coastal and marine areas that border it. Self-drive access keeps costs down."
+      },
+      {
+        "type": "paragraph",
+        "text": "SANParks publishes differentiated conservation charges for local, regional and international visitors at Addo. A ranking that compares a resident rate in one country with an international rate in another would mislead; calculate the amount for the traveller's actual eligibility class."
       },
       {
         "type": "heading",
@@ -2368,8 +2482,8 @@
     "title": "Best Time for an African Safari: A Month-by-Month Planning Guide",
     "excerpt": "Plan an African safari month by month with regional trade-offs, migration caveats, the Okavango flood cycle and practical questions for park and lodge operators.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
@@ -2650,8 +2764,8 @@
     "title": "Where to See Rhinos in Africa: Black and White Rhino Guide",
     "excerpt": "Learn the differences between black and white rhinos, their latest reported populations, conservation priorities and responsible viewing in African parks.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 7,
@@ -2870,8 +2984,8 @@
     "title": "Safari Packing List and Etiquette: A First-Timer’s Guide",
     "excerpt": "Plan your first African safari with a practical packing checklist, game-drive etiquette, wildlife safety tips, camera advice and guidance drawn from official park authorities.",
     "category": "wildlife",
-    "author": "Amara Okonkwo",
-    "authorTitle": "Senior Wildlife Correspondent",
+    "author": "African Ranked Editorial Team",
+    "authorTitle": "Editorial Team",
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 11,
