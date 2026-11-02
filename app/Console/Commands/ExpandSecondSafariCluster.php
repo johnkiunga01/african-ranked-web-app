@@ -44,7 +44,7 @@ class ExpandSecondSafariCluster extends Command
             'https://maraconservancies.org/mara-conservancies/' => 'Mara Conservancies Association identifies a network of community-associated conservation areas in the wider Mara landscape.',
         ];
         $stats = ['considered'=>0,'expanded'=>0,'published'=>0,'blocked'=>0,'errors'=>0];
-        $selected = Article::whereIn('slug', array_slice($slugs,0,min(4,max(1,(int)$this->option('limit'))))
+        $selected = Article::whereIn('slug', array_slice($slugs,0,min(4,max(1,(int)$this->option('limit')))))
             ->whereNull('published_revision_id')->whereNull('trashed_at')->with(['currentRevision','author'])->get();
 
         foreach ($selected as $article) {
