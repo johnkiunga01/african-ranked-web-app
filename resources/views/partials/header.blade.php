@@ -1,31 +1,44 @@
-<header class="sticky inset-x-0 top-0 z-40">
-    <div class="bg-amber-600 px-4 py-1.5 text-center text-xs font-medium text-amber-950">{{ $region['tagline'] }}</div>
-    <div class="border-b border-stone-200 bg-white/90 backdrop-blur-md">
-        <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-            <a href="{{ $basePath ?: '/' }}" class="flex shrink-0 items-center gap-2" aria-label="{{ $site['name'] ?? 'African Ranked' }} {{ $region['name'] }} home">
-                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-orange-700 text-lg font-bold text-white">A</span>
-                <span><span class="block text-base font-bold leading-tight text-stone-900">{{ $site['name'] ?? 'African Ranked' }}</span><span class="block text-[10px] font-medium uppercase tracking-wider text-stone-500">{{ $region['flag'] }} {{ $region['name'] }}</span></span>
-            </a>
-            <nav aria-label="Main navigation" class="hidden items-center gap-1 lg:flex">
-                @foreach($categories->take(5) as $navCategory)
-                <a href="{{ $basePath }}/categories/{{ $navCategory['slug'] }}" class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition hover:bg-stone-100 hover:text-stone-900" @if(($category['slug'] ?? null) === $navCategory['slug']) aria-current="page" @endif>{{ explode(' & ', $navCategory['name'])[0] }}</a>
-                @endforeach
-            </nav>
-            <div class="flex items-center gap-3">
-                <details class="relative" data-region-menu>
-                    <summary class="cursor-pointer list-none rounded-lg border border-stone-200 bg-white px-3 py-2 text-xs font-medium sm:text-sm" aria-label="Choose edition">{{ $region['flag'] }} <span class="hidden sm:inline">{{ $region['name'] }}</span><span class="sm:hidden">{{ strtoupper($region['code']) }}</span> <span aria-hidden="true">⌄</span></summary>
-                    <nav aria-label="Regional editions" class="absolute right-0 z-50 mt-2 w-56 rounded-xl border border-stone-200 bg-white p-2 shadow-xl">
-                        @foreach($regions as $edition)
-                        <a href="{{ $catalog->path($edition['code'], $pageSuffix) }}" class="block rounded-lg px-3 py-2 text-sm hover:bg-amber-50 {{ $edition['code'] === $region['code'] ? 'bg-amber-50 font-semibold text-amber-800' : 'text-stone-700' }}" @if($edition['code'] === $region['code']) aria-current="true" @endif>{{ $edition['flag'] }} {{ $edition['name'] }}</a>
-                        @endforeach
-                    </nav>
-                </details>
-                <button type="button" class="rounded-lg p-2 lg:hidden" data-menu-toggle aria-controls="mobile-navigation" aria-expanded="false" aria-label="Open navigation"><x-icon name="menu" /></button>
-            </div>
+@php($immersiveHome = $pageSuffix === '')
+<header data-site-header @class(['z-50 inset-x-0 top-0 transition-colors duration-300','fixed home-site-header text-white' => $immersiveHome,'sticky border-b border-stone-200 bg-white/95 text-stone-950 shadow-sm backdrop-blur-lg' => ! $immersiveHome])>
+    <div class="mx-auto flex h-[76px] max-w-[1450px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
+        <a href="{{ $basePath ?: '/' }}" class="group inline-flex min-w-0 shrink-0 items-center gap-2.5 focus-visible:rounded-lg" aria-label="{{ $site['name'] ?? 'African Ranked' }} home">
+            <img src="/africa-mark.svg" width="37" height="46" alt="" class="h-10 w-8 shrink-0 transition-transform duration-300 group-hover:rotate-[-5deg]" />
+            <span class="text-lg font-extrabold tracking-tight sm:text-[22px]">{{ $site['name'] ?? 'African Ranked' }}</span>
+        </a>
+        <span class="hidden h-7 w-px bg-current opacity-25 xl:block" aria-hidden="true"></span>
+        <nav class="hidden flex-1 items-center gap-1 lg:flex" aria-label="Main navigation">
+            <a href="{{ $basePath }}/rankings" class="site-nav-link" @if($pageSuffix === '/rankings' && request('type') !== 'guide') aria-current="page" @endif>Rankings</a>
+            <a href="{{ $basePath }}/rankings?type=guide" class="site-nav-link" @if(request('type') === 'guide') aria-current="page" @endif>Guides</a>
+            <a href="{{ $basePath }}/strategy" class="site-nav-link" @if($pageSuffix === '/strategy') aria-current="page" @endif>Our approach</a>
+        </nav>
+        <div class="flex items-center gap-2 sm:gap-3">
+            <details class="relative" data-search-menu>
+                <summary class="site-icon-button list-none cursor-pointer" aria-label="Search African Ranked" title="Search articles"><x-icon name="search" class="h-5 w-5" /></summary>
+                <form action="{{ $basePath }}/rankings" method="GET" role="search" class="absolute right-[-92px] top-full z-50 mt-3 flex w-[min(350px,calc(100vw-2rem))] items-center gap-2 rounded-2xl border border-stone-200 bg-white p-3 text-stone-950 shadow-2xl sm:right-0">
+                    <label class="sr-only" for="site-search">Search rankings and guides</label>
+                    <input id="site-search" type="search" name="q" maxlength="100" placeholder="Search Africa…" class="min-w-0 flex-1 rounded-lg border border-stone-300 px-3 py-2.5 text-sm focus-visible:outline-offset-0" required>
+                    <button type="submit" class="rounded-lg bg-amber-400 px-4 py-2.5 text-sm font-bold text-stone-950 hover:bg-amber-300">Search</button>
+                </form>
+            </details>
+            <details class="relative" data-region-menu>
+                <summary class="site-icon-button inline-flex cursor-pointer list-none items-center gap-1 px-2.5 text-xs font-semibold sm:text-sm" aria-label="Choose regional edition" title="Change edition"><span class="text-lg">{{ $region['flag'] }}</span><span class="hidden sm:inline">{{ $region['name'] }}</span><x-icon name="chevron-down" class="h-4 w-4" /></summary>
+                <nav aria-label="Regional editions" class="absolute right-0 z-50 mt-3 max-h-[70vh] w-56 overflow-auto rounded-2xl border border-stone-200 bg-white p-2 text-stone-900 shadow-2xl">
+                    @foreach($regions as $edition)
+                        <a href="{{ $catalog->path($edition['code'], $pageSuffix) }}" class="block rounded-xl px-3 py-2.5 text-sm transition hover:bg-amber-50 {{ $edition['code'] === $region['code'] ? 'bg-amber-50 font-bold text-amber-800' : 'text-stone-700' }}" @if($edition['code'] === $region['code']) aria-current="page" @endif>{{ $edition['flag'] }} {{ $edition['name'] }}</a>
+                    @endforeach
+                </nav>
+            </details>
+            <button type="button" class="site-icon-button lg:hidden" data-menu-toggle aria-controls="mobile-navigation" aria-expanded="false" aria-label="Open navigation"><x-icon name="menu" class="h-6 w-6" /></button>
         </div>
     </div>
-    <nav id="mobile-navigation" aria-label="Mobile navigation" class="border-b border-stone-200 bg-white px-4 py-3 lg:hidden" hidden>
-        @foreach($categories as $navCategory)<a href="{{ $basePath }}/categories/{{ $navCategory['slug'] }}" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-stone-100">{{ $navCategory['name'] }}</a>@endforeach
+    <nav id="mobile-navigation" aria-label="Mobile navigation" class="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-white/10 bg-[#15191b] px-4 pb-5 pt-3 text-white shadow-2xl lg:hidden sm:px-6" hidden>
+        <a href="{{ $basePath }}/rankings" class="site-mobile-link">All rankings</a>
+        <a href="{{ $basePath }}/rankings?type=guide" class="site-mobile-link">Practical guides</a>
+        <a href="{{ $basePath }}/strategy" class="site-mobile-link">Our editorial approach</a>
+        <p class="mt-5 px-3 text-xs font-semibold uppercase tracking-[.16em] text-amber-300">Explore topics</p>
+        @foreach($categories as $navCategory)
+            <a href="{{ $basePath }}/categories/{{ $navCategory['slug'] }}" class="site-mobile-link">{{ $navCategory['name'] }}</a>
+        @endforeach
     </nav>
-    <noscript><nav aria-label="Categories" class="flex flex-wrap gap-3 bg-white px-4 py-2 text-sm lg:hidden">@foreach($categories as $navCategory)<a href="{{ $basePath }}/categories/{{ $navCategory['slug'] }}">{{ explode(' & ', $navCategory['name'])[0] }}</a>@endforeach</nav></noscript>
+    <noscript><nav aria-label="Category links" class="flex flex-wrap gap-3 bg-stone-950 px-4 py-2 text-sm text-white lg:hidden">@foreach($categories as $navCategory)<a href="{{ $basePath }}/categories/{{ $navCategory['slug'] }}">{{ $navCategory['name'] }}</a>@endforeach</nav></noscript>
 </header>
