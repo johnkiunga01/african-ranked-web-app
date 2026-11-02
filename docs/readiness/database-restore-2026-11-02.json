@@ -1,0 +1,11 @@
+{
+  "observed_date": "2026-11-02",
+  "backup_format": "PostgreSQL custom",
+  "restored_into": "Isolated local Docker PostgreSQL 18; no public port",
+  "articles": 13,
+  "revisions": 13,
+  "users": 1,
+  "published_articles": 0,
+  "article_revision_publication_pointers_match": true,
+  "live_database_modified_by_restore": false
+}

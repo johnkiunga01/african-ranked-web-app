@@ -31,7 +31,8 @@ class EditorialPlanImport
                     }
                 }
                 // Re-imports update planning data only; article bodies, owners and publication stay untouched.
-                EditorialBrief::updateOrCreate(['plan_id' => $record['plan_id']], $record + ['source_hash' => $intake['hash'], 'imported_by' => $actor->id]);
+                $linked = $existing->first()?->article_id ?? Article::where('slug', $record['slug'])->value('id');
+                EditorialBrief::updateOrCreate(['plan_id' => $record['plan_id']], $record + ['source_hash' => $intake['hash'], 'imported_by' => $actor->id, 'article_id' => $linked]);
             }
             AuditEvent::record($actor, 'editorial_plan.imported', $actor, ['sha256' => $intake['hash'], 'briefs' => count($intake['records']), 'team_drafts' => $intake['drafts']]);
 
@@ -45,7 +46,7 @@ class EditorialPlanImport
 
         return DB::transaction(function () use ($actor, $brief) {
             $brief = EditorialBrief::lockForUpdate()->findOrFail($brief->id);
-            if ($article = Article::where('slug', $brief->slug)->first()) {
+            if ($article = $brief->article ?? Article::where('slug', $brief->slug)->first()) {
                 return $article; // Existing editorial work always wins over workbook content.
             }
             $article = app(EditorialWorkflow::class)->save($actor, [
@@ -53,6 +54,7 @@ class EditorialPlanImport
                 'focus_keyword' => $brief->keyword, 'body_markdown' => $brief->plan['team_draft'] ?? '',
                 'source_notes' => $brief->instructions(), 'image' => null,
             ]);
+            $brief->update(['article_id' => $article->id]);
             AuditEvent::record($actor, 'editorial_plan.draft_started', $article, ['plan_id' => $brief->plan_id, 'source_hash' => $brief->source_hash]);
 
             return $article;

@@ -1,4 +1,4 @@
-import { publicationBody, publicationFaqs } from './publication-fixture.js';
+import { publicationBody, publicationFaqs, publicationEvidence } from './publication-fixture.js';
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 
@@ -20,6 +20,7 @@ test('bulk publishing, queued research, and SEO metadata editing work on desktop
         await page.getByLabel('Hero image URL', { exact: true }).fill('https://example.test/fixture.jpg');
         await page.getByLabel('Reader FAQs', { exact: true }).fill(publicationFaqs);
         await page.getByLabel('Sources and research notes', { exact: true }).fill('Disposable fixture; no factual reporting or image-rights claim.');
+        await publicationEvidence(page);
         await page.getByRole('button', { name: 'Create draft', exact: true }).click();
         await expect(page).toHaveURL(/\/edit$/);
     }

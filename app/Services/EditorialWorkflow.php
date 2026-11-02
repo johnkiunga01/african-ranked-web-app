@@ -42,6 +42,7 @@ class EditorialWorkflow
                 'seo_title' => array_key_exists('seo_title', $data) ? $data['seo_title'] : $prior?->seo_title, 'meta_description' => array_key_exists('meta_description', $data) ? $data['meta_description'] : $prior?->meta_description,
                 'focus_keyword' => array_key_exists('focus_keyword', $data) ? $data['focus_keyword'] : $prior?->focus_keyword, 'image_alt' => array_key_exists('image_alt', $data) ? $data['image_alt'] : $prior?->image_alt,
                 'image' => $data['image'] ?? null, 'source_notes' => $data['source_notes'] ?? null,
+                'editorial_evidence' => $data['editorial_evidence'] ?? $prior?->editorial_evidence,
                 'author_name' => $owner?->name ?? 'Unassigned author', 'author_title' => $owner?->job_title ?? 'Contributor',
                 'read_time' => max(1, (int) ceil(str_word_count($data['body_markdown']) / 200)),
             ]);

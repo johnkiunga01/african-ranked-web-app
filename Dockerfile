@@ -40,6 +40,7 @@ RUN mkdir -p bootstrap/cache storage/app/private storage/app/public storage/fram
 # Disposable DB validation target. Never deployed as the production image.
 FROM application AS testing
 COPY tests ./tests
+COPY database/factories ./database/factories
 COPY phpunit.xml ./phpunit.xml
 RUN . /usr/local/lib/ar-build-network.sh && composer install --no-interaction --prefer-dist --optimize-autoloader && rm -f /tmp/african-ranked-build-ca.crt
 CMD ["php", "artisan", "test"]

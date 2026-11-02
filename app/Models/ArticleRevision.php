@@ -12,7 +12,7 @@ class ArticleRevision extends Model
 
     protected function casts(): array
     {
-        return ['status' => RevisionStatus::class, 'body' => 'array', 'faqs' => 'array', 'regions' => 'array', 'review_checklist' => 'array', 'reviewed_at' => 'datetime', 'published_at' => 'datetime'];
+        return ['editorial_evidence' => 'array', 'status' => RevisionStatus::class, 'body' => 'array', 'faqs' => 'array', 'regions' => 'array', 'review_checklist' => 'array', 'reviewed_at' => 'datetime', 'published_at' => 'datetime'];
     }
 
     public function article(): BelongsTo
@@ -29,6 +29,8 @@ class ArticleRevision extends Model
             'readTime' => $this->read_time, 'image' => $this->image, 'body' => $this->body,
             'seoTitle' => $this->seo_title, 'metaDescription' => $this->meta_description, 'imageAlt' => $this->image_alt,
             'faqs' => $this->faqs ?? [], 'regions' => $this->regions,
+            'editorialEvidence' => $this->editorial_evidence,
+            'reviewer' => $this->reviewed_by ? User::find($this->reviewed_by)?->name : null,
         ];
     }
 }

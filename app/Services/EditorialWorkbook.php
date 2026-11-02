@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Support\Catalog;
 use DOMDocument;
 use DOMXPath;
 use Illuminate\Validation\ValidationException;
@@ -51,17 +52,19 @@ class EditorialWorkbook
                     $this->fail('An unsupported worksheet reference was found.');
                 }
                 $entry = str_starts_with($target, '/') ? ltrim($target, '/') : (str_starts_with($target, 'xl/') ? $target : 'xl/'.$target);
-                $sheets[$name] = $this->rows($this->xml($zip, $entry), $shared);
+                $sheets[$name] = $this->rows($this->xml($zip, $entry), $shared, $name === 'Structure Templates');
             }
             $ideas = $sheets['Article Ideas'] ?? [];
-            $headers = array_shift($ideas);
+            $headerRow = array_key_first($ideas);
+            $headers = $headerRow !== null ? $ideas[$headerRow] : null;
+            unset($ideas[$headerRow]);
             $required = ['ID', 'Wave', 'Category', 'Template', 'CMS type', 'Working title', 'Slug', 'Primary keyword', 'Target body words', 'Key sources to cite', 'Data risk', 'Pillar', 'Internal links (IDs)', 'Recommended structure (H2 order)'];
             if (! $headers || array_diff($required, $headers)) {
                 $this->fail('The Article Ideas sheet must retain the master guide headers.');
             }
             $drafts = $this->records($sheets['Draft Articles'] ?? []);
             $drafts = collect($drafts)->keyBy('ID');
-            $categories = app(\App\Support\Catalog::class)->categories()->pluck('slug', 'name');
+            $categories = app(Catalog::class)->categories()->pluck('slug', 'name');
             $seen = [];
             $slugs = [];
             $records = [];
@@ -101,7 +104,9 @@ class EditorialWorkbook
 
     private function records(array $rows): array
     {
-        $headers = array_shift($rows) ?? [];
+        $headerRow = array_key_first($rows);
+        $headers = $headerRow !== null ? $rows[$headerRow] : [];
+        unset($rows[$headerRow]);
         $records = [];
         foreach ($rows as $row) {
             $record = [];
@@ -114,7 +119,7 @@ class EditorialWorkbook
         return $records;
     }
 
-    private function rows(DOMXPath $xml, array $shared): array
+    private function rows(DOMXPath $xml, array $shared, bool $allowCachedTotals = false): array
     {
         $rows = [];
         foreach ($xml->query('//*[local-name()="sheetData"]/*[local-name()="row"]') as $row) {
@@ -135,7 +140,7 @@ class EditorialWorkbook
                 foreach (str_split($match[1]) as $letter) {
                     $column = $column * 26 + ord($letter) - 64;
                 }
-                if ($column > 40 || $xml->query('./*[local-name()="f"]', $cell)->length) {
+                if ($column > 40 || (! $allowCachedTotals && $xml->query('./*[local-name()="f"]', $cell)->length)) {
                     $this->fail('Plan, draft and template cells must contain literal text, not formulas.');
                 }
                 $value = $cell->getAttribute('t') === 'inlineStr' ? $xml->evaluate('string(./*[local-name()="is"])', $cell) : $xml->evaluate('string(./*[local-name()="v"])', $cell);

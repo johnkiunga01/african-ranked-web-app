@@ -11,28 +11,14 @@ class LaunchReadiness
 {
     public function acceptedArticles(): int
     {
-        $file = fopen(base_path('docs/CONTENT-REGISTER.csv'), 'r');
-        try {
-            $headers = fgetcsv($file, 0, ',', '"', '');
-            $seen = [];
-            while (($values = fgetcsv($file, 0, ',', '"', '')) !== false) {
-                if (count($values) !== count($headers)) {
-                    continue;
-                }
-                $row = array_combine($headers, $values);
-                if ($row['accepted_for_launch'] !== 'yes' || isset($seen[$row['existing_slug']])) {
-                    continue;
-                }
-                $article = Article::where('slug', $row['existing_slug'])->with('publishedRevision')->first();
-                if ($article?->publishedRevision && $article->publishedRevision->status->value === 'published' && (string) $article->publishedRevision->number === (string) $row['approved_revision']) {
-                    $seen[$row['existing_slug']] = true;
-                }
-            }
+        return Article::whereNull('trashed_at')->whereNotNull('published_revision_id')->with(['publishedRevision', 'author'])->get()
+            ->filter(function ($article) {
+                $revision = $article->publishedRevision;
 
-            return count($seen);
-        } finally {
-            fclose($file);
-        }
+                return $revision && $revision->status->value === 'published' && $revision->reviewed_by && $revision->reviewed_at
+                    && $article->author?->is_active && $article->author?->hasVerifiedEmail()
+                    && $revision->editorial_evidence && ! app(PublicationQuality::class)->inspect($revision)['failures'];
+            })->count();
     }
 
     public function report(): array
@@ -62,7 +48,7 @@ class LaunchReadiness
             $add('Active administrators enrolled in MFA', $count > 0 && $unprotected === 0, $count.' active verified administrators; '.$unprotected.' awaiting enrollment.');
             $accepted = $this->acceptedArticles();
             $target = config('growth.article_target');
-            $add('Accepted published content target', $accepted >= $target, $accepted.' / '.$target.' unique registry-accepted articles match their published revision.');
+            $add('Accepted published content target', $accepted >= $target, $accepted.' / '.$target.' unique published articles pass the master evidence checks and have a recorded reviewer. The phased plan contains '.config('growth.planned_articles').' briefs.');
         } catch (Throwable) {
             $add('Database and editorial evidence', false, 'The database or acceptance register could not be checked. No credential/error details are exposed.');
         }

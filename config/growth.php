@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'article_target' => 160,
+    // Owner-selected first release: 19 verified posts; the master plan contains 100.
+    'article_target' => (int) env('LAUNCH_ARTICLE_TARGET', 19),
+    'planned_articles' => 100,
     'providers' => [
         'openseo' => ['name' => 'OpenSEO', 'area' => 'SEO research', 'field' => 'Project reference', 'help' => 'Keyword demand, competitor gaps and research briefs. Server-side MCP verification is available above; research jobs and result ingestion remain outstanding.'],
         'search_console' => ['name' => 'Google Search Console', 'area' => 'Search performance', 'field' => 'Property reference', 'help' => 'Manual Search Console access and Pages CSV imports are available above. Automatic syncing and URL inspection remain outstanding.'],

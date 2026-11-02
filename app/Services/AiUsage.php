@@ -4,11 +4,25 @@ namespace App\Services;
 
 use App\Models\Article;
 use App\Models\User;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class AiUsage
 {
+    public function limit(User $actor): int
+    {
+        if (! $actor->isSuperAdmin()) {
+            return 5;
+        }
+        $until = config('editorial.admin_daily_ai_limit_until');
+        try {
+            return $until && now()->lt(CarbonImmutable::parse($until)) ? config('editorial.admin_daily_ai_limit') : 20;
+        } catch (\Throwable) {
+            return 20;
+        }
+    }
+
     public function remaining(User $actor): int
     {
         $since = now()->startOfDay();
@@ -17,7 +31,7 @@ class AiUsage
         $queued = DB::table('article_seo_batch_items')->join('article_seo_batches', 'article_seo_batches.id', '=', 'article_seo_batch_items.article_seo_batch_id')
             ->where('article_seo_batches.user_id', $actor->id)->whereIn('status', ['queued', 'researching'])->count();
 
-        return max(0, ($actor->isSuperAdmin() ? 20 : 5) - $used - $queued);
+        return max(0, $this->limit($actor) - $used - $queued);
     }
 
     private function quota(User $actor): void
@@ -26,7 +40,7 @@ class AiUsage
         $since = now()->startOfDay();
         $used = DB::table('article_generations')->where('user_id', $actor->id)->where('created_at', '>=', $since)->count()
             + DB::table('article_ai_requests')->where('user_id', $actor->id)->where('created_at', '>=', $since)->count();
-        $limit = $actor->isSuperAdmin() ? 20 : 5;
+        $limit = $this->limit($actor);
         if ($used >= $limit) {
             throw ValidationException::withMessages(['ai' => 'Your daily AI request limit has been reached ('.$limit.' attempts per UTC day). No provider call was made.']);
         }

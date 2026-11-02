@@ -10,6 +10,7 @@ use App\Models\ArticleSeoBatch;
 use App\Models\AuditEvent;
 use App\Models\User;
 use App\Services\ArticleSeoAnalysis;
+use App\Services\EditorialEvidence;
 use App\Services\EditorialWorkflow;
 use App\Services\SeedArticleImporter;
 use App\Services\SiteSettings;
@@ -163,7 +164,7 @@ class ArticleController extends Controller
 
     private function validated(Request $request, ?Article $article = null): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'slug' => $article ? ['exclude'] : ['required', 'string', 'max:180', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/', Rule::unique('articles', 'slug')],
             'title' => ['required', 'string', 'max:180'], 'excerpt' => ['required', 'string', 'max:500'],
             'category_slug' => ['required', Rule::in(app(Catalog::class)->categories()->pluck('slug')->all())],
@@ -175,7 +176,21 @@ class ArticleController extends Controller
             'all_editions' => ['sometimes', 'boolean'], 'regions' => ['sometimes', 'array', 'max:50'],
             'regions.*' => ['required', Rule::in(array_keys(app(Catalog::class)->regions()))],
             'revision_id' => $article ? ['required', 'integer'] : ['nullable'],
+            'evidence' => ['sometimes', 'array'],
+            'evidence.answer' => ['nullable', 'string', 'max:1500'],
+            'evidence.content_type' => ['required_with:evidence', 'in:guide,ranking,data'],
+            'evidence.last_verified_at' => ['nullable', 'date_format:Y-m-d', 'before_or_equal:today'],
+            'evidence.image_rights' => ['nullable', 'string', 'max:3000'],
+            'evidence.methodology' => ['nullable', 'string', 'max:10000'],
+            'evidence.key_facts_text' => ['nullable', 'string', 'max:15000'],
+            'evidence.sources_text' => ['nullable', 'string', 'max:30000'],
         ]);
+        if (isset($data['evidence'])) {
+            $data['editorial_evidence'] = app(EditorialEvidence::class)->fromForm($data['evidence']);
+            unset($data['evidence']);
+        }
+
+        return $data;
     }
 
     public function store(Request $request, EditorialWorkflow $workflow)

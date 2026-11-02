@@ -10,6 +10,7 @@
             <p class="mt-3 text-xs text-stone-500">Published <time datetime="{{ $article['datePublished'] }}">{{ \Carbon\Carbon::parse($article['datePublished'])->format('F j, Y') }}</time> · Updated <time datetime="{{ $article['dateModified'] }}">{{ \Carbon\Carbon::parse($article['dateModified'])->format('F j, Y') }}</time></p><p data-share-status role="status" class="mt-2 text-xs text-amber-800"></p>
         </header>
         <img src="{{ $article['image'] }}" alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="mt-8 aspect-[16/9] w-full rounded-2xl object-cover" data-image-fallback>
+        @include('editorial.evidence', ['evidence' => $article['editorialEvidence'] ?? []])
         <nav aria-label="On this page" class="mt-8 rounded-2xl border border-stone-200 bg-white p-6"><h2 class="font-semibold">In this ranking</h2><ol class="mt-3 space-y-2 text-sm text-amber-800">@foreach($article['body'] as $index => $block)@if($block['type'] === 'heading')<li><a href="#{{ $catalog->headingId($index) }}" class="underline decoration-amber-200 underline-offset-4 hover:decoration-amber-700">{{ $block['text'] }}</a></li>@endif @endforeach @if(!empty($article['faqs']))<li><a href="#frequently-asked-questions" class="underline decoration-amber-200 underline-offset-4">Frequently asked questions</a></li>@endif</ol></nav>
         <div class="mt-8 space-y-6">
             @foreach($article['body'] as $index => $block)
@@ -24,6 +25,7 @@
                 @endswitch
             @endforeach
         </div>
+        @include('editorial.sources', ['evidence' => $article['editorialEvidence'] ?? [], 'reviewer' => $article['reviewer'] ?? null])
         @if(!empty($article['faqs']))
         <section id="frequently-asked-questions" class="mt-12 rounded-2xl border border-stone-200 bg-stone-50 p-6 sm:p-8" aria-labelledby="faq-heading"><h2 id="faq-heading" class="text-xl font-bold">Frequently asked questions</h2><div class="mt-4 divide-y divide-stone-200">@foreach($article['faqs'] as $faq)<div class="py-4"><h3 class="font-semibold">{{ $faq['question'] }}</h3><p class="mt-2 text-sm leading-relaxed text-stone-600">{{ $faq['answer'] }}</p></div>@endforeach</div></section>
         @endif

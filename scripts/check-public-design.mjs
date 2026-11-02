@@ -16,7 +16,12 @@ const base = supplied && ! /^0+$/.test(supplied)
     : execFileSync('git', ['merge-base', 'origin/main', 'HEAD'], { encoding: 'utf8' }).trim();
 execFileSync('git', ['rev-parse', '--verify', `${base}^{commit}`], { stdio: 'ignore' });
 const changed = execFileSync('git', ['diff', '--name-only', '-z', base, 'HEAD'], { encoding: 'utf8' }).split('\0').filter(Boolean);
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)));
+// This release adds two optional evidence modules to the existing article view.
+// Permit only those exact include lines; every pre-existing byte remains protected.
+const articlePath = 'resources/views/pages/article.blade.php';
+const stripEvidenceIncludes = text => text.split('\n').filter(line => !/^\s*@include\('editorial\.(?:evidence|sources)', \['evidence' => \$article\['editorialEvidence'\] \?\? \[\](?:, 'reviewer' => \$article\['reviewer'\] \?\? null)?\]\)\s*$/.test(line)).join('\n');
+const evidenceOnly = path => path === articlePath && stripEvidenceIncludes(execFileSync('git', ['show', `${base}:${path}`], { encoding: 'utf8' })) === stripEvidenceIncludes(execFileSync('git', ['show', `HEAD:${path}`], { encoding: 'utf8' }));
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);

@@ -1,4 +1,4 @@
-import { publicationBody, publicationFaqs } from './publication-fixture.js';
+import { publicationBody, publicationFaqs, publicationEvidence } from './publication-fixture.js';
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 
@@ -30,6 +30,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await author.getByLabel('Hero image URL', { exact: true }).fill('https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg?w=600');
         await author.getByLabel('Reader FAQs', { exact: true }).fill(publicationFaqs);
         await author.getByLabel('Sources and research notes', { exact: true }).fill('Test fixture only. Used to validate review controls in a disposable database.');
+        await publicationEvidence(author);
         await author.getByRole('button', { name: 'Create draft', exact: true }).click();
         await expect(author).toHaveURL(/\/staff\/articles\/\d+\/edit$/);
         const id = new URL(author.url()).pathname.match(/articles\/(\d+)/)[1];
@@ -50,6 +51,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await author.reload();
         await expect(author.getByText('Add the missing practical checklist detail.', { exact: true })).toBeVisible();
         await author.getByLabel('Article body', { exact: true }).fill(publicationBody('Fixture content revised for testing.\n\n## Before you go\n\n- Confirm your research\n- Review your sources\n- Check completeness'));
+        await publicationEvidence(author);
         await author.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
         await admin.reload();
@@ -63,6 +65,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         expect(await published.text()).toContain('Browser-reviewed safari planning checklist');
         await author.reload();
         await author.getByLabel('Article title', { exact: true }).fill('Private unpublished replacement title');
+        await publicationEvidence(author);
         await author.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
         const unchanged = await request.get('/articles/browser-reviewed-safari-checklist');
         expect(await unchanged.text()).toContain('Browser-reviewed safari planning checklist');

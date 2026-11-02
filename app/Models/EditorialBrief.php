@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class EditorialBrief extends Model
 {
@@ -14,9 +14,9 @@ class EditorialBrief extends Model
         return ['plan' => 'array'];
     }
 
-    public function article(): HasOne
+    public function article(): BelongsTo
     {
-        return $this->hasOne(Article::class, 'slug', 'slug');
+        return $this->belongsTo(Article::class);
     }
 
     public function instructions(): string

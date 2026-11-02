@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\ArticleRevision;
+use App\Models\EditorialBrief;
 use Illuminate\Validation\ValidationException;
 
 /** Structural checks are necessary editorial controls, not independent fact verification. */
@@ -17,8 +18,26 @@ class PublicationQuality
     public function inspect(ArticleRevision $revision): array
     {
         $blocks = $revision->body ?? [];
+        $master = $revision->editorial_evidence !== null || ($revision->article_id && EditorialBrief::where(fn ($q) => $q->where('article_id', $revision->article_id)->orWhere('slug', $revision->article?->slug))->exists());
         $text = collect($blocks)->map(fn ($b) => $b['text'] ?? implode(' ', $b['items'] ?? []))->implode("\n");
         $words = preg_match_all('/[\pL\pN]+(?:[’\x{0027}-][\pL\pN]+)*/u', strip_tags($text));
+        if ($master) {
+            $counted = [];
+            $excluded = false;
+            foreach ($blocks as $block) {
+                if (($block['type'] ?? '') === 'heading') {
+                    if (($block['level'] ?? 2) === 2) {
+                        $excluded = (bool) preg_match('/^\d+[.)]\s|^(?:answer block|key facts|ranked items|sources|methodology note|frequently asked questions)$/iu', trim($block['text'] ?? ''));
+                    }
+
+                    continue;
+                }
+                if (! $excluded && ($block['type'] ?? '') !== 'link') {
+                    $counted[] = $block['text'] ?? implode(' ', $block['items'] ?? []);
+                }
+            }
+            $words = preg_match_all('/[\pL\pN]+(?:[’\x{0027}-][\pL\pN]+)*/u', strip_tags(implode("\n", $counted)));
+        }
         $failures = [];
         if ($words < self::MIN_WORDS) {
             $failures[] = "The body has {$words} words; at least 1,300 are required, excluding FAQs. Expand reporting with evidence, not padding.";
@@ -32,8 +51,17 @@ class PublicationQuality
                 $sources[preg_replace('/#.*$/', '', $url)] = true;
             }
         }
-        if (count($sources) < self::MIN_SOURCES) {
-            $failures[] = 'Add at least three distinct, reader-visible HTTPS source links. Private notes and search-result snippets do not count as citations.';
+        foreach ($revision->editorial_evidence['sources'] ?? [] as $source) {
+            if (filter_var($source['url'] ?? '', FILTER_VALIDATE_URL) && str_starts_with($source['url'], 'https://')) {
+                $sources[preg_replace('/#.*$/', '', $source['url'])] = true;
+            }
+        }
+        $minimumSources = $master ? 5 : self::MIN_SOURCES;
+        if (count($sources) < $minimumSources) {
+            $failures[] = $master ? 'Add five distinct cited sources; private notes and search snippets do not count.' : 'Add at least three distinct, reader-visible HTTPS source links. Private notes and search-result snippets do not count as citations.';
+        }
+        if ($master) {
+            $failures = array_merge($failures, app(EditorialEvidence::class)->inspect($revision->editorial_evidence));
         }
         $faqs = array_filter($revision->faqs ?? [], fn ($faq) => filled($faq['question'] ?? '') && filled($faq['answer'] ?? ''));
         if (count($faqs) < self::MIN_FAQS) {

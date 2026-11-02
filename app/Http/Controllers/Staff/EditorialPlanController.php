@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
+use App\Models\AuditEvent;
 use App\Models\EditorialBrief;
 use App\Services\EditorialPlanImport;
 use App\Services\EditorialWorkbook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class EditorialPlanController extends Controller
@@ -20,7 +23,9 @@ class EditorialPlanController extends Controller
             ->when($filters['q'] ?? null, fn ($q, $term) => $q->where(fn ($q) => $q->where('title', 'like', '%'.$term.'%')->orWhere('plan_id', 'like', '%'.$term.'%')->orWhere('keyword', 'like', '%'.$term.'%')))
             ->orderBy('wave')->orderBy('plan_id')->paginate(25)->withQueryString();
 
-        return view('staff.editorial-plan', compact('briefs', 'filters'));
+        $linkable = Article::whereNull('trashed_at')->with('currentRevision')->orderBy('slug')->get();
+
+        return view('staff.editorial-plan', compact('briefs', 'filters', 'linkable'));
     }
 
     public function preview(Request $request, EditorialWorkbook $reader)
@@ -51,5 +56,21 @@ class EditorialPlanController extends Controller
         $article = $importer->start($request->user(), $brief);
 
         return redirect()->route('staff.articles.edit', $article)->with('status', 'Opened the private draft. Research and review are required before publication.');
+    }
+
+    public function link(Request $request, EditorialBrief $brief)
+    {
+        $data = $request->validate(['article_id' => ['required', 'integer', 'exists:articles,id']]);
+        DB::transaction(function () use ($request, $brief, $data) {
+            $brief = EditorialBrief::lockForUpdate()->findOrFail($brief->id);
+            if ($brief->article_id || EditorialBrief::where('article_id', $data['article_id'])->exists()) {
+                throw ValidationException::withMessages(['article_id' => 'This brief or article is already linked. No mapping was changed.']);
+            }
+            abort_if(Article::findOrFail($data['article_id'])->trashed_at, 422);
+            $brief->update(['article_id' => $data['article_id']]);
+            AuditEvent::record($request->user(), 'editorial_plan.linked', $brief, ['article_id' => $data['article_id']]);
+        });
+
+        return back()->with('status', 'Brief linked to the existing article. Its URL, author, content and publication are preserved.');
     }
 }
