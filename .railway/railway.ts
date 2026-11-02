@@ -6,7 +6,7 @@ export const partial = "african-ranked-web-app";
 export default defineRailway(() => {
   const storage = volume("african-ranked-web-app-volume", { region: "sfo", sizeMB: 50000 });
   const africanRankedWebApp = service("african-ranked-web-app", {
-    source: github("johnkiunga01/african-ranked-web-app", { branch: "laravel/staging-platform", checkSuites: false }),
+    source: github("johnkiunga01/african-ranked-web-app", { branch: "main", checkSuites: false }),
     build: { buildEnvironment: "V3", builder: "DOCKERFILE", dockerfilePath: "Dockerfile" },
     volumeMounts: { "/app/storage": storage },
     healthcheck: "/up",
@@ -16,12 +16,12 @@ export default defineRailway(() => {
   });
 
   const worker = service("african-ranked-worker", {
-    source: github("johnkiunga01/african-ranked-web-app", { branch: "laravel/staging-platform", checkSuites: false }),
+    source: github("johnkiunga01/african-ranked-web-app", { branch: "main", checkSuites: false }),
     build: { buildEnvironment: "V3", builder: "DOCKERFILE", dockerfilePath: "Dockerfile" },
     replicas: { "sfo": 1 },
   });
   const scheduler = service("african-ranked-scheduler", {
-    source: github("johnkiunga01/african-ranked-web-app", { branch: "laravel/staging-platform", checkSuites: false }),
+    source: github("johnkiunga01/african-ranked-web-app", { branch: "main", checkSuites: false }),
     build: { buildEnvironment: "V3", builder: "DOCKERFILE", dockerfilePath: "Dockerfile" },
     replicas: { "sfo": 1 },
   });
