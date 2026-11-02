@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\ContentPageController;
 use App\Http\Controllers\DiscoveryController;
+use App\Http\Controllers\EditorialCoverArtController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/editorial-art/{slug}/{variant}.svg', [EditorialCoverArtController::class, 'show'])->where(['slug' => '[a-z0-9-]+', 'variant' => '(?:cover|detail-[1-9][0-9]?)'])->name('editorial-art.show');
 Route::get('/sitemap.xml', [DiscoveryController::class, 'sitemap'])->name('sitemap');
 Route::get('/sitemaps/{region}.xml', [DiscoveryController::class, 'sitemap']);
 Route::get('/robots.txt', [DiscoveryController::class, 'robots']);
