@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\ArticleMediaAsset;
 use App\Models\AuditEvent;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -39,6 +40,10 @@ class ArticleMediaController extends Controller
         }
 
         $uploaded = $request->file('file');
+        $hash = hash_file('sha256', $uploaded->getRealPath());
+        if (ArticleMediaAsset::where('sha256', $hash)->exists()) {
+            throw ValidationException::withMessages(['file' => 'This exact photo has already been uploaded. Choose a different image for this post, or use the existing image within its original article.']);
+        }
         [$width, $height, $type] = @getimagesize($uploaded->getRealPath()) ?: [0, 0, 0];
         if (! $width || ! $height || $width * $height > 20000000) {
             throw ValidationException::withMessages(['file' => 'Choose an image smaller than 20 megapixels.']);
@@ -75,10 +80,22 @@ class ArticleMediaController extends Controller
             throw ValidationException::withMessages(['file' => 'The image could not be optimised. Try a smaller file.']);
         }
 
-        $name = (string) Str::uuid().'.webp';
+        $id = (string) Str::uuid();
+        $name = $id.'.webp';
         $path = 'editorial/'.$name;
         if (! Storage::disk('public')->put($path, $bytes)) {
             return response()->json(['message' => 'Unable to save this image. Please retry.'], 503);
+        }
+        try {
+            ArticleMediaAsset::create([
+                'id' => $id, 'user_id' => $request->user()->id,
+                'article_id' => $article?->id, 'sha256' => $hash,
+                'storage_path' => $path, 'width' => $newWidth,
+                'height' => $newHeight, 'bytes' => strlen($bytes),
+            ]);
+        } catch (\\Illuminate\\Database\\UniqueConstraintViolationException $e) {
+            Storage::disk('public')->delete($path);
+            throw ValidationException::withMessages(['file' => 'This image is already in the media library. Select a different photo.']);
         }
         $url = url('/editorial-media/'.$name);
         AuditEvent::record($request->user(), 'article.media_uploaded', $article ?? $request->user(), [
