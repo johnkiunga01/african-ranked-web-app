@@ -1,0 +1,5 @@
+@extends('staff.layout')
+@section('title', 'Choose a new password')
+@section('content')
+<section class="staff-panel mx-auto max-w-md"><h1 class="text-2xl font-bold">Choose a new password</h1><form action="{{ route('staff.password.update') }}" method="POST" class="mt-6 space-y-5">@csrf<input type="hidden" name="token" value="{{ $token }}"><div><label class="staff-label" for="email">Email address</label><input class="staff-input" id="email" name="email" type="email" required value="{{ old('email', $email) }}"></div><div><label class="staff-label" for="password">New password</label><input class="staff-input" id="password" name="password" type="password" minlength="12" required autocomplete="new-password"></div><div><label class="staff-label" for="password_confirmation">Confirm password</label><input class="staff-input" id="password_confirmation" name="password_confirmation" type="password" required autocomplete="new-password"></div><button type="submit" class="staff-button w-full">Update password</button></form></section>
+@endsection

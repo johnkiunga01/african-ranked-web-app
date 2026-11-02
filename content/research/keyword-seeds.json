@@ -1,0 +1,94 @@
+{
+  "status": "hypotheses_pending_Open_SEO_research",
+  "business_model": [
+    "display_ads",
+    "affiliate_revenue"
+  ],
+  "primary_audience": "Global English-speaking readers interested in Africa",
+  "research_notes": "No keyword volumes, difficulty, CPC, competitor metrics, or ranking claims are available yet. Seeds are hypotheses, not selected targets.",
+  "clusters": [
+    {
+      "topic": "Safari and travel",
+      "commercial_fit_hypothesis": "Tours, accommodation, and relevant travel services; no affiliate partners confirmed.",
+      "seeds": [
+        {
+          "query": "best African safari destinations",
+          "existing_url": "/articles/top-10-safari-destinations-africa-2026",
+          "action_hypothesis": "Research and improve existing incomplete ranking rather than create a duplicate."
+        },
+        {
+          "query": "how to plan a first African safari",
+          "existing_url": null,
+          "action_hypothesis": "Potential planning guide supporting the existing ranking."
+        },
+        {
+          "query": "how to compare safari tours",
+          "existing_url": null,
+          "action_hypothesis": "Potential comparison checklist; verify intent and cannibalization before drafting."
+        },
+        {
+          "query": "best beaches in Africa",
+          "existing_url": "/articles/best-beaches-africa-ranked",
+          "action_hypothesis": "Research and improve the existing guide."
+        }
+      ]
+    },
+    {
+      "topic": "Food and culture",
+      "commercial_fit_hypothesis": "Food tours, books, events, and relevant products if useful and sourced.",
+      "seeds": [
+        {
+          "query": "best African cuisines",
+          "existing_url": "/articles/best-african-cuisines-ranked-2026"
+        },
+        {
+          "query": "African food travel guide",
+          "existing_url": null
+        }
+      ]
+    },
+    {
+      "topic": "Music and culture",
+      "commercial_fit_hypothesis": "Advertising and relevant event/media discovery; no ticketing relationships confirmed.",
+      "seeds": [
+        {
+          "query": "African musicians",
+          "existing_url": "/articles/top-african-musicians-2026"
+        },
+        {
+          "query": "guide to African music genres",
+          "existing_url": null
+        }
+      ]
+    },
+    {
+      "topic": "Technology and business",
+      "commercial_fit_hypothesis": "Advertising and contextually appropriate software/service comparisons; avoid unsupported investment advice.",
+      "seeds": [
+        {
+          "query": "African tech hubs",
+          "existing_url": "/articles/fastest-growing-tech-hubs-africa"
+        },
+        {
+          "query": "African startups",
+          "existing_url": "/articles/top-african-startups-2026"
+        }
+      ]
+    }
+  ],
+  "required_result_fields": [
+    "provider",
+    "research_date",
+    "country_or_global_scope",
+    "language",
+    "device_if_available",
+    "query",
+    "search_intent",
+    "available_metrics_with_units",
+    "serp_urls",
+    "related_questions",
+    "source_output_reference",
+    "recommended_existing_or_new_url",
+    "evidence_gaps"
+  ]
+}

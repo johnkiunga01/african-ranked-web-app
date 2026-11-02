@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Support;
+
+use App\Services\SiteSettings;
+
+class Seo
+{
+    public function __construct(private Catalog $catalog) {}
+
+    public function page(string $type, array $region, ?array $article = null, ?array $category = null): array
+    {
+        $c = $this->catalog;
+        $siteName = app(SiteSettings::class)->snapshot('general')['value']['name'];
+        $code = $region['code'];
+        $suffix = match ($type) {
+            'article' => '/articles/'.$article['slug'],
+            'category' => '/categories/'.$category['slug'],
+            'strategy' => '/strategy',
+            default => '',
+        };
+        $path = $c->path($code, $suffix);
+        // Regional article bodies are identical: consolidate their ranking signals.
+        $canonical = $c->url($type === 'article' ? '/articles/'.$article['slug'] : $path);
+        $title = match ($type) {
+            'article' => ($article['seoTitle'] ?? null) ?: $article['title'].' | '.$siteName,
+            'category' => $category['name'].' | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
+            'strategy' => 'Editorial & Search Strategy | '.$siteName,
+            'not-found' => 'Page not found | '.$siteName,
+            default => $siteName.' — The Best of Africa, Ranked'.($code === 'global' ? '' : ' | '.$region['name']),
+        };
+        $description = ($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']);
+        $image = $article['image'] ?? $c->articles($code)->first()['image'] ?? $c->articles()->first()['image'] ?? $c->url('/image-placeholder.svg');
+        $breadcrumbs = [['name' => 'Home', 'url' => $c->path($code)]];
+        if ($category) {
+            $breadcrumbs[] = ['name' => $category['name'], 'url' => $c->path($code, '/categories/'.$category['slug'])];
+        }
+        if ($article) {
+            $breadcrumbs[] = ['name' => $article['title'], 'url' => $path];
+        }
+        $alternates = [];
+        if (in_array($type, ['home', 'category'], true)) {
+            foreach ($c->regions() as $alternate) {
+                if ($category && ! $c->articles($alternate['code'])->contains('category', $category['slug'])) {
+                    continue;
+                }
+                $alternates[] = ['locale' => $alternate['locale'], 'url' => $c->url($c->path($alternate['code'], $suffix))];
+            }
+            $alternates[] = ['locale' => 'x-default', 'url' => $c->url($suffix ?: '/')];
+        }
+        $organization = ['@type' => 'Organization', '@id' => $c->url().'/#organization', 'name' => $siteName, 'url' => $c->url()];
+        $schemas = [
+            $organization,
+            ['@type' => 'WebSite', '@id' => $c->url().'/#website', 'name' => $siteName, 'url' => $c->url(), 'publisher' => ['@id' => $organization['@id']], 'inLanguage' => 'en'],
+            ['@type' => 'WebPage', '@id' => $canonical.'#webpage', 'url' => $canonical, 'name' => $title, 'description' => $description, 'isPartOf' => ['@id' => $c->url().'/#website'], 'inLanguage' => 'en'],
+        ];
+        if ($article) {
+            $schemas[] = [
+                '@type' => 'Article', '@id' => $canonical.'#article', 'headline' => $article['title'],
+                'description' => $article['excerpt'], 'image' => [$article['image']],
+                'datePublished' => $article['datePublished'], 'dateModified' => $article['dateModified'],
+                'author' => ['@type' => 'Person', 'name' => $article['author'], 'jobTitle' => $article['authorTitle']],
+                'publisher' => ['@id' => $organization['@id']], 'mainEntityOfPage' => ['@id' => $canonical.'#webpage'],
+                'articleSection' => $category['name'], 'inLanguage' => 'en',
+            ];
+            if (! empty($article['faqs'])) {
+                $schemas[] = ['@type' => 'FAQPage', 'mainEntity' => array_map(fn ($faq) => [
+                    '@type' => 'Question', 'name' => $faq['question'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['answer']],
+                ], $article['faqs'])];
+            }
+        } elseif (in_array($type, ['home', 'category'], true)) {
+            $items = $c->articles($code)->when($category, fn ($items) => $items->where('category', $category['slug']))->values();
+            $schemas[] = ['@type' => 'ItemList', 'itemListElement' => $items->map(fn ($item, $index) => [
+                '@type' => 'ListItem', 'position' => $index + 1, 'name' => $item['title'], 'url' => $c->url('/articles/'.$item['slug']),
+            ])->all()];
+        }
+        if (count($breadcrumbs) > 1) {
+            $schemas[] = ['@type' => 'BreadcrumbList', 'itemListElement' => array_map(fn ($item, $index) => [
+                '@type' => 'ListItem', 'position' => $index + 1, 'name' => $item['name'], 'item' => $c->url($item['url']),
+            ], $breadcrumbs, array_keys($breadcrumbs))];
+        }
+        $robots = $type === 'not-found' || ($type === 'category' && ! $c->articles($code)->contains('category', $category['slug'])) ? 'noindex, follow' : 'index, follow, max-image-preview:large';
+
+        if (str_starts_with($robots, 'noindex')) {
+            $alternates = [];
+        }
+
+        return compact('siteName', 'title', 'description', 'image', 'canonical', 'alternates', 'breadcrumbs', 'robots') + [
+            'type' => $type === 'article' ? 'article' : 'website',
+            'jsonLd' => ['@context' => 'https://schema.org', '@graph' => $schemas],
+        ];
+    }
+}
