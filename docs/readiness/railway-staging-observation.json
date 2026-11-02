@@ -1,0 +1,118 @@
+{
+  "origin": "https://african-ranked-web-app-production.up.railway.app",
+  "observed_at": "2026-11-02T12:40:08.610343+00:00",
+  "read_only": true,
+  "checks": [
+    {
+      "name": "/ responds",
+      "passed": true,
+      "detail": "HTTP 200; bounded public response inspected."
+    },
+    {
+      "name": "/ stays noindex",
+      "passed": true,
+      "detail": "noindex, nofollow, noarchive"
+    },
+    {
+      "name": "Versioned first-party assets respond",
+      "passed": true,
+      "detail": "3 assets checked without changing files."
+    },
+    {
+      "name": "/up responds",
+      "passed": true,
+      "detail": "HTTP 200; bounded public response inspected."
+    },
+    {
+      "name": "/up stays noindex",
+      "passed": true,
+      "detail": "noindex, nofollow, noarchive"
+    },
+    {
+      "name": "/staff/login responds",
+      "passed": true,
+      "detail": "HTTP 200; bounded public response inspected."
+    },
+    {
+      "name": "/staff/login stays noindex",
+      "passed": true,
+      "detail": "noindex, nofollow, noarchive"
+    },
+    {
+      "name": "Real staff sign-in form",
+      "passed": true,
+      "detail": "Form structure checked; no credentials submitted."
+    },
+    {
+      "name": "/robots.txt responds",
+      "passed": true,
+      "detail": "HTTP 200; bounded public response inspected."
+    },
+    {
+      "name": "/robots.txt stays noindex",
+      "passed": true,
+      "detail": "noindex, nofollow, noarchive"
+    },
+    {
+      "name": "Staging robots blocks crawling",
+      "passed": false,
+      "detail": "Blanket robots disallow must accompany preview headers."
+    },
+    {
+      "name": "/sitemap.xml responds",
+      "passed": true,
+      "detail": "HTTP 200; bounded public response inspected."
+    },
+    {
+      "name": "/sitemap.xml stays noindex",
+      "passed": true,
+      "detail": "noindex, nofollow, noarchive"
+    },
+    {
+      "name": "Sitemap XML parses",
+      "passed": true,
+      "detail": "8 discovery URLs; factual/editorial acceptance is a separate gate."
+    },
+    {
+      "name": "/feed.xml responds",
+      "passed": true,
+      "detail": "HTTP 200; bounded public response inspected."
+    },
+    {
+      "name": "/feed.xml stays noindex",
+      "passed": true,
+      "detail": "noindex, nofollow, noarchive"
+    },
+    {
+      "name": "/llms.txt responds",
+      "passed": true,
+      "detail": "HTTP 200; bounded public response inspected."
+    },
+    {
+      "name": "/llms.txt stays noindex",
+      "passed": true,
+      "detail": "noindex, nofollow, noarchive"
+    },
+    {
+      "name": "Anonymous staff access redirects to login",
+      "passed": true,
+      "detail": "Read-only anonymous request; no account or session mutation requested."
+    },
+    {
+      "name": "Missing pages return a real 404",
+      "passed": true,
+      "detail": "HTTP 404"
+    }
+  ],
+  "passed": 19,
+  "total": 20,
+  "not_proven": [
+    "Owner invitation/password setup and MFA",
+    "Author sign-in and permissions on the live database",
+    "Mail delivery and recovery inbox checks",
+    "Verified content, bylines and media rights",
+    "Database/media restore rehearsal",
+    "Queue processing with a real owner-approved request",
+    "Founder acceptance and production launch"
+  ]
+}
