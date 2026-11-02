@@ -185,7 +185,8 @@ class PublishOwnerConfirmedDrafts extends Command
         $output = 'AR_EDITORIAL_RELEASE '.json_encode($summary, JSON_UNESCAPED_SLASHES);
         $this->info($output);
         Log::info($output);
-        // A failed individual article must never interrupt the web service rollout.\n        return self::SUCCESS;
+        // A failed individual article must never interrupt the web service rollout.
+        return self::SUCCESS;
     }
 
     private function photosFor(string $slug, string $category, array $manifest, ?array $seed): array
