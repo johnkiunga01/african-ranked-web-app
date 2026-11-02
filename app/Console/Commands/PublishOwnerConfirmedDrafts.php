@@ -46,6 +46,7 @@ class PublishOwnerConfirmedDrafts extends Command
         $manifest = json_decode(file_get_contents(base_path('content/research/pexels-cms-photo-pool.json')), true, 512, JSON_THROW_ON_ERROR);
         $photos = $manifest['photographs'];
         $seeds = collect(json_decode(file_get_contents(base_path('content/articles.json')), true, 512, JSON_THROW_ON_ERROR))->keyBy('slug');
+        $evidenceManifest = json_decode(file_get_contents(base_path('content/research/owner-confirmed-seed-editorial-evidence.json')), true, 512, JSON_THROW_ON_ERROR)['articles'] ?? [];
         $articles = Article::whereNull('trashed_at')->whereNull('published_revision_id')
             ->with(['currentRevision', 'author'])->orderBy('id')->limit(min(100, max(1, (int) $this->option('limit'))))->get();
         $summary = ['found' => $articles->count(), 'enriched' => 0, 'published' => 0, 'blocked' => 0, 'errors' => 0, 'dry_run' => ! $this->option('apply')];
@@ -95,6 +96,20 @@ class PublishOwnerConfirmedDrafts extends Command
                         $evidence = json_decode(file_get_contents($f), true, 512, JSON_THROW_ON_ERROR)['editorial_evidence'] ?? [];
                     }
                 }
+                if (isset($evidenceManifest[$article->slug])) {
+                    $record = $evidenceManifest[$article->slug];
+                    foreach (['answer', 'content_type', 'facts', 'sources', 'methodology'] as $key) {
+                        if (empty($evidence[$key]) && ! empty($record[$key])) {
+                            $evidence[$key] = $record[$key];
+                        }
+                    }
+                    if (empty($evidence['last_verified_at'])) {
+                        $evidence['last_verified_at'] = $verifiedDate;
+                    }
+                    if (! str_contains((string) $sourceNotes, 'Ranking methodology:') && ! empty($record['methodology'])) {
+                        $sourceNotes = trim((string) $sourceNotes)."\nRanking methodology: ".$record['methodology'];
+                    }
+                }
                 if (empty($evidence['last_verified_at'])) {
                     $evidence['last_verified_at'] = $verifiedDate;
                 }
@@ -104,7 +119,10 @@ class PublishOwnerConfirmedDrafts extends Command
                     ."Photography is illustrative; credit is shown and no endorsement by photographed people is implied.";
                 $evidence['content_type'] ??= preg_match('/\b(rank|top \d+|best \d+)\b/i', $newTitle) ? 'ranking' : 'guide';
 
-                $wouldChange = $markdown !== trim((string) $prior->body_markdown)
+                $needsAuthor = ! $article->author?->is_active || ! $article->author?->hasVerifiedEmail();
+                $wouldChange = $sourceNotes !== $prior->source_notes
+                    || $needsAuthor
+                    || $markdown !== trim((string) $prior->body_markdown)
                     || $prior->image !== $hero['url']
                     || $prior->image_alt !== $hero['alt']
                     || $evidence !== ($prior->editorial_evidence ?? [])
@@ -116,6 +134,10 @@ class PublishOwnerConfirmedDrafts extends Command
                 }
 
                 if ($wouldChange) {
+                    if ($needsAuthor) {
+                        $article->user_id = $actor->id;
+                        $article->save();
+                    }
                     $data = [
                         'revision_id' => $prior->id,
                         'title' => $newTitle,
