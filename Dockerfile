@@ -3,7 +3,7 @@ FROM node:22-bookworm-slim AS frontend
 WORKDIR /app
 COPY package.json package-lock.json ./
 COPY deploy/railway/build-network.sh /tmp/ar-build-network.sh
-RUN --mount=type=secret,id=build_ca . /tmp/ar-build-network.sh && npm ci && rm -f /tmp/african-ranked-build-ca.crt
+RUN . /tmp/ar-build-network.sh && npm ci && rm -f /tmp/african-ranked-build-ca.crt
 COPY resources ./resources
 COPY public ./public
 COPY vite.config.js tailwind.config.js postcss.config.js ./
@@ -11,7 +11,7 @@ RUN npm run build
 
 FROM php:8.4-fpm-bookworm AS php-base
 COPY deploy/railway/build-network.sh /usr/local/lib/ar-build-network.sh
-RUN --mount=type=secret,id=build_ca . /usr/local/lib/ar-build-network.sh \
+RUN . /usr/local/lib/ar-build-network.sh \
     && sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list.d/debian.sources \
     && apt-get -o Acquire::https::CaInfo="$AR_BUILD_CA_FILE" update --error-on=any && apt-get -o Acquire::https::CaInfo="$AR_BUILD_CA_FILE" install -y --no-install-recommends \
     ca-certificates curl git gosu gettext-base nginx supervisor unzip \
@@ -41,11 +41,11 @@ RUN mkdir -p bootstrap/cache storage/app/private storage/app/public storage/fram
 FROM application AS testing
 COPY tests ./tests
 COPY phpunit.xml ./phpunit.xml
-RUN --mount=type=secret,id=build_ca . /usr/local/lib/ar-build-network.sh && composer install --no-interaction --prefer-dist --optimize-autoloader && rm -f /tmp/african-ranked-build-ca.crt
+RUN . /usr/local/lib/ar-build-network.sh && composer install --no-interaction --prefer-dist --optimize-autoloader && rm -f /tmp/african-ranked-build-ca.crt
 CMD ["php", "artisan", "test"]
 
 FROM application AS runtime
-RUN --mount=type=secret,id=build_ca . /usr/local/lib/ar-build-network.sh && composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader && rm -f /tmp/african-ranked-build-ca.crt \
+RUN . /usr/local/lib/ar-build-network.sh && composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader && rm -f /tmp/african-ranked-build-ca.crt \
     && chmod -R a+rX /app && chown -R www-data:www-data storage bootstrap/cache \
     && chmod 700 storage/app/private
 COPY deploy/railway/nginx.conf.template /etc/african-ranked/nginx.conf.template
