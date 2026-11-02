@@ -55,7 +55,7 @@ class ExpandSecondSafariCluster extends Command
                     ? ['affordable-safari-parks-ranked','top-10-safari-destinations-africa-2026','safari-packing-etiquette-first-timer-guide']
                     : ['great-migration-guide-best-months-viewing-spots','top-10-safari-destinations-africa-2026','best-time-to-visit-african-safari-by-month'];
                 $sourceItems = collect($group)->flatMap(fn($slug) => collect($seeds[$slug]['body'] ?? [])
-                    ->filter(fn($b)=>($b['type'] ?? '') === 'link'))->unique('url')->filter(fn($b)=>isset($facts[$b['url']]))->take(7)->values()->all();
+                    ->filter(fn($b)=>($b['type'] ?? '') === 'link'))->unique('url')->filter(fn($b)=>isset($facts[$b['url']]))->take(7)->values();
                 if ($sourceItems->count() < 5) {
                     throw new \RuntimeException('Insufficient topic-specific, matched source evidence.');
                 }
