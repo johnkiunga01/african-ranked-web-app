@@ -9,7 +9,7 @@
     "datePublished": "2026-09-15T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 10,
-    "image": "https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "image": "https://images.pexels.com/photos/35327176/pexels-photo-35327176.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -32,6 +32,14 @@
       {
         "type": "paragraph",
         "text": "The Serengeti is home to the Great Migration, the continent's largest overland wildlife movement, with well over a million wildebeest and hundreds of thousands of zebras following the rains each year. Predators are abundant, and the open plains make sightings easy."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/36702539/pexels-photo-36702539.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Two African elephants walking on a safari road",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Adrien Olichon / Pexels",
+        "source": "https://www.pexels.com/photo/african-elephants-on-a-safari-adventure-36702539/"
       },
       {
         "type": "list",
@@ -315,7 +323,9 @@
     "seoTitle": "10 Best Safari Destinations in Africa (2026 Guide)",
     "metaDescription": "Compare ten African safari destinations, wildlife experiences, access, seasons and total trip costs. Plan with researched context and official park sources.",
     "focusKeyword": "best safari destinations in africa",
-    "imageAlt": "African wildlife in savanna habitat on safari"
+    "imageAlt": "Safari vehicles in the Serengeti savanna, Tanzania",
+    "imageCredit": "Prince III / Pexels",
+    "imageSource": "https://www.pexels.com/photo/african-safari-with-off-road-vehicles-in-serengeti-35327176/"
   },
   {
     "slug": "best-african-cuisines-ranked-2026",
@@ -327,7 +337,7 @@
     "datePublished": "2026-08-22T09:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 9,
-    "image": "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "image": "https://images.pexels.com/photos/17486836/pexels-photo-17486836.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -348,6 +358,14 @@
       {
         "type": "paragraph",
         "text": "Jollof rice, a long-grain rice dish simmered in a tomato and pepper base, is one of the most recognised African dishes abroad. Its friendly rivalry with Ghanaian jollof has made it a familiar topic in food conversations across the internet."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/17486827/pexels-photo-17486827.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Plates of traditional Ethiopian dishes with injera and vegetable stews",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Deane Bayas / Pexels",
+        "source": "https://www.pexels.com/photo/breakfast-meals-on-plates-17486827/"
       },
       {
         "type": "paragraph",
@@ -664,7 +682,9 @@
     "seoTitle": "15 African Cuisines to Explore: Dishes and Food Traditions",
     "metaDescription": "Discover 15 African cuisines, signature dishes, regional traditions and food heritage, from Ethiopia and Nigeria to Senegal, Kenya and Morocco.",
     "focusKeyword": "best African cuisines",
-    "imageAlt": "African food served as a shared meal"
+    "imageAlt": "Ethiopian injera with colourful vegetable stews",
+    "imageCredit": "Deane Bayas / Pexels",
+    "imageSource": "https://www.pexels.com/photo/meal-on-plate-17486836/"
   },
   {
     "slug": "top-african-startups-2026",
@@ -676,7 +696,7 @@
     "datePublished": "2026-10-01T07:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 10,
-    "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "image": "https://images.pexels.com/photos/30689114/pexels-photo-30689114.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -702,6 +722,14 @@
       {
         "type": "paragraph",
         "text": "Wave offers low-cost mobile money transfers and payments in several West African countries, helping people send money and pay for everyday services without a traditional bank account."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/30678213/pexels-photo-30678213.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Two Lagos office professionals discussing work at a laptop",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Ninthgrid / Pexels",
+        "source": "https://www.pexels.com/photo/collaboration-and-discussion-in-modern-office-30678213/"
       },
       {
         "type": "paragraph",
@@ -914,7 +942,9 @@
     "seoTitle": "African Startups to Watch in 2026: Payments, Energy and Growth",
     "metaDescription": "The most useful question is not which startup has the biggest headline valuation but which company is solving a recognisable problem, for whom, at what.",
     "focusKeyword": "African startups to watch 2026",
-    "imageAlt": "Illustration of African innovation and business"
+    "imageAlt": "Entrepreneurs collaborating around a laptop in an office in Lagos, Nigeria",
+    "imageCredit": "Ninthgrid / Pexels",
+    "imageSource": "https://www.pexels.com/photo/team-collaboration-meeting-in-lagos-office-30689114/"
   },
   {
     "slug": "best-beaches-africa-ranked",
@@ -926,7 +956,7 @@
     "datePublished": "2026-07-10T08:30:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
-    "image": "https://images.pexels.com/photos/3601425/pexels-photo-3601425.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "image": "https://images.pexels.com/photos/30125136/pexels-photo-30125136.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -948,6 +978,14 @@
       {
         "type": "paragraph",
         "text": "Nungwi is known for its white sand and warm, clear Indian Ocean water. It is a strong choice for swimming, snorkelling, and relaxing, and it sits at the northern tip of Zanzibar."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/5859215/pexels-photo-5859215.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Aerial photograph of the turquoise sea and green coastline of Zanzibar",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Taryn Elliott / Pexels",
+        "source": "https://www.pexels.com/photo/aerial-view-of-the-beach-5859215/"
       },
       {
         "type": "paragraph",
@@ -1193,7 +1231,9 @@
     "seoTitle": "7 Beautiful Beaches in Africa: Where to Go and Why",
     "metaDescription": "Explore seven African beaches, from Zanzibar and Seychelles to Cape Town and Mauritius, with practical guidance on scenery, tides, swimming and access.",
     "focusKeyword": "best beaches in Africa",
-    "imageAlt": "Sandy African coastline beside blue sea"
+    "imageAlt": "Aerial view of Zanzibar's turquoise shoreline and sandy beach",
+    "imageCredit": "Dajana Reçi / Pexels",
+    "imageSource": "https://www.pexels.com/photo/aerial-view-of-zanzibar-beachfront-paradise-30125136/"
   },
   {
     "slug": "top-african-musicians-2026",
@@ -1205,7 +1245,7 @@
     "datePublished": "2026-09-28T10:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 9,
-    "image": "https://images.pexels.com/photos/167636/pexels-photo-167636.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "image": "https://images.pexels.com/photos/2531728/pexels-photo-2531728.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -1227,6 +1267,14 @@
       {
         "type": "paragraph",
         "text": "Burna Boy is one of the most recognised Afrobeats artists internationally, known for blending Afrobeats with dancehall, reggae, and hip-hop. His stadium-scale tours have helped carry the genre to new audiences."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/2531728/pexels-photo-2531728.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Music recording session in Accra, Ghana; not a portrait of a named artist",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Papa Yaw / Pexels",
+        "source": "https://www.pexels.com/photo/photo-of-woman-singing-in-music-studio-2531728/"
       },
       {
         "type": "paragraph",
@@ -1481,7 +1529,9 @@
     "seoTitle": "8 Influential African Musicians to Know in 2026",
     "metaDescription": "Explore eight African musicians across Afrobeats, Amapiano, Bongo Flava and more, with dated Grammy results and industry evidence.",
     "focusKeyword": "influential African musicians 2026",
-    "imageAlt": "African musician performing on a concert stage"
+    "imageAlt": "Musician singing into a studio microphone in Accra, Ghana; illustrative image",
+    "imageCredit": "Papa Yaw / Pexels",
+    "imageSource": "https://www.pexels.com/photo/photo-of-woman-singing-in-music-studio-2531728/"
   },
   {
     "slug": "fastest-growing-tech-hubs-africa",
@@ -1493,7 +1543,7 @@
     "datePublished": "2026-06-18T07:30:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
-    "image": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "image": "https://images.pexels.com/photos/30678213/pexels-photo-30678213.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -1519,6 +1569,14 @@
       {
         "type": "paragraph",
         "text": "Lagos is one of the continent's largest startup hubs. The Yaba district, nicknamed Yabacon Valley, is home to many well-known companies, including Flutterwave, Andela, and Paystack."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/30689114/pexels-photo-30689114.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Business collaboration meeting in Lagos, Nigeria",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Ninthgrid / Pexels",
+        "source": "https://www.pexels.com/photo/team-collaboration-meeting-in-lagos-office-30689114/"
       },
       {
         "type": "paragraph",
@@ -1723,7 +1781,9 @@
     "seoTitle": "African Tech Hubs: Lagos, Nairobi, Cape Town and the Growth Story",
     "metaDescription": "Calling a city the 'fastest-growing tech hub' requires a consistent measured definition and dates. Public data about technology ecosystems can describe.",
     "focusKeyword": "African tech hubs",
-    "imageAlt": "Illustration of African innovation and business"
+    "imageAlt": "Professionals collaborating at a laptop in a Lagos office",
+    "imageCredit": "Ninthgrid / Pexels",
+    "imageSource": "https://www.pexels.com/photo/collaboration-and-discussion-in-modern-office-30678213/"
   },
   {
     "slug": "big-five-parks-ranked-where-to-see-all-five",
@@ -1735,7 +1795,7 @@
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 9,
-    "image": "https://images.pexels.com/photos/14200416/pexels-photo-14200416.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image": "https://images.pexels.com/photos/25754110/pexels-photo-25754110.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -1768,6 +1828,14 @@
           "Road and guide access: whether self-drive or guided game drives cover the best habitat",
           "Value: the overall cost of lodging, permits, and transport relative to the experience"
         ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/31139699/pexels-photo-31139699.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Rhinoceros grazing in a South African wildlife landscape",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Didac Amat iPuigsech / Pexels",
+        "source": "https://www.pexels.com/photo/african-rhino-grazing-in-south-african-safari-31139699/"
       },
       {
         "type": "heading",
@@ -1987,7 +2055,9 @@
     "focusKeyword": "where to see big five in Africa",
     "seoTitle": "Where to See the Big Five in Africa: Five Safari Areas Compared",
     "metaDescription": "The expression 'Big Five' refers to elephant, rhinoceros, buffalo, lion and leopard. It originated in the context of hunting rather than a scientific.",
-    "imageAlt": "African wildlife in its natural habitat"
+    "imageAlt": "African elephants walking in South African bushveld",
+    "imageCredit": "Lloyd Douglas / Pexels",
+    "imageSource": "https://www.pexels.com/photo/majestic-elephants-in-kruger-national-park-south-africa-25754110/"
   },
   {
     "slug": "best-gorilla-trekking-africa-ranked",
@@ -1999,7 +2069,7 @@
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
-    "image": "https://images.pexels.com/photos/36478037/pexels-photo-36478037.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image": "https://images.pexels.com/photos/36478037/pexels-photo-36478037.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -2027,6 +2097,14 @@
       {
         "type": "paragraph",
         "text": "Rwanda is widely regarded as the most polished gorilla experience. The park sits on the slopes of the Virunga volcanoes, where habituated gorilla families are followed by trained guides. Trek logistics are well organised, with a pre-trek briefing and clear rules on distance and time. The park has also invested in community revenue sharing, which makes it a strong choice for travellers who want their spending to reach local people."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/35889783/pexels-photo-35889783.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Mountain gorilla resting in a forest in western Uganda",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: josh_ dago__ / Pexels",
+        "source": "https://www.pexels.com/photo/mountain-gorilla-resting-in-ugandan-forest-35889783/"
       },
       {
         "type": "heading",
@@ -2251,7 +2329,9 @@
     "focusKeyword": "best gorilla trekking Africa",
     "seoTitle": "Gorilla Trekking in Africa: Rwanda, Uganda and DRC Compared",
     "metaDescription": "Mountain gorilla trekking is a guided forest experience undertaken on foot, usually in steep or uneven terrain. It should not be compared directly with a.",
-    "imageAlt": "African wildlife in its natural habitat"
+    "imageAlt": "Silverback mountain gorilla in Kinigi forest, Rwanda",
+    "imageCredit": "Ana Kenk / Pexels",
+    "imageSource": "https://www.pexels.com/photo/majestic-silverback-gorilla-in-rwandan-wilderness-36478037/"
   },
   {
     "slug": "great-migration-guide-best-months-viewing-spots",
@@ -2263,7 +2343,7 @@
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
-    "image": "https://images.pexels.com/photos/33498304/pexels-photo-33498304.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image": "https://images.pexels.com/photos/31207738/pexels-photo-31207738.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -2287,6 +2367,14 @@
       {
         "type": "paragraph",
         "text": "The migration is broadly seasonal, but its exact timing shifts from year to year with rainfall. In general, the herds calve on the short-grass plains of the southern Serengeti in the early part of the year, move north and west through the middle of the year, and cross the Mara River into Kenya in the second half. Wildlife guides track the herds daily, so it is worth confirming the latest position before you book."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/30629757/pexels-photo-30629757.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Wildebeest crossing a river in the Serengeti, Tanzania",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Dirk Pothen / Pexels",
+        "source": "https://www.pexels.com/photo/wildebeest-migration-crossing-river-in-serengeti-30629757/"
       },
       {
         "type": "heading",
@@ -2492,7 +2580,9 @@
     "focusKeyword": "Great Migration best time to visit",
     "seoTitle": "Great Migration Safari Guide: Seasons, Regions and Viewing Plans",
     "metaDescription": "The Great Migration describes large-scale movements of wildebeest and other grazing animals across the Serengeti-Mara ecosystem. UNESCO describes it as an.",
-    "imageAlt": "African wildlife in its natural habitat"
+    "imageAlt": "Herd of wildebeest beneath an acacia tree in Serengeti grassland",
+    "imageCredit": "Dirk Pothen / Pexels",
+    "imageSource": "https://www.pexels.com/photo/serengeti-acacia-tree-and-wildebeest-migration-31207738/"
   },
   {
     "slug": "affordable-safari-parks-ranked",
@@ -2504,7 +2594,7 @@
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 7,
-    "image": "https://images.pexels.com/photos/16448674/pexels-photo-16448674.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image": "https://images.pexels.com/photos/36702539/pexels-photo-36702539.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -2533,6 +2623,14 @@
           "Cost of lodging, guides, and entry fees compared with flagship parks",
           "Quality of the experience for first-time visitors"
         ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/25754110/pexels-photo-25754110.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Group of elephants in South African savanna habitat",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Lloyd Douglas / Pexels",
+        "source": "https://www.pexels.com/photo/majestic-elephants-in-kruger-national-park-south-africa-25754110/"
       },
       {
         "type": "heading",
@@ -2786,7 +2884,9 @@
     "focusKeyword": "affordable safari parks in Africa",
     "seoTitle": "Affordable Safari Parks in Africa: Five Value-Focused Options",
     "metaDescription": "A low advertised park entrance fee does not automatically create a budget safari. Transport, accommodation, vehicle hire, guiding, meals and travel time.",
-    "imageAlt": "African wildlife in its natural habitat"
+    "imageAlt": "Elephants encountered during a game drive on a safari road",
+    "imageCredit": "Adrien Olichon / Pexels",
+    "imageSource": "https://www.pexels.com/photo/african-elephants-on-a-safari-adventure-36702539/"
   },
   {
     "slug": "best-time-to-visit-african-safari-by-month",
@@ -2798,7 +2898,7 @@
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 8,
-    "image": "https://images.pexels.com/photos/13098768/pexels-photo-13098768.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image": "https://images.pexels.com/photos/31207738/pexels-photo-31207738.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -2822,6 +2922,14 @@
       {
         "type": "paragraph",
         "text": "This is the most popular period for safaris across East and Southern Africa. Sightings are most reliable, and the Serengeti and Masai Mara are at their busiest. Book lodging early, because demand is highest from July to October."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/7205279/pexels-photo-7205279.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Wildebeest herd crossing a dirt road in the Ngorongoro Crater, Tanzania",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Alexandra Karnasopoulos / Pexels",
+        "source": "https://www.pexels.com/photo/photo-of-wildebeests-crossing-a-road-7205279/"
       },
       {
         "type": "heading",
@@ -3068,7 +3176,9 @@
     "seoTitle": "Best Time for an African Safari: 12-Month Guide",
     "metaDescription": "Compare January through December for African safaris, with realistic advice on dry and green seasons, wildlife movement, travel conditions and costs.",
     "focusKeyword": "best time for African safari",
-    "imageAlt": "African savanna landscape under seasonal sky"
+    "imageAlt": "Serengeti savanna landscape with wildebeest herd under a blue sky",
+    "imageCredit": "Dirk Pothen / Pexels",
+    "imageSource": "https://www.pexels.com/photo/serengeti-acacia-tree-and-wildebeest-migration-31207738/"
   },
   {
     "slug": "where-to-see-rhinos-in-africa",
@@ -3080,7 +3190,7 @@
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 7,
-    "image": "https://images.pexels.com/photos/9952952/pexels-photo-9952952.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image": "https://images.pexels.com/photos/34170011/pexels-photo-34170011.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -3104,6 +3214,14 @@
       {
         "type": "paragraph",
         "text": "Black rhinos are shyer and more solitary than white rhinos, and they are browsers that feed on leaves and shrubs. They can be found in several parks with dense bush, including Etosha National Park in Namibia and the Ngorongoro Crater in Tanzania. Guides who know the typical feeding areas give you the best chance of a sighting."
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/35886352/pexels-photo-35886352.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Black and white photograph of rhinoceroses grazing in South Africa",
+        "caption": "Illustrative photograph; the scene does not represent a guaranteed safari encounter or an endorsement.",
+        "credit": "Photo: Tevin Shuma / Pexels",
+        "source": "https://www.pexels.com/photo/black-and-white-rhinos-in-african-savanna-35886352/"
       },
       {
         "type": "heading",
@@ -3297,7 +3415,9 @@
     "seoTitle": "Black and White Rhinos in Africa: Species and Safari Guide",
     "metaDescription": "Understand black versus white rhinos, population estimates, conservation efforts and responsible viewing in Kruger, Akagera and beyond.",
     "focusKeyword": "where to see rhinos in Africa",
-    "imageAlt": "Rhinoceros in an African savanna conservation area"
+    "imageAlt": "Young rhinoceros grazing in the South African savanna",
+    "imageCredit": "Chané Timmerman / Pexels",
+    "imageSource": "https://www.pexels.com/photo/close-up-of-a-rhino-grazing-in-african-savanna-34170011/"
   },
   {
     "slug": "safari-packing-etiquette-first-timer-guide",
@@ -3536,8 +3656,8 @@
         "answer": "Remain calm, avoid feeding or touching wildlife, follow your guide and the park rules, keep an appropriate distance and never ask a driver to pursue animals for photographs. Protect the experience for other visitors as well as the animals."
       }
     ],
-    "imageAlt": "Safari visitor using binoculars while watching zebras from a vehicle in Nairobi, Kenya",
-    "imageCredit": "Youngafrikanna, Pexels",
+    "imageAlt": "Visitor observing zebras from a safari vehicle in Nairobi, Kenya",
+    "imageCredit": "Youngafrikanna / Pexels",
     "imageSource": "https://www.pexels.com/photo/man-traveling-on-a-trailer-observing-zebras-grazing-in-a-savannah-20852883/"
   }
 ]
