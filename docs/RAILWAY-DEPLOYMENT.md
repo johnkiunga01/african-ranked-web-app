@@ -1,5 +1,13 @@
 # Railway staging deployment and launch gates
 
+## Verified deployment — 2 November 2026
+
+The Laravel migration has been merged into GitHub main (PR #1). Railway now deploys main using `.railway/railway.ts`; legacy JSON configuration files have been removed. PostgreSQL, the web service, worker and scheduler reported successful deployment. The public staff login is a real Laravel CSRF form and emits staging noindex headers. A stable APP_KEY, private database reference, secure sessions, queue/cache settings and provider credentials are configured. The temporary review account/database remains separate.
+
+First-owner invitation creation is still pending. This cloud execution environment cannot reach Railway SSH/SFTP, so an operator must run `php artisan staff:invite-admin johnkiunga01@gmail.com --name=John` inside the Railway web service, then privately read `storage/app/private/super-admin-setup.url`. No default password or public bootstrap endpoint was added. See section 4 for safe setup handling.
+
+The sections below retain the initial deployment diagnosis and runbook; the verified status above supersedes the earlier statement that Railway still serves React.
+
 As checked on 2 November 2026, `https://african-ranked-web-app-production.up.railway.app` serves the original React application. `/staff/login` and `/up` return the same React shell, not Laravel. The uploaded logs show a Caddy startup, without a fatal runtime error. Internal HTTP/TLS notices are expected behind Railway's public HTTPS proxy. That deployment has no staging noindex header and permits crawling; do not treat it as the accepted release candidate.
 
 ## Current Railway configuration update
