@@ -85,6 +85,14 @@ class PublishOwnerConfirmedDrafts extends Command
                     }
                 }
 
+                if (in_array($article->slug, ['where-to-see-rhinos-in-africa', 'big-five-parks-ranked-where-to-see-all-five'], true)) {
+                    $markdown = str_replace(
+                        ["International Rhino Foundation's 2026 State of the Rhino report", "International Rhino Foundation's 2026 report", "International Rhino Foundation — 2026 State of the Rhino", "International Rhino Foundation — 2026 report", "a 2026 report does not mean every country performed a census in 2026"],
+                        ["International Rhino Foundation's 2025 State of the Rhino report", "International Rhino Foundation's 2025 report", "International Rhino Foundation — 2025 State of the Rhino", "International Rhino Foundation — 2025 report", "a 2025 report does not mean every country performed a census in 2025"],
+                        $markdown
+                    );
+                }
+
                 $annotation = "Illustrative photography; not a promise of wildlife sightings or an endorsement.";
                 $bodyImages = $this->ensureBodyImages($markdown, $bodyPhoto, $extraPhoto);
                 $markdown = $bodyImages['markdown'];
