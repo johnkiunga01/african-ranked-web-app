@@ -10,6 +10,7 @@ use App\Models\ArticleSeoBatch;
 use App\Models\AuditEvent;
 use App\Models\User;
 use App\Services\ArticleSeoAnalysis;
+use App\Services\ArticleImageReuseGuard;
 use App\Services\EditorialEvidence;
 use App\Services\EditorialWorkflow;
 use App\Services\SeedArticleImporter;
@@ -190,6 +191,7 @@ class ArticleController extends Controller
             unset($data['evidence']);
         }
 
+        app(ArticleImageReuseGuard::class)->assertNoNewCrossArticleDuplicates($data, $article);
         return $data;
     }
 
