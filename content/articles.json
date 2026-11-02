@@ -1071,7 +1071,7 @@
     "datePublished": "2026-11-01T08:00:00+00:00",
     "dateModified": "2026-11-02T00:00:00+00:00",
     "readTime": 11,
-    "image": "https://images.pexels.com/photos/28157155/pexels-photo-28157155.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+    "image": "https://images.pexels.com/photos/20852883/pexels-photo-20852883.jpeg?auto=compress&cs=tinysrgb&w=1400",
     "regions": [
       "global",
       "us",
@@ -1157,6 +1157,14 @@
         "type": "heading",
         "level": 2,
         "text": "Game-drive etiquette: stay inside and follow instructions"
+      },
+      {
+        "type": "image",
+        "url": "https://images.pexels.com/photos/20523197/pexels-photo-20523197.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "alt": "Two giraffes crossing a safari road in Kenya with a vehicle waiting behind them",
+        "caption": "Give animals room to cross and follow local park rules during game drives. Photo: ",
+        "credit": "Zacchaeus Rains / Pexels",
+        "source": "https://www.pexels.com/photo/giraffes-and-car-on-safari-in-africa-20523197/"
       },
       {
         "type": "paragraph",
@@ -1289,6 +1297,9 @@
         "question": "How should I behave around wild animals?",
         "answer": "Remain calm, avoid feeding or touching wildlife, follow your guide and the park rules, keep an appropriate distance and never ask a driver to pursue animals for photographs. Protect the experience for other visitors as well as the animals."
       }
-    ]
+    ],
+    "imageAlt": "Safari visitor using binoculars while watching zebras from a vehicle in Nairobi, Kenya",
+    "imageCredit": "Youngafrikanna, Pexels",
+    "imageSource": "https://www.pexels.com/photo/man-traveling-on-a-trailer-observing-zebras-grazing-in-a-savannah-20852883/"
   }
 ]
