@@ -1,0 +1,67 @@
+{
+  "plan_id": "AR-011",
+  "checked_on": "2026-11-02",
+  "method": "Official pages inspected through web browsing; direct local fetch returned HTTP errors.",
+  "sources": [
+    {
+      "title": "Climate",
+      "url": "https://www.sanparks.org/parks/kruger/explore/climate",
+      "publisher": "SANParks",
+      "supported_paraphrases": [
+        "SANParks groups April\u2013September as dry winter and October\u2013March as rainy summer.",
+        "Sparse winter vegetation and limited water can aid viewing; sightings remain uncertain.",
+        "Warm layers are appropriate for winter night drives."
+      ]
+    },
+    {
+      "title": "Vital information",
+      "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+      "publisher": "SANParks",
+      "supported_paraphrases": [
+        "Visitors must stay inside vehicles except at designated areas.",
+        "Published limits are 50 km/h on tar and 40 km/h on gravel; gate times govern travel.",
+        "Off-road driving and feeding or disturbing animals are prohibited."
+      ]
+    },
+    {
+      "title": "Day visits",
+      "url": "https://www.sanparks.org/parks/kruger/what-to-do/day-visits",
+      "publisher": "SANParks",
+      "supported_paraphrases": [
+        "Daily visitor capacity limits apply; advance day reservations are available.",
+        "Identification accompanies gate registration."
+      ]
+    },
+    {
+      "title": "Visitor tips",
+      "url": "https://www.sanparks.org/parks/kruger/useful-information/visitor-tips",
+      "publisher": "SANParks",
+      "supported_paraphrases": [
+        "SANParks recommends modest driving distances with frequent stops.",
+        "Camp lighting is limited; a torch or headlamp is recommended.",
+        "Accommodation tariffs exclude meals; check unit facilities when booking."
+      ]
+    },
+    {
+      "title": "Game drives",
+      "url": "https://www.sanparks.org/parks/kruger/what-to-do/activities/game-drives",
+      "publisher": "SANParks",
+      "supported_paraphrases": [
+        "Guided morning drives begin before public gate opening.",
+        "Guided sunset drives return after sunset; these are distinct from private self-drive permission."
+      ]
+    }
+  ],
+  "remaining_checks": [
+    "Current health guidance from a health authority",
+    "Featured photo relevance and rights",
+    "Full draft expansion and review; not approved for publication"
+  ],
+  "team_draft_corrections": [
+    "Remove guaranteed visibility: neither seasons nor sightings are guarantees.",
+    "Use the operator seasonal bands April\u2013September dry and October\u2013March rainy, while explaining transition variability.",
+    "Do not claim summer automatically means cheaper accommodation, fewer crowds or easier travel without dated evidence.",
+    "Do not promise newborn wildlife, predictable shower duration or a single best month for every first-time visitor.",
+    "Do not infer winter eliminates malaria risk. Park malaria text includes a 2017 notice; obtain current health-authority advice rather than reproducing medication guidance."
+  ]
+}

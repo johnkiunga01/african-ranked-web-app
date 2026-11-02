@@ -1,0 +1,34 @@
+{
+  "plan_id": "AR-011",
+  "article_id": 22,
+  "reviewed_revision_id": 54,
+  "decision": "changes_required",
+  "publication_approved": false,
+  "findings": [
+    {
+      "issue": "Unsupported or imprecise additions",
+      "action": "Remove unfenced-expanses claim, tracking-skill implication for self-drivers, thunderstorm timing, specific muddy-road expectation, and birdlife superlatives unless separately sourced."
+    },
+    {
+      "issue": "Vehicle exit rules narrowed inaccurately",
+      "action": "Use official designated-area wording; do not imply every lookout permits exiting or must be fenced."
+    },
+    {
+      "issue": "Unnecessary urgency and availability claims",
+      "action": "Replace claims that popular camps fill quickly and booking guarantees availability with practical advice to check live inventory and cancellation terms."
+    },
+    {
+      "issue": "Body below master minimum",
+      "action": "Add substantive itinerary decision examples, a booking comparison checklist and a clear distinction between guided activity times and self-drive gate rules, tied to checked sources. Avoid padding."
+    },
+    {
+      "issue": "Evidence modules absent",
+      "action": "Add separately validated 40\u201360-word direct answer, four dated key facts, five source records, review date and media rights before approval."
+    },
+    {
+      "issue": "Featured image unresolved",
+      "action": "Select verified relevant Pexels photography; keep generated art unused by default."
+    }
+  ],
+  "source_pack": "content/research/source-checks/AR-011-2026-11-02.json"
+}
