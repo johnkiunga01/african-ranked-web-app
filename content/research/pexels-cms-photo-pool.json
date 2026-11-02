@@ -1,0 +1,397 @@
+{
+  "source": "Editorially curated Pexels photo pages; photographs are illustrative unless the scene is specifically identified.",
+  "license": "https://www.pexels.com/license/",
+  "photographs": {
+    "elephants-road": {
+      "id": 37362937,
+      "url": "https://images.pexels.com/photos/37362937/pexels-photo-37362937.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Doreen Kahendi",
+      "alt": "African elephants crossing a safari road in Kenya",
+      "page": "https://www.pexels.com/photo/african-elephants-cross-road-on-kenyan-safari-37362937/"
+    },
+    "elephants-field": {
+      "id": 38852643,
+      "url": "https://images.pexels.com/photos/38852643/pexels-photo-38852643.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Vishva Patel",
+      "alt": "Elephants grazing in a Kenyan savanna",
+      "page": "https://www.pexels.com/photo/african-elephants-grazing-on-kenyan-savannah-38852643/"
+    },
+    "safari-zebras": {
+      "id": 17849789,
+      "url": "https://images.pexels.com/photos/17849789/pexels-photo-17849789.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Mike Knibbs",
+      "alt": "Zebras on the Serengeti plains in Tanzania",
+      "page": "https://www.pexels.com/photo/herd-of-zebras-on-savanna-17849789/"
+    },
+    "safari-giraffes": {
+      "id": 36372121,
+      "url": "https://images.pexels.com/photos/36372121/pexels-photo-36372121.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "René Wechet",
+      "alt": "Giraffes and zebras in the Arusha savanna",
+      "page": "https://www.pexels.com/photo/giraffes-and-zebras-in-arusha-s-lush-savannah-36372121/"
+    },
+    "safari-lions": {
+      "id": 33651244,
+      "url": "https://images.pexels.com/photos/33651244/pexels-photo-33651244.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Alex Ning",
+      "alt": "Lions moving through grassland in Kenya",
+      "page": "https://www.pexels.com/photo/lions-stalking-prey-in-kenyan-grassland-33651244/"
+    },
+    "safari-mixed": {
+      "id": 5990239,
+      "url": "https://images.pexels.com/photos/5990239/pexels-photo-5990239.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Tom D'Arby",
+      "alt": "Zebras and elephants in a South African savanna",
+      "page": "https://www.pexels.com/photo/zebras-and-elephants-on-brown-field-5990239/"
+    },
+    "safari-pair": {
+      "id": 25823027,
+      "url": "https://images.pexels.com/photos/25823027/pexels-photo-25823027.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Kyle Miller",
+      "alt": "Two elephants walking together in an African wildlife habitat",
+      "page": "https://www.pexels.com/photo/elephants-on-safari-25823027/"
+    },
+    "kente-loom": {
+      "id": 36773397,
+      "url": "https://images.pexels.com/photos/36773397/pexels-photo-36773397.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Benjamin K Ashley-Lassen",
+      "alt": "Craftsperson weaving Kente cloth in Accra, Ghana",
+      "page": "https://www.pexels.com/photo/traditional-kente-weaving-in-accra-ghana-36773397/"
+    },
+    "kente-attire": {
+      "id": 33697674,
+      "url": "https://images.pexels.com/photos/33697674/pexels-photo-33697674.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Zeal Creative Studios",
+      "alt": "Traditional Ghanaian attire with Kente cloth",
+      "page": "https://www.pexels.com/photo/colorful-ghanaian-cultural-attire-with-kente-cloth-33697674/"
+    },
+    "djembe-man": {
+      "id": 31487909,
+      "url": "https://images.pexels.com/photos/31487909/pexels-photo-31487909.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Mitchel Onwuchuruba",
+      "alt": "Musician playing a traditional djembe drum",
+      "page": "https://www.pexels.com/photo/traditional-african-drummer-playing-djembe-31487909/"
+    },
+    "djembe-drums": {
+      "id": 29712219,
+      "url": "https://images.pexels.com/photos/29712219/pexels-photo-29712219.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Mukhtar Shuaib Mukhtar",
+      "alt": "Close-up of traditional African djembe drums",
+      "page": "https://www.pexels.com/photo/traditional-african-djembe-drums-in-black-and-white-29712219/"
+    },
+    "cape-skyline": {
+      "id": 39417501,
+      "url": "https://images.pexels.com/photos/39417501/pexels-photo-39417501.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Nathan Nii Noye Mensah",
+      "alt": "Cape Town city and Table Mountain in South Africa",
+      "page": "https://www.pexels.com/photo/aerial-view-of-cape-town-cityscape-and-mountains-39417501/"
+    },
+    "cape-mountain": {
+      "id": 37759553,
+      "url": "https://images.pexels.com/photos/37759553/pexels-photo-37759553.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Travel with Lenses",
+      "alt": "Table Mountain above Cape Town, South Africa",
+      "page": "https://www.pexels.com/photo/majestic-table-mountain-in-cape-town-landscape-37759553/"
+    },
+    "victoria-wide": {
+      "id": 35271373,
+      "url": "https://images.pexels.com/photos/35271373/pexels-photo-35271373.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Caitlin Darck",
+      "alt": "Victoria Falls waterfall in Zimbabwe",
+      "page": "https://www.pexels.com/photo/majestic-victoria-falls-cascading-waterfall-view-35271373/"
+    },
+    "victoria-gorge": {
+      "id": 36468006,
+      "url": "https://images.pexels.com/photos/36468006/pexels-photo-36468006.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Ana Kenk",
+      "alt": "Victoria Falls gorge and waterfall scenery in Zambia",
+      "page": "https://www.pexels.com/photo/stunning-view-of-victoria-falls-gorge-36468006/"
+    },
+    "giza": {
+      "id": 11208768,
+      "url": "https://images.pexels.com/photos/11208768/pexels-photo-11208768.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Taha Abbas",
+      "alt": "Pyramids of Giza in Egypt",
+      "page": "https://www.pexels.com/photo/clear-sky-over-pyramids-in-giza-11208768/"
+    },
+    "giza-alt": {
+      "id": 9675156,
+      "url": "https://images.pexels.com/photos/9675156/pexels-photo-9675156.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "kendincefotograf",
+      "alt": "Ancient Pyramids of Giza, Egypt",
+      "page": "https://www.pexels.com/photo/ancient-egyptian-pyramids-9675156/"
+    },
+    "morocco-medina": {
+      "id": 35674713,
+      "url": "https://images.pexels.com/photos/35674713/pexels-photo-35674713.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Tony Zohari",
+      "alt": "Historic alleyway in Marrakesh medina, Morocco",
+      "page": "https://www.pexels.com/photo/charming-alleyway-in-marrakesh-medina-35674713/"
+    },
+    "morocco-lane": {
+      "id": 36871966,
+      "url": "https://images.pexels.com/photos/36871966/pexels-photo-36871966.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Zak H",
+      "alt": "Traditional architecture in Marrakesh medina, Morocco",
+      "page": "https://www.pexels.com/photo/charming-alleyway-in-the-medina-of-marrakesh-36871966/"
+    },
+    "kilimanjaro-ice": {
+      "id": 37808650,
+      "url": "https://images.pexels.com/photos/37808650/pexels-photo-37808650.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Penfran Tanzania",
+      "alt": "Snowy summit of Mount Kilimanjaro, Tanzania",
+      "page": "https://www.pexels.com/photo/stunning-ice-cap-on-mount-kilimanjaro-summit-37808650/"
+    },
+    "kilimanjaro-landscape": {
+      "id": 15993990,
+      "url": "https://images.pexels.com/photos/15993990/pexels-photo-15993990.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Balazs Simon",
+      "alt": "Mount Kilimanjaro above the surrounding landscape",
+      "page": "https://www.pexels.com/photo/a-view-of-kilimanjaro-15993990/"
+    },
+    "zanzibar-beach": {
+      "id": 30125136,
+      "url": "https://images.pexels.com/photos/30125136/pexels-photo-30125136.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Dajana Reçi",
+      "alt": "Turquoise water and sandy shoreline in Zanzibar",
+      "page": "https://www.pexels.com/photo/aerial-view-of-zanzibar-beachfront-paradise-30125136/"
+    },
+    "zanzibar-coast": {
+      "id": 5859215,
+      "url": "https://images.pexels.com/photos/5859215/pexels-photo-5859215.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Taryn Elliott",
+      "alt": "Aerial view of a Zanzibar coastline",
+      "page": "https://www.pexels.com/photo/aerial-view-of-the-beach-5859215/"
+    },
+    "lagos-team": {
+      "id": 30689114,
+      "url": "https://images.pexels.com/photos/30689114/pexels-photo-30689114.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Ninthgrid",
+      "alt": "Team collaborating in a Lagos office",
+      "page": "https://www.pexels.com/photo/team-collaboration-meeting-in-lagos-office-30689114/"
+    },
+    "lagos-office": {
+      "id": 30678213,
+      "url": "https://images.pexels.com/photos/30678213/pexels-photo-30678213.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Ninthgrid",
+      "alt": "Office professionals collaborating with a laptop in Lagos",
+      "page": "https://www.pexels.com/photo/collaboration-and-discussion-in-modern-office-30678213/"
+    },
+    "recording": {
+      "id": 2531728,
+      "url": "https://images.pexels.com/photos/2531728/pexels-photo-2531728.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Papa Yaw",
+      "alt": "Music recording session in Ghana",
+      "page": "https://www.pexels.com/photo/photo-of-woman-singing-in-music-studio-2531728/"
+    },
+    "cuisine": {
+      "id": 17486836,
+      "url": "https://images.pexels.com/photos/17486836/pexels-photo-17486836.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Deane Bayas",
+      "alt": "Ethiopian meal served with injera and accompaniments",
+      "page": "https://www.pexels.com/photo/meal-on-plate-17486836/"
+    },
+    "gorilla": {
+      "id": 36478037,
+      "url": "https://images.pexels.com/photos/36478037/pexels-photo-36478037.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Ana Kenk",
+      "alt": "Silverback gorilla in a Rwandan forest",
+      "page": "https://www.pexels.com/photo/majestic-silverback-gorilla-in-rwandan-wilderness-36478037/"
+    },
+    "gorilla-forest": {
+      "id": 35889783,
+      "url": "https://images.pexels.com/photos/35889783/pexels-photo-35889783.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "josh_ dago__",
+      "alt": "Mountain gorilla in western Uganda forest",
+      "page": "https://www.pexels.com/photo/mountain-gorilla-resting-in-ugandan-forest-35889783/"
+    },
+    "rhino": {
+      "id": 34170011,
+      "url": "https://images.pexels.com/photos/34170011/pexels-photo-34170011.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Chané Timmerman",
+      "alt": "Rhino grazing in African savanna",
+      "page": "https://www.pexels.com/photo/close-up-of-a-rhino-grazing-in-african-savanna-34170011/"
+    },
+    "rhino-park": {
+      "id": 31139699,
+      "url": "https://images.pexels.com/photos/31139699/pexels-photo-31139699.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      "photographer": "Didac Amat iPuigsech",
+      "alt": "Rhino grazing in a South African reserve",
+      "page": "https://www.pexels.com/photo/african-rhino-grazing-in-south-african-safari-31139699/"
+    }
+  },
+  "rules": [
+    {
+      "pattern": "kente|fabric|ankara|kitenge",
+      "keys": [
+        "kente-loom",
+        "kente-attire"
+      ]
+    },
+    {
+      "pattern": "instrument|drum|djembe",
+      "keys": [
+        "djembe-man",
+        "djembe-drums"
+      ]
+    },
+    {
+      "pattern": "festival|culture|music-genre|afrobeat|african-music",
+      "keys": [
+        "kente-attire",
+        "djembe-man"
+      ]
+    },
+    {
+      "pattern": "musician|music",
+      "keys": [
+        "recording",
+        "djembe-drums"
+      ]
+    },
+    {
+      "pattern": "gorilla|chimpanzee",
+      "keys": [
+        "gorilla",
+        "gorilla-forest"
+      ]
+    },
+    {
+      "pattern": "rhino",
+      "keys": [
+        "rhino",
+        "rhino-park"
+      ]
+    },
+    {
+      "pattern": "big-cat|lion|leopard|cheetah",
+      "keys": [
+        "safari-lions",
+        "safari-giraffes"
+      ]
+    },
+    {
+      "pattern": "migration|wildebeest|serengeti",
+      "keys": [
+        "safari-zebras",
+        "safari-giraffes"
+      ]
+    },
+    {
+      "pattern": "kruger|south-africa-safari",
+      "keys": [
+        "safari-mixed",
+        "safari-pair"
+      ]
+    },
+    {
+      "pattern": "etosha|namibia",
+      "keys": [
+        "safari-pair",
+        "safari-mixed"
+      ]
+    },
+    {
+      "pattern": "okavango|botswana|self-drive",
+      "keys": [
+        "safari-mixed",
+        "elephants-field"
+      ]
+    },
+    {
+      "pattern": "amboseli|kenya-safari|masai-mara",
+      "keys": [
+        "elephants-road",
+        "safari-giraffes"
+      ]
+    },
+    {
+      "pattern": "safari|park|wildlife",
+      "keys": [
+        "safari-mixed",
+        "safari-zebras"
+      ]
+    },
+    {
+      "pattern": "cuisine|food",
+      "keys": [
+        "cuisine",
+        "kente-attire"
+      ]
+    },
+    {
+      "pattern": "business|startup|mobile-money|econom|fintech|digital-nomad",
+      "keys": [
+        "lagos-team",
+        "lagos-office"
+      ]
+    },
+    {
+      "pattern": "technology|tech|innovation",
+      "keys": [
+        "lagos-office",
+        "lagos-team"
+      ]
+    },
+    {
+      "pattern": "beach|zanzibar|honeymoon",
+      "keys": [
+        "zanzibar-beach",
+        "zanzibar-coast"
+      ]
+    },
+    {
+      "pattern": "victoria-falls",
+      "keys": [
+        "victoria-wide",
+        "victoria-gorge"
+      ]
+    },
+    {
+      "pattern": "kilimanjaro|mount-kenya",
+      "keys": [
+        "kilimanjaro-ice",
+        "kilimanjaro-landscape"
+      ]
+    },
+    {
+      "pattern": "egypt|cairo|pyramid",
+      "keys": [
+        "giza",
+        "giza-alt"
+      ]
+    },
+    {
+      "pattern": "morocco|marrakesh",
+      "keys": [
+        "morocco-medina",
+        "morocco-lane"
+      ]
+    },
+    {
+      "pattern": "cape-town|south-africa|city",
+      "keys": [
+        "cape-skyline",
+        "cape-mountain"
+      ]
+    },
+    {
+      "pattern": "ghana|west-africa",
+      "keys": [
+        "kente-attire",
+        "kente-loom"
+      ]
+    },
+    {
+      "pattern": "travel|africa|visa|passport",
+      "keys": [
+        "cape-skyline",
+        "morocco-medina"
+      ]
+    }
+  ],
+  "default": [
+    "safari-mixed",
+    "cape-skyline"
+  ]
+}
