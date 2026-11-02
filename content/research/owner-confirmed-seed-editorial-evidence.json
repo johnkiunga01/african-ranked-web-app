@@ -1,0 +1,731 @@
+{
+  "attestation": "Owner states substantive verification completed 2026-11-01. This structured source register assembled on 2026-11-02.",
+  "articles": {
+    "top-10-safari-destinations-africa-2026": {
+      "content_type": "ranking",
+      "answer": "Africa's leading safari choices include Serengeti, Okavango, Masai Mara, Kruger and other distinct protected landscapes. The best option depends on habitat, preferred wildlife, travel logistics, season and budget. This editorial comparison covers ten destinations without promising particular animal sightings or pretending that all visitor experiences can be ranked by a single scientific score.",
+      "methodology": "Editorial order considers habitat diversity, visitor access, types of wildlife experience, guiding and seasonality. No fabricated numerical scores or sighting probabilities are used. Entries are not statements of absolute ecological value.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "UNESCO describes the Serengeti as an ecosystem with major annual herbivore migration.",
+          "source_url": "https://whc.unesco.org/en/list/156/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO says the Okavango Delta floods during the surrounding dry season.",
+          "source_url": "https://whc.unesco.org/en/list/1432",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO recognises the diverse habitats and mixed land use of Ngorongoro.",
+          "source_url": "https://whc.unesco.org/en/list/39",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO identifies Bwindi as habitat for endangered mountain gorillas.",
+          "source_url": "https://whc.unesco.org/en/list/682/",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO — Serengeti National Park",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/156/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Okavango Delta",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/1432",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Ngorongoro Conservation Area",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/39",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Bwindi Impenetrable National Park",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/682/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "SANParks — Kruger visitor rules",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "best-african-cuisines-ranked-2026": {
+      "content_type": "ranking",
+      "answer": "This guide introduces fifteen African culinary traditions, from Nigerian and Ethiopian cooking to Senegalese, Moroccan and coastal East African food. The ordering is an editorial discovery path, not an objective taste competition. Explore staple ingredients, preparation methods, shared heritage and regional diversity to appreciate what makes each tradition distinctive beyond its most internationally familiar dish.",
+      "methodology": "This discovery ordering considers regional culinary diversity, distinctive preparation, cultural context and accessibility to new readers. Taste is subjective. No panel testing, measured popularity index or universal score is claimed.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "UNESCO recognises ceebu jën as a Senegalese culinary art and living heritage tradition.",
+          "source_url": "https://ich.unesco.org/en/RL/ceebu-jen-a-culinary-art-of-senegal-01748",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO documents shared couscous production and consumption practices in North Africa.",
+          "source_url": "https://www.unesco.org/en/articles/unescos-inscription-couscous-traditions-example-international-cultural-cooperation",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO treats food-making knowledge as part of intangible cultural heritage.",
+          "source_url": "https://www.unesco.org/en/articles/food-and-intangible-heritage-flavourful-relationship",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Couscous-related heritage is shared by Algeria, Mauritania, Morocco and Tunisia.",
+          "source_url": "https://ich.unesco.org/en/RL/knowledge-expertise-and-practices-related-to-producing-and-consuming-couscous-01602",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO — Ceebu jën culinary art of Senegal",
+          "publisher": "UNESCO",
+          "url": "https://ich.unesco.org/en/RL/ceebu-jen-a-culinary-art-of-senegal-01748",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — shared couscous preparation traditions",
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/articles/unescos-inscription-couscous-traditions-example-international-cultural-cooperation",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — food and intangible heritage",
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/articles/food-and-intangible-heritage-flavourful-relationship",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — couscous heritage nomination",
+          "publisher": "UNESCO",
+          "url": "https://ich.unesco.org/en/RL/knowledge-expertise-and-practices-related-to-producing-and-consuming-couscous-01602",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — formal couscous heritage decision",
+          "publisher": "UNESCO",
+          "url": "https://ich.unesco.org/en/Decisions/15.COM/8.b.14",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "top-african-startups-2026": {
+      "content_type": "guide",
+      "answer": "Wave, Moniepoint and M-KOPA illustrate different African startup models in digital finance, merchant services and financed devices. This is a watchlist, not an investment ranking. Examine products, customers, regulation, operating economics and credible funding reports rather than treating fundraising announcements as proof of profitability or customer benefit. Publicly reported metrics may have different definitions.",
+      "methodology": "This is an editorial watchlist, with no unpublished valuation or profitability comparisons. Corporate product descriptions are distinguished from independent ecosystem data.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "Partech's 2025 Africa Tech VC report counts equity and debt funding together.",
+          "source_url": "https://partechpartners.com/africa-reports/2025-africa-tech-venture-capital-report",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Moniepoint lists banking, credit, payments and business-management solutions.",
+          "source_url": "https://moniepoint.com/about",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Moniepoint provides business-banking products in Nigeria.",
+          "source_url": "https://moniepoint.com/ng/business",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Wave describes its mission as building an affordable digital financial network in Africa.",
+          "source_url": "https://www.wave.com/en/about/",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Partech — 2025 Africa tech VC report",
+          "publisher": "Partech",
+          "url": "https://partechpartners.com/africa-reports/2025-africa-tech-venture-capital-report",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Moniepoint — company and product",
+          "publisher": "Moniepoint",
+          "url": "https://moniepoint.com/about",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Moniepoint — business banking",
+          "publisher": "Moniepoint",
+          "url": "https://moniepoint.com/ng/business",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Wave — about the company",
+          "publisher": "Wave",
+          "url": "https://www.wave.com/en/about/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "GSMA — 2026 mobile money industry report",
+          "publisher": "GSMA",
+          "url": "https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/gsma_resources/the-state-of-the-industry-report-on-mobile-money-2026/",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "best-beaches-africa-ranked": {
+      "content_type": "guide",
+      "answer": "Africa's most interesting beaches offer different experiences rather than one universal winner. Compare Zanzibar's Indian Ocean shoreline, Cape Town's Camps Bay, Seychelles granite scenery, Mauritius heritage landscapes and other coastal destinations. Swimming conditions, tides, cultural context, transport and wildlife protections may matter more to your holiday than a beach's position in an editorial list.",
+      "methodology": "Beaches are compared editorially by scenery, coastal context and visitor suitability, not by an audited water-quality or safety score. Practical swimming and access advice remains location-specific.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "Cape Town Tourism describes Camps Bay as a Cape Town coastal destination.",
+          "source_url": "https://www.capetown.travel/neighbourhood/camps-bay/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO lists Le Morne as a cultural landscape connected to resistance to slavery.",
+          "source_url": "https://whc.unesco.org/en/list/1259",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO currently lists two World Heritage properties in Seychelles.",
+          "source_url": "https://whc.unesco.org/en/statesparties/sc",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO describes the iSimangaliso–Maputo World Heritage area as having coastal and marine ecosystems.",
+          "source_url": "https://whc.unesco.org/en/list/914",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cape Town Tourism — Camps Bay",
+          "publisher": "Cape Town Tourism",
+          "url": "https://www.capetown.travel/neighbourhood/camps-bay/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Le Morne Cultural Landscape",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/1259",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Seychelles heritage listings",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/statesparties/sc",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — iSimangaliso coastal ecosystems",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/914",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "SANParks — visiting South African protected areas",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "top-african-musicians-2026": {
+      "content_type": "guide",
+      "answer": "These eight musicians illustrate different kinds of African musical influence, including Afrobeats, Amapiano and long-running cross-border artistic work. Influence cannot be reduced to streaming counts. The guide distinguishes dated Grammy recognitions from wider cultural significance and uses IFPI industry figures as background, not as an invented popularity ranking of individual artists.",
+      "methodology": "The artist list is an editorial introduction to diverse forms of influence, not a quantified sales or streaming league table. Official Grammy and IFPI data support only the attributed claims.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "IFPI reports 6.4% global recorded-music revenue growth in calendar year 2025.",
+          "source_url": "https://www.ifpi.org/global-music-report-2026-global-recorded-music-revenues-grow-6-4-as-record-companies-drive-innovation/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The Recording Academy names Tyla's PUSH 2 START as the 2026 Best African Music Performance winner.",
+          "source_url": "https://www.grammy.com/awards/categories/best-african-music-performance/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The Recording Academy lists Tems' Love Me JeJe as the category's 2025 winner.",
+          "source_url": "https://www.grammy.com/awards/categories/best-african-music-performance/2025/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The Recording Academy lists Tyla's Water as the category's 2024 winner.",
+          "source_url": "https://www.grammy.com/awards/categories/best-african-music-performance/2024/",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "IFPI — Global Music Report 2026",
+          "publisher": "IFPI",
+          "url": "https://www.ifpi.org/global-music-report-2026-global-recorded-music-revenues-grow-6-4-as-record-companies-drive-innovation/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Recording Academy — 2026 Best African Music Performance",
+          "publisher": "Recording Academy",
+          "url": "https://www.grammy.com/awards/categories/best-african-music-performance/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Recording Academy — 2025 category results",
+          "publisher": "Recording Academy",
+          "url": "https://www.grammy.com/awards/categories/best-african-music-performance/2025/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Recording Academy — 2024 African music award",
+          "publisher": "Recording Academy",
+          "url": "https://www.grammy.com/awards/categories/best-african-music-performance/2024/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "IFPI — 2026 State of the Industry report",
+          "publisher": "IFPI",
+          "url": "https://www.ifpi.org/wp-content/uploads/2026/03/GMR2026_SOTI.pdf",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "fastest-growing-tech-hubs-africa": {
+      "content_type": "guide",
+      "answer": "Lagos, Nairobi, Cape Town and Cairo are prominent African technology centres, but a claim that one city is fastest-growing requires comparable city-level data. This guide examines market access, talent, infrastructure, financing and regulation. Partech's 2025 figures describe national venture funding activity and must not be misrepresented as measurements of city-wide startup growth.",
+      "methodology": "Qualitative comparison of market access, infrastructure and financing context. No unsupported city growth rate or invented ranking is asserted.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "Partech reports combined African equity and debt startup funding of about US$4.1 billion in 2025.",
+          "source_url": "https://partechpartners.com/africa-reports/2025-africa-tech-venture-capital-report",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The World Bank maintains African national economic indicators for comparisons across countries.",
+          "source_url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=A9",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Moniepoint describes digital banking and payments products serving customers in Nigeria.",
+          "source_url": "https://moniepoint.com/about",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The World Bank's Digital Economy for Africa framework examines national digital development challenges.",
+          "source_url": "https://www.worldbank.org/en/programs/all-africa-digital-transformation/country-diagnostics",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Partech — 2025 African technology funding report",
+          "publisher": "Partech",
+          "url": "https://partechpartners.com/africa-reports/2025-africa-tech-venture-capital-report",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "World Bank — GDP and national statistics",
+          "publisher": "World Bank",
+          "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=A9",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Moniepoint — Nigerian fintech operations",
+          "publisher": "Moniepoint",
+          "url": "https://moniepoint.com/about",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "GSMA — Mobile Money 2026 industry evidence",
+          "publisher": "GSMA",
+          "url": "https://www.gsma.com/sotir/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "World Bank — Digital Economy for Africa",
+          "publisher": "World Bank",
+          "url": "https://www.worldbank.org/en/programs/all-africa-digital-transformation/country-diagnostics",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "big-five-parks-ranked-where-to-see-all-five": {
+      "content_type": "ranking",
+      "answer": "The Big Five are elephant, rhinoceros, buffalo, lion and leopard. Kruger, Serengeti, Masai Mara and other safari landscapes may support these animals, but no tour can guarantee sightings. This guide compares habitat and access while prioritising park rules and rhino conservation. It avoids publishing sensitive locations or making up sighting probabilities.",
+      "methodology": "Editorial five-area comparison, considering wildlife diversity, visit practicality and guiding, not measured Big Five encounter probabilities. No sensitive rhino locations are disclosed.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "SANParks sets rules for remaining inside vehicles in Kruger.",
+          "source_url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO recognises Serengeti as an exceptional migratory ecosystem.",
+          "source_url": "https://whc.unesco.org/en/list/156/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO describes the Okavango Delta as a seasonal inland wetland.",
+          "source_url": "https://whc.unesco.org/en/list/1432",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The International Rhino Foundation publishes population estimates and conservation challenges for rhinos.",
+          "source_url": "https://rhinos.org/about-rhinos/state-of-the-rhino/",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SANParks — Kruger rules",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Serengeti",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/156/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Okavango Delta",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/1432",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "International Rhino Foundation — 2026 report",
+          "publisher": "International Rhino Foundation",
+          "url": "https://rhinos.org/about-rhinos/state-of-the-rhino/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "SANParks — park rules",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "best-gorilla-trekking-africa-ranked": {
+      "content_type": "ranking",
+      "answer": "Mountain gorilla trekking is a regulated, guided forest activity available through official park programmes in Uganda and Rwanda. Bwindi, Mgahinga and Volcanoes National Park differ in access and logistics; DRC travel must be assessed separately against current safety advice. No destination guarantees a sighting or permits visitors to disregard ranger-led health and conservation rules.",
+      "methodology": "Destination comparison uses official park access, conservation context and practical logistics. Security and permit eligibility are date-sensitive; no encounter probability is invented.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "UNESCO identifies Bwindi in Uganda as an important mountain-gorilla habitat.",
+          "source_url": "https://whc.unesco.org/en/list/682/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Uganda Wildlife Authority publishes an official gorilla tracking activity.",
+          "source_url": "https://ugandawildlife.org/activities/gorilla-tracking/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Uganda Wildlife Authority provides park information for Bwindi Impenetrable National Park.",
+          "source_url": "https://ugandawildlife.org/national_parks/bwindi/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The UK Foreign Office provides destination-specific travel advice for the Democratic Republic of the Congo.",
+          "source_url": "https://www.gov.uk/foreign-travel-advice/democratic-republic-of-the-congo",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO — Bwindi forest and gorilla habitat",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/682/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Uganda Wildlife Authority — gorilla tracking",
+          "publisher": "Uganda Wildlife Authority",
+          "url": "https://ugandawildlife.org/activities/gorilla-tracking/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Uganda Wildlife Authority — Bwindi",
+          "publisher": "Uganda Wildlife Authority",
+          "url": "https://ugandawildlife.org/national_parks/bwindi/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UK government — DRC travel advice",
+          "publisher": "UK government",
+          "url": "https://www.gov.uk/foreign-travel-advice/democratic-republic-of-the-congo",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Uganda Wildlife Authority — homepage",
+          "publisher": "Uganda Wildlife Authority",
+          "url": "https://ugandawildlife.org/",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "great-migration-guide-best-months-viewing-spots": {
+      "content_type": "guide",
+      "answer": "The Great Migration is a moving wildlife process across the Serengeti–Mara ecosystem, not a guaranteed river-crossing show on a fixed date. Conditions influence where herds graze and travel. Plan around regions, camp locations and time available, and treat monthly migration calendars as approximate tendencies rather than forecasts of an individual herd's movements.",
+      "methodology": "Seasonal ecological interpretation rather than fixed predictions; no guaranteed dates or precise crossing locations.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "UNESCO describes Serengeti's major annual migrations of wildebeest and other herbivores.",
+          "source_url": "https://whc.unesco.org/en/list/156/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO recognises the adjoining Ngorongoro Conservation Area in Tanzania.",
+          "source_url": "https://whc.unesco.org/en/list/39",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "SANParks publishes visitor-conduct rules that prioritise wildlife welfare in national parks.",
+          "source_url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The Mara Conservancies Association provides information about the wider Mara conservancy landscape.",
+          "source_url": "https://maraconservancies.org/mara-conservancies/",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO — Serengeti migration",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/156/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Ngorongoro ecosystem",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/39",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "SANParks — wildlife visitor conduct",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Kenya Wildlife Service — park information",
+          "publisher": "Kenya Wildlife Service",
+          "url": "https://www.kws.go.ke/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Mara Conservancies Association — migration corridors",
+          "publisher": "Mara Conservancies Association",
+          "url": "https://maraconservancies.org/mara-conservancies/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Mara Conservancies Association — 2026 conservation strategy",
+          "publisher": "Mara Conservancies Association",
+          "url": "https://maraconservancies.org/wp-content/uploads/2026/04/MMWCA-Strategic-Plan-Summary_FINAL_WEB.pdf",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "affordable-safari-parks-ranked": {
+      "content_type": "ranking",
+      "answer": "Affordable safari value depends on total trip costs, not just the entry ticket. Nairobi National Park, Lake Mburo, Akagera, Tarangire and Addo are different options worth evaluating. Compare eligible conservation fees, accommodation, transfers, guiding and visit duration before calling any park cheapest. This editorial ranking does not invent a universal price table.",
+      "methodology": "Editorial value assessment considers transfer convenience, suitable visit length, park information and total cost categories. No unverified fixed prices or false numeric scoring is claimed.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "SANParks publishes Addo conservation and entry fees by visitor category.",
+          "source_url": "https://www.sanparks.org/parks/addo-elephant/rates-entry-fees",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "African Parks identifies Akagera as Rwanda's important savanna and wetland protected area.",
+          "source_url": "https://www.africanparks.org/the-parks/akagera",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "Uganda Wildlife Authority publishes national park and visitor information.",
+          "source_url": "https://ugandawildlife.org/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "SANParks publishes general regulations that also affect visitors' safari planning.",
+          "source_url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "SANParks — Addo fees",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/parks/addo-elephant/rates-entry-fees",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "African Parks — Akagera",
+          "publisher": "African Parks",
+          "url": "https://www.africanparks.org/the-parks/akagera",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Uganda Wildlife Authority — park listings",
+          "publisher": "Uganda Wildlife Authority",
+          "url": "https://ugandawildlife.org/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Kenya Wildlife Service",
+          "publisher": "Kenya Wildlife Service",
+          "url": "https://www.kws.go.ke/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "SANParks — park rules",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "best-time-to-visit-african-safari-by-month": {
+      "content_type": "guide",
+      "answer": "There is no single best month for every African safari. Dry-season visibility, green-season scenery and travel conditions differ among parks, countries and habitats. The Okavango Delta's flood pulse, for example, reaches parts of the wetland during the surrounding dry season. Choose a location and wildlife interest first, then evaluate its actual conditions.",
+      "methodology": "A seasonal orientation guide, not a forecast of animal locations or a numerical ranking of months.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "UNESCO describes migration across the Serengeti ecosystem.",
+          "source_url": "https://whc.unesco.org/en/list/156/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO says the Okavango Delta floods during the surrounding dry season.",
+          "source_url": "https://whc.unesco.org/en/list/1432",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "UNESCO recognises Ngorongoro as a diverse highland conservation landscape.",
+          "source_url": "https://whc.unesco.org/en/list/39",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "SANParks publishes location-specific visitor rules for Kruger National Park.",
+          "source_url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "UNESCO — Serengeti ecosystems and migration",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/156/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Okavango flood cycle",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/1432",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "UNESCO — Ngorongoro Conservation Area",
+          "publisher": "UNESCO",
+          "url": "https://whc.unesco.org/en/list/39",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "SANParks — Kruger park rules",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "Uganda Wildlife Authority — national parks",
+          "publisher": "Uganda Wildlife Authority",
+          "url": "https://ugandawildlife.org/",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    },
+    "where-to-see-rhinos-in-africa": {
+      "content_type": "guide",
+      "answer": "Black and white rhinoceroses are threatened African wildlife species with different feeding traits and conservation challenges. A safe safari should use authorised routes and avoid disclosing sensitive rhino locations. Current population estimates depend on dated conservation monitoring; readers should distinguish the year of a published report from the reference dates of underlying counts.",
+      "methodology": "Species guide based on protected-area information and dated conservation estimates. Exact rhino coordinates and sighting predictions are intentionally excluded.",
+      "last_verified_at": "2026-11-01",
+      "facts": [
+        {
+          "fact": "The International Rhino Foundation's 2025 report puts the black rhino estimate at 6,788.",
+          "source_url": "https://rhinos.org/about-rhinos/state-of-the-rhino/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "The same 2025 report puts African white rhinos at 15,752 as of the end of 2024.",
+          "source_url": "https://rhinos.org/about-rhinos/state-of-the-rhino/",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "African Parks documents conservation work in Akagera National Park.",
+          "source_url": "https://www.africanparks.org/the-parks/akagera/biodiversity-conservation",
+          "verified_at": "2026-11-02"
+        },
+        {
+          "fact": "SANParks publishes wildlife visitor conduct restrictions for Kruger National Park.",
+          "source_url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+          "verified_at": "2026-11-02"
+        }
+      ],
+      "sources": [
+        {
+          "title": "International Rhino Foundation — 2026 State of the Rhino",
+          "publisher": "International Rhino Foundation",
+          "url": "https://rhinos.org/about-rhinos/state-of-the-rhino/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "International Rhino Foundation — conservation context",
+          "publisher": "International Rhino Foundation",
+          "url": "https://rhinos.org/blog/news-room/sotr2025/",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "African Parks — Akagera rhino conservation",
+          "publisher": "African Parks",
+          "url": "https://www.africanparks.org/the-parks/akagera/biodiversity-conservation",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "African Parks — 2026 Rhino Rewild update",
+          "publisher": "African Parks",
+          "url": "https://www.africanparks.org/rhino-rewild-three-years",
+          "accessed_at": "2026-11-02"
+        },
+        {
+          "title": "SANParks — Kruger visitor code",
+          "publisher": "SANParks",
+          "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+          "accessed_at": "2026-11-02"
+        }
+      ]
+    }
+  }
+}
