@@ -8,5 +8,5 @@ class ArticleMediaAsset extends Model
 {
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $guarded = ['id'];
+    protected $guarded = [];
 }
