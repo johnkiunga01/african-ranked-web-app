@@ -19,6 +19,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\RateLimiter;
+use Tests\Support\PublicationFixture;
 use Tests\TestCase;
 
 class BulkArticleTest extends TestCase
@@ -30,7 +31,10 @@ class BulkArticleTest extends TestCase
         $seed = app(Catalog::class)->data('articles')[0];
         $seed['slug'] = $slug;
 
-        return app(SeedArticleImporter::class)->import($seed, $user);
+        $article = app(SeedArticleImporter::class)->import($seed, $user);
+        PublicationFixture::prepare($article);
+
+        return $article;
     }
 
     private function research(Article $article, User $user): void

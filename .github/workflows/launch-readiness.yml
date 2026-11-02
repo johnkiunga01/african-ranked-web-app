@@ -1,0 +1,72 @@
+name: Launch readiness safeguards
+
+on:
+  pull_request:
+  push:
+    branches: [main, feature/editorial-launch-readiness]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: readiness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  public-design:
+    name: Protected public design
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check protected files
+        env:
+          DESIGN_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/check-public-design.mjs
+
+  inherited-content:
+    name: Read-only inherited content audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, xml, xmlwriter, pdo_sqlite
+          coverage: none
+      - name: Install locked backend dependencies
+        run: composer install --no-interaction --prefer-dist
+      - name: Audit without importing or calling providers
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'
+          DB_URL: ''
+          CACHE_STORE: array
+          SESSION_DRIVER: array
+          MAIL_MAILER: array
+        run: |
+          set +e
+          php artisan content:audit --repository --json > inherited-content-audit.json
+          audit_status=$?
+          set -e
+          if [ "$audit_status" -gt 1 ]; then exit "$audit_status"; fi
+          python3 - <<'PY'
+          import json
+          with open('inherited-content-audit.json') as source:
+              report = json.load(source)
+          assert report['read_only'] is True
+          assert report['independent_fact_verification'] is False
+          assert isinstance(report['articles'], list)
+          print(f"{report['total']} inherited articles inspected; {report['structurally_ready']} pass structural checks. Findings do not certify factual accuracy.")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: inherited-content-audit
+          path: inherited-content-audit.json
+          retention-days: 14

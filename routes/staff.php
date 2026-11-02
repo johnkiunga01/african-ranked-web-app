@@ -6,6 +6,7 @@ use App\Http\Controllers\Staff\ArticleOperationsController;
 use App\Http\Controllers\Staff\ArticleToolsController;
 use App\Http\Controllers\Staff\AuthController;
 use App\Http\Controllers\Staff\BulkArticleController;
+use App\Http\Controllers\Staff\ContentReadinessController;
 use App\Http\Controllers\Staff\DashboardController;
 use App\Http\Controllers\Staff\GrowthController;
 use App\Http\Controllers\Staff\PromotionController;
@@ -65,6 +66,7 @@ Route::prefix('staff')->name('staff.')->group(function () {
             Route::delete('security/two-factor', [SecurityController::class, 'disable'])->name('security.disable');
             Route::delete('security/two-factor/pending', [SecurityController::class, 'cancelSetup'])->name('security.cancel');
         });
+        Route::get('content-readiness', ContentReadinessController::class)->name('content-readiness');
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
         Route::post('search-reports', [SearchIntegrationController::class, 'import'])->middleware(['can:manage-staff', 'password.confirm', 'throttle:6,1'])->name('search.import');

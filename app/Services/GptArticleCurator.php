@@ -7,7 +7,6 @@ use App\Models\ArticleResearch;
 use App\Models\SearchReport;
 use App\Support\Catalog;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
 use RuntimeException;
 use Throwable;
 
@@ -67,20 +66,8 @@ class GptArticleCurator
                 }
             }
             $data = json_decode($text, true, 512, JSON_THROW_ON_ERROR);
-            $validator = Validator::make(is_array($data) ? $data : [], [
-                'title' => ['required', 'string', 'max:180'], 'excerpt' => ['required', 'string', 'max:500'],
-                'seo_title' => ['required', 'string', 'max:180'], 'meta_description' => ['required', 'string', 'max:500'],
-                'body_markdown' => ['required', 'string', 'max:150000'],
-                'faqs' => ['present', 'array', 'max:20'], 'faqs.*.question' => ['required', 'string', 'max:300'], 'faqs.*.answer' => ['required', 'string', 'max:3000'],
-            ]);
-            if ($validator->fails()) {
-                throw new RuntimeException;
-            }
-            $data = $validator->validated();
-            $data['faqs_text'] = collect($data['faqs'])->map(fn ($faq) => preg_replace('/\R/u', ' ', $faq['question'])."\n".preg_replace('/\R/u', ' ', $faq['answer']))->implode("\n\n");
-            unset($data['faqs']);
 
-            return $data;
+            return app(ArticleDraftData::class)->validate($data);
         } catch (Throwable) {
             // No raw upstream response/exception is logged or displayed: it may contain private content or credentials.
             throw new RuntimeException('GPT drafting failed or returned an incomplete/invalid result. No article changes were saved. This request was not retried; a provider charge may still apply.');

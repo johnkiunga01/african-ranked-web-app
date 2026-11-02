@@ -99,6 +99,7 @@ class EditorialWorkflow
                         throw ValidationException::withMessages(['workflow' => 'Complete editorial review before publishing.']);
                     }
                 }
+                app(PublicationQuality::class)->assertPublishable($revision);
                 $revision->status = RevisionStatus::Published;
                 $revision->published_at = now();
                 $article->first_published_at ??= now();

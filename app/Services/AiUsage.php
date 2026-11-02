@@ -32,12 +32,12 @@ class AiUsage
         }
     }
 
-    public function generation(User $actor, Article $article, int $revision): int
+    public function generation(User $actor, Article $article, int $revision, string $provider = 'openai'): int
     {
-        return DB::transaction(function () use ($actor, $article, $revision) {
+        return DB::transaction(function () use ($actor, $article, $revision, $provider) {
             $this->quota($actor);
 
-            return DB::table('article_generations')->insertGetId(['article_id' => $article->id, 'revision_id' => $revision, 'user_id' => $actor->id, 'model' => config('services.openai.article_model'), 'status' => 'running', 'created_at' => now(), 'updated_at' => now()]);
+            return DB::table('article_generations')->insertGetId(['article_id' => $article->id, 'revision_id' => $revision, 'user_id' => $actor->id, 'model' => $provider === 'gemini' ? config('services.gemini.model') : config('services.openai.article_model'), 'status' => 'running', 'created_at' => now(), 'updated_at' => now()]);
         });
     }
 

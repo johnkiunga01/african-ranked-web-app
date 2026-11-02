@@ -12,6 +12,7 @@ use App\Services\MarkdownBlocks;
 use App\Services\SeedArticleImporter;
 use App\Support\Catalog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\PublicationFixture;
 use Tests\TestCase;
 
 class AdvancedEditorialTest extends TestCase
@@ -58,6 +59,7 @@ class AdvancedEditorialTest extends TestCase
         $workflow = app(EditorialWorkflow::class);
         $workflow->transition($admin, $article, 'submit', $revision->id);
         $workflow->transition($admin, $article, 'approve', $revision->id, array_fill_keys(EditorialWorkflow::CHECKS, true));
+        PublicationFixture::prepare($article);
         $workflow->transition($admin, $article, 'publish', $revision->id);
         $this->get('/articles/'.$article->slug)->assertOk()->assertSee('<title>Practical safari checks</title>', false)->assertSee('A concise test search description.')->assertSee('alt="A test image description"', false)->assertSee('What should I check?')->assertDontSee('focus_keyword');
         $article->refresh();

@@ -1,3 +1,4 @@
+import { publicationBody, publicationFaqs } from './publication-fixture.js';
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 
@@ -25,8 +26,9 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await author.getByLabel('Page address', { exact: true }).fill('browser-reviewed-safari-checklist');
         await author.getByLabel('Short introduction', { exact: true }).fill('A fake browser fixture demonstrating safe editorial publication.');
         await author.getByLabel('Category', { exact: true }).selectOption('travel');
-        await author.getByLabel('Article body', { exact: true }).fill('Fixture content, not editorial reporting.\n\n## Before you go\n\n- Confirm your research\n- Review your sources');
+        await author.getByLabel('Article body', { exact: true }).fill(publicationBody('Fixture content, not editorial reporting.\n\n## Before you go\n\n- Confirm your research\n- Review your sources'));
         await author.getByLabel('Hero image URL', { exact: true }).fill('https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg?w=600');
+        await author.getByLabel('Reader FAQs', { exact: true }).fill(publicationFaqs);
         await author.getByLabel('Sources and research notes', { exact: true }).fill('Test fixture only. Used to validate review controls in a disposable database.');
         await author.getByRole('button', { name: 'Create draft', exact: true }).click();
         await expect(author).toHaveURL(/\/staff\/articles\/\d+\/edit$/);
@@ -47,7 +49,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await admin.getByRole('button', { name: 'Request changes', exact: true }).click();
         await author.reload();
         await expect(author.getByText('Add the missing practical checklist detail.', { exact: true })).toBeVisible();
-        await author.getByLabel('Article body', { exact: true }).fill('Fixture content revised for testing.\n\n## Before you go\n\n- Confirm your research\n- Review your sources\n- Check completeness');
+        await author.getByLabel('Article body', { exact: true }).fill(publicationBody('Fixture content revised for testing.\n\n## Before you go\n\n- Confirm your research\n- Review your sources\n- Check completeness'));
         await author.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
         await admin.reload();
