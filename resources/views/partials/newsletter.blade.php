@@ -21,6 +21,6 @@
             @error('website')<p role="alert" class="mt-3 text-sm text-red-200">Unable to process this request. Please try again.</p>@enderror
         </form>
         @endif
-        <p class="mt-3 text-xs text-stone-400">We use these details for newsletter requests. No confirmation email is sent at this stage.</p>
+        <p class="mt-3 text-xs text-stone-400">Your details are used only to record a newsletter request. Subscription delivery is not active yet.</p>
     </div>
 </section>
