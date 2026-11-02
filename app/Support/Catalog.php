@@ -50,7 +50,8 @@ class Catalog
 
     public function articles(string $region = 'global'): Collection
     {
-        $legacy = in_array(config('app.env'), ['local', 'testing', 'review'], true) && config('editorial.legacy_preview') ? collect($this->data('articles')) : collect();
+        // Repository example records remain available to local tests only, never public staging or production pages.
+        $legacy = in_array(config('app.env'), ['local', 'testing'], true) && config('editorial.legacy_preview') ? collect($this->data('articles')) : collect();
         $published = collect();
         if (Schema::hasTable('articles')) {
             // Any CMS record masks a seed with the same slug, including withdrawn/draft records.
