@@ -34,11 +34,9 @@
         <div class="flex flex-wrap items-center gap-2.5">
             <span class="mr-2 text-sm font-semibold text-stone-700">Browse topics</span>
             @foreach($categories as $tile)
-                @if($articles->contains('category', $tile['slug']))
                     <a href="{{ $basePath }}/categories/{{ $tile['slug'] }}" class="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-3.5 py-2 text-sm font-semibold text-stone-700 transition hover:border-amber-400 hover:bg-amber-50 hover:text-stone-950">
                         {{ $tile['name'] }}
                     </a>
-                @endif
             @endforeach
         </div>
     </section>
