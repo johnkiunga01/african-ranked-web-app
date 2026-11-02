@@ -1,4 +1,4 @@
-import { animate, inView } from 'motion';
+import { animate, inView, stagger } from 'motion';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const stopAnimations = [];
@@ -12,6 +12,31 @@ if (!reducedMotion.matches) {
 }
 reducedMotion.addEventListener('change', ({ matches }) => {
     if (matches) stopAnimations.forEach((stop) => stop());
+});
+
+// Motion's vanilla JS API provides Framer-style entrance animation without React.
+const siteHeader = document.querySelector('[data-site-header]');
+if (siteHeader?.classList.contains('home-site-header')) {
+    const setHeaderState = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 36);
+    document.addEventListener('scroll', setHeaderState, { passive: true });
+    setHeaderState();
+}
+const hero = document.querySelector('.ar-hero');
+if (hero && !reducedMotion.matches) {
+    ['[data-hero-intro]', '[data-hero-heading]', '[data-hero-description]', '[data-hero-actions]']
+        .forEach((selector, index) => {
+            const node = hero.querySelector(selector);
+            if (node) animate(node, { opacity: [0, 1], transform: ['translateY(15px)', 'translateY(0px)'] },
+                { duration: 0.56, delay: index * 0.09, ease: 'easeOut' });
+        });
+    const tiles = hero.querySelectorAll('[data-hero-category]');
+    if (tiles.length) animate(tiles, { opacity: [0, 1], transform: ['translateY(12px)', 'translateY(0px)'] },
+        { delay: stagger(0.045, { startDelay: 0.38 }), duration: 0.44, ease: 'easeOut' });
+}
+document.querySelectorAll('[data-search-menu]').forEach((details) => {
+    details.addEventListener('toggle', () => {
+        if (details.open) details.querySelector('[type="search"]')?.focus();
+    });
 });
 
 const menuToggle = document.querySelector('[data-menu-toggle]');
@@ -34,14 +59,14 @@ document.addEventListener('keydown', (event) => {
             closeMenu();
             menuToggle.focus();
         }
-        document.querySelectorAll('[data-region-menu][open]').forEach((details) => {
+        document.querySelectorAll('[data-region-menu][open], [data-search-menu][open]').forEach((details) => {
             details.open = false;
             details.querySelector('summary').focus();
         });
     }
 });
 document.addEventListener('click', (event) => {
-    document.querySelectorAll('[data-region-menu][open]').forEach((details) => {
+    document.querySelectorAll('[data-region-menu][open], [data-search-menu][open]').forEach((details) => {
         if (!details.contains(event.target)) details.open = false;
     });
 });
@@ -67,6 +92,7 @@ shareButton?.addEventListener('click', async () => {
 document.querySelectorAll('[data-image-fallback]').forEach((image) => {
     const fallback = () => {
         image.removeEventListener('error', fallback);
+        if (image.closest('.ar-hero')) { image.style.opacity = '0'; return; }
         image.src = '/image-placeholder.svg';
     };
     image.addEventListener('error', fallback, { once: true });
