@@ -16,6 +16,10 @@ return new class extends Migration {
             $table->unsignedInteger('width');
             $table->unsignedInteger('height');
             $table->unsignedInteger('bytes');
+            $table->string('alt', 300)->nullable();
+            $table->string('caption', 500)->nullable();
+            $table->string('credit', 180)->nullable();
+            $table->timestamp('rights_confirmed_at');
             $table->timestamps();
             $table->index(['article_id','created_at']);
         });
