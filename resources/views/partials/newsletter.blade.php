@@ -1,3 +1,4 @@
+@if(config('editorial.newsletter_enabled'))
 <section id="newsletter" class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-stone-900 via-stone-800 to-amber-950 px-6 py-12 sm:px-12 sm:py-16" aria-labelledby="newsletter-title">
     <div class="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-amber-600/20 blur-3xl"></div>
     <div class="relative mx-auto max-w-2xl text-center">
@@ -24,3 +25,5 @@
         <p class="mt-3 text-xs text-stone-400">Your details are used only to record a newsletter request. Subscription delivery is not active yet.</p>
     </div>
 </section>
+
+@endif
