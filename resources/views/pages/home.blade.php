@@ -67,7 +67,7 @@
                         </a>
                     @endforeach
                 </div>
-                <p class="mt-3 text-right text-[11px] text-white/80">
+                <div class="mt-3 text-right text-[11px] text-white/80">
                     Hero photography by <a class="underline underline-offset-2 hover:text-amber-300" href="{{ $heroPhoto }}" target="_blank" rel="noopener noreferrer">Wladimir Kühne / Pexels</a>.
                     <details class="relative ml-2 inline-block text-left">
                         <summary class="cursor-pointer underline underline-offset-2 hover:text-amber-300">Other photo credits</summary>
@@ -77,7 +77,7 @@
                             @endforeach
                         </ul>
                     </details>
-                </p>
+                </div>
             </div>
         </div>
     </section>
