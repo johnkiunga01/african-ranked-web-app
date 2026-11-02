@@ -1,0 +1,177 @@
+{
+  "preparedAt": "2026-11-02",
+  "verifiedDate": "2026-11-02",
+  "editorialNote": "Use source facts within their scope, never claim guaranteed sightings or current exact costs. Dates of original verification of earlier drafts not replaced.",
+  "articles": {
+    "how-to-choose-an-african-safari": [
+      {
+        "title": "UNESCO: Serengeti ecosystem",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/156/",
+        "fact": "UNESCO identifies the Serengeti-Mara as a connected migration ecosystem and discusses conservation pressure."
+      },
+      {
+        "title": "UNESCO: Okavango Delta",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/1432",
+        "fact": "The Okavango Delta is a landlocked wetland whose annual river flood arrives in Botswana's dry season."
+      },
+      {
+        "title": "Kenya Wildlife Service: Amboseli park and rules",
+        "publisher": "Kenya Wildlife Service",
+        "url": "https://kws.go.ke/park/amboseli-national-park/",
+        "fact": "Amboseli encompasses grassland, swamps and acacia habitat; official KWS rules include staying in vehicles, using authorised roads and respecting wildlife."
+      },
+      {
+        "title": "SANParks: Kruger visitor code",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+        "fact": "Kruger enforces vehicle, wildlife-disturbance, road and gate-time restrictions."
+      },
+      {
+        "title": "SANParks: Kruger visitor tips",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/useful-information/visitor-tips",
+        "fact": "SANParks advises visitors to travel slowly and avoid covering too much ground."
+      },
+      {
+        "title": "CDC Yellow Book: safari health",
+        "publisher": "US CDC",
+        "url": "https://www.cdc.gov/yellow-book/hcp/africa-middle-east/african-safaris-and-climbing-expeditions.html",
+        "fact": "CDC recommends personal travel-health risk assessment and mosquito bite avoidance on African safaris."
+      },
+      {
+        "title": "SANParks: Kruger guided drives",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/what-to-do/activities/game-drives",
+        "fact": "SANParks offers professionally guided morning, sunset and night drives, with activity eligibility and departure policies."
+      }
+    ],
+    "best-time-to-visit-okavango-delta": [
+      {
+        "title": "UNESCO: Okavango Delta",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/1432",
+        "fact": "The Okavango Delta is a landlocked wetland whose annual river flood arrives in Botswana's dry season."
+      },
+      {
+        "title": "UNESCO: Okavango conservation documents",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/1432/documents",
+        "fact": "UNESCO maintains dated state-of-conservation records and management documents for the Delta."
+      },
+      {
+        "title": "Botswana government: Moremi road conditions, May 2026",
+        "publisher": "Botswana DailyNews",
+        "url": "https://dailynews.gov.bw/news-detail/91632",
+        "fact": "Botswana's government reported Moremi roads closed by unusual flooding in early 2026; some routes remained impassable after reopening."
+      },
+      {
+        "title": "UNESCO: Serengeti ecosystem",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/156/",
+        "fact": "UNESCO identifies the Serengeti-Mara as a connected migration ecosystem and discusses conservation pressure."
+      },
+      {
+        "title": "CDC Yellow Book: safari health",
+        "publisher": "US CDC",
+        "url": "https://www.cdc.gov/yellow-book/hcp/africa-middle-east/african-safaris-and-climbing-expeditions.html",
+        "fact": "CDC recommends personal travel-health risk assessment and mosquito bite avoidance on African safaris."
+      },
+      {
+        "title": "CDC Yellow Book: malaria",
+        "publisher": "US CDC",
+        "url": "https://www.cdc.gov/yellow-book/hcp/travel-associated-infections-diseases/malaria.html",
+        "fact": "Malaria prevention depends on destination and traveller, with professional advice recommended."
+      }
+    ],
+    "best-time-to-visit-amboseli": [
+      {
+        "title": "Kenya Wildlife Service: Amboseli park and rules",
+        "publisher": "Kenya Wildlife Service",
+        "url": "https://kws.go.ke/park/amboseli-national-park/",
+        "fact": "Amboseli encompasses grassland, swamps and acacia habitat; official KWS rules include staying in vehicles, using authorised roads and respecting wildlife."
+      },
+      {
+        "title": "UNESCO: Serengeti ecosystem",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/156/",
+        "fact": "UNESCO identifies the Serengeti-Mara as a connected migration ecosystem and discusses conservation pressure."
+      },
+      {
+        "title": "UNESCO: Ngorongoro",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/39",
+        "fact": "UNESCO describes Ngorongoro's natural and cultural significance in northern Tanzania."
+      },
+      {
+        "title": "CDC Yellow Book: safari health",
+        "publisher": "US CDC",
+        "url": "https://www.cdc.gov/yellow-book/hcp/africa-middle-east/african-safaris-and-climbing-expeditions.html",
+        "fact": "CDC recommends personal travel-health risk assessment and mosquito bite avoidance on African safaris."
+      },
+      {
+        "title": "CDC Yellow Book: malaria",
+        "publisher": "US CDC",
+        "url": "https://www.cdc.gov/yellow-book/hcp/travel-associated-infections-diseases/malaria.html",
+        "fact": "Malaria prevention depends on destination and traveller, with professional advice recommended."
+      },
+      {
+        "title": "Mara Conservancies Association",
+        "publisher": "Mara Conservancies Association",
+        "url": "https://maraconservancies.org/mara-conservancies/",
+        "fact": "The Mara landscape includes conservancies with distinct management and community arrangements."
+      }
+    ],
+    "kruger-vs-masai-mara": [
+      {
+        "title": "SANParks: Kruger visitor code",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+        "fact": "Kruger enforces vehicle, wildlife-disturbance, road and gate-time restrictions."
+      },
+      {
+        "title": "SANParks: Kruger visitor tips",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/useful-information/visitor-tips",
+        "fact": "SANParks advises visitors to travel slowly and avoid covering too much ground."
+      },
+      {
+        "title": "SANParks: Kruger guided drives",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/what-to-do/activities/game-drives",
+        "fact": "SANParks offers professionally guided morning, sunset and night drives, with activity eligibility and departure policies."
+      },
+      {
+        "title": "SANParks: Kruger gate times",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/what-to-do/day-visits",
+        "fact": "Kruger's public park gate times vary across months."
+      },
+      {
+        "title": "SANParks: how to reach Kruger",
+        "publisher": "SANParks",
+        "url": "https://www.sanparks.org/parks/kruger/travel/how-to-get-there",
+        "fact": "SANParks describes airport connections, car hire and a regulated tourist-road network."
+      },
+      {
+        "title": "UNESCO: Serengeti ecosystem",
+        "publisher": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/156/",
+        "fact": "UNESCO identifies the Serengeti-Mara as a connected migration ecosystem and discusses conservation pressure."
+      },
+      {
+        "title": "Mara Conservancies Association",
+        "publisher": "Mara Conservancies Association",
+        "url": "https://maraconservancies.org/mara-conservancies/",
+        "fact": "The Mara landscape includes conservancies with distinct management and community arrangements."
+      },
+      {
+        "title": "CDC Yellow Book: safari health",
+        "publisher": "US CDC",
+        "url": "https://www.cdc.gov/yellow-book/hcp/africa-middle-east/african-safaris-and-climbing-expeditions.html",
+        "fact": "CDC recommends personal travel-health risk assessment and mosquito bite avoidance on African safaris."
+      }
+    ]
+  }
+}
