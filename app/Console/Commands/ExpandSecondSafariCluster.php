@@ -72,7 +72,7 @@ class ExpandSecondSafariCluster extends Command
                     'seo_title'=>['type'=>'STRING'],'meta_description'=>['type'=>'STRING'],
                     'faqs'=>['type'=>'ARRAY','items'=>['type'=>'OBJECT','properties'=>[
                         'question'=>['type'=>'STRING'],'answer'=>['type'=>'STRING']], 'required'=>['question','answer']]],
-                'required'=>['title','excerpt','body','answer','seo_title','meta_description','faqs']];
+                ], 'required'=>['title','excerpt','body','answer','seo_title','meta_description','faqs']];
                 $draft = app(GeminiAssistant::class)->generate(
                     $ctx, $schema,
                     'Draft a careful 1400-word original African safari article addressing the precise search intent. Use 8–10 non-numbered H2 sections with meaningful comparison, logistics, choices, cost categories and conservation concerns. Do NOT fabricate current park prices, weather averages, movement dates or other numerical data. Explain why no migration sightings are guaranteed. Keep 5 or more supplied official URLs as standalone Markdown citations (do not invent links). Include 3 specific FAQs and a separate direct answer of 45–55 words. Retain any useful, sourced existing draft facts. No invented quotations, firsthand experience or bylines. Output must remain an editor-reviewed draft until existing publishing checks accept it.',
