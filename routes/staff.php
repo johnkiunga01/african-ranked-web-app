@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Staff\ArticleController;
+use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\Staff\ArticleCurationController;
 use App\Http\Controllers\Staff\ArticleOperationsController;
 use App\Http\Controllers\Staff\ArticleToolsController;
@@ -95,6 +96,7 @@ Route::prefix('staff')->name('staff.')->group(function () {
         Route::put('articles/{article}/seo-metadata', [ArticleToolsController::class, 'metadata'])->name('articles.seo-metadata');
         Route::get('articles/{article}/revisions/{revision}', [ArticleToolsController::class, 'revision'])->name('articles.revision');
         Route::post('articles/{article}/revisions/{revision}/restore', [ArticleToolsController::class, 'restore'])->name('articles.restore');
+        Route::post('article-media', [ArticleMediaController::class, 'store'])->middleware('throttle:30,1')->name('articles.media.upload');
         Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
         Route::post('article-imports/{slug}', [ArticleController::class, 'import'])->middleware('can:manage-staff')->name('articles.import');
         Route::patch('article-assignments/{article}', [ArticleController::class, 'assign'])->middleware('can:manage-staff')->name('articles.assign');
