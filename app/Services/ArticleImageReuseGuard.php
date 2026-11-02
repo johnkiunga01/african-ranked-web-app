@@ -46,7 +46,7 @@ class ArticleImageReuseGuard
         if (! $candidates) return;
 
         $others = Article::whereNull('trashed_at')
-            ->when($article, fn ($query) => $query->whereKeyNot($article->id))
+            ->when($article, fn ($query) => $query->where('id', '!=', $article->id))
             ->with(['currentRevision', 'publishedRevision'])->get();
         foreach ($others as $other) {
             foreach ([$other->currentRevision, $other->publishedRevision] as $revision) {
