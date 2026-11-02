@@ -24,3 +24,12 @@ The review host remains noindex. The owner's verified-date attestation covers th
 - Original Railway pre-deploy command was restored after the run; there is no continuing auto-publication hook. The review environment's noindex posture is unchanged.
 
 The remaining 31 drafts still require topic-specific source research, substantive manuscript writing and CMS approval. No publication claim is made for them.
+
+## Third safari cluster — 2 November 2026
+
+- A source/reference brief was committed at `content/research/safari-next-four-source-brief.json`, with official KWS, UNESCO, SANParks and CDC documents. Substantive, independently written decision guidance is stored in `content/research/safari-next-four-editorial-additions.json`.
+- The `editorial:publish-safari-next-four --apply --limit=4` release was executed on Railway. The first deployment `cecf57fa-e736-4a00-8c9c-659622f609c8` logged successful publication of `best-time-to-visit-amboseli`, `how-to-choose-an-african-safari`, and `best-time-to-visit-okavango-delta`. Its log capture did not include the fourth result or a summary.
+- A second idempotent run in deployment `fd2b423d-ce10-4eef-91a6-0f84b5550ea5` reported `AR_EDITORIAL_NEXT4 {"considered":0,"expanded":0,"published":0,"blocked":0,"errors":0}`. Since the selection is restricted to these four existing non-trashed articles with null `published_revision_id`, this indicates none of the four remained unpublished at retry time; `kruger-vs-masai-mara` is therefore treated as published, although its individual publication log was not captured.
+- **Total confirmed/inferred published: 26 of 53. Unpublished: 27.**
+- The temporary Railway pre-deploy command was restored to the standard migrate/content sync/metadata command and verified through the service configuration.
+- Staging remains noindex; no changes to search indexing policy were made.
