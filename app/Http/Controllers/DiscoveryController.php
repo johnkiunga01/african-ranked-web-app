@@ -45,6 +45,10 @@ class DiscoveryController extends Controller
 
     public function robots(): Response
     {
+        if (! app()->environment('production') || config('seo.preview') || config('review.enabled')) {
+            return response("User-agent: *\nDisallow: /\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
+        }
+
         return response("User-agent: *\nAllow: /\nDisallow: /newsletter\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
     }
 

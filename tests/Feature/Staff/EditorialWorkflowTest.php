@@ -8,6 +8,7 @@ use App\Models\AuditEvent;
 use App\Models\User;
 use App\Services\EditorialWorkflow;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\PublicationFixture;
 use Tests\TestCase;
 
 class EditorialWorkflowTest extends TestCase
@@ -16,7 +17,7 @@ class EditorialWorkflowTest extends TestCase
 
     private function data(array $extra = []): array
     {
-        return array_replace(['slug' => 'reviewed-travel-guide', 'title' => 'A carefully reviewed travel guide', 'excerpt' => 'A useful introduction for readers.', 'category_slug' => 'travel', 'body_markdown' => "A practical introduction.\n\n## Getting started\n\nUseful details for readers.\n\n- A clear checklist item", 'image' => 'https://images.example.test/travel.jpg', 'source_notes' => 'Sources and image permission checked by the responsible reviewer.'], $extra);
+        return array_replace(['slug' => 'reviewed-travel-guide', 'title' => 'A carefully reviewed travel guide', 'excerpt' => 'A useful introduction for readers.', 'category_slug' => 'travel', 'body_markdown' => PublicationFixture::body('A practical introduction.'), 'faqs_text' => collect(PublicationFixture::faqs())->map(fn ($f) => $f['question']."\n".$f['answer'])->implode("\n\n"), 'image' => 'https://images.example.test/travel.jpg', 'source_notes' => 'Sources and image permission checked by the responsible reviewer.'], $extra);
     }
 
     private function createArticle(User $user, array $extra = []): Article

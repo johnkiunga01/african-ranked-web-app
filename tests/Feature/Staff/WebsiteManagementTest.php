@@ -11,6 +11,7 @@ use App\Services\SeedArticleImporter;
 use App\Services\SiteSettings;
 use App\Support\Catalog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\PublicationFixture;
 use Tests\TestCase;
 
 class WebsiteManagementTest extends TestCase
@@ -22,7 +23,10 @@ class WebsiteManagementTest extends TestCase
         $record = app(Catalog::class)->data('articles')[0];
         $record['slug'] = $slug;
 
-        return app(SeedArticleImporter::class)->import($record, $owner);
+        $article = app(SeedArticleImporter::class)->import($record, $owner);
+        PublicationFixture::prepare($article);
+
+        return $article;
     }
 
     public function test_website_controls_are_admin_only_and_featured_draft_never_leaks(): void
@@ -75,6 +79,7 @@ class WebsiteManagementTest extends TestCase
         $author = User::factory()->create();
         $record = app(Catalog::class)->data('articles')[0];
         $article = app(SeedArticleImporter::class)->import($record, $author);
+        PublicationFixture::prepare($article);
         $this->actingAs($admin)->post('/staff/articles/'.$article->id.'/publish-reviewed', ['revision_id' => $article->current_revision_id, 'editorial_approval' => 1]);
         $this->actingAs($author)->post('/staff/article-lifecycle/'.$article->id.'/trash', ['revision_id' => $article->current_revision_id])->assertForbidden();
         $this->actingAs($admin)->post('/staff/article-lifecycle/'.$article->id.'/trash', ['revision_id' => $article->current_revision_id])->assertRedirect();
