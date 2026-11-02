@@ -1,0 +1,24 @@
+[
+  {
+    "kind": "ranking",
+    "slug": "top-10-safari-destinations-africa-2026",
+    "beforeStatus": 200,
+    "afterStatus": 200,
+    "identicalRenderedMarkup": true,
+    "identicalScreenshotBytes": true,
+    "beforeErrors": [],
+    "afterErrors": [],
+    "jsonLdParsed": 4
+  },
+  {
+    "kind": "guide",
+    "slug": "safari-packing-etiquette-first-timer-guide",
+    "beforeStatus": 200,
+    "afterStatus": 200,
+    "identicalRenderedMarkup": true,
+    "identicalScreenshotBytes": true,
+    "beforeErrors": [],
+    "afterErrors": [],
+    "jsonLdParsed": 4
+  }
+]
