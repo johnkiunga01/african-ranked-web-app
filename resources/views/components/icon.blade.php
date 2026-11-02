@@ -7,6 +7,11 @@
 @case('TrendingUp')<path d="m3 17 6-6 4 4L21 7M15 7h6v6"/>@break
 @case('Cpu')<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/><rect x="10" y="10" width="4" height="4"/>@break
 @case('PawPrint')<ellipse cx="12" cy="15" rx="6" ry="5"/><circle cx="4" cy="9" r="2"/><circle cx="9" cy="5" r="2"/><circle cx="15" cy="5" r="2"/><circle cx="20" cy="9" r="2"/>@break
+@case('search')<circle cx="11" cy="11" r="7"/><path d="m20 20-4.4-4.4"/>@break
+@case('chevron-down')<path d="m6 9 6 6 6-6"/>@break
+@case('arrow-up-right')<path d="M7 17 17 7M8 7h9v9"/>@break
+@case('layout-grid')<rect x="3" y="3" width="7" height="7" rx="1.3"/><rect x="14" y="3" width="7" height="7" rx="1.3"/><rect x="3" y="14" width="7" height="7" rx="1.3"/><rect x="14" y="14" width="7" height="7" rx="1.3"/>@break
+@case('chart-no-axes-column-increasing')<path d="M4 20V13h3v7M10.5 20V9h3v11M17 20V4h3v16"/>@break
 @case('image')<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>@break
 @case('clock')<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>@break
 @case('compass')<circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/>@break
