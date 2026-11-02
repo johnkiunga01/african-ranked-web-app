@@ -1,0 +1,5 @@
+@extends('staff.layout')
+@section('title', 'Verify your sign-in')
+@section('content')
+<div class="mx-auto my-8 max-w-md staff-panel"><p class="text-xs font-semibold uppercase tracking-widest text-amber-800">Account protection</p><h1 class="mt-3 text-2xl font-bold">Verify your sign-in</h1><p class="mt-3 text-sm leading-relaxed text-stone-600">Enter the current six-digit code from your authenticator, or one unused recovery code. Your password has been checked; workspace access stays locked until this step is complete.</p><form method="POST" action="{{ route('staff.two-factor.verify') }}" class="mt-6 space-y-4">@csrf<label class="staff-label" for="challenge-code">Authenticator or recovery code</label><input class="staff-input" id="challenge-code" name="code" autocomplete="one-time-code" autofocus required maxlength="40"><button class="staff-button w-full" type="submit">Verify and sign in</button></form><p class="mt-4 text-xs text-stone-500">This sign-in window lasts five minutes. Codes cannot be reused.</p><a class="mt-5 inline-block text-sm font-semibold text-amber-800" href="{{ route('staff.login') }}">Start sign-in again</a></div>
+@endsection

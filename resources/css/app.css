@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-stone-50 text-stone-900;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer base {
+  [hidden] { display: none !important; }
+  :focus-visible { @apply outline outline-2 outline-offset-4 outline-amber-700; }
+  [id] { scroll-margin-top: 8rem; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .staff-input { @apply block w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm text-stone-900 focus:border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-200; }
+  .staff-label { @apply mb-1.5 block text-sm font-semibold text-stone-700; }
+  .staff-button { @apply inline-flex items-center justify-center rounded-xl bg-amber-500 px-4 py-2.5 text-sm font-semibold text-stone-950 transition hover:bg-amber-400 disabled:opacity-50; }
+  .staff-secondary { @apply inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-semibold text-stone-700 hover:bg-stone-100; }
+  .staff-panel { @apply rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-7; }
+}
+
+@layer components {
+  .staff-shell { @apply min-h-screen lg:grid lg:grid-cols-[236px_minmax(0,1fr)]; }
+  .staff-sidebar { @apply flex flex-col border-b border-stone-200 bg-white lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:border-b-0 lg:border-r; }
+  .staff-nav-heading { @apply mb-2 px-3 text-[10px] font-bold uppercase tracking-widest text-stone-400; }
+  .staff-nav-link { @apply my-1 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-stone-600 hover:bg-stone-50 hover:text-stone-950; }
+  .staff-nav-active { @apply bg-amber-50 font-semibold text-amber-900 ring-1 ring-inset ring-amber-200; }
+  .staff-badge { @apply inline-flex rounded-full border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs font-medium text-stone-700; }
+}

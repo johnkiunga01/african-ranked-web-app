@@ -1,0 +1,5 @@
+@if($paginator->hasPages())
+<nav aria-label="{{ $label ?? 'Result pages' }}" class="flex flex-wrap items-center justify-between gap-3 text-sm"><span class="text-xs text-stone-500">Page {{ $paginator->currentPage() }} of {{ $paginator->lastPage() }} · {{ $paginator->total() }} results</span><div class="flex flex-wrap gap-2">@if($paginator->onFirstPage())<span class="staff-secondary opacity-50" aria-disabled="true">Previous</span>@else<a href="{{ $paginator->previousPageUrl() }}" class="staff-secondary" rel="prev">Previous</a>@endif
+@foreach($elements as $element)@if(is_string($element))<span class="px-2 py-2" aria-hidden="true">{{ $element }}</span>@else @foreach($element as $page => $url)@if($page == $paginator->currentPage())<span class="staff-button" aria-current="page">{{ $page }}</span>@else<a href="{{ $url }}" class="staff-secondary" aria-label="Go to page {{ $page }}">{{ $page }}</a>@endif @endforeach @endif @endforeach
+@if($paginator->hasMorePages())<a href="{{ $paginator->nextPageUrl() }}" class="staff-secondary" rel="next">Next</a>@else<span class="staff-secondary opacity-50" aria-disabled="true">Next</span>@endif</div></nav>
+@endif

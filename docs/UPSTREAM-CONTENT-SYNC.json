@@ -1,0 +1,27 @@
+{
+  "source": "johnkiunga01/african-ranked-web-app",
+  "commit": "59ffdad363108603fd0e01153f55cceb89f19c03",
+  "added": [
+    "big-five-parks-ranked-where-to-see-all-five",
+    "best-gorilla-trekking-africa-ranked",
+    "great-migration-guide-best-months-viewing-spots",
+    "affordable-safari-parks-ranked",
+    "best-time-to-visit-african-safari-by-month",
+    "where-to-see-rhinos-in-africa",
+    "safari-packing-etiquette-first-timer-guide"
+  ],
+  "updated": [
+    "top-10-safari-destinations-africa-2026",
+    "best-african-cuisines-ranked-2026",
+    "top-african-startups-2026",
+    "best-beaches-africa-ranked",
+    "top-african-musicians-2026",
+    "fastest-growing-tech-hubs-africa"
+  ],
+  "total_preview_articles": 13,
+  "launch_accepted": 0,
+  "preserved_local_fixes": [
+    "Safari hero image"
+  ],
+  "publication": "Preview JSON only; CMS records untouched; production fallback remains disabled"
+}

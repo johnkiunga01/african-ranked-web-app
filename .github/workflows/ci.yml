@@ -1,0 +1,110 @@
+name: Application checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  application:
+    name: PHP checks (${{ matrix.database }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        database: [sqlite, pgsql]
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: african_ranked_ci
+          POSTGRES_PASSWORD: disposable_ci_password
+          POSTGRES_DB: african_ranked_ci
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U african_ranked_ci"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      APP_ENV: testing
+      APP_DEBUG: 'false'
+      APP_URL: http://localhost
+      DB_CONNECTION: ${{ matrix.database }}
+      DB_DATABASE: ${{ matrix.database == 'sqlite' && ':memory:' || 'african_ranked_ci' }}
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+      DB_USERNAME: african_ranked_ci
+      DB_PASSWORD: disposable_ci_password
+      SESSION_DRIVER: array
+      CACHE_STORE: array
+      QUEUE_CONNECTION: sync
+      MAIL_MAILER: array
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, xml, xmlwriter, pdo_sqlite, pdo_pgsql
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: |
+          touch .env
+          composer install --no-interaction --prefer-dist
+          npm ci
+      - name: Generate disposable test key
+        run: php -r 'file_put_contents(getenv("GITHUB_ENV"), "APP_KEY=base64:".base64_encode(random_bytes(32)).PHP_EOL, FILE_APPEND);'
+      - name: Validate and audit
+        run: |
+          composer validate --strict --no-check-publish
+          composer audit
+          npm audit --audit-level=high
+          vendor/bin/pint --test
+      - name: Build and test
+        run: |
+          npm run check
+          npm run build
+          php artisan test
+
+  browser:
+    name: Chromium workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, xml, xmlwriter, pdo_sqlite
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies and browser
+        run: |
+          touch .env
+          composer install --no-interaction --prefer-dist
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Build and verify browser workflows
+        run: |
+          npm run build
+          npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failure-evidence
+          path: test-results/
+          retention-days: 7

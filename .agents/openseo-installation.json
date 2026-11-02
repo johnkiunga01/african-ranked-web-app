@@ -1,0 +1,66 @@
+{
+  "source": "https://github.com/every-app/open-seo",
+  "commit": "99d9a49c8cb742d54eddd64d09efbc5302f6db89",
+  "public_source_path": "plugins/openseo/skills",
+  "license": ".agents/vendor/openseo/LICENSE",
+  "skills": [
+    {
+      "name": "ai-prompt-research",
+      "sha256": "17f028fd53a74d9f872466c72b089295af11b5f786331cf3d7c199e1108adcb3"
+    },
+    {
+      "name": "ai-visibility-audit",
+      "sha256": "36bae0bf11014a6151fe4b9788db5f86a91ee3d861d6035308a23bb986c163d5"
+    },
+    {
+      "name": "competitive-landscape",
+      "sha256": "9138f23ee62a8d8f0c1b734b3a56ff68233e99294ef9367d9ad2dba1c9a0749f"
+    },
+    {
+      "name": "competitor-analysis",
+      "sha256": "048237244e0ca9eb29b2ec84c4469ba82fb7d1fd4cb4d42917e4b70eb99bc613"
+    },
+    {
+      "name": "keyword-clustering",
+      "sha256": "103cf5f714e395392bdc18badc45dfdbd3653e44d6b0685b7befe4a82090f19d"
+    },
+    {
+      "name": "keyword-research",
+      "sha256": "d4973d428f94bf335c8ffb567223e8d2014b0be545a78bd3361bfb1fc82a887b"
+    },
+    {
+      "name": "link-prospecting",
+      "sha256": "60feb4f06a36df5bdf18d263a04a7c155ed85d5e5961950ca05608d4d6e3a8a3"
+    },
+    {
+      "name": "local-seo",
+      "sha256": "07cfa026e3220c8ab603fb2869f0ab244b500899c7db0e83f8433aca64aa34da"
+    },
+    {
+      "name": "seo-audit",
+      "sha256": "39e2ae3cc8dece9e3a5bc9df600b375be98d7d09c14d6a4752ac19f907486f0a"
+    },
+    {
+      "name": "seo-coach",
+      "sha256": "08e276ec7e2409548ecaf1edfb9e1e2af285e6f6ecd1e209c81277d3df43fc44"
+    },
+    {
+      "name": "seo-project-setup",
+      "sha256": "d11b75e01afb8f25f5e8198c3863a70ad6fa8c774056ef10184b3d8e22e9a073"
+    },
+    {
+      "name": "seo-report",
+      "sha256": "4b2c0e6d8e6080cce6ee27ace34be16c872df89f093bc824864af95f6befe63f"
+    }
+  ],
+  "method": "Project-local public skills and MCP fallback; managed global plugin configuration is read-only.",
+  "status": {
+    "skills": "copied and hashes verified; native discovery awaits next agent reload",
+    "connection_configuration": "project-local OAuth endpoint only, no credentials",
+    "global_plugin": "not installed in managed Codex CLI",
+    "sign_in": "not tested; no authentication failure inferred",
+    "live_verification": "blocked; endpoint CONNECT denied by current egress policy, and tools absent from this session"
+  },
+  "existing_adapter_preserved_as": "laravel-seo-audit",
+  "paid_research_run": false
+}

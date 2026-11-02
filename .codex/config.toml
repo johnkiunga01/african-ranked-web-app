@@ -1,0 +1,4 @@
+# Project-local fallback: hosted OpenSEO, OAuth handled by the Codex client.
+[mcp_servers.openseo]
+url = "https://app.openseo.so/mcp"
+startup_timeout_sec = 30
