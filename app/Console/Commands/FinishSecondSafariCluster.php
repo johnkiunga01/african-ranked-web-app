@@ -27,16 +27,15 @@ class FinishSecondSafariCluster extends Command
             $counts['considered']++;
             try {
                 $prior = $article->currentRevision;
-                $extra = collect($data['paragraphs'])->map(fn($p)=>'## '.$p[0]."\n\n".$p[1])->implode("\n\n");
+                $extra = collect($data)->map(fn($p)=>'## '.$p[0]."\n\n".$p[1])->implode("\n\n");
                 $original = trim((string)$prior->body_markdown);
-                if (str_contains($original,$data['paragraphs'][0][0])) {
+                if (str_contains($original,$data[0][0])) {
                     $counts['blocked']++;
                     $this->warn('SKIPPED duplicate sections '.$slug);
                     continue;
                 }
                 $body = $original."\n\n".$extra;
                 $evidence = $prior->editorial_evidence ?? [];
-                $evidence['answer'] = $data['answer'];
                 $evidence['last_verified_at'] = '2026-11-02';
                 if (! $this->option('apply')) {
                     $this->line('PLAN '.$slug.' '.str_word_count(strip_tags($body)).' words');
