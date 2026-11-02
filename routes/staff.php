@@ -8,6 +8,7 @@ use App\Http\Controllers\Staff\AuthController;
 use App\Http\Controllers\Staff\BulkArticleController;
 use App\Http\Controllers\Staff\ContentReadinessController;
 use App\Http\Controllers\Staff\DashboardController;
+use App\Http\Controllers\Staff\EditorialPlanController;
 use App\Http\Controllers\Staff\GrowthController;
 use App\Http\Controllers\Staff\PromotionController;
 use App\Http\Controllers\Staff\ProviderCredentialController;
@@ -35,6 +36,10 @@ Route::prefix('staff')->name('staff.')->group(function () {
     });
     Route::middleware(['auth', 'staff'])->group(function () {
         Route::middleware('can:manage-staff')->group(function () {
+            Route::get('editorial-plan', [EditorialPlanController::class, 'index'])->name('editorial-plan');
+            Route::post('editorial-plan/preview', [EditorialPlanController::class, 'preview'])->middleware(['password.confirm', 'throttle:6,1'])->name('editorial-plan.preview');
+            Route::post('editorial-plan/import', [EditorialPlanController::class, 'commit'])->middleware(['password.confirm', 'throttle:6,1'])->name('editorial-plan.commit');
+            Route::post('editorial-plan/{brief}/start', [EditorialPlanController::class, 'start'])->name('editorial-plan.start');
             Route::get('website/homepage', [WebsiteController::class, 'homepage'])->name('website.homepage');
             Route::put('website/homepage', [WebsiteController::class, 'saveHomepage'])->name('website.homepage.save');
             Route::post('website/featured/{article}', [WebsiteController::class, 'feature'])->name('website.feature');
