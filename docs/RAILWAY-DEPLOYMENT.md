@@ -2,6 +2,10 @@
 
 As checked on 2 November 2026, `https://african-ranked-web-app-production.up.railway.app` serves the original React application. `/staff/login` and `/up` return the same React shell, not Laravel. The uploaded logs show a Caddy startup, without a fatal runtime error. Internal HTTP/TLS notices are expected behind Railway's public HTTPS proxy. That deployment has no staging noindex header and permits crawling; do not treat it as the accepted release candidate.
 
+## Current Railway configuration update
+
+The Railway CLI connection is verified. PostgreSQL, persistent web storage and three application services have been provisioned in the existing Africa Ranked project. Server-only staging variables are configured; provider credentials were transferred privately. The platform rejected legacy config-file updates, so `.railway/railway.ts` now manages the service topology through Railway's current IaC SDK. It preserves the existing volume and leaves variables unmanaged. The following original JSON instructions are historical; use the IaC definition instead. Deployment and public acceptance remain separately verified.
+
 ## 1. Deploy the Laravel source
 
 Review the Laravel migration changes and use the branch containing `artisan`, `composer.json`, `Dockerfile` and `railway.json`. GitHub main was still the React source when checked. A deployment cannot use uncommitted files in this cloud workspace. Do not merge or replace the running service before its environment is configured.
