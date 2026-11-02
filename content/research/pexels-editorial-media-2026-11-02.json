@@ -1,0 +1,265 @@
+{
+  "scope": "13 existing repository articles only; does not modify PostgreSQL CMS drafts",
+  "photos": [
+    {
+      "slug": "top-10-safari-destinations-africa-2026",
+      "hero": {
+        "url": "https://images.pexels.com/photos/35327176/pexels-photo-35327176.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/african-safari-with-off-road-vehicles-in-serengeti-35327176/",
+        "photographer": "Prince III",
+        "alt": "Safari vehicles in the Serengeti savanna, Tanzania"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/36702539/pexels-photo-36702539.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/african-elephants-on-a-safari-adventure-36702539/",
+        "photographer": "Adrien Olichon",
+        "alt": "Two African elephants walking on a safari road"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "best-african-cuisines-ranked-2026",
+      "hero": {
+        "url": "https://images.pexels.com/photos/17486836/pexels-photo-17486836.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/meal-on-plate-17486836/",
+        "photographer": "Deane Bayas",
+        "alt": "Ethiopian injera with colourful vegetable stews"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/17486827/pexels-photo-17486827.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/breakfast-meals-on-plates-17486827/",
+        "photographer": "Deane Bayas",
+        "alt": "Plates of traditional Ethiopian dishes with injera and vegetable stews"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "top-african-startups-2026",
+      "hero": {
+        "url": "https://images.pexels.com/photos/30689114/pexels-photo-30689114.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/team-collaboration-meeting-in-lagos-office-30689114/",
+        "photographer": "Ninthgrid",
+        "alt": "Entrepreneurs collaborating around a laptop in an office in Lagos, Nigeria"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/30678213/pexels-photo-30678213.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/collaboration-and-discussion-in-modern-office-30678213/",
+        "photographer": "Ninthgrid",
+        "alt": "Two Lagos office professionals discussing work at a laptop"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "best-beaches-africa-ranked",
+      "hero": {
+        "url": "https://images.pexels.com/photos/30125136/pexels-photo-30125136.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/aerial-view-of-zanzibar-beachfront-paradise-30125136/",
+        "photographer": "Dajana Reçi",
+        "alt": "Aerial view of Zanzibar's turquoise shoreline and sandy beach"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/5859215/pexels-photo-5859215.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/aerial-view-of-the-beach-5859215/",
+        "photographer": "Taryn Elliott",
+        "alt": "Aerial photograph of the turquoise sea and green coastline of Zanzibar"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "top-african-musicians-2026",
+      "hero": {
+        "url": "https://images.pexels.com/photos/2531728/pexels-photo-2531728.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/photo-of-woman-singing-in-music-studio-2531728/",
+        "photographer": "Papa Yaw",
+        "alt": "Musician singing into a studio microphone in Accra, Ghana; illustrative image"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/2531728/pexels-photo-2531728.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/photo-of-woman-singing-in-music-studio-2531728/",
+        "photographer": "Papa Yaw",
+        "alt": "Music recording session in Accra, Ghana; not a portrait of a named artist"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "fastest-growing-tech-hubs-africa",
+      "hero": {
+        "url": "https://images.pexels.com/photos/30678213/pexels-photo-30678213.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/collaboration-and-discussion-in-modern-office-30678213/",
+        "photographer": "Ninthgrid",
+        "alt": "Professionals collaborating at a laptop in a Lagos office"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/30689114/pexels-photo-30689114.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/team-collaboration-meeting-in-lagos-office-30689114/",
+        "photographer": "Ninthgrid",
+        "alt": "Business collaboration meeting in Lagos, Nigeria"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "big-five-parks-ranked-where-to-see-all-five",
+      "hero": {
+        "url": "https://images.pexels.com/photos/25754110/pexels-photo-25754110.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/majestic-elephants-in-kruger-national-park-south-africa-25754110/",
+        "photographer": "Lloyd Douglas",
+        "alt": "African elephants walking in South African bushveld"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/31139699/pexels-photo-31139699.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/african-rhino-grazing-in-south-african-safari-31139699/",
+        "photographer": "Didac Amat iPuigsech",
+        "alt": "Rhinoceros grazing in a South African wildlife landscape"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "best-gorilla-trekking-africa-ranked",
+      "hero": {
+        "url": "https://images.pexels.com/photos/36478037/pexels-photo-36478037.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/majestic-silverback-gorilla-in-rwandan-wilderness-36478037/",
+        "photographer": "Ana Kenk",
+        "alt": "Silverback mountain gorilla in Kinigi forest, Rwanda"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/35889783/pexels-photo-35889783.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/mountain-gorilla-resting-in-ugandan-forest-35889783/",
+        "photographer": "josh_ dago__",
+        "alt": "Mountain gorilla resting in a forest in western Uganda"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "great-migration-guide-best-months-viewing-spots",
+      "hero": {
+        "url": "https://images.pexels.com/photos/31207738/pexels-photo-31207738.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/serengeti-acacia-tree-and-wildebeest-migration-31207738/",
+        "photographer": "Dirk Pothen",
+        "alt": "Herd of wildebeest beneath an acacia tree in Serengeti grassland"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/30629757/pexels-photo-30629757.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/wildebeest-migration-crossing-river-in-serengeti-30629757/",
+        "photographer": "Dirk Pothen",
+        "alt": "Wildebeest crossing a river in the Serengeti, Tanzania"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "affordable-safari-parks-ranked",
+      "hero": {
+        "url": "https://images.pexels.com/photos/36702539/pexels-photo-36702539.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/african-elephants-on-a-safari-adventure-36702539/",
+        "photographer": "Adrien Olichon",
+        "alt": "Elephants encountered during a game drive on a safari road"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/25754110/pexels-photo-25754110.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/majestic-elephants-in-kruger-national-park-south-africa-25754110/",
+        "photographer": "Lloyd Douglas",
+        "alt": "Group of elephants in South African savanna habitat"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "best-time-to-visit-african-safari-by-month",
+      "hero": {
+        "url": "https://images.pexels.com/photos/31207738/pexels-photo-31207738.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/serengeti-acacia-tree-and-wildebeest-migration-31207738/",
+        "photographer": "Dirk Pothen",
+        "alt": "Serengeti savanna landscape with wildebeest herd under a blue sky"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/7205279/pexels-photo-7205279.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/photo-of-wildebeests-crossing-a-road-7205279/",
+        "photographer": "Alexandra Karnasopoulos",
+        "alt": "Wildebeest herd crossing a dirt road in the Ngorongoro Crater, Tanzania"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "where-to-see-rhinos-in-africa",
+      "hero": {
+        "url": "https://images.pexels.com/photos/34170011/pexels-photo-34170011.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/close-up-of-a-rhino-grazing-in-african-savanna-34170011/",
+        "photographer": "Chané Timmerman",
+        "alt": "Young rhinoceros grazing in the South African savanna"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/35886352/pexels-photo-35886352.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/black-and-white-rhinos-in-african-savanna-35886352/",
+        "photographer": "Tevin Shuma",
+        "alt": "Black and white photograph of rhinoceroses grazing in South Africa"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    },
+    {
+      "slug": "safari-packing-etiquette-first-timer-guide",
+      "hero": {
+        "url": "https://images.pexels.com/photos/20852883/pexels-photo-20852883.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/man-traveling-on-a-trailer-observing-zebras-grazing-in-a-savannah-20852883/",
+        "photographer": "Youngafrikanna",
+        "alt": "Visitor observing zebras from a safari vehicle in Nairobi, Kenya"
+      },
+      "body": {
+        "url": "https://images.pexels.com/photos/20523197/pexels-photo-20523197.jpeg?auto=compress&cs=tinysrgb&w=1400",
+        "source": "https://www.pexels.com/photo/giraffes-and-car-on-safari-in-africa-20523197/",
+        "photographer": "Zacchaeus Rains",
+        "alt": "Giraffes crossing a safari road with a vehicle waiting behind them"
+      },
+      "license": "https://www.pexels.com/license/",
+      "photographers_verified_source": "Pexels photo page",
+      "reviewed_at": "2026-11-02",
+      "verified_rights": "Pexels site license for use, subject to Pexels restrictions. Avoid implied endorsement.",
+      "cms_status": "not applied to existing CMS record"
+    }
+  ]
+}
