@@ -10,8 +10,8 @@
             <p class="mt-3 text-xs text-stone-500">Published <time datetime="{{ $article['datePublished'] }}">{{ \Carbon\Carbon::parse($article['datePublished'])->format('F j, Y') }}</time> · Updated <time datetime="{{ $article['dateModified'] }}">{{ \Carbon\Carbon::parse($article['dateModified'])->format('F j, Y') }}</time></p><p data-share-status role="status" class="mt-2 text-xs text-amber-800"></p>
         </header>
         <img src="{{ $article['image'] }}" alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="mt-8 aspect-[16/9] w-full rounded-2xl object-cover" data-image-fallback>
-        @if(!empty($article['imageCredit']) && !empty($article['imageSource']))
-        <p class="mt-2 text-xs text-stone-500">Featured photo: <a href="{{ $article['imageSource'] }}" rel="noopener noreferrer" target="_blank" class="text-amber-800 underline underline-offset-2">{{ $article['imageCredit'] }}</a></p>
+        @if(!empty($article['imageCredit']))
+        <p class="mt-2 text-xs text-stone-500">{{ str_contains((string) $article['image'], '/editorial-art/') ? 'Original artwork' : 'Featured photo' }}: {{ $article['imageCredit'] }}</p>
         @endif
         @include('editorial.evidence', ['evidence' => $article['editorialEvidence'] ?? []])
         <nav aria-label="On this page" class="mt-8 rounded-2xl border border-stone-200 bg-white p-6"><h2 class="font-semibold">On this page</h2><ol class="mt-3 space-y-2 text-sm text-amber-800">@foreach($article['body'] as $index => $block)@if($block['type'] === 'heading')<li><a href="#{{ $catalog->headingId($index) }}" class="underline decoration-amber-200 underline-offset-4 hover:decoration-amber-700">{{ $block['text'] }}</a></li>@endif @endforeach @if(!empty($article['faqs']))<li><a href="#frequently-asked-questions" class="underline decoration-amber-200 underline-offset-4">Frequently asked questions</a></li>@endif</ol></nav>
