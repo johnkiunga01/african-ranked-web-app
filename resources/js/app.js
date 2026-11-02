@@ -183,7 +183,7 @@ if (articleEditor) {
         emptyPreview?.classList.add('hidden');
         if (fileInput) fileInput.value = '';
         if (!altInput.value.trim()) {
-            altInput.value = file.name.replace(/\\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' ');
+            altInput.value = file.name.replace(/\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' ');
         }
         if (clearButton) clearButton.hidden = false;
         feedback('Photo ready. Add a description, confirm permission, then set it as cover or insert it into the story.');
@@ -265,8 +265,8 @@ if (articleEditor) {
                 imageInput.dispatchEvent(new Event('input', { bubbles: true }));
                 feedback('Cover photo selected. Save your draft to keep the change.');
             } else {
-                const alt = result.alt.replace(/[[\\]\\r\\n]/g, '');
-                const insert = `\\n\\n![${alt}](${result.url})\\n\\n`;
+                const alt = result.alt.replace(/[[\]\r\n]/g, '');
+                const insert = `\n\n![${alt}](${result.url})\n\n`;
                 body.setRangeText(insert, body.selectionStart, body.selectionEnd, 'end');
                 body.dispatchEvent(new Event('input', { bubbles: true }));
                 feedback('Photo inserted into your article. Save your draft to keep it.');
@@ -289,11 +289,11 @@ if (articleEditor) {
     const renderPreview = () => {
         if (!writingPreview) return;
         writingPreview.replaceChildren();
-        for (const line of (body?.value || '').split(/\\r?\\n/)) {
+        for (const line of (body?.value || '').split(/\r?\n/)) {
             if (!line.trim()) continue;
             let element;
-            const heading = line.match(/^(##|###)\\s+(.+)$/);
-            const image = line.match(/^!\\[([^\\]]+)\\]\\((https:\\/\\/[^\\s)]+)\\)$/);
+            const heading = line.match(/^(##|###)\s+(.+)$/);
+            const image = line.match(/^!\[([^\]]+)\]\((https:\/\/[^\s)]+)\)$/);
             if (heading) {
                 element = document.createElement(heading[1].length === 2 ? 'h2' : 'h3');
                 element.className = 'mb-2 mt-5 text-lg font-bold text-stone-950';
@@ -310,7 +310,7 @@ if (articleEditor) {
             } else {
                 element = document.createElement('p');
                 element.className = 'my-2 whitespace-pre-wrap';
-                element.textContent = line.replace(/^[-*]\\s+/, '• ');
+                element.textContent = line.replace(/^[-*]\s+/, '• ');
             }
             writingPreview.append(element);
         }
