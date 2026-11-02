@@ -99,7 +99,7 @@ class ArticleMediaController extends Controller
                 'alt' => $validated['alt'], 'caption' => $validated['caption'] ?? null,
                 'credit' => $validated['credit'] ?? null, 'rights_confirmed_at' => now(),
             ]);
-        } catch (\\Illuminate\\Database\\UniqueConstraintViolationException $e) {
+        } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
             Storage::disk('public')->delete($path);
             throw ValidationException::withMessages(['file' => 'This image is already in the media library. Select a different photo.']);
         }
