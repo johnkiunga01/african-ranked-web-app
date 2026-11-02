@@ -17,8 +17,8 @@ class HomepageHeroNavigationTest extends TestCase
             ->assertSee('href="/rankings"', false)
             ->assertSee('href="#categories"', false)
             ->assertSee('id="categories"', false)
-            ->assertSee('Explore Africa’s best.')
-            ->assertSee('Go beyond the list.');
+            ->assertSee('Discover the best of Africa')
+            ->assertSee('through rankings and guides.');
 
         $this->get('/rankings')
             ->assertOk()
@@ -43,7 +43,7 @@ class HomepageHeroNavigationTest extends TestCase
     public function test_legacy_hero_text_is_upgraded_without_overwriting_custom_copy(): void
     {
         $settings = app(SiteSettings::class);
-        $this->assertSame('Explore Africa’s best.', $settings->snapshot('homepage')['value']['hero_title']);
-        $this->assertSame('Go beyond the list.', $settings->snapshot('homepage')['value']['hero_highlight']);
+        $this->assertSame('Discover the best of Africa', $settings->snapshot('homepage')['value']['hero_title']);
+        $this->assertSame('through rankings and guides.', $settings->snapshot('homepage')['value']['hero_highlight']);
     }
 }
