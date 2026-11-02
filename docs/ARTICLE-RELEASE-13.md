@@ -33,6 +33,21 @@ The safari article promises ten entries but contains five numbered headings; the
 5. Save new draft revisions through the existing workflow, preserving old revisions and guarding against concurrent edits. Validate visible content/schema/canonicals and links, then publish those verified revisions using the owner's authorisation.
 6. Verify all 13 canonical article URLs return 200 and appear in the sitemap/feed, with staging noindex retained. Report per-article changes and any genuine unresolved blockers.
 
+## Editorial rewrite progress — 2 November 2026
+
+**Repository content revised; CMS publication not yet performed.** The 13 seed articles in `content/articles.json` have been expanded and SEO fields updated on `main`. Editorial team attribution replaced the inherited unsubstantiated individual bylines. Pexels featured image URLs remain for existing records; the safari packing guide also contains a credited in-body photograph and a sourced Pexels hero image.
+
+Structural readback of the repository content confirmed:
+- 13 articles; all have at least 1,300 words of non-ranking narrative content, excluding named ranking entries and sources.
+- At least five distinct HTTPS source links and at least three completed FAQ entries per article.
+- Ranked entries have at least 60 words of description. The titles promising ten safari destinations and fifteen cuisines now have all numbered entries.
+- Every article includes image alt text; revised SEO titles, descriptions and focus terms are in the repository. A regression test was added in `tests/Feature/Staff/RepositoryArticleReadinessTest.php`.
+- Existing article slugs are preserved; the changes are not new URLs.
+
+**Do not confuse deployment with publication.** Railway successfully deployed the rewritten repository content and subsequently the regression-test commit, but `RepositoryArticleSync` adds new slugs only. It intentionally preserves edits and publication pointers in PostgreSQL, so existing CMS drafts did not automatically receive these new bodies and zero live publications have been confirmed. There is no verified read/write pathway into the authenticated CMS from this chat. A separate workbook reportedly contains 36 further team drafts; that file is not part of the verified repository inventory.
+
+**Required CMS handoff:** Obtain authenticated, current article inventory and revision IDs; reconcile each existing CMS revision against its enhanced repository version; save new revisions with concurrency checks, official-source evidence, exact image author/rights data and verified active authors; run the existing approval/publication flow; verify public article URLs, feed and sitemap. Retain review/staging noindex until separate launch authorisation. Do not overwrite newer owner edits or claim Pexels photo provenance for uninspected stock files. The regression test has been committed, but a local `php artisan test` execution was not available in this chat.
+
 ## Access blocker
 
 Railway CLI HTTPS authentication works in the cloud workspace, but Railway SSH/SFTP is unreachable from its network. The owner has completed local Railway admin setup. Continue this batch from the desktop Codex project with working Railway access; do not request the owner's password or bypass authentication. A repository push alone does not update existing CMS revisions because content sync deliberately preserves owner edits.
