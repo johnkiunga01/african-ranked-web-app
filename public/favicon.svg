@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="a" x2="1" y2="1"><stop stop-color="#f59e0b"/><stop offset="1" stop-color="#c2410c"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#a)"/><path d="m17 47 11-30h8l11 30h-8l-2-6H27l-2 6Zm12-13h6l-3-10Z" fill="#fff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="African Ranked">
+<rect width="64" height="64" rx="14" fill="#15191c"/>
+<path d="M21 7 29 5 37 8 41 6 46 11 52 13 57 20 54 26 59 32 54 38 48 39 47 46 43 50 41 56 36 60 31 54 28 46 23 41 17 42 13 37 8 35 12 27 9 23 13 17 16 11Z" fill="#ffbf24"/>
+<path d="m49 46 8 3 1 6-6 5-4-5Z" fill="#ffbf24"/>
+</svg>
