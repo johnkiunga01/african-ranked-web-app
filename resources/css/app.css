@@ -122,3 +122,8 @@
   .ar-category-tile:hover, .ar-category-tile:focus-visible,
   .ar-btn-primary:hover, .ar-btn-outline:hover { transform: none; }
 }
+
+@media (max-width: 349px) {
+  [data-site-header] [data-search-menu] { display: none; }
+  [data-site-header] > div > a span { font-size: 14px; }
+}
