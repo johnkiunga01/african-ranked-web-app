@@ -31,10 +31,14 @@ class Seo
             'not-found' => 'Page not found | '.$siteName,
             default => $siteName.' — The Best of Africa, Ranked'.($code === 'global' ? '' : ' | '.$region['name']),
         };
-        $description = $type === 'rankings'
+        $description = $type === 'home'
+            ? 'Discover the best of Africa through researched rankings and practical guides to destinations, wildlife, cuisine, music, technology and business.'
+            : ($type === 'rankings'
             ? 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.'
-            : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']));
-        $image = $article['image'] ?? $c->articles($code)->first()['image'] ?? $c->articles()->first()['image'] ?? $c->url('/image-placeholder.svg');
+            : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline'])));
+        $image = $type === 'home'
+            ? 'https://images.pexels.com/photos/19171291/pexels-photo-19171291.jpeg?auto=compress&cs=tinysrgb&w=1200'
+            : ($article['image'] ?? $c->articles($code)->first()['image'] ?? $c->articles()->first()['image'] ?? $c->url('/image-placeholder.svg'));
         $breadcrumbs = [['name' => 'Home', 'url' => $c->path($code)]];
         if ($category) {
             $breadcrumbs[] = ['name' => $category['name'], 'url' => $c->path($code, '/categories/'.$category['slug'])];
