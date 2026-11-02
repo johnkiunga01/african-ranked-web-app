@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Throwable;
 
 class LaunchReadiness
@@ -57,9 +58,12 @@ class LaunchReadiness
         $add('Queued work configured', ! in_array(config('queue.default'), ['sync', 'null', null], true), 'A durable queue connection is required; worker supervision still needs operational proof.');
         $mailer = config('mail.default');
         $add('Non-test mail transport', ! in_array($mailer, ['log', 'array', null], true), 'This checks configuration only; prove inbox delivery and recovery separately.');
+        $add('Image editor processing and persistent media', extension_loaded('gd') && function_exists('imagewebp') && is_writable(storage_path('app/public')), 'Author images require GD/WebP and write access to the mounted editorial media volume.');
+        $add('Responsive content navigation endpoints', Route::has('rankings') && Route::has('regional.rankings') && Route::has('staff.articles.media.upload') && Route::has('editorial-art.show'), 'Rankings, regional views, image uploads and original editorial illustrations must have registered routes.');
+        $add('Newsletter not advertised before delivery works', ! config('editorial.newsletter_enabled'), 'The signup UI stays hidden until a mail provider, double opt-in and unsubscribe flow have been verified.');
         $add('Built assets without dev server', is_file(public_path('build/manifest.json')) && ! is_file(public_path('hot')), 'Deploy versioned assets without a Vite hot-server pointer.');
 
         return ['checks' => $checks, 'passed' => count(array_filter($checks, fn ($c) => $c['passed'])), 'total' => count($checks),
-            'manual_gates' => ['Production database concurrency and performance tests', 'Database/media backup restore and rollback rehearsal', 'Durable scheduler, queue workers and monitoring', 'Email delivery, newsletter confirmation and unsubscribe', 'Legal identity, privacy, consent and commercial disclosures', 'Editorial fact/source/media-rights acceptance and full crawl', 'Reader/admin accessibility and browser signoff', 'Founder approval of the concrete release candidate']];
+            'manual_gates' => ['Production database concurrency and performance tests', 'Database/media backup restore and rollback rehearsal', 'Durable scheduler, queue workers and monitoring', 'Email delivery, newsletter confirmation and unsubscribe', 'Legal identity, privacy, consent and commercial disclosures', 'Editorial fact/source/media-rights acceptance and full crawl', 'Reader/admin mobile, tablet, desktop accessibility and keyboard signoff', 'Core Web Vitals / production performance signoff', 'Founder approval of the concrete release candidate']];
     }
 }
