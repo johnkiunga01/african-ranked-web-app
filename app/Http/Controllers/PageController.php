@@ -46,10 +46,32 @@ class PageController extends Controller
         return $this->render('home', $region, ['articles' => $this->catalog->homepageArticles($region ?? 'global')]);
     }
 
-    public function rankings(?string $region = null): View
+    public function rankings(Request $request, ?string $region = null): View
     {
+        $filters = $request->validate([
+            'q' => ['nullable', 'string', 'max:100'],
+            'type' => ['nullable', 'in:guide'],
+        ]);
+        $query = trim((string) ($filters['q'] ?? ''));
+        $type = $filters['type'] ?? null;
+        $articles = $this->catalog->articles($region ?? 'global');
+        if ($type === 'guide') {
+            $articles = $articles->filter(function ($article) {
+                $editorialType = $article['editorialEvidence']['content_type'] ?? null;
+                if ($editorialType) return $editorialType === 'guide';
+
+                return (bool) preg_match('/(?:guide|explained|best-time|how-to|vs-|cost|when-to|packing)/i', $article['slug']);
+            });
+        }
+        if ($query !== '') {
+            $articles = $articles->filter(fn ($article) =>
+                mb_stripos(implode(' ', [$article['title'] ?? '', $article['excerpt'] ?? '', $article['category'] ?? '']), $query) !== false);
+        }
+
         return $this->render('rankings', $region, [
-            'articles' => $this->catalog->articles($region ?? 'global')->sortByDesc('datePublished')->values(),
+            'articles' => $articles->sortByDesc('datePublished')->values(),
+            'searchQuery' => $query,
+            'articleType' => $type,
         ]);
     }
 
