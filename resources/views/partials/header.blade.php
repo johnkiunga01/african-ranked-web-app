@@ -1,9 +1,9 @@
 @php($immersiveHome = $pageSuffix === '')
 <header data-site-header @class(['z-50 inset-x-0 top-0 transition-colors duration-300','fixed home-site-header text-white' => $immersiveHome,'sticky border-b border-stone-200 bg-white/95 text-stone-950 shadow-sm backdrop-blur-lg' => ! $immersiveHome])>
-    <div class="mx-auto flex h-[76px] max-w-[1450px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
-        <a href="{{ $basePath ?: '/' }}" class="group inline-flex min-w-0 shrink-0 items-center gap-2.5 focus-visible:rounded-lg" aria-label="{{ $site['name'] ?? 'African Ranked' }} home">
+    <div class="mx-auto flex h-[76px] max-w-[1450px] items-center justify-between gap-2 px-4 sm:px-6 lg:px-10">
+        <a href="{{ $basePath ?: '/' }}" class="group inline-flex min-w-0 shrink-0 items-center gap-1.5 focus-visible:rounded-lg sm:gap-2.5" aria-label="{{ $site['name'] ?? 'African Ranked' }} home">
             <img src="/africa-mark.svg" width="37" height="46" alt="" class="h-10 w-8 shrink-0 transition-transform duration-300 group-hover:rotate-[-5deg]" />
-            <span class="text-lg font-extrabold tracking-tight sm:text-[22px]">{{ $site['name'] ?? 'African Ranked' }}</span>
+            <span class="text-[15px] font-extrabold tracking-tight sm:text-[22px]">{{ $site['name'] ?? 'African Ranked' }}</span>
         </a>
         <span class="hidden h-7 w-px bg-current opacity-25 xl:block" aria-hidden="true"></span>
         <nav class="hidden flex-1 items-center gap-1 lg:flex" aria-label="Main navigation">
@@ -11,7 +11,7 @@
             <a href="{{ $basePath }}/rankings?type=guide" class="site-nav-link" @if(request('type') === 'guide') aria-current="page" @endif>Guides</a>
             <a href="{{ $basePath }}/strategy" class="site-nav-link" @if($pageSuffix === '/strategy') aria-current="page" @endif>Our approach</a>
         </nav>
-        <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-1 sm:gap-3">
             <details class="relative" data-search-menu>
                 <summary class="site-icon-button list-none cursor-pointer" aria-label="Search African Ranked" title="Search articles"><x-icon name="search" class="h-5 w-5" /></summary>
                 <form action="{{ $basePath }}/rankings" method="GET" role="search" class="absolute right-[-92px] top-full z-50 mt-3 flex w-[min(350px,calc(100vw-2rem))] items-center gap-2 rounded-2xl border border-stone-200 bg-white p-3 text-stone-950 shadow-2xl sm:right-0">
@@ -32,6 +32,11 @@
         </div>
     </div>
     <nav id="mobile-navigation" aria-label="Mobile navigation" class="max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-white/10 bg-[#15191b] px-4 pb-5 pt-3 text-white shadow-2xl lg:hidden sm:px-6" hidden>
+        <form action="{{ $basePath }}/rankings" method="GET" role="search" class="mb-4 flex gap-2 rounded-xl bg-white/10 p-2">
+            <label for="site-search-mobile" class="sr-only">Search articles</label>
+            <input id="site-search-mobile" type="search" name="q" maxlength="100" placeholder="Search rankings and guides" class="min-w-0 flex-1 rounded-lg bg-white px-3 py-2.5 text-sm text-stone-900" required>
+            <button type="submit" class="rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-stone-950">Go</button>
+        </form>
         <a href="{{ $basePath }}/rankings" class="site-mobile-link">All rankings</a>
         <a href="{{ $basePath }}/rankings?type=guide" class="site-mobile-link">Practical guides</a>
         <a href="{{ $basePath }}/strategy" class="site-mobile-link">Our editorial approach</a>
