@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 for (const viewport of [
+    { width: 320, height: 700, label: 'compact mobile' },
     { width: 390, height: 844, label: 'mobile' },
     { width: 820, height: 1180, label: 'tablet' },
     { width: 1440, height: 900, label: 'desktop' },
