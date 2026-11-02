@@ -132,6 +132,200 @@ if (articleEditor) {
         input.addEventListener('input', update); update();
     });
 }
+// Fast, Facebook-style editorial image composer: drop/paste, preview, upload, insert.
+// Uploads never auto-publish. Only HTTPS URLs from the authenticated media endpoint are used.
+if (articleEditor) {
+    const media = articleEditor.querySelector('[data-media-composer]');
+    const fileInput = media?.querySelector('[data-media-file]');
+    const preview = media?.querySelector('[data-media-preview]');
+    const emptyPreview = media?.querySelector('[data-media-empty]');
+    const altInput = media?.querySelector('[data-media-alt]');
+    const creditInput = media?.querySelector('[data-media-credit]');
+    const captionInput = media?.querySelector('[data-media-caption]');
+    const rightsInput = media?.querySelector('[data-media-rights]');
+    const coverButton = media?.querySelector('[data-media-as-cover]');
+    const insertButton = media?.querySelector('[data-media-insert]');
+    const clearButton = media?.querySelector('[data-media-clear]');
+    const status = media?.querySelector('[data-media-status]');
+    const body = articleEditor.querySelector('[name="body_markdown"]');
+    let selectedFile = null;
+    let objectUrl = null;
+    let uploadedFile = null;
+    let busy = false;
+
+    const feedback = (message, error = false) => {
+        if (!status) return;
+        status.textContent = message;
+        status.classList.toggle('text-red-700', error);
+        status.classList.toggle('text-stone-600', !error);
+    };
+    const refreshActions = () => {
+        const enabled = Boolean(selectedFile && rightsInput?.checked && (altInput?.value.trim().length || 0) >= 8) && !busy;
+        if (coverButton) coverButton.disabled = !enabled;
+        if (insertButton) insertButton.disabled = !enabled;
+    };
+    const releaseObjectUrl = () => {
+        if (objectUrl) URL.revokeObjectURL(objectUrl);
+        objectUrl = null;
+    };
+    const pickImage = (file) => {
+        if (!file) return;
+        if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 8 * 1024 * 1024) {
+            feedback('Use a JPG, PNG or WebP image under 8 MB.', true);
+            return;
+        }
+        releaseObjectUrl();
+        selectedFile = file;
+        uploadedFile = null;
+        objectUrl = URL.createObjectURL(file);
+        preview.src = objectUrl;
+        preview.classList.remove('hidden');
+        emptyPreview?.classList.add('hidden');
+        if (fileInput) fileInput.value = '';
+        if (!altInput.value.trim()) {
+            altInput.value = file.name.replace(/\\.[a-z0-9]+$/i, '').replace(/[-_]+/g, ' ');
+        }
+        if (clearButton) clearButton.hidden = false;
+        feedback('Photo ready. Add a description, confirm permission, then set it as cover or insert it into the story.');
+        refreshActions();
+    };
+    fileInput?.addEventListener('change', () => pickImage(fileInput.files?.[0]));
+    const dropzone = media?.querySelector('[data-media-dropzone]');
+    for (const eventName of ['dragenter', 'dragover']) {
+        dropzone?.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            dropzone.classList.add('border-amber-500', 'bg-amber-50');
+        });
+    }
+    dropzone?.addEventListener('dragleave', () => dropzone.classList.remove('border-amber-500', 'bg-amber-50'));
+    dropzone?.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropzone.classList.remove('border-amber-500', 'bg-amber-50');
+        pickImage(event.dataTransfer?.files?.[0]);
+    });
+    body?.addEventListener('paste', (event) => {
+        const image = [...(event.clipboardData?.files || [])].find((file) => file.type.startsWith('image/'));
+        if (!image) return;
+        event.preventDefault();
+        pickImage(image);
+        media?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    articleEditor.querySelector('[data-editor-add-photo]')?.addEventListener('click', () => {
+        media?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        fileInput?.click();
+    });
+    clearButton?.addEventListener('click', () => {
+        releaseObjectUrl();
+        selectedFile = null;
+        uploadedFile = null;
+        clearButton.hidden = true;
+        feedback('Choose a photo to upload.');
+        refreshActions();
+        fileInput?.click();
+    });
+    altInput?.addEventListener('input', refreshActions);
+    rightsInput?.addEventListener('change', refreshActions);
+
+    const upload = async () => {
+        if (uploadedFile && uploadedFile.original === selectedFile) return uploadedFile.result;
+        const data = new FormData();
+        data.append('file', selectedFile);
+        data.append('alt', altInput.value.trim());
+        data.append('credit', creditInput?.value.trim() || '');
+        data.append('caption', captionInput?.value.trim() || '');
+        data.append('rights_confirmed', rightsInput.checked ? '1' : '0');
+        if (articleEditor.dataset.articleId) data.append('article_id', articleEditor.dataset.articleId);
+        const response = await fetch(articleEditor.dataset.mediaUploadUrl, {
+            method: 'POST',
+            body: data,
+            credentials: 'same-origin',
+            headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '', Accept: 'application/json' },
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+            const explanation = Object.values(result.errors || {}).flat().join(' ') || result.message || 'Upload failed. Please retry.';
+            throw new Error(explanation);
+        }
+        if (typeof result.url !== 'string' || !result.url.startsWith('https://')) {
+            throw new Error('The server did not return a secure image URL.');
+        }
+        uploadedFile = { original: selectedFile, result };
+        return result;
+    };
+    const addImage = async (type) => {
+        if (busy || !selectedFile || !rightsInput.checked || altInput.value.trim().length < 8) return;
+        busy = true;
+        refreshActions();
+        feedback('Uploading and optimising photo…');
+        try {
+            const result = await upload();
+            if (type === 'cover') {
+                const imageInput = articleEditor.querySelector('[name="image"]');
+                imageInput.value = result.url;
+                imageInput.dispatchEvent(new Event('input', { bubbles: true }));
+                feedback('Cover photo selected. Save your draft to keep the change.');
+            } else {
+                const alt = result.alt.replace(/[[\\]\\r\\n]/g, '');
+                const insert = `\\n\\n![${alt}](${result.url})\\n\\n`;
+                body.setRangeText(insert, body.selectionStart, body.selectionEnd, 'end');
+                body.dispatchEvent(new Event('input', { bubbles: true }));
+                feedback('Photo inserted into your article. Save your draft to keep it.');
+                body.focus();
+            }
+        } catch (error) {
+            feedback(error.message || 'Could not upload this photo.', true);
+        } finally {
+            busy = false;
+            refreshActions();
+        }
+    };
+    coverButton?.addEventListener('click', () => addImage('cover'));
+    insertButton?.addEventListener('click', () => addImage('body'));
+    window.addEventListener('pagehide', releaseObjectUrl);
+
+    // Accessible read-only preview; content is built with textContent rather than injected HTML.
+    const previewButton = articleEditor.querySelector('[data-editor-preview-toggle]');
+    const writingPreview = articleEditor.querySelector('[data-editor-preview]');
+    const renderPreview = () => {
+        if (!writingPreview) return;
+        writingPreview.replaceChildren();
+        for (const line of (body?.value || '').split(/\\r?\\n/)) {
+            if (!line.trim()) continue;
+            let element;
+            const heading = line.match(/^(##|###)\\s+(.+)$/);
+            const image = line.match(/^!\\[([^\\]]+)\\]\\((https:\\/\\/[^\\s)]+)\\)$/);
+            if (heading) {
+                element = document.createElement(heading[1].length === 2 ? 'h2' : 'h3');
+                element.className = 'mb-2 mt-5 text-lg font-bold text-stone-950';
+                element.textContent = heading[2];
+            } else if (image) {
+                element = document.createElement('figure');
+                element.className = 'my-4 overflow-hidden rounded-xl border border-stone-200';
+                const img = document.createElement('img');
+                img.src = image[2];
+                img.alt = image[1];
+                img.loading = 'lazy';
+                img.className = 'max-h-64 w-full object-cover';
+                element.append(img);
+            } else {
+                element = document.createElement('p');
+                element.className = 'my-2 whitespace-pre-wrap';
+                element.textContent = line.replace(/^[-*]\\s+/, '• ');
+            }
+            writingPreview.append(element);
+        }
+    };
+    previewButton?.addEventListener('click', () => {
+        const show = writingPreview.hidden;
+        if (show) renderPreview();
+        writingPreview.hidden = !show;
+        previewButton.setAttribute('aria-expanded', String(show));
+        previewButton.textContent = show ? 'Hide preview' : 'Preview formatting';
+    });
+    body?.addEventListener('input', () => { if (!writingPreview?.hidden) renderPreview(); });
+    refreshActions();
+}
+
 const selectArticles = document.querySelector('[data-select-articles]');
 selectArticles?.addEventListener('change', () => {
     document.querySelectorAll('[data-article-selection]').forEach((checkbox) => { checkbox.checked = selectArticles.checked; });
