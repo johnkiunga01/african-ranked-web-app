@@ -27,6 +27,10 @@ class ArticleMediaController extends Controller
             'file' => ['required', 'image', 'mimes:jpeg,png,webp', 'max:8192',
                 'dimensions:min_width=200,min_height=120,max_width=8000,max_height=8000'],
             'article_id' => ['nullable', 'integer', 'exists:articles,id'],
+            'alt' => ['required', 'string', 'min:8', 'max:300'],
+            'caption' => ['nullable', 'string', 'max:500'],
+            'credit' => ['nullable', 'string', 'max:180'],
+            'rights_confirmed' => ['accepted'],
         ]);
         $article = isset($validated['article_id'])
             ? Article::findOrFail($validated['article_id'])
@@ -92,6 +96,8 @@ class ArticleMediaController extends Controller
                 'article_id' => $article?->id, 'sha256' => $hash,
                 'storage_path' => $path, 'width' => $newWidth,
                 'height' => $newHeight, 'bytes' => strlen($bytes),
+                'alt' => $validated['alt'], 'caption' => $validated['caption'] ?? null,
+                'credit' => $validated['credit'] ?? null, 'rights_confirmed_at' => now(),
             ]);
         } catch (\\Illuminate\\Database\\UniqueConstraintViolationException $e) {
             Storage::disk('public')->delete($path);
@@ -105,7 +111,8 @@ class ArticleMediaController extends Controller
 
         return response()->json([
             'url' => $url, 'filename' => $name,
-            'width' => $newWidth, 'height' => $newHeight,
+            'width' => $newWidth, 'height' => $newHeight, 'alt' => $validated['alt'],
+            'caption' => $validated['caption'] ?? '', 'credit' => $validated['credit'] ?? '',
             'message' => 'Image uploaded. Insert it into your article or set it as the cover, then save your draft.',
         ], 201)->header('Cache-Control', 'private, no-store');
     }
