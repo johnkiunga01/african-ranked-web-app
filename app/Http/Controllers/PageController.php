@@ -29,6 +29,7 @@ class PageController extends Controller
                 'article' => '/articles/'.$data['article']['slug'],
                 'category' => '/categories/'.$data['category']['slug'],
                 'strategy' => '/strategy',
+                'rankings' => '/rankings',
                 default => '',
             },
             'seo' => $this->seo->page($type, $r, $data['article'] ?? null, $data['category'] ?? null),
@@ -43,6 +44,13 @@ class PageController extends Controller
     public function home(?string $region = null): View
     {
         return $this->render('home', $region, ['articles' => $this->catalog->homepageArticles($region ?? 'global')]);
+    }
+
+    public function rankings(?string $region = null): View
+    {
+        return $this->render('rankings', $region, [
+            'articles' => $this->catalog->articles($region ?? 'global')->sortByDesc('datePublished')->values(),
+        ]);
     }
 
     public function category(string $slug, ?string $region = null): View
