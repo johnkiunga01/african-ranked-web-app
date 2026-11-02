@@ -17,6 +17,7 @@ class Seo
             'article' => '/articles/'.$article['slug'],
             'category' => '/categories/'.$category['slug'],
             'strategy' => '/strategy',
+            'rankings' => '/rankings',
             default => '',
         };
         $path = $c->path($code, $suffix);
@@ -26,10 +27,13 @@ class Seo
             'article' => ($article['seoTitle'] ?? null) ?: $article['title'].' | '.$siteName,
             'category' => $category['name'].' | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
             'strategy' => 'Editorial & Search Strategy | '.$siteName,
+            'rankings' => 'African Rankings & Guides | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
             'not-found' => 'Page not found | '.$siteName,
             default => $siteName.' — The Best of Africa, Ranked'.($code === 'global' ? '' : ' | '.$region['name']),
         };
-        $description = ($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']);
+        $description = $type === 'rankings'
+            ? 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.'
+            : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']));
         $image = $article['image'] ?? $c->articles($code)->first()['image'] ?? $c->articles()->first()['image'] ?? $c->url('/image-placeholder.svg');
         $breadcrumbs = [['name' => 'Home', 'url' => $c->path($code)]];
         if ($category) {
@@ -39,7 +43,7 @@ class Seo
             $breadcrumbs[] = ['name' => $article['title'], 'url' => $path];
         }
         $alternates = [];
-        if (in_array($type, ['home', 'category'], true)) {
+        if (in_array($type, ['home', 'category', 'rankings'], true)) {
             foreach ($c->regions() as $alternate) {
                 if ($category && ! $c->articles($alternate['code'])->contains('category', $category['slug'])) {
                     continue;
@@ -68,7 +72,7 @@ class Seo
                     '@type' => 'Question', 'name' => $faq['question'], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['answer']],
                 ], $article['faqs'])];
             }
-        } elseif (in_array($type, ['home', 'category'], true)) {
+        } elseif (in_array($type, ['home', 'category', 'rankings'], true)) {
             $items = $c->articles($code)->when($category, fn ($items) => $items->where('category', $category['slug']))->values();
             $schemas[] = ['@type' => 'ItemList', 'itemListElement' => $items->map(fn ($item, $index) => [
                 '@type' => 'ListItem', 'position' => $index + 1, 'name' => $item['title'], 'url' => $c->url('/articles/'.$item['slug']),
