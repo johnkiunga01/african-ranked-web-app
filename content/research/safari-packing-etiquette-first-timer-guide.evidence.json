@@ -1,0 +1,76 @@
+{
+  "article_slug": "safari-packing-etiquette-first-timer-guide",
+  "purpose": "Repository-side editorial evidence for later CMS revision entry; not a CMS publication or proof of completed legal media-rights review.",
+  "editorial_evidence": {
+    "answer": "For a first African safari, pack comfortable layers, sun and insect protection, binoculars, a refillable water bottle, personal medication and suitable footwear. Follow the specific park's vehicle and wildlife rules, stay at a respectful distance, and confirm luggage, weather, health and access requirements with your operator before travelling.",
+    "content_type": "guide",
+    "last_verified_at": "2026-11-02",
+    "image_rights": "Hero: Youngafrikanna, Pexels, https://www.pexels.com/photo/man-traveling-on-a-trailer-observing-zebras-grazing-in-a-savannah-20852883/ . Body: Zacchaeus Rains, Pexels, https://www.pexels.com/photo/giraffes-and-car-on-safari-in-africa-20523197/ . Both displayed as free-to-use Pexels photos; licence https://www.pexels.com/license/ . Retain photographer credits and avoid implying model endorsement.",
+    "facts": [
+      {
+        "fact": "Kruger visitors must remain in vehicles except in designated areas.",
+        "source_url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+        "verified_at": "2026-11-02"
+      },
+      {
+        "fact": "Feeding or disturbing animals is prohibited in Kruger National Park.",
+        "source_url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+        "verified_at": "2026-11-02"
+      },
+      {
+        "fact": "Kruger gate operating times vary by month and location and must be followed.",
+        "source_url": "https://www.sanparks.org/parks/kruger/travel/entrance-gates",
+        "verified_at": "2026-11-02"
+      },
+      {
+        "fact": "CDC recommends insect repellent, protective clothing and screened accommodation or mosquito nets where appropriate.",
+        "source_url": "https://www.cdc.gov/mosquitoes/prevention/preventing-mosquito-bites-while-traveling.html",
+        "verified_at": "2026-11-02"
+      },
+      {
+        "fact": "SANParks publishes park rules that guests should consult before visiting.",
+        "source_url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+        "verified_at": "2026-11-02"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Kruger National Park vital information",
+        "publisher": "South African National Parks",
+        "url": "https://www.sanparks.org/parks/kruger/useful-information/vital-information",
+        "accessed_at": "2026-11-02"
+      },
+      {
+        "title": "Kruger National Park visitor tips",
+        "publisher": "South African National Parks",
+        "url": "https://www.sanparks.org/parks/kruger/useful-information/visitor-tips",
+        "accessed_at": "2026-11-02"
+      },
+      {
+        "title": "Rules and regulations",
+        "publisher": "South African National Parks",
+        "url": "https://www.sanparks.org/travel/plan/useful-information/rules-regulations",
+        "accessed_at": "2026-11-02"
+      },
+      {
+        "title": "Preventing mosquito bites while travelling",
+        "publisher": "US Centers for Disease Control and Prevention",
+        "url": "https://www.cdc.gov/mosquitoes/prevention/preventing-mosquito-bites-while-traveling.html",
+        "accessed_at": "2026-11-02"
+      },
+      {
+        "title": "Kenya safety and security",
+        "publisher": "UK Foreign, Commonwealth & Development Office",
+        "url": "https://www.gov.uk/foreign-travel-advice/kenya/safety-and-security",
+        "accessed_at": "2026-11-02"
+      },
+      {
+        "title": "Kruger National Park entrance gates",
+        "publisher": "South African National Parks",
+        "url": "https://www.sanparks.org/parks/kruger/travel/entrance-gates",
+        "accessed_at": "2026-11-02"
+      }
+    ],
+    "methodology": null
+  }
+}
