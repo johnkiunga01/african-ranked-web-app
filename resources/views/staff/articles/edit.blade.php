@@ -9,14 +9,71 @@
 @if($revision?->review_notes)<aside class="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4"><h2 class="text-sm font-bold text-amber-900">Review feedback</h2><p class="mt-2 whitespace-pre-line text-sm text-amber-950">{{ $revision->review_notes }}</p></aside>@endif
 <div class="sticky top-0 z-20 mt-5 flex flex-wrap items-center gap-3 rounded-xl border border-stone-200 bg-white/95 p-3 shadow-sm"><button class="staff-button" type="submit" form="article-editor">{{ $article ? 'Save new draft revision' : 'Create draft' }}</button>@if($article)@can('publish',$article)@if($revision->status->value!=='published')<a class="staff-button" href="{{ route('staff.articles.publish-form',$article) }}">{{ $article->published_revision_id?'Publish changes…':'Publish…' }}</a>@else<a class="staff-secondary" href="/articles/{{ $article->slug }}">View live article</a>@endif @endcan<a class="staff-secondary" href="{{ route('staff.articles.seo',$article) }}">SEO workspace</a><a class="text-sm text-amber-800" href="#ai-assistant">AI assistant</a><a class="text-sm text-amber-800" href="#editorial-evidence">Evidence</a><a class="text-sm text-amber-800" href="{{ route('staff.articles.promotion',$article) }}">Share article</a>@endif</div>
 <div class="mt-7 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
-<form id="article-editor" data-article-editor class="staff-panel space-y-5" method="POST" action="{{ $article ? route('staff.articles.update', $article) : route('staff.articles.store') }}">@csrf @if($article)@method('PUT')<input name="revision_id" type="hidden" value="{{ old('revision_id', $revision?->id) }}">@endif
+<form id="article-editor" data-article-editor data-media-upload-url="{{ route('staff.articles.media.upload') }}" data-article-id="{{ $article?->id }}" class="staff-panel space-y-5" method="POST" action="{{ $article ? route('staff.articles.update', $article) : route('staff.articles.store') }}">@csrf @if($article)@method('PUT')<input name="revision_id" type="hidden" value="{{ old('revision_id', $revision?->id) }}">@endif
 <div><label class="staff-label" for="title">Article title</label><input class="staff-input" id="title" name="title" required maxlength="180" value="{{ old('title', $revision?->title) }}"></div>
 @if(!$article)<div><label class="staff-label" for="slug">Page address</label><div class="mb-1 text-xs text-stone-500">/articles/your-article-title</div><input class="staff-input" id="slug" name="slug" required maxlength="180" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="{{ old('slug') }}"><p class="mt-1 text-xs text-stone-500">Lowercase words separated by hyphens. The address stays stable after creation.</p></div>@else<p class="text-xs text-stone-500">Page address: /articles/{{ $article->slug }}</p>@endif
 <div><label class="staff-label" for="excerpt">Short introduction</label><textarea class="staff-input" id="excerpt" name="excerpt" rows="3" required maxlength="500">{{ old('excerpt', $revision?->excerpt) }}</textarea></div>
 <div><label class="staff-label" for="category_slug">Category</label><select class="staff-input" name="category_slug" id="category_slug" required>@foreach($categories as $category)<option value="{{ $category['slug'] }}" @selected(old('category_slug', $revision?->category_slug) === $category['slug'])>{{ $category['name'] }}</option>@endforeach</select></div>
-<div><label class="staff-label" for="body_markdown">Article body</label><p id="body-help" class="mb-2 text-xs leading-relaxed text-stone-500">Use blank lines for paragraphs, ## before section headings, ### for subheadings, and - for list items. Standalone links use [label](https://source.example/page) or [label](/articles/related-article). Text is rendered safely; pasted HTML does not execute.</p><div class="mb-2 flex flex-wrap gap-2" aria-label="Article formatting tools"><button type="button" class="staff-secondary" data-insert-block="## Section heading">H2 section</button><button type="button" class="staff-secondary" data-insert-block="### Subheading">H3 section</button><button type="button" class="staff-secondary" data-insert-block="- List item">List</button><button type="button" class="staff-secondary" data-insert-block="[Related reading](/articles/related-article)">Link</button></div><textarea class="staff-input min-h-[420px]" id="body_markdown" name="body_markdown" rows="18" required aria-describedby="body-help">{{ old('body_markdown', $revision?->body_markdown) }}</textarea></div>
-<div><label class="staff-label" for="image">Hero image URL</label><input class="staff-input" id="image" name="image" type="url" placeholder="https://…" value="{{ old('image', $revision?->image) }}"><p class="mt-1 text-xs text-stone-500">Use an HTTPS image you have permission to publish.</p></div>
-<div><label class="staff-label" for="image_alt">Hero image description</label><input class="staff-input" id="image_alt" name="image_alt" maxlength="300" value="{{ old('image_alt', $revision?->image_alt) }}"><p class="mt-1 text-xs text-stone-500">Describe what the image shows; do not repeat keywords for ranking.</p></div>
+<div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-lg font-bold text-stone-900">Write your article</h2><p class="text-sm text-stone-600">Write naturally, then add headings and photos with the toolbar. Your original is saved as a private draft.</p></div><button type="button" class="staff-secondary" data-editor-preview-toggle aria-controls="article-writing-preview" aria-expanded="false">Preview formatting</button></div>
+<div><label class="staff-label" for="body_markdown">Article body</label><p id="body-help" class="mb-2 text-xs leading-relaxed text-stone-500">Write paragraphs as normal. Use the toolbar for formatting; ## creates section headings, ### for subheadings, and - for list items. Standalone links use [label](https://source.example/page) or [label](/articles/related-article). Text is rendered safely; pasted HTML does not execute.</p><div class="mb-2 flex flex-wrap gap-2" aria-label="Article formatting tools"><button type="button" class="staff-secondary" data-insert-block="## Section heading">H2 section</button><button type="button" class="staff-secondary" data-insert-block="### Subheading">H3 section</button><button type="button" class="staff-secondary" data-insert-block="- List item">List</button><button type="button" class="staff-secondary" data-insert-block="[Related reading](/articles/related-article)">Link</button><button type="button" class="staff-secondary" data-editor-add-photo>Add photo</button></div><textarea class="staff-input min-h-[420px]" id="body_markdown" name="body_markdown" rows="18" required aria-describedby="body-help">{{ old('body_markdown', $revision?->body_markdown) }}</textarea></div>
+<section class="rounded-2xl border border-stone-200 bg-stone-50 p-4 sm:p-5" aria-labelledby="media-composer-heading" data-media-composer>
+    <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+            <h2 id="media-composer-heading" class="text-lg font-bold text-stone-950">Add photos to your story</h2>
+            <p class="mt-1 max-w-lg text-sm leading-relaxed text-stone-600">Upload your own images, see a preview, then choose <strong>Set as cover</strong> or <strong>Insert into article</strong>. Drop a photo here or paste one while editing.</p>
+        </div>
+        <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-900">JPG · PNG · WebP · 8 MB max</span>
+    </div>
+    <div class="mt-4 grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <label for="article-photo-file" data-media-dropzone class="flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-stone-300 bg-white px-4 py-6 text-center transition hover:border-amber-500 hover:bg-amber-50 focus-within:border-amber-600">
+            <x-icon name="image" class="mb-3 h-9 w-9 text-amber-700" />
+            <span class="font-semibold text-stone-900">Choose a photo</span>
+            <span class="mt-1 text-sm text-stone-500">or drag and drop it here</span>
+            <input id="article-photo-file" data-media-file type="file" accept="image/jpeg,image/png,image/webp" class="sr-only">
+        </label>
+        <div class="flex min-h-44 items-center justify-center overflow-hidden rounded-2xl border border-stone-200 bg-white" data-media-preview-wrap>
+            @if(old('image', $revision?->image))
+                <img data-media-preview src="{{ old('image', $revision?->image) }}" alt="Current article cover preview" class="h-44 w-full object-cover">
+            @else
+                <div data-media-empty class="px-5 text-center text-sm text-stone-500">Your image preview will appear here.</div>
+                <img data-media-preview alt="Selected photo preview" class="hidden h-44 w-full object-cover">
+            @endif
+        </div>
+    </div>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        <div>
+            <label class="staff-label" for="image_alt">Describe the image</label>
+            <input class="staff-input" id="image_alt" name="image_alt" maxlength="300" placeholder="e.g. Elephants walking beside a swamp in Amboseli" value="{{ old('image_alt', $revision?->image_alt) }}" data-media-alt>
+            <p class="mt-1 text-xs text-stone-500">A natural description helps accessibility and image SEO.</p>
+        </div>
+        <div>
+            <label class="staff-label" for="media-credit">Photo credit (optional)</label>
+            <input class="staff-input" id="media-credit" data-media-credit maxlength="180" placeholder="Photographer or your organisation">
+        </div>
+    </div>
+    <div class="mt-4">
+        <label class="staff-label" for="media-caption">Caption (optional)</label>
+        <input class="staff-input" id="media-caption" data-media-caption maxlength="500" placeholder="Explain what the reader is seeing">
+    </div>
+    <label class="mt-4 flex items-start gap-2 rounded-xl bg-white px-3 py-3 text-sm text-stone-700">
+        <input data-media-rights type="checkbox" class="mt-1 accent-amber-600">
+        <span>I own this photo or have permission to publish it. I confirm it doesn't misrepresent the article or imply a person's endorsement.</span>
+    </label>
+    <div class="mt-4 flex flex-wrap gap-2">
+        <button type="button" data-media-as-cover class="staff-button" disabled>Set as cover</button>
+        <button type="button" data-media-insert class="staff-secondary" disabled>Insert into article</button>
+        <button type="button" data-media-clear class="staff-secondary" hidden>Choose another</button>
+    </div>
+    <p role="status" aria-live="polite" data-media-status class="mt-3 text-sm text-stone-600">Choose a file and confirm permission to upload it.</p>
+    <details class="mt-4 border-t border-stone-200 pt-3">
+        <summary class="cursor-pointer text-xs font-semibold text-stone-600">Advanced: use a licensed external image URL</summary>
+        <div class="mt-3">
+            <label class="staff-label" for="image">Cover image URL</label>
+            <input class="staff-input" id="image" name="image" type="url" placeholder="https://…" value="{{ old('image', $revision?->image) }}" data-media-url>
+            <p class="mt-1 text-xs text-stone-500">Use only images you have permission to publish. Uploading is recommended.</p>
+        </div>
+    </details>
+</section>
 <section class="rounded-xl border border-stone-200 p-4"><h2 class="font-bold">Search appearance & intent</h2><div class="mt-4 space-y-4">@foreach(['seo_title' => ['Search title override', 180], 'meta_description' => ['Search description override', 500], 'focus_keyword' => ['Research target query', 180]] as $field => [$label, $limit])<div><label class="staff-label" for="{{ $field }}">{{ $label }}</label><input class="staff-input" id="{{ $field }}" name="{{ $field }}" maxlength="{{ $limit }}" value="{{ old($field, $revision?->$field) }}" data-character-count><p class="mt-1 text-xs text-stone-500" data-count-for="{{ $field }}"></p></div>@endforeach</div><p class="mt-3 text-xs text-stone-500">Blank overrides use the article title and introduction. Target queries are editorial notes, not verified keyword metrics. Metadata remains private until approved publication.</p></section>
 <div><label class="staff-label" for="faqs_text">Reader FAQs</label><p id="faq-help" class="mb-2 text-xs leading-relaxed text-stone-500">Question on the first line, answer on the following lines. Separate each FAQ with a blank line. Up to 20 FAQs. These will be visible in the article and reflected in matching schema.</p><textarea class="staff-input" rows="8" id="faqs_text" name="faqs_text" aria-describedby="faq-help">{{ old('faqs_text', collect($revision?->faqs ?? [])->map(fn($faq) => $faq['question']."\n".$faq['answer'])->implode("\n\n")) }}</textarea></div>
 <fieldset class="rounded-xl border border-stone-200 p-4"><legend class="font-semibold">Editions</legend><input type="hidden" name="all_editions" value="0"><label class="mt-2 flex gap-2 text-sm"><input type="checkbox" name="all_editions" value="1" @checked(old('all_editions',$revision?->regions===null))>All current and future editions</label><p class="mt-2 text-xs text-stone-500">The global catalogue includes every published article. Select regional editions below only when not using all editions.</p><div class="mt-3 grid gap-2 sm:grid-cols-2">@foreach($editions as $code=>$edition)@if($code!=='global')<label class="flex gap-2 text-sm"><input type="checkbox" name="regions[]" value="{{ $code }}" @checked(in_array($code,old('regions',$revision?->regions ?? []),true))>{{ $edition['flag'] }} {{ $edition['name'] }}</label>@endif @endforeach</div></fieldset>
