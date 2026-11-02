@@ -15,8 +15,9 @@ RUN . /usr/local/lib/ar-build-network.sh \
     && sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list.d/debian.sources \
     && apt-get -o Acquire::https::CaInfo="$AR_BUILD_CA_FILE" update --error-on=any && apt-get -o Acquire::https::CaInfo="$AR_BUILD_CA_FILE" install -y --no-install-recommends \
     ca-certificates curl git gosu gettext-base nginx supervisor unzip \
-    libicu-dev libpq-dev libzip-dev \
-    && docker-php-ext-install -j"$(nproc)" intl pdo_mysql pdo_pgsql pcntl zip opcache \
+    libicu-dev libpq-dev libzip-dev libjpeg62-turbo-dev libpng-dev libwebp-dev \
+    && docker-php-ext-configure gd --with-jpeg --with-webp \
+    && docker-php-ext-install -j"$(nproc)" gd intl pdo_mysql pdo_pgsql pcntl zip opcache \
     && rm -rf /var/lib/apt/lists/* && rm -f /tmp/african-ranked-build-ca.crt
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 WORKDIR /app
