@@ -1,3 +1,4 @@
+import { ArticleGovernance } from '@/components/ArticleGovernance';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Clock, ArrowLeft, Share2, ChevronRight } from 'lucide-react';
@@ -111,8 +112,10 @@ export function ArticlePage({ region, article, onNavigate, breadcrumbs }: Articl
           className="mt-8 aspect-[16/9] w-full rounded-2xl object-cover"
         />
 
+        <ArticleGovernance cms={article.cms} section="before" />
         {/* Body */}
         <div className="mt-8 space-y-6">
+          <ArticleGovernance cms={article.cms} section="body" />
           {article.body.map((block, i) => {
             switch (block.type) {
               case 'heading':
@@ -163,6 +166,7 @@ export function ArticlePage({ region, article, onNavigate, breadcrumbs }: Articl
           })}
         </div>
 
+        <ArticleGovernance cms={article.cms} section="after" />
         {/* FAQ */}
         {article.faqs && article.faqs.length > 0 && (
           <section className="mt-12 rounded-2xl border border-stone-200 bg-stone-50 p-6 sm:p-8">
@@ -177,6 +181,8 @@ export function ArticlePage({ region, article, onNavigate, breadcrumbs }: Articl
             </div>
           </section>
         )}
+
+        <ArticleGovernance cms={article.cms} section="end" />
 
         {/* Back link */}
         <div className="mt-10">

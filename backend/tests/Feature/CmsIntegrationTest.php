@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Services\PublishingGate;
 use App\Services\SchemaBuilder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 class CmsIntegrationTest extends TestCase
@@ -175,6 +176,7 @@ class CmsIntegrationTest extends TestCase
         $response = $this->get('/articles/'.$a->slug)->assertOk();
         $response->assertSee('application/ld+json', false)->assertSee('ar-cms-data', false);
         $this->get('/authors/test-author')->assertOk();
+        $this->get('/authors/test-reviewer')->assertOk();
         $this->get('/e/test-entity')->assertOk();
     }
 
@@ -288,5 +290,47 @@ class CmsIntegrationTest extends TestCase
             unlink($dir.'/methodology.md');
             rmdir($dir);
         }
+    }
+
+    public function test_human_cli_requires_review_approval_and_separate_index_confirmation(): void
+    {
+        $a = $this->article();
+        $a->update(['status' => 'draft']);
+        $this->artisan('cms:article', ['id' => $a->id, 'action' => 'publish'])->assertFailed();
+        $this->artisan('cms:article', ['id' => $a->id, 'action' => 'review'])->assertSuccessful();
+        $this->artisan('cms:article', ['id' => $a->id, 'action' => 'approve'])
+            ->expectsConfirmation('Have you opened every cited source and resolved every verification flag?', 'yes')->assertSuccessful();
+        $this->artisan('cms:article', ['id' => $a->id, 'action' => 'publish'])->assertSuccessful();
+        $this->assertFalse($a->fresh()->indexable);
+        $this->artisan('cms:article', ['id' => $a->id, 'action' => 'index'])
+            ->expectsConfirmation('Has this published page passed the separate indexing audit?', 'yes')->assertSuccessful();
+        $this->assertTrue($a->fresh()->indexable);
+    }
+
+    public function test_session_authentication_cannot_act_as_an_agent_token(): void
+    {
+        $this->actingAs(User::factory()->create())->postJson('/api/agent/drafts', $this->payload())->assertForbidden();
+    }
+
+    public function test_core_and_token_migrations_can_be_reversed_without_touching_scaffold_tables(): void
+    {
+        foreach (['2026_11_02_000002_create_personal_access_tokens_table.php', '2026_11_02_000001_create_core_tables.php'] as $file) {
+            $migration = require database_path('migrations/'.$file);
+            $migration->down();
+            $this->assertTrue(Schema::hasTable('users'));
+            $migration->up();
+        }
+        $this->assertTrue(Schema::hasTable('articles'));
+        $this->assertTrue(Schema::hasTable('personal_access_tokens'));
+    }
+
+    public function test_placeholder_inside_markdown_link_is_not_hidden_from_the_gate(): void
+    {
+        $a = $this->article();
+        $a->body .= ' [unverified blank](https://example.test)';
+        // Ordinary linked words are valid; actual placeholders remain blocked.
+        $this->assertEmpty(app(PublishingGate::class)->evaluate($a));
+        $a->body .= ' [TBD](https://example.test)';
+        $this->assertStringContainsString('Placeholder text found', implode(' ', app(PublishingGate::class)->evaluate($a)));
     }
 }

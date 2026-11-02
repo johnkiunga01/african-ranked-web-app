@@ -32,6 +32,7 @@ export interface Category {
 }
 
 export interface Article {
+  cms?: import('@/lib/cms').CmsArticle;
   slug: string;
   title: string;
   excerpt: string;

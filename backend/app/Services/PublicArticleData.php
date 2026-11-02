@@ -36,6 +36,9 @@ class PublicArticleData
             'cms' => [
                 'indexable' => $article->status === ArticleStatus::Published && $article->indexable,
                 'canonical' => $article->canonicalUrl(),
+                'reviewer' => $article->reviewer ? ['name' => $article->reviewer->name, 'url' => $article->reviewer->url()] : null,
+                'publishedAt' => $article->published_at?->toDateString(),
+                'lastVerifiedAt' => $article->last_verified_at?->toDateString(),
                 'schema' => app(SchemaBuilder::class)->forArticle($article),
                 'bodyHtml' => Str::markdown($article->body ?? '', ['html_input' => 'strip', 'allow_unsafe_links' => false]),
                 'answerBlock' => $article->answer_block,

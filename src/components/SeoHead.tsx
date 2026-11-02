@@ -1,3 +1,4 @@
+import { getArticle } from '@/data/articles';
 import { useEffect } from 'react';
 import type { RegionCode } from '@/types';
 import {
@@ -65,6 +66,7 @@ const JSONLD_IDS = [
 
 export function SeoHead({ region, path, meta, schemas, ogType = 'website' }: SeoHeadProps) {
   useEffect(() => {
+    document.getElementById('ar-cms-schema')?.remove();
     document.title = meta.title;
 
     upsertMeta('name', 'description', meta.description);
@@ -86,8 +88,13 @@ export function SeoHead({ region, path, meta, schemas, ogType = 'website' }: Seo
     upsertMeta('name', 'twitter:image', meta.ogImage);
     upsertMeta('name', 'twitter:site', '@africanranked');
 
+    const slug = path.match(/\/articles\/([^/]+)/)?.[1];
+    const cms = slug ? getArticle(slug)?.cms : undefined;
+    if (cms) upsertMeta('name', 'robots', cms.indexable ? 'index, follow' : 'noindex, follow');
+    else document.head.querySelector('meta[name="robots"]')?.remove();
+
     // Canonical
-    upsertLink('canonical', buildCanonicalUrl(region, path));
+    upsertLink('canonical', cms?.canonical ?? buildCanonicalUrl(region, path));
 
     // Hreflang — clean old ones first, then insert fresh
     document.head
@@ -105,7 +112,8 @@ export function SeoHead({ region, path, meta, schemas, ogType = 'website' }: Seo
     // Schemas: remove all existing, then add new ones
     JSONLD_IDS.forEach(removeJsonLd);
     const activeIds = new Set<string>();
-    schemas.forEach((schema, i) => {
+    const pageSchemas = cms?.schema ? [cms.schema] : schemas;
+    pageSchemas.forEach((schema, i) => {
       const id = JSONLD_IDS[i];
       if (id) {
         upsertJsonLd(id, schema);

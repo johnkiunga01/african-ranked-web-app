@@ -1,3 +1,4 @@
+import { cmsBootstrap } from '@/lib/cms';
 import { useState, useEffect, useCallback } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -33,7 +34,7 @@ import {
 
 interface Route {
   region: RegionCode;
-  type: 'home' | 'category' | 'article' | 'strategy' | 'notfound';
+  type: 'home' | 'category' | 'article' | 'strategy' | 'editorial' | 'notfound';
   param?: string;
 }
 
@@ -44,6 +45,7 @@ function parsePath(pathname: string): Route {
     return { region: 'global', type: 'home' };
   }
 
+  if (cmsBootstrap()?.page) return { region: 'global', type: 'editorial' };
   const first = segments[0];
 
   if (isRegionCode(first)) {
@@ -97,6 +99,7 @@ export default function App() {
       // Only auto-navigate if user is on the root with no stored preference
       if (window.location.pathname === '/' && result.region !== 'global') {
         const newPath = regionPath(result.region) || '/';
+        if (cmsBootstrap()) { window.location.replace(newPath); return; }
         window.history.replaceState(null, '', newPath);
         setPath(newPath);
       }
@@ -110,6 +113,10 @@ export default function App() {
   }, [route.region]);
 
   const navigate = useCallback((newPath: string) => {
+    if (cmsBootstrap() && newPath !== window.location.pathname) {
+      window.location.assign(newPath);
+      return;
+    }
     window.history.pushState(null, '', newPath);
     setPath(newPath);
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -138,6 +145,10 @@ export default function App() {
       newPath = `${regionPath(newRegion)}/strategy`;
     } else {
       newPath = regionPath(newRegion) || '/';
+    }
+    if (cmsBootstrap() && newPath !== window.location.pathname) {
+      window.location.assign(newPath);
+      return;
     }
     window.history.pushState(null, '', newPath);
     setPath(newPath);
@@ -220,6 +231,9 @@ export default function App() {
     } else {
       content = <NotFoundPage onNavigate={navigate} />;
     }
+  } else if (route.type === 'editorial') {
+    meta = { ...meta, title: `${cmsBootstrap()?.page?.title ?? ''} | African Ranked`, description: '' };
+    content = <article dangerouslySetInnerHTML={{ __html: cmsBootstrap()?.page?.html ?? '' }} />;
   } else if (route.type === 'strategy') {
     meta = {
       title: `SEO & Domain Authority Strategy | African Ranked ${r.name}`,

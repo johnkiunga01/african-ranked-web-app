@@ -1,4 +1,5 @@
 import type { Article } from '@/types';
+import { cmsBootstrap } from '@/lib/cms';
 import { WILDLIFE_ARTICLES } from '@/data/articles-wildlife';
 import { WILDLIFE_GUIDE_ARTICLES } from '@/data/articles-wildlife-guides';
 
@@ -355,11 +356,14 @@ const PILLAR_ARTICLES: Article[] = [
   },
 ];
 
-export const ARTICLES: Article[] = [
+const LEGACY_ARTICLES: Article[] = [
   ...PILLAR_ARTICLES,
   ...WILDLIFE_ARTICLES,
   ...WILDLIFE_GUIDE_ARTICLES,
 ];
+
+// Laravel injects only publicly visible records. Static hosting keeps the original data.
+export const ARTICLES: Article[] = cmsBootstrap()?.articles ?? LEGACY_ARTICLES;
 
 export function getArticle(slug: string): Article | undefined {
   return ARTICLES.find((a) => a.slug === slug);

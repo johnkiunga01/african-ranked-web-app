@@ -31,7 +31,7 @@ class FrontendController extends Controller
         }
         if (($segments[0] ?? '') === 'authors' && isset($segments[1])) {
             $author = Author::where('slug', $segments[1])->firstOrFail();
-            abort_unless(Article::publiclyVisible()->where('author_id', $author->id)->exists(), 404);
+            abort_unless(Article::publiclyVisible()->where(fn ($q) => $q->where('author_id', $author->id)->orWhere('reviewer_id', $author->id))->exists(), 404);
             $page = ['title' => $author->name, 'html' => '<h1>'.e($author->name).'</h1><p>'.e($author->bio).'</p>'];
         }
         if (($segments[0] ?? '') === 'e' && isset($segments[1])) {
@@ -41,7 +41,7 @@ class FrontendController extends Controller
         }
         if (($segments[0] ?? '') === 'corrections') {
             $corrections = Correction::whereHas('article', fn ($q) => $q->publiclyVisible())->orderByDesc('corrected_at')->get();
-            $page = ['html' => '<ul>'.$corrections->map(fn ($c) => '<li><time>'.e($c->corrected_at->toDateString()).'</time> '.e($c->summary).'</li>')->implode('').'</ul>'];
+            $page = ['title' => 'Corrections', 'html' => '<ul>'.$corrections->map(fn ($c) => '<li><time>'.e($c->corrected_at->toDateString()).'</time> '.e($c->summary).'</li>')->implode('').'</ul>'];
         }
         $file = config('cms.frontend_dist').'/index.html';
         abort_unless(is_file($file), 503, 'Build the existing frontend with npm run build.');
