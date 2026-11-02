@@ -7,7 +7,7 @@
     <title>{{ $seo['title'] }}</title>
     <meta name="description" content="{{ $seo['description'] }}">
     <meta name="robots" content="{{ $seo['robots'] }}">
-    <meta name="theme-color" content="#1c1917">
+    <meta name="theme-color" content="#15191c">
     @if(!str_starts_with($seo['robots'], 'noindex'))<link rel="canonical" href="{{ $seo['canonical'] }}">@endif
     @foreach($seo['alternates'] as $alternate)
     <link rel="alternate" hreflang="{{ $alternate['locale'] }}" href="{{ $alternate['url'] }}">
@@ -39,9 +39,6 @@
 </head>
 <body class="min-h-screen bg-stone-50 font-sans text-stone-900 antialiased">
     <a href="#main-content" class="sr-only z-50 rounded bg-amber-400 p-3 font-semibold text-stone-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
-    @if(config('review.enabled'))
-    <aside class="bg-stone-950 px-4 py-2 text-center text-xs text-amber-200" aria-label="Review environment">Review version · Not indexed by search engines · Content under editorial review</aside>
-    @endif
     @include('partials.header')
     <main id="main-content" tabindex="-1">@yield('content')</main>
     @include('partials.footer')
