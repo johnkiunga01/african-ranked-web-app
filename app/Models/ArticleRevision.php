@@ -22,11 +22,20 @@ class ArticleRevision extends Model
 
     public function publicRecord(Article $article): array
     {
+        $mediaCredit = null;
+        $mediaSource = null;
+        if (preg_match('~/editorial-media/([a-f0-9-]{36})\\.webp$~', (string) $this->image, $match)) {
+            $asset = ArticleMediaAsset::find($match[1]);
+            $mediaCredit = $asset?->credit;
+        } elseif (str_contains((string) $this->image, '/editorial-art/')) {
+            $mediaCredit = 'African Ranked original illustration';
+        }
         return [
             'slug' => $article->slug, 'title' => $this->title, 'excerpt' => $this->excerpt,
             'category' => $this->category_slug, 'author' => $this->author_name, 'authorTitle' => $this->author_title,
             'datePublished' => $article->first_published_at->toIso8601String(), 'dateModified' => $this->published_at->toIso8601String(),
             'readTime' => $this->read_time, 'image' => $this->image, 'body' => $this->body,
+            'imageCredit' => $mediaCredit, 'imageSource' => $mediaSource,
             'seoTitle' => $this->seo_title, 'metaDescription' => $this->meta_description, 'imageAlt' => $this->image_alt,
             'faqs' => $this->faqs ?? [], 'regions' => $this->regions,
             'editorialEvidence' => $this->editorial_evidence,
