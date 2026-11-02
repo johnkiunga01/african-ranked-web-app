@@ -3,12 +3,14 @@
 use App\Http\Controllers\ContentPageController;
 use App\Http\Controllers\DiscoveryController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/sitemap.xml', [DiscoveryController::class, 'sitemap'])->name('sitemap');
 Route::get('/sitemaps/{region}.xml', [DiscoveryController::class, 'sitemap']);
 Route::get('/robots.txt', [DiscoveryController::class, 'robots']);
+Route::get('/editorial-media/{filename}', [ArticleMediaController::class, 'show'])->where('filename', '[a-f0-9-]{36}\\.webp')->name('editorial-media.show');
 Route::get('/feed.xml', [DiscoveryController::class, 'feed'])->name('feed');
 Route::get('/llms.txt', [DiscoveryController::class, 'llms']);
 Route::post('/newsletter', NewsletterController::class)->middleware('throttle:5,1')->name('newsletter');
