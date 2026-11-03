@@ -21,7 +21,7 @@
                 </form>
             </details>
             <details class="relative" data-region-menu>
-                <summary class="site-icon-button inline-flex cursor-pointer list-none items-center gap-1 px-2.5 text-xs font-semibold sm:text-sm" aria-label="Choose regional edition" title="Change edition"><span class="text-lg">{{ $region['flag'] }}</span><span class="hidden sm:inline">{{ $region['name'] }}</span><x-icon name="chevron-down" class="h-4 w-4" /></summary>
+                <summary class="site-icon-button inline-flex cursor-pointer list-none items-center gap-1 px-2.5 text-xs font-semibold sm:text-sm" aria-label="{{ $region['name'] }} edition, choose region" title="Change edition"><span class="text-lg">{{ $region['flag'] }}</span><span class="hidden sm:inline">{{ $region['name'] }}</span><x-icon name="chevron-down" class="h-4 w-4" /></summary>
                 <nav aria-label="Regional editions" class="absolute right-0 z-50 mt-3 max-h-[70vh] w-56 overflow-auto rounded-2xl border border-stone-200 bg-white p-2 text-stone-900 shadow-2xl">
                     @foreach($regions as $edition)
                         <a href="{{ $catalog->path($edition['code'], $pageSuffix) }}" class="block rounded-xl px-3 py-2.5 text-sm transition hover:bg-amber-50 {{ $edition['code'] === $region['code'] ? 'bg-amber-50 font-bold text-amber-800' : 'text-stone-700' }}" @if($edition['code'] === $region['code']) aria-current="page" @endif>{{ $edition['flag'] }} {{ $edition['name'] }}</a>
