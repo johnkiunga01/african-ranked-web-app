@@ -134,7 +134,7 @@
             </a>
         </article>
 
-        <aside aria-label="Explore more African Ranked content" class="min-w-0 space-y-5 lg:sticky lg:top-28">
+        <aside aria-label="Explore more African Ranked content" class="min-w-0 space-y-5 lg:sticky lg:top-28 lg:max-h-[calc(100dvh-8rem)] lg:overflow-y-auto lg:overscroll-contain lg:pr-1">
             @if($readingSections->isNotEmpty() || !empty($article['faqs']))
             <section class="ar-article-sidebar hidden lg:block" aria-labelledby="sidebar-contents-heading">
                 <h2 id="sidebar-contents-heading" class="border-b border-stone-100 px-5 py-4 text-sm font-extrabold text-stone-950">On this page</h2>
