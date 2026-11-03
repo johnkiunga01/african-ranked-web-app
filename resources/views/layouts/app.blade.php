@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $seo['title'] }}</title>
     <meta name="description" content="{{ $seo['description'] }}">
-    <meta name="robots" content="{{ $seo['robots'] }}">
+    <meta name="robots" content="{{ config('seo.preview') || config('review.enabled') ? 'noindex, nofollow, noarchive' : $seo['robots'] }}">
     <meta name="theme-color" content="#15191c">
     @if(!str_starts_with($seo['robots'], 'noindex'))<link rel="canonical" href="{{ $seo['canonical'] }}">@endif
     @foreach($seo['alternates'] as $alternate)
