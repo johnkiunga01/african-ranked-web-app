@@ -18,10 +18,10 @@ class PreviewTest extends TestCase
         $this->get('/does-not-exist')->assertNotFound()->assertHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');
     }
 
-    public function test_review_banner_is_visible_and_html_is_not_cached(): void
+    public function test_review_mode_keeps_private_headers_without_public_staging_banner(): void
     {
         config(['seo.preview' => true, 'review.enabled' => true]);
-        $response = $this->get('/')->assertOk()->assertSee('Review version');
+        $response = $this->get('/')->assertOk()->assertDontSee('Review version');
         $this->assertStringContainsString('no-store', $response->headers->get('Cache-Control'));
         $response->assertHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');
     }
