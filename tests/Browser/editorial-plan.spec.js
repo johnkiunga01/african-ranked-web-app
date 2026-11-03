@@ -11,7 +11,7 @@ test('publisher opens the plan and evidence editor while authors cannot access t
     await expect(page.getByRole('heading', { name: 'Editorial plan', exact: true })).toBeVisible();
     await expect(page.getByLabel('Import the master guide or team workbook')).toBeVisible();
     await page.getByRole('link', { name: 'Overview', exact: true }).click();
-    await page.getByRole('link', { name: 'Write an article', exact: true }).click();
+    await page.getByRole('link', { name: 'New article', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Answer and evidence', exact: true })).toBeVisible();
     await expect(page.getByLabel('Dated key facts (four to eight)', { exact: true })).toBeVisible();
     await expect(page.getByLabel('Cited sources (five or more)', { exact: true })).toBeVisible();

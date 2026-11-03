@@ -36,7 +36,7 @@ class LaunchHardeningTest extends TestCase
         $this->assertTrue(config('review.enabled'));
         $this->assertTrue(config('seo.preview'));
         $this->actingAs(User::factory()->create())->get('/staff/launch-readiness')->assertForbidden();
-        $this->actingAs(User::factory()->create(['role' => StaffRole::SuperAdmin]))->get('/staff/launch-readiness')->assertOk()->assertSee('Evidence that still needs review');
+        $this->actingAs(User::factory()->create(['role' => StaffRole::SuperAdmin]))->get('/staff/launch-readiness')->assertOk()->assertSee('Manual sign-offs');
     }
 
     public function test_production_rejects_unrecognized_host_before_password_reset_and_emits_hsts(): void
