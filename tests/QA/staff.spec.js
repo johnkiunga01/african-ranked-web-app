@@ -40,7 +40,7 @@ test('Staff mobile menu and accessible search',async({page})=>{
   await page.getByRole('button',{name:'Sign in',exact:true}).click();
   const menu=page.locator('.staff-mobile-nav');
   await expect(menu.locator(':scope > summary')).toBeVisible();
-  await menu.locator('summary').click();
+  await menu.locator(':scope > summary').click();
   await expect(menu).toHaveAttribute('open');
   await expect(menu.getByRole('link',{name:'Articles',exact:true})).toBeVisible();
   await menu.getByRole('link',{name:'Articles',exact:true}).click();
