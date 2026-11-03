@@ -207,3 +207,22 @@
 @media (prefers-reduced-motion: reduce) {
   .staff-metric:hover { transform: none; }
 }
+
+/* Dashboard usability: mobile overlay layering, keyboard visibility and hover-independent controls. */
+@media (max-width: 1023px) {
+  .staff-sidebar { position: relative; z-index: 50; }
+  .staff-mobile-nav[open] > summary { background: rgba(255,191,36,.14); border-color: #ffbf24; }
+}
+.staff-sidebar a:focus-visible,
+.staff-sidebar summary:focus-visible {
+  outline: 2px solid #ffbf24;
+  outline-offset: 3px;
+}
+.staff-metric:focus-visible,
+.staff-action-link:focus-visible,
+.staff-row-action:focus-visible { outline: 2px solid #b45309; outline-offset: 3px; }
+.staff-status-chip { white-space: nowrap; }
+@media (max-width: 639px) {
+  .staff-topbar form[role="search"] { flex-basis: 100%; }
+  .staff-metric-value { font-variant-numeric: tabular-nums; }
+}
