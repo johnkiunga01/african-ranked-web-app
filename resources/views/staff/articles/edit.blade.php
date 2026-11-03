@@ -7,7 +7,29 @@
 <div class="flex flex-wrap items-center justify-between gap-4"><div><a href="{{ route('staff.articles.index') }}" class="text-sm text-amber-800">← Articles</a><h1 class="mt-2 text-3xl font-bold">{{ $article ? 'Edit article' : 'New article' }}</h1></div>@if($article)<a href="{{ route('staff.articles.preview', $article) }}" class="staff-secondary">Preview draft</a>@endif</div>
 @if($article?->published_revision_id)<p class="mt-5 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-900">A version is live. Saving here creates a private draft revision; it will not replace the published article.</p>@endif
 @if($revision?->review_notes)<aside class="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4"><h2 class="text-sm font-bold text-amber-900">Review feedback</h2><p class="mt-2 whitespace-pre-line text-sm text-amber-950">{{ $revision->review_notes }}</p></aside>@endif
-<div class="sticky top-0 z-20 mt-5 flex flex-wrap items-center gap-3 rounded-xl border border-stone-200 bg-white/95 p-3 shadow-sm"><button class="staff-button" type="submit" form="article-editor">{{ $article ? 'Save new draft revision' : 'Create draft' }}</button>@if($article)@can('publish',$article)@if($revision->status->value!=='published')<a class="staff-button" href="{{ route('staff.articles.publish-form',$article) }}">{{ $article->published_revision_id?'Publish changes…':'Publish…' }}</a>@else<a class="staff-secondary" href="/articles/{{ $article->slug }}">View live article</a>@endif @endcan<a class="staff-secondary" href="{{ route('staff.articles.seo',$article) }}">SEO workspace</a><a class="text-sm text-amber-800" href="#ai-assistant">AI assistant</a><a class="text-sm text-amber-800" href="#editorial-evidence">Evidence</a><a class="text-sm text-amber-800" href="{{ route('staff.articles.promotion',$article) }}">Share article</a>@endif</div>
+<div class="sticky top-[68px] z-20 mt-5 flex flex-wrap items-center gap-2 rounded-2xl border border-stone-200 bg-white/95 p-3 shadow-sm backdrop-blur-lg">
+    <button class="staff-button min-h-11" type="submit" form="article-editor">{{ $article ? 'Save private draft' : 'Create draft' }}</button>
+    @if($article)
+        <a class="staff-secondary min-h-11" href="{{ route('staff.articles.preview', $article) }}">Preview</a>
+        @can('publish', $article)
+            @if($revision->status->value !== 'published')
+                <a class="staff-secondary min-h-11" href="{{ route('staff.articles.publish-form', $article) }}">{{ $article->published_revision_id ? 'Review changes' : 'Review & publish' }}</a>
+            @else
+                <a class="staff-secondary min-h-11" href="/articles/{{ $article->slug }}">View published</a>
+            @endif
+        @endcan
+        <details class="relative ml-auto">
+            <summary class="inline-flex min-h-11 cursor-pointer items-center gap-1 rounded-xl px-3 text-sm font-bold text-stone-600 hover:bg-amber-50 hover:text-stone-950">More <x-icon name="chevron-down" class="h-4 w-4" /></summary>
+            <nav aria-label="Article editing tools" class="absolute right-0 z-30 mt-2 w-56 space-y-1 rounded-2xl border border-stone-200 bg-white p-2 shadow-xl">
+                <a class="block rounded-xl px-3 py-2 text-sm font-semibold text-stone-700 hover:bg-amber-50" href="{{ route('staff.articles.seo', $article) }}">SEO tools</a>
+                <a class="block rounded-xl px-3 py-2 text-sm font-semibold text-stone-700 hover:bg-amber-50" href="#ai-assistant">Writing assistant</a>
+                <a class="block rounded-xl px-3 py-2 text-sm font-semibold text-stone-700 hover:bg-amber-50" href="#editorial-evidence">Editorial evidence</a>
+                <a class="block rounded-xl px-3 py-2 text-sm font-semibold text-stone-700 hover:bg-amber-50" href="{{ route('staff.articles.promotion', $article) }}">Promotion tools</a>
+            </nav>
+        </details>
+    @endif
+</div>
+
 <div class="mt-7 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
 <form id="article-editor" data-article-editor data-media-upload-url="{{ route('staff.articles.media.upload') }}" data-article-id="{{ $article?->id }}" class="staff-panel space-y-5" method="POST" action="{{ $article ? route('staff.articles.update', $article) : route('staff.articles.store') }}">@csrf @if($article)@method('PUT')<input name="revision_id" type="hidden" value="{{ old('revision_id', $revision?->id) }}">@endif
 <div><label class="staff-label" for="title">Article title</label><input class="staff-input" id="title" name="title" required maxlength="180" value="{{ old('title', $revision?->title) }}"></div>
