@@ -226,3 +226,15 @@
   .staff-topbar form[role="search"] { flex-basis: 100%; }
   .staff-metric-value { font-variant-numeric: tabular-nums; }
 }
+
+/* WCAG reading and section-navigation fixes from measured browser QA. */
+@layer components {
+  .ar-article-prose, .ar-article-prose p, .ar-article-prose li,
+  .ar-article-prose a, .ar-article-sidebar,
+  article[aria-labelledby] section, .ar-article-prose + section {
+    overflow-wrap: anywhere;
+  }
+  .site-nav-link:hover, .site-nav-link[aria-current="page"] { color: #92400e; }
+  .home-site-header .site-nav-link:hover,
+  .home-site-header .site-nav-link[aria-current="page"] { color: var(--ar-gold); }
+}
