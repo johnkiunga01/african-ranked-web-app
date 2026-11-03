@@ -71,6 +71,35 @@ document.addEventListener('click', (event) => {
     });
 });
 
+// Article reading guide: keep the active section visible without blocking reading.
+const articleContentsNav = document.querySelector('nav[aria-label="Article section navigation"]');
+if (articleContentsNav && 'IntersectionObserver' in window) {
+    const links = [...articleContentsNav.querySelectorAll('a[href^="#"]')];
+    const targets = links.map((link) => ({
+        link,
+        heading: document.getElementById(link.getAttribute('href').slice(1)),
+    })).filter((entry) => entry.heading);
+    const activate = (id) => {
+        targets.forEach(({ link, heading }) => {
+            if (heading.id === id) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+        });
+    };
+    const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length) activate(visible[0].target.id);
+    }, { rootMargin: '-112px 0px -68% 0px', threshold: 0 });
+    targets.forEach(({ heading }) => observer.observe(heading));
+    targets.forEach(({ link, heading }) => link.addEventListener('click', () => activate(heading.id)));
+}
+document.querySelectorAll('[data-mobile-toc] a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', () => {
+        const parent = link.closest('details');
+        if (parent) parent.open = false;
+    });
+});
+
 const shareButton = document.querySelector('[data-share]');
 shareButton?.addEventListener('click', async () => {
     const url = document.querySelector('link[rel="canonical"]')?.href || window.location.href;
