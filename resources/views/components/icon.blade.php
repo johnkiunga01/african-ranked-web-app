@@ -13,6 +13,14 @@
 @case('layout-grid')<rect x="3" y="3" width="7" height="7" rx="1.3"/><rect x="14" y="3" width="7" height="7" rx="1.3"/><rect x="3" y="14" width="7" height="7" rx="1.3"/><rect x="14" y="14" width="7" height="7" rx="1.3"/>@break
 @case('chart-no-axes-column-increasing')<path d="M4 20V13h3v7M10.5 20V9h3v11M17 20V4h3v16"/>@break
 @case('image')<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>@break
+@case('plus')<path d="M12 5v14M5 12h14"/>@break
+@case('book-open')<path d="M12 7c-2-2-5-3-9-3v15c4 0 7 1 9 3 2-2 5-3 9-3V4c-4 0-7 1-9 3Zm0 0v15"/>@break
+@case('check-circle')<circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/>@break
+@case('calendar-days')<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 15h2M14 15h2"/>@break
+@case('monitor')<rect x="2" y="3" width="20" height="15" rx="2"/><path d="M8 22h8M12 18v4"/>@break
+@case('files')<path d="M6 4H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2M8 2h9l5 5v8a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path d="M17 2v5h5"/>@break
+@case('settings')<circle cx="12" cy="12" r="3"/><path d="M10 2h4l1 2.5 2 1 2.5-.8 2 3.5-2 2v2l2 2-2 3.5-2.5-.8-2 1L14 22h-4l-1-2.5-2-1-2.5.8-2-3.5 2-2v-2l-2-2 2-3.5 2.5.8 2-1Z"/>@break
+@case('shield-check')<path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/>@break
 @case('clock')<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>@break
 @case('compass')<circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5Z"/>@break
 @case('mail')<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/>@break
