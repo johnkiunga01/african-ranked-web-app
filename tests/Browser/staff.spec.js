@@ -88,6 +88,7 @@ test('administrator invites an author who sets a password; new account cannot ma
     try {
         const admin = await adminContext.newPage();
         await signIn(admin, 'admin@browser.example.test');
+        await admin.locator('.staff-more-tools > summary').click();
         await admin.getByRole('link', { name: 'Team', exact: true }).click();
         await admin.getByLabel('Author name', { exact: true }).fill('Invited Browser Author');
         await admin.getByLabel('Author email', { exact: true }).fill('invited@browser.example.test');

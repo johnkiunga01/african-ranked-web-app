@@ -26,9 +26,9 @@ class ArticleRecommendationController extends Controller
     {
         abort_unless((int) $recommendation->article_id === (int) $article->id, 404);
         Gate::authorize('view', $article);
-        $stale = (int) $article->current_revision_id !== (int) $recommendation->source_revision_id && $recommendation->status !== 'accepted';
+        $stale = false;
         if (in_array($recommendation->status, ['queued', 'researching', 'writing', 'ready'], true)) {
-            $stale = $stale || (int) ($recommendation->payload['owner_id'] ?? 0) !== (int) $article->user_id
+            $stale = (int) $article->current_revision_id !== (int) $recommendation->source_revision_id || (int) ($recommendation->payload['owner_id'] ?? 0) !== (int) $article->user_id
                 || ($recommendation->payload['guidelines_fingerprint'] ?? '') !== app(RecommendationGuidelines::class)->fingerprint($article);
         }
         $status = $stale ? 'stale' : $recommendation->status;

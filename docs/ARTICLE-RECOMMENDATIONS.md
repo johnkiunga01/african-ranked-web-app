@@ -10,4 +10,4 @@ The queue reserves the existing AI allowance, deduplicates requests per saved re
 
 No database migration or new service is required. Web and queue workers must run the same release. Provider credentials remain server-side. Browser fixtures run only in the existing guarded disposable test database.
 
-Validation: 154 backend tests passed locally, including 22 recommendation tests. JavaScript syntax and production build passed. The focused browser test covers original comparison, mobile overflow and author acceptance. The full inherited browser suite has unrelated interface-selector failures and is not green; see pull request validation notes before release.
+Validation: 161 backend tests passed locally, including 22 recommendation tests. JavaScript syntax and production build passed. The focused browser test covers original comparison, mobile overflow and author acceptance. The full inherited browser suite has unrelated interface-selector failures and is not green; see pull request validation notes before release.
