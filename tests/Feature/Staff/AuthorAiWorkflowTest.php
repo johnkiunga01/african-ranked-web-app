@@ -51,7 +51,7 @@ class AuthorAiWorkflowTest extends TestCase
         $this->assertDatabaseHas('article_generations', ['revision_id' => $sourceId, 'model' => 'test-model', 'status' => 'completed']);
         Http::assertSentCount(1);
         Http::assertSent(fn ($request) => str_starts_with($request->url(), 'https://generativelanguage.googleapis.com/') && $request['generationConfig']['maxOutputTokens'] === 8192);
-        $this->get('/staff/articles/'.$article->id.'/edit')->assertOk()->assertSee('Google Gemini')->assertDontSee('synthetic-private-gemini-key');
+        $this->get('/staff/articles/'.$article->id.'/edit')->assertOk()->assertSee('Improve article')->assertDontSee('Drafting provider')->assertDontSee('synthetic-private-gemini-key');
         $this->get('/articles/'.$article->slug)->assertNotFound();
         $this->actingAs(User::factory()->create())->withSession(['auth.password_confirmed_at' => time()])->post('/staff/articles/'.$article->id.'/curate', $this->input($article))->assertForbidden();
         Http::assertSentCount(1);

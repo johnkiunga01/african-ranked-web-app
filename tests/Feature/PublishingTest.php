@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Services\SiteSettings;
 use App\Support\Catalog;
 use DOMDocument;
 use DOMXPath;
@@ -21,12 +22,14 @@ class PublishingTest extends TestCase
     {
         $catalog = app(Catalog::class);
         foreach ($catalog->regions() as $region) {
-            $response = $this->get($catalog->path($region['code']))->assertOk()->assertSee('The best of Africa,', false)->assertSee($region['tagline']);
+            $response = $this->get($catalog->path($region['code']))->assertOk()->assertSee(app(SiteSettings::class)->snapshot('homepage')['value']['hero_title'], false);
             $xpath = $this->document($response->getContent());
             $this->assertSame(1, $xpath->query('//h1')->length);
             $this->assertSame(9, $xpath->query('//link[@rel="alternate"][@hreflang]')->length);
             $this->assertSame($catalog->url($catalog->path($region['code'])), $xpath->evaluate('string(//link[@rel="canonical"]/@href)'));
-            $this->assertSame(6, $xpath->query('//section[@id="categories"]//a')->length);
+            foreach ($catalog->categories() as $category) {
+                $this->assertGreaterThan(0, $xpath->query("//a[contains(@href, '/categories/".$category['slug']."')]")->length);
+            }
         }
     }
 

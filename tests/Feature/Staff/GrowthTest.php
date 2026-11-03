@@ -28,8 +28,8 @@ class GrowthTest extends TestCase
     public function test_admin_pages_explain_measurement_and_sample_content_without_invented_metrics(): void
     {
         $this->actingAs(User::factory()->create(['role' => StaffRole::SuperAdmin]));
-        $this->get('/staff')->assertOk()->assertSee('Preview samples')->assertSee('Build the publication.');
-        $this->get('/staff/growth/seo')->assertOk()->assertSee('No CMS articles yet');
+        $this->get('/staff')->assertOk()->assertSee('Your publication, at a glance.')->assertDontSee('Preview samples');
+        $this->get('/staff/growth/seo')->assertOk()->assertSee('No articles in the editorial workspace yet.');
         $this->get('/staff/growth/analytics')->assertOk()->assertSee('Not connected');
         $this->get('/staff/growth/revenue')->assertOk()->assertSee('No revenue source connected');
         $this->get('/staff/growth/integrations')->assertOk()->assertSee('Planning record');

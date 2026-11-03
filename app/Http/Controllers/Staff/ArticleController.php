@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Staff;
 use App\Enums\RevisionStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\ArticleRecommendation;
 use App\Models\ArticleRevision;
 use App\Models\ArticleSeoBatch;
 use App\Models\AuditEvent;
 use App\Models\User;
-use App\Services\ArticleSeoAnalysis;
 use App\Services\ArticleImageReuseGuard;
+use App\Services\ArticleRecommendations;
+use App\Services\ArticleSeoAnalysis;
 use App\Services\EditorialEvidence;
 use App\Services\EditorialWorkflow;
 use App\Services\SeedArticleImporter;
@@ -166,6 +168,7 @@ class ArticleController extends Controller
     private function validated(Request $request, ?Article $article = null): array
     {
         $data = $request->validate([
+            'next_step' => ['sometimes', 'in:recommend'],
             'slug' => $article ? ['exclude'] : ['required', 'string', 'max:180', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/', Rule::unique('articles', 'slug')],
             'title' => ['required', 'string', 'max:180'], 'excerpt' => ['required', 'string', 'max:500'],
             'category_slug' => ['required', Rule::in(app(Catalog::class)->categories()->pluck('slug')->all())],
@@ -192,6 +195,7 @@ class ArticleController extends Controller
         }
 
         app(ArticleImageReuseGuard::class)->assertNoNewCrossArticleDuplicates($data, $article);
+
         return $data;
     }
 
@@ -199,6 +203,10 @@ class ArticleController extends Controller
     {
         Gate::authorize('create', Article::class);
         $article = $workflow->save($request->user(), $this->validated($request));
+
+        if ($request->input('next_step') === 'recommend') {
+            return $this->recommendSaved($request, $article);
+        }
 
         return redirect()->route('staff.articles.edit', $article)->with('status', 'Draft created. It is private until reviewed and published.');
     }
@@ -210,15 +218,29 @@ class ArticleController extends Controller
             return redirect()->route('staff.articles.index', ['tab' => 'trash'])->with('status', 'Restore this article before editing.');
         }
 
-        return view('staff.articles.edit', ['article' => $article, 'revision' => $article->currentRevision, 'history' => $article->revisions()->select(['id', 'article_id', 'number', 'status', 'created_at'])->paginate(15, ['*'], 'history_page'), 'analysis' => app(ArticleSeoAnalysis::class)->analyze($article, $article->currentRevision), 'categories' => $catalog->categories(), 'editions' => $catalog->regions(), 'owners' => auth()->user()->isSuperAdmin() ? User::where('is_active', true)->whereNotNull('email_verified_at')->orderBy('name')->get() : collect()]);
+        return view('staff.articles.edit', ['article' => $article, 'revision' => $article->currentRevision, 'history' => $article->revisions()->select(['id', 'article_id', 'number', 'status', 'created_at'])->paginate(15, ['*'], 'history_page'), 'recommendation' => ArticleRecommendation::where('article_id', $article->id)->where('source_revision_id', $article->current_revision_id)->latest('id')->first(), 'analysis' => app(ArticleSeoAnalysis::class)->analyze($article, $article->currentRevision), 'categories' => $catalog->categories(), 'editions' => $catalog->regions(), 'owners' => auth()->user()->isSuperAdmin() ? User::where('is_active', true)->whereNotNull('email_verified_at')->orderBy('name')->get() : collect()]);
     }
 
     public function update(Request $request, Article $article, EditorialWorkflow $workflow)
     {
         Gate::authorize('update', $article);
-        $workflow->save($request->user(), $this->validated($request, $article), $article);
+        $saved = $workflow->save($request->user(), $this->validated($request, $article), $article);
+        if ($request->input('next_step') === 'recommend') {
+            return $this->recommendSaved($request, $saved);
+        }
 
-        return back()->with('status', 'New draft revision saved. Any published version stays unchanged.');
+        return redirect()->route('staff.articles.edit', $saved)->with('status', 'Article saved. Your live version stays unchanged.');
+    }
+
+    private function recommendSaved(Request $request, Article $article)
+    {
+        try {
+            $suggestion = app(ArticleRecommendations::class)->request($request->user(), $article, (int) $article->current_revision_id);
+
+            return redirect()->route('staff.recommendations.show', [$article, $suggestion]);
+        } catch (ValidationException $exception) {
+            return redirect()->route('staff.articles.edit', $article)->withErrors($exception->errors())->with('status', 'Your article is saved. The suggestion could not start yet.');
+        }
     }
 
     public function preview(Article $article)

@@ -42,6 +42,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         expect(forged.status()).toBe(403);
         await signIn(other, 'other@browser.example.test');
         expect((await otherContext.request.get(`/staff/articles/${id}/edit`)).status()).toBe(403);
+        if (!(await author.locator('#publishing-options').getAttribute('open') !== null)) await author.locator('#publishing-options > summary').click();
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
         await expect(author.getByRole('status')).toContainText('submitted for review');
         await signIn(admin, 'admin@browser.example.test');
@@ -52,7 +53,8 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await expect(author.getByText('Add the missing practical checklist detail.', { exact: true })).toBeVisible();
         await author.getByLabel('Article body', { exact: true }).fill(publicationBody('Fixture content revised for testing.\n\n## Before you go\n\n- Confirm your research\n- Review your sources\n- Check completeness'));
         await publicationEvidence(author);
-        await author.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
+        await author.getByRole('button', { name: 'Save article', exact: true }).click();
+        if (!(await author.locator('#publishing-options').getAttribute('open') !== null)) await author.locator('#publishing-options > summary').click();
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
         await admin.reload();
         for (const label of ['Facts and sources verified', 'Content and promised ranking complete', 'Author and attribution confirmed', 'Image permission confirmed']) {
@@ -66,7 +68,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await author.reload();
         await author.getByLabel('Article title', { exact: true }).fill('Private unpublished replacement title');
         await publicationEvidence(author);
-        await author.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
+        await author.getByRole('button', { name: 'Save article', exact: true }).click();
         const unchanged = await request.get('/articles/browser-reviewed-safari-checklist');
         expect(await unchanged.text()).toContain('Browser-reviewed safari planning checklist');
         expect(await unchanged.text()).not.toContain('Private unpublished replacement title');
@@ -170,6 +172,7 @@ test('editor manages SEO fields and FAQs, analyzes saved content and restores hi
     await page.getByLabel('Article body', { exact: true }).fill('## 1. One supported fixture entry\n\nA clear answer for a fixture reader.\n\n[Related reading](/articles/missing-fixture-target)');
     await page.getByLabel('Hero image URL', { exact: true }).fill('https://example.test/fixture.jpg');
     await page.getByLabel('Hero image description', { exact: true }).fill('Fixture image only');
+    await page.getByText('Adjust search appearance (optional)', { exact: true }).click();
     await page.getByLabel('Search title override', { exact: true }).fill('Fixture search title');
     await page.getByLabel('Search description override', { exact: true }).fill('Fixture search description.');
     await page.getByLabel('Research target query', { exact: true }).fill('fixture planning checks');
@@ -186,7 +189,7 @@ test('editor manages SEO fields and FAQs, analyzes saved content and restores hi
     await page.screenshot({ path: 'artifacts/design/07-article-seo.png', fullPage: true });
     await page.goto(editUrl);
     await page.getByLabel('Article title', { exact: true }).fill('A newer working fixture title');
-    await page.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
+    await page.getByRole('button', { name: 'Save article', exact: true }).click();
     await page.getByRole('link', { name: 'Compare / restore', exact: true }).last().click();
     await expect(page.getByRole('heading', { name: 'Compare revisions', exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Restore as new private draft', exact: true }).click();

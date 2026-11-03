@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Staff\ArticleController;
-use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\Staff\ArticleCurationController;
+use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\Staff\ArticleOperationsController;
+use App\Http\Controllers\Staff\ArticleRecommendationController;
 use App\Http\Controllers\Staff\ArticleToolsController;
 use App\Http\Controllers\Staff\AuthController;
 use App\Http\Controllers\Staff\BulkArticleController;
@@ -97,6 +98,11 @@ Route::prefix('staff')->name('staff.')->group(function () {
         Route::get('articles/{article}/revisions/{revision}', [ArticleToolsController::class, 'revision'])->name('articles.revision');
         Route::post('articles/{article}/revisions/{revision}/restore', [ArticleToolsController::class, 'restore'])->name('articles.restore');
         Route::post('article-media', [ArticleMediaController::class, 'store'])->middleware('throttle:30,1')->name('articles.media.upload');
+        Route::post('articles/{article}/suggestions', [ArticleRecommendationController::class, 'store'])->middleware('throttle:2,1')->name('recommendations.store');
+        Route::get('articles/{article}/suggestions/{recommendation}', [ArticleRecommendationController::class, 'show'])->name('recommendations.show');
+        Route::post('articles/{article}/suggestions/{recommendation}/accept', [ArticleRecommendationController::class, 'accept'])->middleware('throttle:6,1')->name('recommendations.accept');
+        Route::post('articles/{article}/suggestions/{recommendation}/draft', [ArticleRecommendationController::class, 'saveDraft'])->middleware('throttle:6,1')->name('recommendations.draft');
+        Route::post('articles/{article}/suggestions/{recommendation}/discard', [ArticleRecommendationController::class, 'discard'])->name('recommendations.discard');
         Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
         Route::post('article-imports/{slug}', [ArticleController::class, 'import'])->middleware('can:manage-staff')->name('articles.import');
         Route::patch('article-assignments/{article}', [ArticleController::class, 'assign'])->middleware('can:manage-staff')->name('articles.assign');

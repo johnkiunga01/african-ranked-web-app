@@ -48,6 +48,18 @@ class ArticlePolicy
         return $this->view($user, $article) && (bool) $article->trashed_at;
     }
 
+    // Explicit owner decision: authors may accept a generated suggestion for their own article.
+    // This does not grant general publication rights or access to another author's article.
+    public function recommend(User $user, Article $article): bool
+    {
+        return $this->update($user, $article);
+    }
+
+    public function acceptRecommendation(User $user, Article $article): bool
+    {
+        return $this->update($user, $article);
+    }
+
     public function curate(User $user, Article $article): bool
     {
         return $this->update($user, $article) && ($user->isSuperAdmin() || app(SiteSettings::class)->snapshot('general')['value']['author_ai_enabled']);

@@ -30,7 +30,7 @@ class AuthenticationTest extends TestCase
         $user = User::factory()->create(['password' => 'TestAccountPassword123']);
         $this->post('/staff/login', ['email' => strtoupper($user->email), 'password' => 'TestAccountPassword123'])->assertRedirect('/staff');
         $this->assertAuthenticatedAs($user);
-        $this->get('/staff')->assertOk()->assertHeader('X-Robots-Tag', 'noindex, nofollow, noarchive')->assertSee('Your writing desk');
+        $this->get('/staff')->assertOk()->assertHeader('X-Robots-Tag', 'noindex, nofollow, noarchive')->assertSee('Recently updated');
         $this->post('/staff/logout')->assertRedirect('/staff/login');
         $this->assertGuest();
     }
