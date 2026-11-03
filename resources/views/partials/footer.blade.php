@@ -2,7 +2,7 @@
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <div class="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
             <div class="col-span-2">
-                <a href="{{ $basePath ?: '/' }}" class="inline-flex items-center gap-2 text-lg font-bold text-white"><img src="/africa-mark.svg" width="30" height="37" alt="" class="h-9 w-8">{{ $site['name'] ?? 'African Ranked' }}</a>
+                <a href="{{ $basePath ?: '/' }}" class="inline-flex items-center gap-2 text-lg font-bold text-white"><img src="/africa-mark.svg?v=dotted-20261103" width="353" height="372" alt="" class="h-9 w-auto object-contain">{{ $site['name'] ?? 'African Ranked' }}</a>
                 <p class="mt-4 max-w-xs text-sm leading-relaxed">{{ $site['description'] ?? 'Discover Africa through original editorial stories, researched rankings and practical guides.' }}</p>
             </div>
             <div><h2 class="text-sm font-semibold uppercase tracking-wider text-white">Categories</h2><ul class="mt-4 space-y-2 text-sm">@foreach($categories as $footerCategory)<li><a href="{{ $basePath }}/categories/{{ $footerCategory['slug'] }}" class="hover:text-amber-500">{{ $footerCategory['name'] }}</a></li>@endforeach</ul></div>
