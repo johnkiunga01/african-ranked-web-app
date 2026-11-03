@@ -43,7 +43,7 @@
     </aside>
     <div class="staff-workspace min-w-0">
         <header class="staff-topbar">
-            <form action="{{ route('staff.articles.index') }}" method="GET" role="search" class="min-w-0 flex-1 sm:max-w-[440px]">
+            <form action="{{ route('staff.articles.index') }}" method="GET" role="search" class="w-full min-w-0 sm:w-auto sm:max-w-[440px] sm:flex-1">
                 <label for="workspace-search" class="sr-only">Search article titles and content</label>
                 <div class="flex min-h-11 items-center gap-2 rounded-xl border border-stone-200 bg-[#f7f8fa] px-3 transition focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-100">
                     <x-icon name="search" class="h-4 w-4 shrink-0 text-stone-500" />
@@ -51,7 +51,7 @@
                     <button type="submit" class="text-xs font-bold text-amber-800 hover:underline">Search</button>
                 </div>
             </form>
-            <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+            <div class="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
                 <a href="/" target="_blank" rel="noopener noreferrer" class="staff-website-link inline-flex min-h-11 items-center gap-1.5 rounded-xl px-3 text-sm font-bold text-stone-700 transition hover:bg-stone-100 hover:text-amber-800">
                     <span class="hidden sm:inline">View website</span><span class="sm:hidden">Site</span><x-icon name="arrow-up-right" class="h-4 w-4" />
                 </a>
