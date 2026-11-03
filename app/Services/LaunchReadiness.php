@@ -31,12 +31,12 @@ class LaunchReadiness
         $host = parse_url(config('app.url'), PHP_URL_HOST) ?: '';
         $key = config('app.key');
         $decodedKey = str_starts_with($key ?? '', 'base64:') ? base64_decode(substr($key, 7), true) : $key;
-        $add('Production environment', app()->environment('production'), 'Run against the intended production configuration, not the isolated review instance.');
+        $add('Production environment', app()->environment('production'), 'The app runtime must use the approved production profile, not simply a Railway production environment label. Verify APP_ENV before disabling preview protections.');
         $add('Required runtime extensions', extension_loaded('xmlwriter') && extension_loaded('pdo') && extension_loaded('mbstring'), 'QR generation, database access and Unicode editorial processing require XMLWriter, PDO and mbstring.');
         $add('Debug output disabled', ! config('app.debug'), 'Production must not display stack traces or configuration values.');
         $add('Application encryption key', is_string($decodedKey) && strlen($decodedKey) === 32, 'A stable 256-bit application key is required; its value is never displayed.');
-        $add('Permanent HTTPS origin', str_starts_with(config('app.url'), 'https://') && filter_var('https://'.$host, FILTER_VALIDATE_URL) && ! in_array($host, ['localhost', '127.0.0.1', '::1'], true) && ! preg_match('/(?:tunnelmole\.net|trycloudflare\.com|\.up\.railway\.app|\.onrender\.com|\.test)$/i', $host), 'Use the owned production domain, not a temporary tunnel or test host.');
-        $add('Preview isolation disabled for production', ! config('review.enabled') && ! config('seo.preview'), 'Do not change the active review instance; production must intentionally use its own configuration.');
+        $add('Approved HTTPS production origin', str_starts_with(config('app.url'), 'https://') && filter_var('https://'.$host, FILTER_VALIDATE_URL) && ! in_array($host, ['localhost', '127.0.0.1', '::1'], true) && ! preg_match('/(?:tunnelmole\.net|trycloudflare\.com|\.onrender\.com|\.test)$/i', $host), 'The Railway-managed HTTPS domain is approved for current production hosting; a custom domain is optional and can be added later.');
+        $add('Preview isolation disabled for production', ! config('review.enabled') && ! config('seo.preview'), 'Preview/noindex protection remains active until editorial, legal and operational release sign-offs are complete. A custom domain is not required.');
         $add('Secure session cookie', config('session.secure') && config('session.http_only') && config('session.same_site') === 'lax', 'Require HTTPS-only, HttpOnly cookies with SameSite=Lax.');
         $add('Session payload encryption', config('session.encrypt'), 'Encrypt persisted session payloads as well as cookies.');
         $add('Admin MFA enforcement', config('security.require_admin_two_factor'), 'Require super-admin enrollment before protected workspace access.');
