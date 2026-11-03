@@ -142,7 +142,7 @@
     @apply sticky top-0 z-30 flex flex-wrap items-center justify-between gap-3 border-b border-stone-200 bg-white/95 px-4 py-3 backdrop-blur-xl sm:flex-nowrap sm:px-7 lg:px-9;
   }
   .staff-nav-heading {
-    @apply mb-2 px-3 text-[10px] font-extrabold uppercase tracking-[.18em] text-stone-500;
+    @apply mb-2 px-3 text-[10px] font-extrabold uppercase tracking-[.18em] text-stone-400;
   }
   .staff-nav-link {
     @apply my-1 flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-stone-300 transition-colors hover:bg-white/10 hover:text-white;
@@ -225,4 +225,16 @@
 @media (max-width: 639px) {
   .staff-topbar form[role="search"] { flex-basis: 100%; }
   .staff-metric-value { font-variant-numeric: tabular-nums; }
+}
+
+/* WCAG reading and section-navigation fixes from measured browser QA. */
+@layer components {
+  .ar-article-prose, .ar-article-prose p, .ar-article-prose li,
+  .ar-article-prose a, .ar-article-sidebar,
+  article[aria-labelledby] section, .ar-article-prose + section {
+    overflow-wrap: anywhere;
+  }
+  .site-nav-link:hover, .site-nav-link[aria-current="page"] { color: #92400e; }
+  .home-site-header .site-nav-link:hover,
+  .home-site-header .site-nav-link[aria-current="page"] { color: var(--ar-gold); }
 }

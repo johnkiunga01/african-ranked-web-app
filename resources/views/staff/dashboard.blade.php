@@ -23,7 +23,7 @@
     <section aria-labelledby="performance-heading">
         <div class="mb-4 flex items-center justify-between gap-3">
             <h2 id="performance-heading" class="text-lg font-extrabold tracking-tight text-stone-900">Editorial overview</h2>
-            <span class="text-xs text-stone-500">Current CMS records</span>
+            <span class="text-xs text-stone-600">Current CMS records</span>
         </div>
         <div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             <a href="{{ route('staff.articles.index', ['tab' => 'all']) }}" class="staff-metric group">

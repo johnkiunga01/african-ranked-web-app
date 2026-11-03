@@ -1,0 +1,82 @@
+name: Browser and accessibility QA
+
+on:
+  pull_request:
+    paths:
+      - "tests/QA/**"
+      - "playwright.qa.config.js"
+      - "resources/views/layouts/app.blade.php"
+      - ".github/workflows/qa-accessibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qa-accessibility-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  public-pages:
+    name: Live public responsive WCAG
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    env:
+      QA_TARGET_URL: https://african-ranked-web-app-production.up.railway.app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install browser testing tools
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false axe-core
+          npx playwright install --with-deps chromium
+      - name: Run public live page and WCAG checks
+        run: npx playwright test tests/QA/public.spec.js --config playwright.qa.config.js
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-accessibility-evidence
+          path: |
+            artifacts/qa
+            test-results
+          retention-days: 7
+
+  staff-workspace:
+    name: Staff and candidate-page WCAG (disposable database)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, xml, xmlwriter, pdo_sqlite, gd
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install application and accessibility tools
+        run: |
+          touch .env
+          composer install --no-interaction --prefer-dist
+          npm ci
+          npm install --no-save --package-lock=false axe-core
+          npx playwright install --with-deps chromium
+          npm run build
+      - name: Run authenticated admin and responsive WCAG QA
+        run: npx playwright test tests/QA/staff.spec.js tests/QA/local-public.spec.js --config playwright.qa.config.js
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: staff-accessibility-evidence
+          path: |
+            artifacts/qa
+            test-results
+          retention-days: 7

@@ -14,7 +14,7 @@
     <div class="grid gap-3 sm:grid-cols-3">
         <div class="staff-panel">
             <p class="text-xs font-bold text-stone-500">Automated checks passed</p>
-            <p class="mt-2 text-3xl font-extrabold tabular-nums text-stone-950">{{ $report['passed'] }} <span class="text-lg font-semibold text-stone-400">/ {{ $report['total'] }}</span></p>
+            <p class="mt-2 text-3xl font-extrabold tabular-nums text-stone-950">{{ $report['passed'] }} <span class="text-lg font-semibold text-stone-600">/ {{ $report['total'] }}</span></p>
             <p class="mt-2 text-xs leading-relaxed text-stone-500">Configuration and structural checks, not browser acceptance testing.</p>
         </div>
         <div class="staff-panel">
