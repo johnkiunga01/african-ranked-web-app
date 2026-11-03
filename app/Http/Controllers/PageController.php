@@ -89,7 +89,7 @@ class PageController extends Controller
 
         return $this->render('article', $region, [
             'article' => $article, 'category' => $this->catalog->category($article['category']),
-            'related' => $this->catalog->articles($region ?? 'global')->where('category', $article['category'])->where('slug', '!=', $slug)->take(3),
+            'related' => $this->catalog->articles($region ?? 'global')->where('category', $article['category'])->where('slug', '!=', $slug)->sortByDesc('datePublished')->take(3)->values(),
         ]);
     }
 
