@@ -13,6 +13,7 @@ test('Administrator reading and editing UI — accessibility across screen sizes
     {name:'820-tablet',width:820,height:1180},
     {name:'1440-desktop',width:1440,height:900},
   ];
+  const blockers=[];
   for(const v of views){
     await page.setViewportSize({width:v.width,height:v.height});
     const pages=[
@@ -25,9 +26,11 @@ test('Administrator reading and editing UI — accessibility across screen sizes
       const resp=await page.goto(route.path,{waitUntil:'domcontentloaded',timeout:30000});
       expect(resp?.status(),route.path).toBe(200);
       await expect(page.locator('main')).toBeVisible();
-      await checkPage(page,testInfo,`staff-${v.name}-${route.name}`);
+      const result=await checkPage(page,testInfo,`staff-${v.name}-${route.name}`);
+      blockers.push(...result.blockers.map(issue=>({route:route.path,viewport:v.name,issue:issue.id,impact:issue.impact,nodes:issue.totalElements})));
     }
   }
+  expect(blockers,'Staff serious WCAG violations').toEqual([]);
 });
 test('Staff mobile menu and accessible search',async({page})=>{
   await page.setViewportSize({width:390,height:844});
@@ -36,7 +39,7 @@ test('Staff mobile menu and accessible search',async({page})=>{
   await page.getByLabel('Password',{exact:true}).fill('BrowserOnlyPassword123!');
   await page.getByRole('button',{name:'Sign in',exact:true}).click();
   const menu=page.locator('.staff-mobile-nav');
-  await expect(menu.locator('summary')).toBeVisible();
+  await expect(menu.locator(':scope > summary')).toBeVisible();
   await menu.locator('summary').click();
   await expect(menu).toHaveAttribute('open');
   await expect(menu.getByRole('link',{name:'Articles',exact:true})).toBeVisible();
@@ -45,4 +48,10 @@ test('Staff mobile menu and accessible search',async({page})=>{
   await page.locator('#workspace-search').fill('Safari');
   await page.getByRole('button',{name:'Search',exact:true}).first().click();
   await expect(page).toHaveURL(/\/staff\/articles\?q=Safari/);
+});
+
+test('Local preview HTML meta matches noindex header',async({page})=>{
+  const response=await page.goto('/');
+  expect(response?.headers()['x-robots-tag']).toContain('noindex');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content',/noindex/);
 });
