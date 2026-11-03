@@ -9,7 +9,7 @@
         @include('partials.breadcrumbs')
     </div>
     <div class="mx-auto grid max-w-[1310px] items-start gap-7 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_296px] lg:gap-8 lg:px-8 xl:grid-cols-[minmax(0,1fr)_320px]">
-        <article class="min-w-0 rounded-3xl border border-stone-200/70 bg-white px-5 pb-9 pt-7 shadow-[0_12px_40px_-30px_rgba(20,25,30,.3)] sm:px-8 sm:pb-12 sm:pt-10 xl:px-12">
+        <article class="min-w-0 max-w-full overflow-hidden rounded-3xl border border-stone-200/70 bg-white px-5 pb-9 pt-7 shadow-[0_12px_40px_-30px_rgba(20,25,30,.3)] sm:px-8 sm:pb-12 sm:pt-10 xl:px-12">
             <header>
                 <a href="{{ $basePath }}/categories/{{ $category['slug'] }}" class="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-extrabold text-amber-900 transition hover:border-amber-400 hover:bg-amber-100">
                     <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>{{ $category['name'] }}
