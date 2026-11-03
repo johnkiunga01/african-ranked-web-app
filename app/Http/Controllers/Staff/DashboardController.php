@@ -19,10 +19,12 @@ class DashboardController extends Controller
             'total' => (clone $articles)->count(),
             'published' => (clone $articles)->whereNotNull('published_revision_id')->count(),
             'inReview' => (clone $articles)->whereHas('currentRevision', fn ($query) => $query->where('status', 'in_review'))->count(),
-            'drafts' => (clone $articles)->whereNull('published_revision_id')->count(),
+            'drafts' => (clone $articles)->whereHas('currentRevision', fn ($query) => $query->whereIn('status', ['draft', 'changes_requested']))->count(),
             'updatedDrafts' => (clone $articles)
                 ->whereNotNull('published_revision_id')
                 ->whereColumn('current_revision_id', '!=', 'published_revision_id')->count(),
+            'reviewQueue' => $admin ? (clone $articles)->whereHas('currentRevision', fn ($query) => $query->where('status', 'in_review'))
+                ->with('currentRevision')->orderByDesc('updated_at')->limit(3)->get() : collect(),
             'recentArticles' => (clone $articles)->with(['currentRevision', 'author'])
                 ->orderByDesc('updated_at')->limit(6)->get(),
             'events' => $admin ? AuditEvent::latest('id')->limit(5)->get() : collect(),
