@@ -81,6 +81,7 @@ The other 21 drafts must be enumerated from the authenticated article library or
 
 | Subject | Official/relevant source research | Body prepared | 40–60 word verified answer module | Dated key-fact verification | Photo rights | CMS update |
 | --- | --- | --- | --- | --- | --- | --- |
+| Traditional African Instruments (#51) | UNESCO, Smithsonian and Met sources | Yes (2,700+ words before FAQs) | Pending reviewer | Pending reviewer | Pending | None |
 | African Fabrics and Prints (#52) | Museum-sourced textile history and terminology | Yes (2,600+ words before FAQs) | Pending reviewer | Pending reviewer | Pending | None |
 | Afrobeat vs Afrobeats (#49) | Yes, institutional and catalogue sources | Yes | Pending reviewer | Pending reviewer | Pending | None |
 | Best Time to Visit Namibia | Yes, Visit Namibia and MEFT | Yes | Pending reviewer | Pending reviewer | Pending | None |
@@ -93,3 +94,5 @@ The manuscript source lists are not a substitute for human verification of indiv
 - Confirmed draft CMS #52 has a 2,600+-word substantive manuscript prepared in `african-fabrics-and-prints.md`, citing retrieved institutional sources from the Victoria and Albert Museum, The Met, British Museum, Smithsonian and UN Africa Renewal. This is a separate research manuscript, not a CMS edit.
 - The sourced comparison distinguishes kente weaving from Ankara and kitenge printing, includes kanga as an important distinct format, and avoids unsupported claims of singular cultural origins.
 - No photo was imported, and no new source-access date, legal image right, author or reviewer has been recorded in CMS.
+
+- Confirmed CMS draft #51 now also has a 2,700+-word substantive manuscript (`traditional-african-instruments.md`), documenting mbira/sansi, kora, balafon and Yoruba dundun traditions from UNESCO, Smithsonian and Met sources. Archive media reuse is specifically prohibited until rights are cleared.
