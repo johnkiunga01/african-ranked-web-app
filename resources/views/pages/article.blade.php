@@ -117,6 +117,7 @@
                 @endforeach
             </div>
 
+
             @if(!empty($article['faqs']))
             <section id="frequently-asked-questions" class="mt-12 rounded-2xl border border-stone-200 bg-stone-50 p-5 sm:p-7" aria-labelledby="faq-heading">
                 <h2 id="faq-heading" class="text-xl font-extrabold tracking-tight text-stone-950">Frequently asked questions</h2>
@@ -129,7 +130,6 @@
             @endif
             @include('editorial.evidence', ['evidence' => $article['editorialEvidence'] ?? [], 'section' => 'facts'])
             @include('editorial.sources', ['evidence' => $article['editorialEvidence'] ?? [], 'reviewer' => $article['reviewer'] ?? null])
-
             <a href="{{ $basePath }}/categories/{{ $category['slug'] }}" class="mt-10 inline-flex min-h-11 items-center gap-2 rounded-xl border border-stone-200 px-4 text-sm font-bold text-amber-900 transition hover:border-amber-300 hover:bg-amber-50">
                 <x-icon name="arrow-right" class="h-4 w-4 rotate-180" /> Explore more {{ $category['name'] }}
             </a>
