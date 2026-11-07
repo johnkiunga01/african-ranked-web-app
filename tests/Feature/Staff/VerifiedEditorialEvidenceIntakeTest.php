@@ -198,5 +198,4 @@ class VerifiedEditorialEvidenceIntakeTest extends TestCase
         $this->assertNull($article->published_revision_id);
         $this->assertSame(RevisionStatus::Draft, $userDraft->fresh()->status);
     }
-
 }
