@@ -39,6 +39,12 @@
     <article class="staff-panel mt-5 bg-white sm:px-10 sm:py-9">
         <h1 class="text-3xl font-extrabold leading-tight tracking-tight text-stone-950 sm:text-4xl">{{ $revision->title }}</h1>
         <p class="mt-4 text-lg text-stone-600">{{ $revision->excerpt }}</p>
+        @if(filled($revision->editorial_evidence['answer'] ?? null))
+            <section class="mt-5 rounded-xl border border-amber-200 bg-amber-50/50 p-5" aria-label="Direct answer">
+                <h2 class="text-lg font-bold text-stone-950">The short answer</h2>
+                <p class="mt-2 text-base leading-relaxed text-stone-800">{{ $revision->editorial_evidence['answer'] }}</p>
+            </section>
+        @endif
         <p class="mt-3 text-sm text-stone-500">{{ $revision->author_name }}</p>
         @if($revision->image)
             <img src="{{ $revision->image }}" alt="{{ $revision->image_alt ?: $revision->title }}"
