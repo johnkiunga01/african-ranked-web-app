@@ -26,7 +26,7 @@ class PublishingTest extends TestCase
             $this->assertSame(1, $xpath->query('//h1')->length);
             $this->assertSame(9, $xpath->query('//link[@rel="alternate"][@hreflang]')->length);
             $this->assertSame($catalog->url($catalog->path($region['code'])), $xpath->evaluate('string(//link[@rel="canonical"]/@href)'));
-            $this->assertSame(6, $xpath->query('//section[@id="categories"]//a')->length);
+            $this->assertSame(6, $xpath->query('//*[@id="categories"]//a')->length);
         }
     }
 

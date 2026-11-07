@@ -32,7 +32,7 @@ class SeoAutomationToolsTest extends TestCase
         // The imported article already contains cited links; do not append redundant reading links.
         $this->assertNotContains('related_reading_link', $changes);
         $this->assertSame($old->body, $article->currentRevision->body);
-        $this->assertNull($article->currentRevision->image_alt);
+        $this->assertSame($old->image_alt, $article->currentRevision->image_alt);
         $this->assertNull($article->published_revision_id);
         $this->assertStringContainsString($old->source_notes, $article->currentRevision->source_notes);
         $this->assertStringContainsString('search demand has not been verified', $article->currentRevision->source_notes);
