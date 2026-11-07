@@ -49,7 +49,19 @@ const approvedRecoveryFile = path => {
         return false;
     }
 };
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !approvedRecoveryFile(path));
+// The SEO launch gate may change only the exact robots-meta expression in
+// the public layout. All other layout bytes remain protected and compared.
+const layoutPath = 'resources/views/layouts/app.blade.php';
+const oldRobotsMeta = "<meta name=\"robots\" content=\"{{ config('seo.preview') || config('review.enabled') ? 'noindex, nofollow, noarchive' : $seo['robots'] }}\">";
+const gatedRobotsMeta = "<meta name=\"robots\" content=\"{{ config('seo.preview') || config('review.enabled') ? 'noindex, nofollow, noarchive' : (config('seo.indexing_enabled') ? $seo['robots'] : 'noindex, follow, noarchive') }}\">";
+const indexingGateOnly = path => {
+    if (path !== layoutPath) return false;
+    const before = execFileSync('git', ['show', `${base}:${path}`], { encoding: 'utf8' });
+    const after = execFileSync('git', ['show', `HEAD:${path}`], { encoding: 'utf8' });
+    return before.includes(oldRobotsMeta) && after.includes(gatedRobotsMeta)
+        && before === after.replace(gatedRobotsMeta, oldRobotsMeta);
+};
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
