@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Exceptions\OpenSeoConnectionException;
 use App\Models\ArticleSeoBatchItem;
 use App\Services\ArticleResearcher;
 use Illuminate\Bus\Queueable;
@@ -47,6 +48,8 @@ class ResearchArticleSeo implements ShouldQueue
             $researcher->research($actor, $item->article);
             $item->update(['status' => 'queued', 'message' => 'OpenSEO brief ready. Waiting for Gemini.']);
             OptimiseArticleSeo::dispatch($item->id);
+        } catch (OpenSeoConnectionException $exception) {
+            $item->update(['status' => 'failed', 'message' => $exception->getMessage().' Gemini was not called.', 'finished_at' => now()]);
         } catch (Throwable) {
             $this->failed(null);
         }

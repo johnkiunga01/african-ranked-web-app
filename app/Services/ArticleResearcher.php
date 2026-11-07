@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\OpenSeoConnectionException;
 use App\Models\Article;
 use App\Models\ArticleResearch;
 use App\Models\AuditEvent;
@@ -41,6 +42,9 @@ class ArticleResearcher
             AuditEvent::record($actor, 'article.researched', $article, ['research_id' => $research->id, 'location_code' => $location]);
 
             return $research;
+        } catch (OpenSeoConnectionException $exception) {
+            $research->update(['status' => 'failed']);
+            throw $exception;
         } catch (Throwable) {
             $research->update(['status' => 'failed']);
             throw new RuntimeException('OpenSEO research failed. Gemini was not called. Check provider access and credits before requesting a new revision.');

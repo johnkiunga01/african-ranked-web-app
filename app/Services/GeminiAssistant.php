@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\GeminiConnectionException;
 use Illuminate\Support\Facades\Http;
 use RuntimeException;
 use Throwable;
@@ -61,9 +62,9 @@ class GeminiAssistant
                 default => null,
             };
             if ($message) {
-                throw new RuntimeException($message);
+                throw new GeminiConnectionException($message);
             }
-            throw new RuntimeException('Gemini could not return a usable result. No changes were saved and no retry or paid-provider fallback was made.');
+            throw new GeminiConnectionException('Gemini could not return a usable result. No changes were saved and no retry or paid-provider fallback was made.');
         }
     }
 }
