@@ -124,7 +124,7 @@ class PublishingTest extends TestCase
         $this->get('/robots.txt')->assertOk()
             ->assertSee('Disallow: /staff')
             ->assertSee('Disallow: /newsletter')
-            ->assertDontSee("Disallow: /\\nSitemap:");
+            ->assertDontSee('Disallow: /'.PHP_EOL.'Sitemap:');
 
         config(['seo.preview' => true]);
         $this->get('/robots.txt')->assertOk()->assertSee('Disallow: /');
