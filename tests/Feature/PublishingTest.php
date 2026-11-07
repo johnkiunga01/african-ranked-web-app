@@ -21,7 +21,7 @@ class PublishingTest extends TestCase
     {
         $catalog = app(Catalog::class);
         foreach ($catalog->regions() as $region) {
-            $response = $this->get($catalog->path($region['code']))->assertOk()->assertSee('Explore rankings')->assertSee($region['tagline']);
+            $response = $this->get($catalog->path($region['code']))->assertOk()->assertSee('Explore rankings')->assertSee($region['name'].' edition');
             $xpath = $this->document($response->getContent());
             $this->assertSame(1, $xpath->query('//h1')->length);
             $this->assertSame(9, $xpath->query('//link[@rel="alternate"][@hreflang]')->length);
