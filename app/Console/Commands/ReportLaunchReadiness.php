@@ -34,11 +34,17 @@ class ReportLaunchReadiness extends Command
         $states = collect([50, 51, 52])->map(function (int $id) use ($articles) {
             $revision = $articles->get($id)?->currentRevision;
 
+            $evidence = $revision?->editorial_evidence ?? [];
+
             return [
                 'article_id' => $id,
                 'status' => $revision?->status?->value ?? 'missing',
                 'revision' => $revision?->number,
                 'body_words' => $revision ? preg_match_all('/[\pL\pN]+/u', (string) $revision->body_markdown) : 0,
+                'answer_words' => preg_match_all('/[\pL\pN]+(?:[’\x{0027}-][\pL\pN]+)*/u', (string) ($evidence['answer'] ?? '')),
+                'recorded_sources' => count($evidence['sources'] ?? []),
+                'recorded_facts' => count($evidence['facts'] ?? []),
+                'last_verified_at' => $evidence['last_verified_at'] ?? null,
             ];
         })->all();
         $this->line('AR_EDITORIAL_HANDOFF_STATUS '.json_encode($states, JSON_UNESCAPED_SLASHES));
