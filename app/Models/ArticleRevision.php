@@ -35,7 +35,7 @@ class ArticleRevision extends Model
             'slug' => $article->slug, 'title' => $this->title, 'excerpt' => $this->excerpt,
             'category' => $this->category_slug, 'author' => $this->author_name, 'authorTitle' => $this->author_title,
             'datePublished' => $article->first_published_at->toIso8601String(), 'dateModified' => $this->published_at->toIso8601String(),
-            'readTime' => $this->read_time, 'image' => $this->image, 'body' => $this->body,
+            'readTime' => $this->read_time, 'image' => $this->image, 'body' => app(\App\Services\ArticleVisuals::class)->filterBody($this->image, $this->body ?? []),
             'imageCredit' => $mediaCredit, 'imageSource' => $mediaSource,
             'seoTitle' => $this->seo_title, 'metaDescription' => $this->meta_description, 'imageAlt' => $this->image_alt,
             'faqs' => $this->faqs ?? [], 'regions' => $this->regions,
