@@ -19,6 +19,7 @@ class PreparedEditorialIntake
         51 => 'instruments',
         52 => 'fabrics',
     ];
+
     private const SEARCH_METADATA = [
         50 => [
             'Nollywood Explained: Nigeria and Africa\'s Film Industries',
