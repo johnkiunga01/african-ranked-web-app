@@ -111,7 +111,7 @@ class PublishingTest extends TestCase
         $rss = simplexml_load_string($feed->getContent());
         $this->assertCount($catalog->articles()->count(), $rss->channel->item);
         $this->get('/robots.txt')->assertOk()->assertSee($catalog->url('/sitemap.xml'));
-        $this->get('/llms.txt')->assertOk()->assertSee('## Articles')->assertSee('Inherited editorial claims');
+        $this->get('/llms.txt')->assertOk()->assertSee('## Articles')->assertSee('Only published articles appear in this index.');
         $this->get('/sitemaps/ke.xml')->assertOk();
         $this->get('/sitemaps/invalid.xml')->assertNotFound();
     }

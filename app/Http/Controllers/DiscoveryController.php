@@ -45,11 +45,16 @@ class DiscoveryController extends Controller
 
     public function robots(): Response
     {
-        if (! app()->environment('production') || config('seo.preview') || config('review.enabled')) {
+        if (app()->environment('production') === false || config('seo.preview') || config('review.enabled')) {
             return response("User-agent: *\nDisallow: /\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
         }
 
-        return response("User-agent: *\nAllow: /\nDisallow: /newsletter\nDisallow: /staff\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
+        // Public reading and AI-agent retrieval are allowed even while noindex stays active.
+        // Disallowing these URLs would stop compliant crawlers from seeing the noindex header.
+        $rules = "User-agent: *\nAllow: /\nDisallow: /newsletter\nDisallow: /staff\n"
+            .'Sitemap: '.$this->catalog->url('/sitemap.xml')."\n";
+
+        return response($rules, 200)->header('Content-Type', 'text/plain; charset=UTF-8');
     }
 
     public function feed(): Response
@@ -60,11 +65,28 @@ class DiscoveryController extends Controller
     public function llms(): Response
     {
         $c = $this->catalog;
-        $text = "# African Ranked\n\n> Africa-focused rankings covering travel, food, music, business, technology, and wildlife.\n\n## Articles\n";
-        foreach ($c->articles() as $article) {
-            $text .= '- ['.$article['title'].']('.$c->url('/articles/'.$article['slug']).'): '.$article['excerpt']."\n";
+        // The CMS catalog returns published revisions only; never expose private staff drafts.
+        $text = "# African Ranked\n\n"
+            ."> Independent Africa-focused rankings and practical guides to travel, wildlife, food, music, business and technology.\n\n"
+            .'African Ranked publishes English-language editorial articles about African destinations, cultures, industries and people. '
+            .'Read the full linked articles for context, source attribution and last-verified dates. '
+            ."This discovery file is not a license to republish content or a guarantee of AI citations.\n\n"
+            ."## Start here\n\n"
+            .'- [Rankings and guides]('.$c->url('/rankings')."): Browse published articles by topic.\n"
+            .'- [Editorial approach]('.$c->url('/strategy')."): How African Ranked approaches research and presentation.\n\n"
+            ."## Articles\n\n";
+
+        foreach ($c->articles()->sortByDesc('dateModified') as $article) {
+            $title = str_replace(['[', ']', "\r", "\n"], ['', '', ' ', ' '], (string) $article['title']);
+            $excerpt = trim(preg_replace('/\s+/u', ' ', strip_tags((string) $article['excerpt'])) ?? '');
+            $text .= '- ['.$title.']('.$c->url('/articles/'.$article['slug']).'): '.$excerpt."\n";
         }
-        $text .= "\n## Editorial information\n- [Editorial approach](".$c->url('/strategy').")\n- [RSS feed](".$c->url('/feed.xml').")\n\nInherited editorial claims and quotations require source verification. This index is a discovery aid; it does not confer factual validation, reuse permission, or guaranteed inclusion in AI answers.\n";
+
+        $text .= "\n## Machine-readable discovery\n\n"
+            .'- [RSS feed]('.$c->url('/feed.xml')."): Newly published articles.\n"
+            .'- [XML sitemap]('.$c->url('/sitemap.xml')."): Canonical public page URLs.\n\n"
+            .'Only published articles appear in this index. Drafts, staff pages and personal information are excluded. '
+            ."Verify material claims using the references on the article pages before quoting or summarizing.\n";
 
         return response($text)->header('Content-Type', 'text/plain; charset=UTF-8');
     }

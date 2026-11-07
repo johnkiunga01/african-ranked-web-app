@@ -1,3 +1,7 @@
+## Active owner decision — 7 November 2026 (supersedes staging launch assumptions)
+
+African Ranked's existing Railway production environment is now the approved running production platform on the temporary Railway HTTPS domain. Enable `APP_ENV=production`, `APP_PREVIEW=false`, and `APP_REVIEW=false` across web, worker and scheduler, but keep `SEO_INDEXING_ENABLED=false` until the owner adds the custom domain and **explicitly authorizes** search indexing next week. Allow public article retrieval by LLM agents and keep the generated `/llms.txt` published-only. Preserve private staff authentication, published article pointers, CMS revisions and credentials. Do not change `APP_URL` to an unverified custom domain, auto-enable indexing or submit a sitemap early. See [production/AI discovery handoff](docs/PRODUCTION-AI-DISCOVERY-2026-11-07.md). Historical staging guidance below is superseded where it conflicts with this decision.
+
 # African Ranked development instructions
 
 ## Active owner decisions — evening of 2 November 2026
