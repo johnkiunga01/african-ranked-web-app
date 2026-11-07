@@ -47,6 +47,67 @@ class VerifiedEditorialEvidenceIntake
     }
 
     /**
+     * Reconciles a user-edited article #52 draft without discarding any text.
+     * Identical bodies can return to In Review; changed bodies remain Draft
+     * for the author to complete and submit deliberately.
+     */
+    public function reconcileEditedFabrics(): bool
+    {
+        $evidence = $this->evidence(52);
+
+        return DB::transaction(function () use ($evidence) {
+            $article = Article::query()->whereKey(52)->lockForUpdate()->first();
+            if (! $article || $article->trashed_at) {
+                return false;
+            }
+
+            $current = $article->currentRevision()->lockForUpdate()->first();
+            $original = $article->revisions()->where('number', 4)->first();
+            if (! $current || ! $original || (int) $current->number !== 5
+                || ! in_array($current->status, [RevisionStatus::Draft, RevisionStatus::ChangesRequested], true)
+                || ! str_contains(mb_strtolower($current->title), 'fabrics')
+                || ! str_contains((string) $current->source_notes, 'Prepared editorial handoff:')
+                || ! str_contains(mb_strtolower($original->title), 'fabrics')
+                || preg_match_all('/[\pL\pN]+/u', (string) $current->body_markdown) < 1300
+                || count($current->editorial_evidence['sources'] ?? []) >= 5
+                || count($current->editorial_evidence['facts'] ?? []) >= 4
+                || filled($current->editorial_evidence['answer'] ?? null)) {
+                return false;
+            }
+
+            $unchangedBody = trim((string) $current->body_markdown) === trim((string) $original->body_markdown);
+            $revision = $current->replicate(['number', 'status', 'reviewed_by', 'reviewed_at', 'published_at', 'review_checklist', 'review_notes']);
+            $revision->number = ((int) $article->revisions()->max('number')) + 1;
+            $revision->created_by = null;
+            $revision->status = $unchangedBody ? RevisionStatus::InReview : RevisionStatus::Draft;
+            $revision->editorial_evidence = array_merge($current->editorial_evidence ?? [], $evidence);
+            $revision->source_notes = trim((string) $current->source_notes)
+                ."\n\nSource research reconciled on ".$evidence['last_verified_at']
+                .'. The preceding human-edited revision remains preserved. AI-assisted fact checks are not human review.';
+            $revision->reviewed_by = null;
+            $revision->reviewed_at = null;
+            $revision->published_at = null;
+            $revision->review_checklist = null;
+            $revision->review_notes = null;
+            $revision->save();
+
+            $article->current_revision_id = $revision->id;
+            $article->save();
+
+            AuditEvent::record(null, 'article.evidence_research_queued', $article, [
+                'from_revision_id' => $current->id,
+                'review_revision_id' => $revision->id,
+                'editor_body_unchanged' => $unchangedBody,
+                'source_count' => count($evidence['sources']),
+                'key_fact_count' => count($evidence['facts']),
+                'human_approval' => false,
+            ]);
+
+            return true;
+        });
+    }
+
+    /**
      * Returns true only when an unchanged prepared revision #4 is eligible.
      * New review revisions preserve published pointers and every older version.
      */
