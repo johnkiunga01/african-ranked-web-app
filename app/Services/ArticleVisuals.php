@@ -26,10 +26,9 @@ class ArticleVisuals
             return false;
         }
 
-
         // In-house cover/detail SVG variants currently repeat the same visual
         // motif and headline. Show the cover once, not multiple near copies.
-        return ! ($coverArt !== null && $coverArt === $detailArt);
+        return $coverArt === null || $coverArt !== $detailArt;
     }
 
     /** Read-time filtering does not delete an editor's original revision data. */
