@@ -151,7 +151,7 @@ test('article inventory supports search, bulk choices and mobile navigation', as
     await expect(page.locator('#batch-operation option[value=gemini]')).toHaveText('Research & optimise with Gemini…');
     await expect(page.getByText('Import to CMS', { exact: true })).toHaveCount(0);
     await page.screenshot({ path: 'artifacts/design/03-articles-desktop.png', fullPage: true });
-    await page.getByLabel('Search title or URL').fill('browser-inventory-01');
+    await page.getByLabel('Search title, introduction or article text').fill('browser-inventory-01');
     await page.getByRole('button', { name: 'Search', exact: true }).last().click();
     await expect(page.getByRole('link', { name: 'Inventory fixture 01', exact: true })).toBeVisible();
     await page.setViewportSize({ width: 390, height: 844 });
