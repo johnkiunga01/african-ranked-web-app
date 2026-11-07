@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Models\ArticleRecommendation;
+use App\Models\User;
 use App\Services\EditorialWorkflow;
 use App\Services\RecommendationGuidelines;
 use App\Services\SeedArticleImporter;
@@ -13,7 +13,7 @@ require __DIR__.'/../../vendor/autoload.php';
 $app = require __DIR__.'/../../bootstrap/app.php';
 $app->make(Kernel::class)->bootstrap();
 $database = config('database.connections.sqlite.database');
-if (config('database.default') !== 'sqlite' || ! str_starts_with($database, '/tmp/african-ranked-browser-') || $app->environment('production')) {
+if (config('database.default') !== 'sqlite' || str_starts_with($database, '/tmp/african-ranked-browser-') === false || $app->environment('production')) {
     fwrite(STDERR, "Browser fixtures require the disposable browser-test SQLite database.\n");
     exit(1);
 }
