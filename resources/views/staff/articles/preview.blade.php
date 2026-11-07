@@ -50,7 +50,6 @@
             <img src="{{ $revision->image }}" alt="{{ $revision->image_alt ?: $revision->title }}"
                 width="1200" height="675" class="mt-7 aspect-video w-full rounded-xl object-cover" data-image-fallback>
         @endif
-        @include('editorial.evidence', ['evidence' => ['facts' => $revision->editorial_evidence['facts'] ?? []]])
         @php($renderedInlineImages = [])
         <div class="ar-article-prose mt-7 space-y-6">
             @foreach($revision->body ?? [] as $block)
@@ -114,7 +113,6 @@
                 @endswitch
             @endforeach
         </div>
-        @include('editorial.sources', ['evidence' => $revision->editorial_evidence ?? [], 'reviewer' => null])
         @if($revision->faqs)
             <section class="mt-8 border-t border-stone-200 pt-6">
                 <h2 class="text-xl font-bold">Frequently asked questions</h2>
@@ -124,6 +122,8 @@
                 @endforeach
             </section>
         @endif
+        @include('editorial.evidence', ['evidence' => ['facts' => $revision->editorial_evidence['facts'] ?? []], 'section' => 'facts'])
+        @include('editorial.sources', ['evidence' => $revision->editorial_evidence ?? [], 'reviewer' => null])
     </article>
 </div>
 @endsection

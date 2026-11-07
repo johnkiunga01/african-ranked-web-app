@@ -16,10 +16,13 @@ const base = supplied && ! /^0+$/.test(supplied)
     : execFileSync('git', ['merge-base', 'origin/main', 'HEAD'], { encoding: 'utf8' }).trim();
 execFileSync('git', ['rev-parse', '--verify', `${base}^{commit}`], { stdio: 'ignore' });
 const changed = execFileSync('git', ['diff', '--name-only', '-z', base, 'HEAD'], { encoding: 'utf8' }).split('\0').filter(Boolean);
-// This release adds two optional evidence modules to the existing article view.
-// Permit only those exact include lines; every pre-existing byte remains protected.
+// Owner-approved reader-flow change: only move or split exact evidence/source
+// includes. After those statements are stripped, every other template byte
+// (including whitespace and design markup) must match the protected base.
 const articlePath = 'resources/views/pages/article.blade.php';
-const stripEvidenceIncludes = text => text.split('\n').filter(line => !/^\s*@include\('editorial\.(?:evidence|sources)', \['evidence' => \$article\['editorialEvidence'\] \?\? \[\](?:, 'reviewer' => \$article\['reviewer'\] \?\? null)?\]\)\s*$/.test(line)).join('\n');
+const evidenceInclude = /^\s*@include\('editorial\.evidence', \['evidence' => \$article\['editorialEvidence'\] \?\? \[\](?:, 'section' => '(?:answer|facts)')?\]\)\s*$/;
+const sourceInclude = /^\s*@include\('editorial\.sources', \['evidence' => \$article\['editorialEvidence'\] \?\? \[\], 'reviewer' => \$article\['reviewer'\] \?\? null\]\)\s*$/;
+const stripEvidenceIncludes = text => text.split('\n').filter(line => !evidenceInclude.test(line) && !sourceInclude.test(line)).join('\n');
 const evidenceOnly = path => path === articlePath && stripEvidenceIncludes(execFileSync('git', ['show', `${base}:${path}`], { encoding: 'utf8' })) === stripEvidenceIncludes(execFileSync('git', ['show', `HEAD:${path}`], { encoding: 'utf8' }));
 // Owner-approved branding and audited dependency lock are allowed only at their reviewed exact blob hashes.
 // This is an immutable, content-specific exception, not a general bypass of public-design protection.

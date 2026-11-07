@@ -1,11 +1,11 @@
-@if(!empty($evidence['answer']))
+@if(($section ?? 'all') !== 'facts' && !empty($evidence['answer']))
 <section class="mt-8 rounded-2xl border border-amber-200 bg-amber-50/50 p-6" aria-label="The short answer">
     <h2 class="text-lg font-bold">The short answer</h2>
     <p class="mt-3 leading-relaxed text-stone-700">{{ $evidence['answer'] }}</p>
 </section>
 @endif
 
-@if(!empty($evidence['facts']))
+@if(($section ?? 'all') !== 'answer' && !empty($evidence['facts']))
 <section class="mt-10" aria-labelledby="key-facts-heading">
     <div class="mb-5 flex flex-wrap items-end justify-between gap-2">
         <h2 id="key-facts-heading" class="text-xl font-extrabold tracking-tight text-stone-950 sm:text-2xl">Key facts</h2>

@@ -8,6 +8,7 @@ Applies to all editorial article revisions, including drafts already in the CMS 
 - Actual verification dates are retained beside facts. A valid URL is necessary for a linked fact. URLs using unsafe schemes are never made clickable.
 - The publisher, document title, HTTPS URL and actual access date remain recorded privately in the CMS editorial evidence and are accessible to readers in a **collapsed “Research references and access dates” disclosure**. This preserves fact-checkability without a long default-visible bibliography.
 - These are **rendering changes**, not per-article content rewrites, so they apply to all existing and future articles that use the shared evidence modules, including private previews.
+- Keep **The short answer** immediately before the article reading flow; place **Key facts** after the complete article body and FAQs, immediately before the collapsed research references, so readers can finish the on-site story before encountering outbound fact links. Public articles and private staff previews follow the same order.
 - Dates are not auto-updated on page views. A verified date must describe a real check.
 
 ## Visual rhythm for 1,300+ word articles
