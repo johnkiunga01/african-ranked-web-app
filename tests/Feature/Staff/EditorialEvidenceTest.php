@@ -70,6 +70,34 @@ class EditorialEvidenceTest extends TestCase
         $html = view('editorial.evidence', compact('evidence'))->render();
         $this->assertStringContainsString('&lt;script&gt;', $html);
         $this->assertStringNotContainsString('<script>', $html);
-        $this->assertStringContainsString('<table', $html);
+        $this->assertStringContainsString('href="https://evidence.example.test/1"', $html);
+        $this->assertStringContainsString('Source-backed key facts', $html);
+        $this->assertStringNotContainsString('<table', $html);
+        $this->assertStringNotContainsString('<th', $html);
+        $this->assertStringNotContainsString('>Source</', $html);
+    }
+
+    public function test_fact_links_use_the_entire_fact_as_anchor_and_keep_source_register_collapsed(): void
+    {
+        $evidence = $this->evidence();
+        $evidence['facts'][0]['fact'] = 'A clear linked finding about history.';
+
+        $html = view('editorial.evidence', compact('evidence'))->render();
+        $this->assertStringContainsString('href="https://evidence.example.test/1"', $html);
+        $this->assertStringContainsString('A clear linked finding about history.', $html);
+        $this->assertStringContainsString('Verified <time', $html);
+        $this->assertStringNotContainsString('<table', $html);
+        $this->assertStringNotContainsString('>Source</', $html);
+        $this->assertStringNotContainsString('>evidence.example.test<', $html);
+
+        $referenceMarkup = view('editorial.sources', ['evidence' => $evidence, 'reviewer' => null])->render();
+        $this->assertStringContainsString('<details', $referenceMarkup);
+        $this->assertStringContainsString('Research references and access dates', $referenceMarkup);
+        $this->assertStringNotContainsString('<details open', $referenceMarkup);
+
+        $evidence['facts'][0]['source_url'] = 'javascript:alert(1)';
+        $unsafeMarkup = view('editorial.evidence', compact('evidence'))->render();
+        $this->assertStringNotContainsString('href="javascript:', $unsafeMarkup);
+        $this->assertStringContainsString('A clear linked finding about history.', $unsafeMarkup);
     }
 }
