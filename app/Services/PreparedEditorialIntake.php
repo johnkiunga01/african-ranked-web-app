@@ -19,6 +19,20 @@ class PreparedEditorialIntake
         51 => 'instruments',
         52 => 'fabrics',
     ];
+    private const SEARCH_METADATA = [
+        50 => [
+            'Nollywood Explained: Nigeria and Africa\'s Film Industries',
+            'Learn how Nollywood developed, why film-industry size is hard to compare, and how African screen sectors differ.',
+        ],
+        51 => [
+            'Traditional African Instruments: Mbira, Kora, Balafon and Drums',
+            'Explore the mbira, kora, balafon and talking drum, with documented histories, performance traditions and sources.',
+        ],
+        52 => [
+            'African Fabrics Explained: Kente, Ankara, Kitenge and More',
+            'Discover how kente, Ankara, kitenge and kanga differ in construction, history, cultural use and provenance.',
+        ],
+    ];
 
     public function manuscript(int $articleId): array
     {
@@ -112,6 +126,7 @@ class PreparedEditorialIntake
             $revision->number = ((int) $article->revisions()->max('number')) + 1;
             $revision->created_by = null; // System import; do not impersonate a human author.
             $revision->status = RevisionStatus::InReview;
+            [$revision->seo_title, $revision->meta_description] = self::SEARCH_METADATA[$articleId];
             $revision->body_markdown = $prepared['body_markdown'];
             $revision->body = $prepared['body'];
             $revision->faqs = $prepared['faqs'];
