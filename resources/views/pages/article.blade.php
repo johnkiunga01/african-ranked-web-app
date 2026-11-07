@@ -66,7 +66,6 @@
             </details>
             @endif
 
-            @php($renderedInlineImages = [])
             <div class="ar-article-prose mt-8 space-y-6">
                 @foreach($article['body'] as $index => $block)
                     @switch($block['type'])
@@ -78,8 +77,7 @@
                         @endif
                         @break
                     @case('image')
-                        @if(app(\App\Services\ArticleVisuals::class)->showInline($article['image'], $block['url'] ?? null, $renderedInlineImages) && filled($block['alt'] ?? null))
-                            @php($renderedInlineImages[] = $block['url'])
+                        @if(filter_var($block['url'] ?? '', FILTER_VALIDATE_URL) && parse_url($block['url'], PHP_URL_SCHEME) === 'https' && filled($block['alt'] ?? null))
                             <figure class="my-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-50">
                                 <img src="{{ $block['url'] }}" alt="{{ $block['alt'] }}" loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover">
                                 @if(filled($block['caption'] ?? null) || filled($block['credit'] ?? null))
@@ -102,11 +100,11 @@
                         <p><a href="{{ $block['url'] }}" class="font-semibold text-amber-800 underline underline-offset-4 hover:text-amber-600">{{ $block['text'] }}</a></p>
                         @break
                     @case('paragraph')
-                        <p>{!! app(\App\Services\InlineEditorialMarkdown::class)->render($block['text'] ?? '') !!}</p>
+                        <p>{{ $block['text'] }}</p>
                         @break
                     @case('list')
                         <ul class="list-disc space-y-2 pl-5 text-base leading-[1.8] text-stone-700 marker:text-amber-600">
-                            @foreach($block['items'] as $listItem)<li>{!! app(\App\Services\InlineEditorialMarkdown::class)->render($listItem) !!}</li>@endforeach
+                            @foreach($block['items'] as $listItem)<li>{{ $listItem }}</li>@endforeach
                         </ul>
                         @break
                     @case('quote')
