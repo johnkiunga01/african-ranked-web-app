@@ -44,7 +44,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await signIn(other, 'other@browser.example.test');
         expect((await otherContext.request.get(`/staff/articles/${id}/edit`)).status()).toBe(403);
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
-        await expect(author.getByRole('status')).toContainText('submitted for review');
+        await expect(author.locator('#staff-main > p[role="status"]')).toContainText('submitted for review');
         await signIn(admin, 'admin@browser.example.test');
         await admin.goto(`/staff/articles/${id}/edit`);
         await admin.getByLabel('Feedback for the author', { exact: true }).fill('Add the missing practical checklist detail.');
@@ -131,7 +131,7 @@ test('expired login form recovers with a fresh CSRF token and retains CSRF prote
     });
     expect(response.status()).toBe(303);
     await page.goto('/staff/login');
-    await expect(page.getByRole('status')).toContainText('sign-in form expired');
+    await expect(page.locator('#staff-main > p[role="status"]')).toContainText('sign-in form expired');
     await page.getByLabel('Email address', { exact: true }).fill('admin@browser.example.test');
     await page.getByLabel('Password', { exact: true }).fill('BrowserOnlyPassword123!');
     await page.getByRole('button', { name: 'Sign in', exact: true }).click();
@@ -181,7 +181,7 @@ test('editor manages SEO fields and FAQs, analyzes saved content and restores hi
     await page.getByLabel('Reader FAQs', { exact: true }).fill('What is this?\nA disposable browser fixture.');
     await page.getByLabel('Sources and research notes', { exact: true }).fill('Fixture notes; not real editorial evidence.');
     await page.getByRole('button', { name: 'Create draft', exact: true }).click();
-    await expect(page.getByRole('status')).toContainText('Draft created');
+    await expect(page.locator('#staff-main > p[role="status"]')).toContainText('Draft created');
     const editUrl = page.url();
     await expect(page.getByLabel('Reader FAQs', { exact: true })).toHaveValue('What is this?\nA disposable browser fixture.');
     await page.screenshot({ path: 'artifacts/design/06-advanced-editor.png', fullPage: true });
@@ -195,7 +195,7 @@ test('editor manages SEO fields and FAQs, analyzes saved content and restores hi
     await page.getByRole('link', { name: 'Compare / restore', exact: true }).last().click();
     await expect(page.getByRole('heading', { name: 'Compare revisions', exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Restore as new private draft', exact: true }).click();
-    await expect(page.getByRole('status')).toContainText('restored as a new private draft');
+    await expect(page.locator('#staff-main > p[role="status"]')).toContainText('restored as a new private draft');
     await expect(page.getByLabel('Article title', { exact: true })).toHaveValue('Top 5 fixture planning checks');
     await page.goto('/staff/articles?per_page=10&sort=title');
     await page.getByRole('link', { name: /Next/ }).first().click();
@@ -208,12 +208,12 @@ test('provider keys are saved through a private admin form and never redisplayed
     const provider = page.getByRole('heading', { name: 'OpenAI GPT', exact: true }).locator('..');
     await provider.getByLabel('New OpenAI GPT key', { exact: true }).fill('browser-fixture-key-not-a-real-key');
     await provider.getByRole('button', { name: 'Encrypt and save key', exact: true }).click();
-    await expect(page.getByRole('status')).toContainText('Credential encrypted and saved');
+    await expect(page.locator('#staff-main > p[role="status"]')).toContainText('Credential encrypted and saved');
     await expect(provider.getByLabel('New OpenAI GPT key', { exact: true })).toHaveValue('');
     await expect(provider.getByText('Credential configured; provider verification is separate.', { exact: true })).toBeVisible();
     await expect(page.locator('body')).not.toContainText('browser-fixture-key-not-a-real-key');
     await provider.getByRole('button', { name: 'Remove stored key', exact: true }).click();
-    await expect(page.getByRole('status')).toContainText('Stored credential removed');
+    await expect(page.locator('#staff-main > p[role="status"]')).toContainText('Stored credential removed');
 });
 
 test('authenticator enrollment and single-use recovery protect the full browser sign-in', async ({ page, context }) => {
