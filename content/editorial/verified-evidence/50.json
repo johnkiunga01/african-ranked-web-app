@@ -1,0 +1,76 @@
+{
+  "content_type": "guide",
+  "answer": "Nollywood refers to Nigeria’s film and audiovisual industry, especially the home-video production network that expanded in the early 1990s. Its development involved domestic distribution, strong popular demand and, later, cinemas and streaming platforms. Claims that it is Africa’s “biggest” industry depend on whether production volume, revenue, employment or audience reach is measured.",
+  "last_verified_at": "2026-11-07",
+  "verification_scope": "AI-assisted primary/institutional source check performed 2026-11-07 for listed facts only; entire manuscript and image rights require named human editorial approval.",
+  "sources": [
+    {
+      "title": "UNESCO spotlights growth potential of Africa’s film industry",
+      "publisher": "UNESCO",
+      "url": "https://www.unesco.org/en/articles/unesco-spotlights-growth-potential-africas-film-industry",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "African film: A booming industry",
+      "publisher": "UNESCO",
+      "url": "https://www.unesco.org/en/articles/african-film-booming-industry",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Nollywood’s streaming romance",
+      "publisher": "UNESCO",
+      "url": "https://www.unesco.org/en/articles/nollywoods-streaming-romance",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Around the world in melodrama: 9 countries, 45 essential films",
+      "publisher": "British Film Institute (BFI)",
+      "url": "https://www.bfi.org.uk/features/around-world-melodrama-9-countries-45-essential-films",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Surreal16: the filmmaking collective trying to forge a new identity for Nigerian cinema",
+      "publisher": "British Film Institute (BFI)",
+      "url": "https://www.bfi.org.uk/sight-and-sound/interviews/surreal16-filmmaking-collective-trying-forge-new-identity-nigerian-cinema",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Regional Perspectives: Africa (FESPACO)",
+      "publisher": "UNESCO",
+      "url": "https://www.unesco.org/en/articles/regional-perspectives-africa-14",
+      "accessed_at": "2026-11-07"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "UNESCO published its first comprehensive mapping of African film and audiovisual industries in 2021; its figures describe that study period, not 2026.",
+      "source_url": "https://www.unesco.org/en/articles/unesco-spotlights-growth-potential-africas-film-industry",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "In its 2022 reporting, UNESCO cited approximately 2,500 Nigerian films per year as a period-specific production estimate.",
+      "source_url": "https://www.unesco.org/en/articles/african-film-booming-industry",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The BFI identifies 1992’s Living in Bondage as a landmark in Nollywood’s commercial home-video expansion.",
+      "source_url": "https://www.bfi.org.uk/features/around-world-melodrama-9-countries-45-essential-films",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "UNESCO’s June 2022 article described streaming platforms’ role in changing Nigerian film financing and distribution.",
+      "source_url": "https://www.unesco.org/en/articles/nollywoods-streaming-romance",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "In a 2018 interview, the BFI documented the Surreal16 collective’s ambitions for independent Nigerian filmmaking.",
+      "source_url": "https://www.bfi.org.uk/sight-and-sound/interviews/surreal16-filmmaking-collective-trying-forge-new-identity-nigerian-cinema",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "UNESCO states that the Pan-African FESPACO film festival was created in 1969.",
+      "source_url": "https://www.unesco.org/en/articles/regional-perspectives-africa-14",
+      "verified_at": "2026-11-07"
+    }
+  ]
+}
