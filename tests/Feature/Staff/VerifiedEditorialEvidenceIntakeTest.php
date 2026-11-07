@@ -147,4 +147,55 @@ class VerifiedEditorialEvidenceIntakeTest extends TestCase
         $this->assertSame($prior->id, $article->fresh()->current_revision_id);
         $this->assertSame(1, $article->revisions()->count());
     }
+
+    public function test_team_edited_fabrics_excerpt_is_preserved_when_sources_are_attached(): void
+    {
+        $article = $this->article(52);
+        $original = $article->currentRevision;
+        $userDraft = $original->replicate(['number', 'status']);
+        $userDraft->number = 5;
+        $userDraft->status = RevisionStatus::Draft;
+        $userDraft->excerpt = 'Team revised introduction with clearer search intent.';
+        $userDraft->save();
+        $article->current_revision_id = $userDraft->id;
+        $article->save();
+
+        $this->assertTrue(app(VerifiedEditorialEvidenceIntake::class)->reconcileEditedFabrics());
+
+        $article->refresh();
+        $current = $article->currentRevision;
+        $this->assertSame(6, $current->number);
+        $this->assertSame(RevisionStatus::InReview, $current->status);
+        $this->assertSame('Team revised introduction with clearer search intent.', $current->excerpt);
+        $this->assertSame($userDraft->body_markdown, $current->body_markdown);
+        $this->assertCount(6, $current->editorial_evidence['sources']);
+        $this->assertCount(7, $current->editorial_evidence['facts']);
+        $this->assertSame('2026-11-07', $current->editorial_evidence['last_verified_at']);
+        $this->assertSame(RevisionStatus::Draft, $userDraft->fresh()->status);
+        $this->assertCount(3, $article->revisions);
+        $this->assertFalse(app(VerifiedEditorialEvidenceIntake::class)->reconcileEditedFabrics());
+    }
+
+    public function test_team_changed_body_stays_draft_for_authors_review(): void
+    {
+        $article = $this->article(52);
+        $original = $article->currentRevision;
+        $userDraft = $original->replicate(['number', 'status']);
+        $userDraft->number = 5;
+        $userDraft->status = RevisionStatus::Draft;
+        $userDraft->body_markdown = trim($original->body_markdown)."\n\n## Additional editorial reporting\n\n".str_repeat('More checked context. ', 20);
+        $userDraft->save();
+        $article->current_revision_id = $userDraft->id;
+        $article->save();
+
+        $this->assertTrue(app(VerifiedEditorialEvidenceIntake::class)->reconcileEditedFabrics());
+
+        $article->refresh();
+        $current = $article->currentRevision;
+        $this->assertSame(RevisionStatus::Draft, $current->status);
+        $this->assertStringContainsString('Additional editorial reporting', $current->body_markdown);
+        $this->assertCount(6, $current->editorial_evidence['sources']);
+        $this->assertNull($article->published_revision_id);
+        $this->assertSame(RevisionStatus::Draft, $userDraft->fresh()->status);
+    }
 }
