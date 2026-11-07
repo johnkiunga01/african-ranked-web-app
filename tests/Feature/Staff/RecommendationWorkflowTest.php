@@ -222,11 +222,11 @@ class RecommendationWorkflowTest extends TestCase
         $this->assertNull($article->fresh()->published_revision_id);
     }
 
-    public function test_new_editor_hides_provider_picker_technical_revision_language_and_manual_seo_steps(): void
+    public function test_editor_offers_simple_save_and_improve_actions_while_preserving_advanced_tools(): void
     {
         $article = $this->article();
-        $this->actingAs($article->author)->get('/staff/articles/'.$article->id.'/edit')->assertOk()->assertSee('Improve article')->assertSee('Save article')
-            ->assertDontSee('Drafting provider')->assertDontSee('Editorial brief')->assertDontSee('SEO &amp; content checks', false)->assertDontSee('Run research-led optimisation');
+        $this->actingAs($article->author)->get('/staff/articles/'.$article->id.'/edit')->assertOk()->assertSee('Improve article')->assertSee('Save private draft')
+            ->assertSee('Drafting provider')->assertSee('Editorial brief')->assertSee('SEO &amp; content checks', false);
     }
 
     public function test_incomplete_suggestion_can_be_saved_for_editing_without_publishing(): void
