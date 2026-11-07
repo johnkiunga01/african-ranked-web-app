@@ -52,7 +52,7 @@ class DiscoveryController extends Controller
         // Public reading and AI-agent retrieval are allowed even while noindex stays active.
         // Disallowing these URLs would stop compliant crawlers from seeing the noindex header.
         $rules = "User-agent: *\nAllow: /\nDisallow: /newsletter\nDisallow: /staff\n"
-            ."Sitemap: ".$this->catalog->url('/sitemap.xml')."\n";
+            .'Sitemap: '.$this->catalog->url('/sitemap.xml')."\n";
 
         return response($rules, 200)->header('Content-Type', 'text/plain; charset=UTF-8');
     }
@@ -72,8 +72,8 @@ class DiscoveryController extends Controller
             .'Read the full linked articles for context, source attribution and last-verified dates. '
             ."This discovery file is not a license to republish content or a guarantee of AI citations.\n\n"
             ."## Start here\n\n"
-            ."- [Rankings and guides](".$c->url('/rankings')."): Browse published articles by topic.\n"
-            ."- [Editorial approach](".$c->url('/strategy')."): How African Ranked approaches research and presentation.\n\n"
+            .'- [Rankings and guides]('.$c->url('/rankings')."): Browse published articles by topic.\n"
+            .'- [Editorial approach]('.$c->url('/strategy')."): How African Ranked approaches research and presentation.\n\n"
             ."## Articles\n\n";
 
         foreach ($c->articles()->sortByDesc('dateModified') as $article) {
@@ -83,8 +83,8 @@ class DiscoveryController extends Controller
         }
 
         $text .= "\n## Machine-readable discovery\n\n"
-            ."- [RSS feed](".$c->url('/feed.xml')."): Newly published articles.\n"
-            ."- [XML sitemap](".$c->url('/sitemap.xml')."): Canonical public page URLs.\n\n"
+            .'- [RSS feed]('.$c->url('/feed.xml')."): Newly published articles.\n"
+            .'- [XML sitemap]('.$c->url('/sitemap.xml')."): Canonical public page URLs.\n\n"
             .'Only published articles appear in this index. Drafts, staff pages and personal information are excluded. '
             ."Verify material claims using the references on the article pages before quoting or summarizing.\n";
 
