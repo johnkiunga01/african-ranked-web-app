@@ -49,7 +49,7 @@ class DiscoveryController extends Controller
             return response("User-agent: *\nDisallow: /\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
         }
 
-        return response("User-agent: *\nAllow: /\nDisallow: /newsletter\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
+        return response("User-agent: *\nAllow: /\nDisallow: /newsletter\nDisallow: /staff\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
     }
 
     public function feed(): Response
