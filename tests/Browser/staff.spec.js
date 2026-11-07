@@ -165,7 +165,8 @@ test('article inventory supports search, bulk choices and mobile navigation', as
 });
 
 test('editor manages SEO fields and FAQs, analyzes saved content and restores historical drafts', async ({ page }) => {
-    await signIn(page, 'admin@browser.example.test');
+    // Use a separate seeded admin account to exercise the real five-logins-per-minute limit reliably.
+    await signIn(page, 'editor-qa@browser.example.test');
     await page.goto('/staff/articles/create');
     await page.getByLabel('Article title', { exact: true }).fill('Top 5 fixture planning checks');
     await page.getByLabel('Page address', { exact: true }).fill('advanced-editor-browser-fixture');

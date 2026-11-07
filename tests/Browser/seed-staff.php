@@ -14,7 +14,7 @@ if (config('database.default') !== 'sqlite' || ! str_starts_with($database, '/tm
     fwrite(STDERR, "Browser fixtures require the disposable browser-test SQLite database.\n");
     exit(1);
 }
-foreach ([['Browser Admin', 'admin@browser.example.test', 'super_admin'], ['Bulk Admin', 'bulk@browser.example.test', 'super_admin'], ['Credential Admin', 'credentials@browser.example.test', 'super_admin'], ['Browser Author', 'author@browser.example.test', 'author'], ['Other Author', 'other@browser.example.test', 'author']] as [$name, $email, $role]) {
+foreach ([['Browser Admin', 'admin@browser.example.test', 'super_admin'], ['Bulk Admin', 'bulk@browser.example.test', 'super_admin'], ['Credential Admin', 'credentials@browser.example.test', 'super_admin'], ['Editor QA Admin', 'editor-qa@browser.example.test', 'super_admin'], ['Browser Author', 'author@browser.example.test', 'author'], ['Other Author', 'other@browser.example.test', 'author']] as [$name, $email, $role]) {
     User::forceCreate(['name' => $name, 'email' => $email, 'password' => 'BrowserOnlyPassword123!', 'role' => $role, 'email_verified_at' => now(), 'is_active' => true]);
 }
 $admin = User::where('email', 'admin@browser.example.test')->firstOrFail();
