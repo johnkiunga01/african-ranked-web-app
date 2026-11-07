@@ -147,6 +147,7 @@ class VerifiedEditorialEvidenceIntakeTest extends TestCase
         $this->assertSame($prior->id, $article->fresh()->current_revision_id);
         $this->assertSame(1, $article->revisions()->count());
     }
+
     public function test_team_edited_fabrics_excerpt_is_preserved_when_sources_are_attached(): void
     {
         $article = $this->article(52);
