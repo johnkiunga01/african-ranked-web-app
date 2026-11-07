@@ -28,6 +28,24 @@ class ArticleVisuals
         return ! ($coverArt !== null && $coverArt === $detailArt);
     }
 
+    /** Read-time filtering does not delete an editor's original revision data. */
+    public function filterBody(?string $cover, array $blocks): array
+    {
+        $seen = [];
+        $filtered = [];
+        foreach ($blocks as $block) {
+            if (($block['type'] ?? null) === 'image') {
+                if (! $this->showInline($cover, $block['url'] ?? null, $seen)) {
+                    continue;
+                }
+                $seen[] = $block['url'];
+            }
+            $filtered[] = $block;
+        }
+
+        return $filtered;
+    }
+
     private function identity(?string $url): ?string
     {
         if (! $url) {
