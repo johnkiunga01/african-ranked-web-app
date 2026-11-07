@@ -81,6 +81,7 @@ The other 21 drafts must be enumerated from the authenticated article library or
 
 | Subject | Official/relevant source research | Body prepared | 40–60 word verified answer module | Dated key-fact verification | Photo rights | CMS update |
 | --- | --- | --- | --- | --- | --- | --- |
+| Nollywood Explained (#50) | UNESCO and BFI dated industry research | Yes (2,400+ words before FAQs) | Pending reviewer | Pending reviewer | Pending | None |
 | Traditional African Instruments (#51) | UNESCO, Smithsonian and Met sources | Yes (2,700+ words before FAQs) | Pending reviewer | Pending reviewer | Pending | None |
 | African Fabrics and Prints (#52) | Museum-sourced textile history and terminology | Yes (2,600+ words before FAQs) | Pending reviewer | Pending reviewer | Pending | None |
 | Afrobeat vs Afrobeats (#49) | Yes, institutional and catalogue sources | Yes | Pending reviewer | Pending reviewer | Pending | None |
@@ -96,3 +97,5 @@ The manuscript source lists are not a substitute for human verification of indiv
 - No photo was imported, and no new source-access date, legal image right, author or reviewer has been recorded in CMS.
 
 - Confirmed CMS draft #51 now also has a 2,700+-word substantive manuscript (`traditional-african-instruments.md`), documenting mbira/sansi, kora, balafon and Yoruba dundun traditions from UNESCO, Smithsonian and Met sources. Archive media reuse is specifically prohibited until rights are cleared.
+
+- Confirmed CMS draft #50 now has an independently structured 2,400+-word body manuscript in `nollywood-african-film-industries.md`, using dated UNESCO and BFI materials. It avoids a fabricated 2026 ranking and keeps UNESCO's older figures explicitly dated.
