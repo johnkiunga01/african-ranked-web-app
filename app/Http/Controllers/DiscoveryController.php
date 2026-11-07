@@ -45,7 +45,7 @@ class DiscoveryController extends Controller
 
     public function robots(): Response
     {
-        if (! app()->environment('production') || config('seo.preview') || config('review.enabled')) {
+        if (app()->environment('production') === false || config('seo.preview') || config('review.enabled')) {
             return response("User-agent: *\nDisallow: /\nSitemap: ".$this->catalog->url('/sitemap.xml')."\n", 200)->header('Content-Type', 'text/plain; charset=UTF-8');
         }
 
@@ -68,8 +68,8 @@ class DiscoveryController extends Controller
         // The CMS catalog returns published revisions only; never expose private staff drafts.
         $text = "# African Ranked\n\n"
             ."> Independent Africa-focused rankings and practical guides to travel, wildlife, food, music, business and technology.\n\n"
-            ."African Ranked publishes English-language editorial articles about African destinations, cultures, industries and people. "
-            ."Read the full linked articles for context, source attribution and last-verified dates. "
+            .'African Ranked publishes English-language editorial articles about African destinations, cultures, industries and people. '
+            .'Read the full linked articles for context, source attribution and last-verified dates. '
             ."This discovery file is not a license to republish content or a guarantee of AI citations.\n\n"
             ."## Start here\n\n"
             ."- [Rankings and guides](".$c->url('/rankings')."): Browse published articles by topic.\n"
@@ -85,7 +85,7 @@ class DiscoveryController extends Controller
         $text .= "\n## Machine-readable discovery\n\n"
             ."- [RSS feed](".$c->url('/feed.xml')."): Newly published articles.\n"
             ."- [XML sitemap](".$c->url('/sitemap.xml')."): Canonical public page URLs.\n\n"
-            ."Only published articles appear in this index. Drafts, staff pages and personal information are excluded. "
+            .'Only published articles appear in this index. Drafts, staff pages and personal information are excluded. '
             ."Verify material claims using the references on the article pages before quoting or summarizing.\n";
 
         return response($text)->header('Content-Type', 'text/plain; charset=UTF-8');
