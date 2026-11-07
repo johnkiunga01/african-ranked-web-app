@@ -37,6 +37,7 @@ class AuditEvent extends Model
             'invitation.accepted' => 'Staff invitation accepted', 'invitation.revoked' => 'Staff invitation revoked',
             'invitation.delivery_failed' => 'Invitation delivery failed', 'article.media_uploaded' => 'Editorial image uploaded', 'article.media_duplicate_rejected' => 'Duplicate image rejected',
             'article.draft_saved' => 'Draft revision saved',
+            'article.prepared_review_queued' => 'Prepared research submitted for editorial review',
             'article.submit' => 'Article submitted for review', 'article.request_changes' => 'Changes requested',
             'article.approve' => 'Article revision approved', 'article.publish' => 'Article revision published',
             'article.unpublish' => 'Article withdrawn', default => 'Workspace action recorded',

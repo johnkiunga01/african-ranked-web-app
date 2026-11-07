@@ -28,7 +28,28 @@ class MarkdownBlocks
                         $blocks[] = ['type' => 'list', 'items' => [$match[1]]];
                     }
                 } else {
-                    $blocks[] = ['type' => 'paragraph', 'text' => $line];
+                    // Keep citation links reader-visible even when research
+                    // manuscripts place Markdown links within a sentence.
+                    // The body is still plain text; no untrusted HTML is rendered.
+                    $links = [];
+                    $plain = preg_replace_callback(
+                        '~\[([^\]\r\n]+)\]\((https://[^\s)]+|/(?:articles|categories)/[a-z0-9-]+(?:\#[a-z0-9-]+)?)\)~iu',
+                        function (array $match) use (&$links) {
+                            if (str_starts_with($match[2], '/') || filter_var($match[2], FILTER_VALIDATE_URL)) {
+                                $links[] = ['type' => 'link', 'text' => $match[1], 'url' => $match[2]];
+
+                                return $match[1];
+                            }
+
+                            return $match[0];
+                        },
+                        $line
+                    );
+                    $plain = preg_replace('/\*\*([^*\r\n]+)\*\*/u', '$1', $plain);
+                    $blocks[] = ['type' => 'paragraph', 'text' => $plain];
+                    foreach ($links as $citation) {
+                        $blocks[] = $citation;
+                    }
                 }
             }
         }
