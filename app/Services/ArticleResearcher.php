@@ -13,9 +13,9 @@ use Throwable;
 
 class ArticleResearcher
 {
-    public function research(User $actor, Article $article): ArticleResearch
+    public function research(User $actor, Article $article, bool $recommendation = false): ArticleResearch
     {
-        Gate::forUser($actor)->authorize('curate', $article);
+        Gate::forUser($actor)->authorize($recommendation ? 'recommend' : 'curate', $article);
         if ($saved = ArticleResearch::current($article)) {
             return $saved;
         }

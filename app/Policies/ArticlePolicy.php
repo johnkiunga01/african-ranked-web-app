@@ -48,6 +48,16 @@ class ArticlePolicy
         return $this->view($user, $article) && (bool) $article->trashed_at;
     }
 
+    public function recommend(User $user, Article $article): bool
+    {
+        return $this->update($user, $article);
+    }
+
+    public function acceptRecommendation(User $user, Article $article): bool
+    {
+        return $this->update($user, $article);
+    }
+
     public function curate(User $user, Article $article): bool
     {
         return $this->update($user, $article) && ($user->isSuperAdmin() || app(SiteSettings::class)->snapshot('general')['value']['author_ai_enabled']);

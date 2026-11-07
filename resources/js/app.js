@@ -1,3 +1,4 @@
+import './recommendations.js';
 import { animate, inView, stagger } from 'motion';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
