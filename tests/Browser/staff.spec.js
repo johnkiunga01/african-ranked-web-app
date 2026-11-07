@@ -21,13 +21,14 @@ test('author and administrator complete a reviewed publishing cycle with revisio
     for (const page of [author, admin, other]) page.on('pageerror', (error) => errors.push(error.message));
     try {
         await signIn(author, 'author@browser.example.test');
-        await author.getByRole('link', { name: 'Write an article', exact: true }).click();
+        await author.getByRole('link', { name: 'New article', exact: true }).click();
         await author.getByLabel('Article title', { exact: true }).fill('Browser-reviewed safari planning checklist');
         await author.getByLabel('Page address', { exact: true }).fill('browser-reviewed-safari-checklist');
         await author.getByLabel('Short introduction', { exact: true }).fill('A fake browser fixture demonstrating safe editorial publication.');
         await author.getByLabel('Category', { exact: true }).selectOption('travel');
         await author.getByLabel('Article body', { exact: true }).fill(publicationBody('Fixture content, not editorial reporting.\n\n## Before you go\n\n- Confirm your research\n- Review your sources'));
-        await author.getByLabel('Hero image URL', { exact: true }).fill('https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg?w=600');
+        await author.getByText('Advanced: use a licensed external image URL', { exact: true }).click();
+        await author.getByLabel('Cover image URL', { exact: true }).fill('https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg?w=600');
         await author.getByLabel('Reader FAQs', { exact: true }).fill(publicationFaqs);
         await author.getByLabel('Sources and research notes', { exact: true }).fill('Test fixture only. Used to validate review controls in a disposable database.');
         await publicationEvidence(author);
@@ -52,7 +53,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await expect(author.getByText('Add the missing practical checklist detail.', { exact: true })).toBeVisible();
         await author.getByLabel('Article body', { exact: true }).fill(publicationBody('Fixture content revised for testing.\n\n## Before you go\n\n- Confirm your research\n- Review your sources\n- Check completeness'));
         await publicationEvidence(author);
-        await author.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
+        await author.getByRole('button', { name: 'Save private draft', exact: true }).click();
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
         await admin.reload();
         for (const label of ['Facts and sources verified', 'Content and promised ranking complete', 'Author and attribution confirmed', 'Image permission confirmed']) {
@@ -66,7 +67,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         await author.reload();
         await author.getByLabel('Article title', { exact: true }).fill('Private unpublished replacement title');
         await publicationEvidence(author);
-        await author.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
+        await author.getByRole('button', { name: 'Save private draft', exact: true }).click();
         const unchanged = await request.get('/articles/browser-reviewed-safari-checklist');
         expect(await unchanged.text()).toContain('Browser-reviewed safari planning checklist');
         expect(await unchanged.text()).not.toContain('Private unpublished replacement title');
@@ -86,6 +87,7 @@ test('administrator invites an author who sets a password; new account cannot ma
     try {
         const admin = await adminContext.newPage();
         await signIn(admin, 'admin@browser.example.test');
+        await admin.locator('summary.staff-more-trigger:visible').click();
         await admin.getByRole('link', { name: 'Team', exact: true }).click();
         await admin.getByLabel('Author name', { exact: true }).fill('Invited Browser Author');
         await admin.getByLabel('Author email', { exact: true }).fill('invited@browser.example.test');
@@ -134,7 +136,8 @@ test('expired login form recovers with a fresh CSRF token and retains CSRF prote
     await page.getByLabel('Password', { exact: true }).fill('BrowserOnlyPassword123!');
     await page.getByRole('button', { name: 'Sign in', exact: true }).click();
     await expect(page).toHaveURL(/\/staff$/);
-    await page.getByRole('link', { name: 'SEO', exact: true }).click();
+    await page.locator('summary.staff-more-trigger:visible').click();
+    await page.getByRole('link', { name: 'SEO tools', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Search & content quality', exact: true })).toBeVisible();
     await page.getByRole('link', { name: 'Integrations', exact: true }).first().click();
     await expect(page.getByRole('heading', { name: 'Google Analytics 4' })).toBeVisible();
@@ -154,7 +157,8 @@ test('article inventory supports search, bulk choices and mobile navigation', as
     await page.setViewportSize({ width: 390, height: 844 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.screenshot({ path: 'artifacts/design/04-articles-mobile.png', fullPage: true });
-    await page.getByText('Workspace menu', { exact: true }).click();
+    await page.locator('details.staff-mobile-nav > summary').click();
+    await page.locator('details.staff-mobile-nav summary.staff-more-trigger').click();
     await page.getByRole('link', { name: 'Integrations', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'OpenSEO MCP connection', exact: true })).toBeVisible();
     await page.screenshot({ path: 'artifacts/design/05-integrations-mobile.png', fullPage: true });
@@ -168,8 +172,9 @@ test('editor manages SEO fields and FAQs, analyzes saved content and restores hi
     await page.getByLabel('Short introduction', { exact: true }).fill('An introduction for a disposable editor fixture.');
     await page.getByLabel('Category', { exact: true }).selectOption('travel');
     await page.getByLabel('Article body', { exact: true }).fill('## 1. One supported fixture entry\n\nA clear answer for a fixture reader.\n\n[Related reading](/articles/missing-fixture-target)');
-    await page.getByLabel('Hero image URL', { exact: true }).fill('https://example.test/fixture.jpg');
-    await page.getByLabel('Hero image description', { exact: true }).fill('Fixture image only');
+    await page.getByText('Advanced: use a licensed external image URL', { exact: true }).click();
+    await page.getByLabel('Cover image URL', { exact: true }).fill('https://example.test/fixture.jpg');
+    await page.getByLabel('Describe the image', { exact: true }).fill('Fixture image only');
     await page.getByLabel('Search title override', { exact: true }).fill('Fixture search title');
     await page.getByLabel('Search description override', { exact: true }).fill('Fixture search description.');
     await page.getByLabel('Research target query', { exact: true }).fill('fixture planning checks');
@@ -186,7 +191,7 @@ test('editor manages SEO fields and FAQs, analyzes saved content and restores hi
     await page.screenshot({ path: 'artifacts/design/07-article-seo.png', fullPage: true });
     await page.goto(editUrl);
     await page.getByLabel('Article title', { exact: true }).fill('A newer working fixture title');
-    await page.getByRole('button', { name: 'Save new draft revision', exact: true }).click();
+    await page.getByRole('button', { name: 'Save private draft', exact: true }).click();
     await page.getByRole('link', { name: 'Compare / restore', exact: true }).last().click();
     await expect(page.getByRole('heading', { name: 'Compare revisions', exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Restore as new private draft', exact: true }).click();
@@ -264,7 +269,8 @@ test('authenticator enrollment and single-use recovery protect the full browser 
     await page.getByRole('button', { name: 'Sign out', exact: true }).click();
     await page.setViewportSize({ width: 1440, height: 1000 });
     await signIn(page, 'credentials@browser.example.test');
-    await page.getByRole('link', { name: 'Launch readiness', exact: true }).click();
-    await expect(page.getByRole('heading', { name: 'Launch readiness', exact: true })).toBeVisible();
+    await page.locator('summary.staff-more-trigger:visible').click();
+    await page.getByRole('link', { name: 'Launch checks', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Production readiness', exact: true })).toBeVisible();
     await page.screenshot({ path: 'artifacts/security/launch-readiness.png', fullPage: true });
 });
