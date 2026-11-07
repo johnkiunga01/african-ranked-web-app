@@ -76,6 +76,7 @@ class EditorialEvidenceTest extends TestCase
         $this->assertStringNotContainsString('<th', $html);
         $this->assertStringNotContainsString('>Source</', $html);
     }
+
     public function test_fact_links_use_the_entire_fact_as_anchor_and_keep_source_register_collapsed(): void
     {
         $evidence = $this->evidence();
@@ -99,5 +100,4 @@ class EditorialEvidenceTest extends TestCase
         $this->assertStringNotContainsString('href="javascript:', $unsafeMarkup);
         $this->assertStringContainsString('A clear linked finding about history.', $unsafeMarkup);
     }
-
 }
