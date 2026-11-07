@@ -78,7 +78,7 @@ class PreparedEditorialIntakeTest extends TestCase
 
         $this->actingAs($author)->get('/staff/articles/'.$article->id.'/preview')
             ->assertOk()
-            ->assertSee('In review')
+            ->assertSee('in review')
             ->assertSee('The home-video boom')
             ->assertSee('Sources and further reading')
             ->assertSee('Editorial checks')
