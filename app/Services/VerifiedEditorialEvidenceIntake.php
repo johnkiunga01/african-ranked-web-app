@@ -67,7 +67,7 @@ class VerifiedEditorialEvidenceIntake
 
             $previous = $article->currentRevision()->lockForUpdate()->first();
             if (! $previous
-                || $previous->number !== 4
+                || (int) $previous->number !== 4
                 || ! str_contains(mb_strtolower($previous->title), $needle)
                 || ! str_contains((string) $previous->source_notes, 'Prepared editorial handoff:')
                 || preg_match_all('/[\pL\pN]+/u', (string) $previous->body_markdown) < 1300
