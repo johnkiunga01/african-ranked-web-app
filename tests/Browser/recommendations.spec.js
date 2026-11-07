@@ -10,9 +10,8 @@ test('author reviews a suggested version, compares the original and accepts publ
     await page.getByRole('button', { name: 'Sign in', exact: true }).click();
     await page.goto('/staff/articles?q=Current+workflow+demonstration');
     await page.locator('a[href$="/edit"]').first().click();
-    await expect(page.getByRole('button', { name: 'Save article', exact: true })).toBeVisible();
-    await expect(page.getByLabel('Drafting provider')).toHaveCount(0);
-    await expect(page.getByLabel('Editorial brief')).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Save private draft', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Improve article', exact: true })).toBeVisible();
     await page.getByRole('link', { name: 'Review progress & changes' }).click();
     await expect(page.getByRole('heading', { name: 'Review your suggested version', exact: true })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Suggested workflow demonstration', exact: true })).toBeVisible();
