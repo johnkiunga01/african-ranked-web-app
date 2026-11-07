@@ -22,6 +22,10 @@ class ArticleVisuals
 
         $coverArt = $this->artSlug($cover);
         $detailArt = $this->artSlug($candidate);
+        if ($detailArt !== null && in_array($detailArt, array_map(fn (string $url) => $this->artSlug($url), $alreadyShown), true)) {
+            return false;
+        }
+
 
         // In-house cover/detail SVG variants currently repeat the same visual
         // motif and headline. Show the cover once, not multiple near copies.
