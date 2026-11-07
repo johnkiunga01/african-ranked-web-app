@@ -1,0 +1,31 @@
+import { test, expect } from '@playwright/test';
+import { mkdir } from 'node:fs/promises';
+
+test('author reviews a suggested version, compares the original and accepts publication', async ({ page, request }) => {
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
+    await page.goto('/staff/login');
+    await page.getByLabel('Email address', { exact: true }).fill('author@browser.example.test');
+    await page.getByLabel('Password', { exact: true }).fill('BrowserOnlyPassword123!');
+    await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+    await page.goto('/staff/articles?q=Current+workflow+demonstration');
+    await page.locator('a[href$="/edit"]').first().click();
+    await expect(page.getByRole('button', { name: 'Save private draft', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Improve article', exact: true })).toBeVisible();
+    await page.getByRole('link', { name: 'Review progress & changes' }).click();
+    await expect(page.getByRole('heading', { name: 'Review your suggested version', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Suggested workflow demonstration', exact: true })).toBeVisible();
+    await page.getByText('Compare with my original', { exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Current workflow demonstration', exact: true })).toBeVisible();
+    await mkdir('artifacts/recommendations', { recursive: true });
+    await page.screenshot({ path: 'artifacts/recommendations/review-desktop.png' });
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.getByLabel('I’ve reviewed this version and checked its facts, sources, ranking and image permissions.', { exact: true }).check();
+    await page.getByRole('button', { name: 'Accept and publish', exact: true }).click();
+    await expect(page.getByRole('status').filter({ hasText: 'Your accepted version is published' })).toBeVisible();
+    const published = await request.get('/articles/recommendation-browser-demo');
+    expect(published.status()).toBe(200);
+    expect(await published.text()).toContain('Suggested workflow demonstration');
+    expect(errors).toEqual([]);
+});
