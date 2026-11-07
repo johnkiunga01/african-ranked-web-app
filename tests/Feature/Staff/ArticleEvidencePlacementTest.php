@@ -39,6 +39,13 @@ class ArticleEvidencePlacementTest extends TestCase
 
     private function assertReadingOrder(string $html): void
     {
+        // Exclude JSON-LD (including FAQPage schema) and unrelated page chrome.
+        $start = strpos($html, '<article ');
+        $this->assertNotFalse($start);
+        $end = strpos($html, '</article>', $start);
+        $this->assertNotFalse($end);
+        $html = substr($html, $start, $end + strlen('</article>') - $start);
+
         $markers = [
             'Short answer marker for reading order.',
             'Body paragraph marker for reading order.',
