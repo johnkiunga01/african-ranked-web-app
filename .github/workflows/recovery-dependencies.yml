@@ -1,0 +1,45 @@
+name: Recovery locked Symfony security updates
+
+on:
+  push:
+    branches: [fix/recover-dotted-africa-20261103]
+    paths:
+      - .github/workflows/recovery-dependencies.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-lock:
+    if: github.repository == 'johnkiunga01/african-ranked-web-app'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, xml, xmlwriter, pdo_sqlite
+          coverage: none
+      - name: Target vulnerable Symfony components and audit resulting lock
+        run: |
+          composer update symfony/http-foundation symfony/http-kernel symfony/routing --with-all-dependencies --no-interaction --prefer-dist --no-scripts
+          composer audit --locked
+          composer validate --strict --no-check-publish
+          git diff --check
+          if git diff --name-only | grep -vFx 'composer.lock'; then
+            echo 'Refusing to commit changes outside composer.lock'
+            exit 1
+          fi
+          git add composer.lock
+          if git diff --cached --quiet; then
+            echo 'No lockfile changes required'
+            exit 0
+          fi
+          git diff --cached --stat
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix(deps): update vulnerable Symfony packages in lockfile'
+          git push origin HEAD:fix/recover-dotted-africa-20261103
