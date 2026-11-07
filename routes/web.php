@@ -4,8 +4,8 @@ use App\Http\Controllers\ContentPageController;
 use App\Http\Controllers\DiscoveryController;
 use App\Http\Controllers\EditorialCoverArtController;
 use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Staff\ArticleMediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/editorial-art/{slug}/{variant}.svg', [EditorialCoverArtController::class, 'show'])->where(['slug' => '[a-z0-9-]+', 'variant' => '(?:cover|detail-[1-9][0-9]?)'])->name('editorial-art.show');

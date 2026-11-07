@@ -26,7 +26,7 @@ class OperationalReadinessTest extends TestCase
         config(['cache.default' => 'array', 'queue.default' => 'database']);
         $this->artisan('ops:heartbeat', ['--status' => true, '--strict' => true])->assertExitCode(1);
         Cache::put('african-ranked:ops:scheduler-heartbeat', now()->toIso8601String(), now()->addHour());
-        (new WorkerHeartbeat())->handle();
+        (new WorkerHeartbeat)->handle();
         $this->artisan('ops:heartbeat', ['--status' => true, '--strict' => true])->assertExitCode(0);
     }
 

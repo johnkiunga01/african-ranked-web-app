@@ -4,7 +4,6 @@ namespace Tests\Feature\Staff;
 
 use App\Enums\RevisionStatus;
 use App\Enums\StaffRole;
-use App\Models\Article;
 use App\Models\User;
 use App\Services\SeedArticleImporter;
 use App\Support\Catalog;

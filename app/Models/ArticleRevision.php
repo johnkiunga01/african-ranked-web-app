@@ -30,6 +30,7 @@ class ArticleRevision extends Model
         } elseif (str_contains((string) $this->image, '/editorial-art/')) {
             $mediaCredit = 'African Ranked original illustration';
         }
+
         return [
             'slug' => $article->slug, 'title' => $this->title, 'excerpt' => $this->excerpt,
             'category' => $this->category_slug, 'author' => $this->author_name, 'authorTitle' => $this->author_title,

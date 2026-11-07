@@ -4,8 +4,8 @@ namespace App\Services;
 
 use App\Enums\RevisionStatus;
 use App\Models\Article;
-use App\Models\ArticleRevision;
 use App\Models\ArticleMediaAsset;
+use App\Models\ArticleRevision;
 use App\Models\AuditEvent;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -37,12 +37,22 @@ class EditorialWorkflow
             $body = ! empty($data['preserve_body']) && $prior ? $prior->body : app(MarkdownBlocks::class)->parse($data['body_markdown']);
             // Preserve author captions and credits for first-party uploaded image blocks.
             foreach ($body as &$block) {
-                if (($block['type'] ?? null) !== 'image') continue;
-                if (! preg_match('~/editorial-media/([a-f0-9-]{36})\\.webp$~', $block['url'] ?? '', $m)) continue;
+                if (($block['type'] ?? null) !== 'image') {
+                    continue;
+                }
+                if (! preg_match('~/editorial-media/([a-f0-9-]{36})\\.webp$~', $block['url'] ?? '', $m)) {
+                    continue;
+                }
                 $asset = ArticleMediaAsset::find($m[1]);
-                if (! $asset) continue;
-                if (filled($asset->caption)) $block['caption'] = $asset->caption;
-                if (filled($asset->credit)) $block['credit'] = $asset->credit;
+                if (! $asset) {
+                    continue;
+                }
+                if (filled($asset->caption)) {
+                    $block['caption'] = $asset->caption;
+                }
+                if (filled($asset->credit)) {
+                    $block['credit'] = $asset->credit;
+                }
                 $block['source'] = null;
             }
             unset($block);

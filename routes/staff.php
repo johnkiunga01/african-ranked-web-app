@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Staff\ArticleController;
-use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\Staff\ArticleCurationController;
+use App\Http\Controllers\Staff\ArticleMediaController;
 use App\Http\Controllers\Staff\ArticleOperationsController;
 use App\Http\Controllers\Staff\ArticleToolsController;
 use App\Http\Controllers\Staff\AuthController;
