@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\User;
+use App\Models\ArticleRecommendation;
+use App\Services\EditorialWorkflow;
+use App\Services\RecommendationGuidelines;
 use App\Services\SeedArticleImporter;
 use App\Support\Catalog;
 use Illuminate\Contracts\Console\Kernel;
