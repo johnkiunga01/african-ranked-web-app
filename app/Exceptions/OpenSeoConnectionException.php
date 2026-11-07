@@ -9,6 +9,8 @@ class OpenSeoConnectionException extends RuntimeException
     public static function forReason(string $reason): self
     {
         return new self(match ($reason) {
+            'credits' => 'OpenSEO refused this research request because of a credit or quota restriction. No automatic retry was made.',
+            'project' => 'OpenSEO refused the configured project. Check OPENSEO_PROJECT_ID and whether the saved credential can access it.',
             'authentication' => 'OpenSEO rejected the credential (HTTP 401). Replace the key in Secure provider credentials, then verify again.',
             'access' => 'OpenSEO denied access (HTTP 403). Check the key workspace/scopes and whether this server is allowed to reach the endpoint.',
             'rate_limit' => 'OpenSEO is rate limiting verification (HTTP 429). Wait before trying again; the credential was not changed.',

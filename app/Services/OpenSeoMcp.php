@@ -22,6 +22,7 @@ class OpenSeoMcp
         if (! in_array($tool, ['whoami', 'list_projects', 'get_project_context', 'list_saved_keywords', 'get_keyword_metrics', 'get_serp_results', 'research_keywords'], true)) {
             throw new RuntimeException('This OpenSEO tool is not allowed for editorial research.');
         }
+        $this->session = null;
         try {
             $init = $this->rpc('initialize', ['protocolVersion' => $this->protocol, 'capabilities' => (object) [], 'clientInfo' => ['name' => 'african-ranked', 'version' => '1.1']]);
             $version = $init['protocolVersion'] ?? null;
@@ -32,7 +33,11 @@ class OpenSeoMcp
             $this->rpc('notifications/initialized', null, true);
             $result = $this->rpc('tools/call', ['name' => $tool, 'arguments' => $arguments ?: (object) []]);
             if ($result['isError'] ?? false) {
-                throw new RuntimeException;
+                // Classify privately; never return provider text or credentials.
+                $message = strtolower(json_encode($result));
+                $reason = str_contains($message, 'credit') || str_contains($message, 'quota') ? 'credits'
+                    : (str_contains($message, 'project') ? 'project' : 'tool');
+                throw OpenSeoConnectionException::forReason($reason);
             }
             if (is_array($result['structuredContent'] ?? null)) {
                 return $result['structuredContent'];
@@ -46,8 +51,12 @@ class OpenSeoMcp
                 }
             }
             throw new RuntimeException;
+        } catch (OpenSeoConnectionException $exception) {
+            throw $exception;
+        } catch (ConnectionException) {
+            throw OpenSeoConnectionException::forReason('network');
         } catch (Throwable) {
-            throw new RuntimeException('OpenSEO research could not be completed. No research was invented and no provider retry was made. Check the integration and credit balance.');
+            throw OpenSeoConnectionException::forReason('protocol');
         }
     }
 
