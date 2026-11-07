@@ -75,7 +75,7 @@ class ArticleController extends Controller
                 };
             })->with(['currentRevision', 'publishedRevision', 'author'])
             ->when($filters['q'] ?? null, fn ($q, $term) => $q->where(function ($q) use ($term) {
-                $q->where('slug', 'like', '%'.$term.'%')->orWhereHas('currentRevision', fn ($r) => $r->where('title', 'like', '%'.$term.'%'));
+                $q->where('slug', 'like', '%'.$term.'%')->orWhereHas('currentRevision', fn ($r) => $r->where('title', 'like', '%'.$term.'%')->orWhere('excerpt', 'like', '%'.$term.'%')->orWhere('body_markdown', 'like', '%'.$term.'%'));
             }))
             ->when($filters['status'] ?? null, fn ($q, $status) => $q->whereHas('currentRevision', fn ($r) => $r->where('status', $status)))
             ->when($filters['category'] ?? null, fn ($q, $category) => $q->whereHas('currentRevision', fn ($r) => $r->where('category_slug', $category)));

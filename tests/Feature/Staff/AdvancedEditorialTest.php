@@ -47,6 +47,25 @@ class AdvancedEditorialTest extends TestCase
         $this->get('/staff/articles?per_page=10000')->assertSessionHasErrors('per_page');
     }
 
+    public function test_article_library_search_finds_current_draft_body_and_introduction_without_exposing_other_authors(): void
+    {
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $author = User::factory()->create();
+        $article = $this->seedArticle($admin, 'searchable-private-guide');
+        $revision = $article->currentRevision;
+        $revision->body_markdown = 'Private body mentions the rarephraseelephantpath.';
+        $revision->excerpt = 'An introduction covering the rarephrasewarmcamps.';
+        $revision->save();
+
+        $this->actingAs($admin)->get('/staff/articles?q=rarephraseelephantpath')
+            ->assertOk()->assertViewHas('articles', fn ($items) => $items->total() === 1);
+        $this->get('/staff/articles?q=rarephrasewarmcamps')
+            ->assertOk()->assertViewHas('articles', fn ($items) => $items->total() === 1);
+
+        $this->actingAs($author)->get('/staff/articles?q=rarephraseelephantpath')
+            ->assertOk()->assertViewHas('articles', fn ($items) => $items->total() === 0);
+    }
+
     public function test_seo_fields_and_faqs_stay_private_until_approved_publication_and_can_be_cleared(): void
     {
         $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);

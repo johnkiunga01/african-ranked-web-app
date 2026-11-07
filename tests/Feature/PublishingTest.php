@@ -116,6 +116,20 @@ class PublishingTest extends TestCase
         $this->get('/sitemaps/invalid.xml')->assertNotFound();
     }
 
+    public function test_public_robots_policy_disallows_staff_routes_but_preview_remains_fully_blocked(): void
+    {
+        config(['seo.preview' => false, 'review.enabled' => false]);
+        app()->detectEnvironment(fn () => 'production');
+
+        $this->get('/robots.txt')->assertOk()
+            ->assertSee('Disallow: /staff')
+            ->assertSee('Disallow: /newsletter')
+            ->assertDontSee('Disallow: /'.PHP_EOL.'Sitemap:');
+
+        config(['seo.preview' => true]);
+        $this->get('/robots.txt')->assertOk()->assertSee('Disallow: /');
+    }
+
     public function test_legacy_global_prefix_redirects_to_the_existing_global_url(): void
     {
         $this->get('/global')->assertRedirect('/')->assertStatus(301);
