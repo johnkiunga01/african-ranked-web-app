@@ -28,7 +28,7 @@ class ProductionDiscoveryTest extends TestCase
 
         try {
             $robots = $this->get($origin.'/robots.txt')->assertOk()
-                ->assertSee("User-agent: *")
+                ->assertSee('User-agent: *')
                 ->assertSee('Allow: /')
                 ->assertSee('Disallow: /staff')
                 ->assertSee('Disallow: /newsletter');
