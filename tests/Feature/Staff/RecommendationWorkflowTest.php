@@ -226,7 +226,7 @@ class RecommendationWorkflowTest extends TestCase
     {
         $article = $this->article();
         $this->actingAs($article->author)->get('/staff/articles/'.$article->id.'/edit')->assertOk()->assertSee('Improve article')->assertSee('Save private draft')
-            ->assertSee('Drafting provider')->assertSee('Editorial brief')->assertSee('SEO &amp; content checks', false);
+            ->assertDontSee('Drafting provider')->assertDontSee('Editorial brief')->assertSee('SEO &amp; content checks', false);
     }
 
     public function test_incomplete_suggestion_can_be_saved_for_editing_without_publishing(): void
