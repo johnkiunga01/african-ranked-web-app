@@ -63,7 +63,7 @@ class PreparedEditorialIntake
             throw new RuntimeException("Missing source register for {$articleId}.");
         }
 
-        preg_match_all('/^\*\*([^\r\n*]+\?)\*\*\s*\R+([^\r\n]+)/mu', $matches[1], $questions, PREG_SET_ORDER);
+        preg_match_all('/^\*\*(.+?\?)\*\*[ \t]*\R+([^\r\n]+)/mu', $matches[1], $questions, PREG_SET_ORDER);
         $faqs = array_map(fn (array $row) => ['question' => trim($row[1]), 'answer' => trim($row[2])], $questions);
 
         preg_match_all('/^\s*\d+\.\s+\[([^\]\r\n]+)\]\((https:\/\/[^\s)]+)\)/mu', $matches[2], $citations, PREG_SET_ORDER);
