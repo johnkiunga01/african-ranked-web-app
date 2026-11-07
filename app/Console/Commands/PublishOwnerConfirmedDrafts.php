@@ -29,17 +29,20 @@ class PublishOwnerConfirmedDrafts extends Command
     {
         if (parse_url((string) config('app.url'), PHP_URL_HOST) !== 'african-ranked-web-app-production.up.railway.app') {
             $this->error('Refusing to run outside the known African Ranked review host.');
+
             return self::FAILURE;
         }
         $verifiedDate = (string) $this->option('verified-date');
         if (! preg_match('/^2026-11-01$/D', $verifiedDate)) {
             $this->error('The owner confirmed 2026-11-01; other dates require a separate review.');
+
             return self::FAILURE;
         }
 
         $actor = User::all()->first(fn (User $user) => $user->isSuperAdmin());
         if (! $actor) {
             $this->error('No active verified super admin is available; publication refused.');
+
             return self::FAILURE;
         }
 
@@ -57,6 +60,7 @@ class PublishOwnerConfirmedDrafts extends Command
             if (! $prior) {
                 $summary['blocked']++;
                 $this->line("BLOCK {$article->id} {$article->slug}: no current revision");
+
                 continue;
             }
             try {
@@ -87,13 +91,13 @@ class PublishOwnerConfirmedDrafts extends Command
 
                 if (in_array($article->slug, ['where-to-see-rhinos-in-africa', 'big-five-parks-ranked-where-to-see-all-five'], true)) {
                     $markdown = str_replace(
-                        ["International Rhino Foundation's 2026 State of the Rhino report", "International Rhino Foundation's 2026 report", "International Rhino Foundation — 2026 State of the Rhino", "International Rhino Foundation — 2026 report", "a 2026 report does not mean every country performed a census in 2026"],
-                        ["International Rhino Foundation's 2025 State of the Rhino report", "International Rhino Foundation's 2025 report", "International Rhino Foundation — 2025 State of the Rhino", "International Rhino Foundation — 2025 report", "a 2025 report does not mean every country performed a census in 2025"],
+                        ["International Rhino Foundation's 2026 State of the Rhino report", "International Rhino Foundation's 2026 report", 'International Rhino Foundation — 2026 State of the Rhino', 'International Rhino Foundation — 2026 report', 'a 2026 report does not mean every country performed a census in 2026'],
+                        ["International Rhino Foundation's 2025 State of the Rhino report", "International Rhino Foundation's 2025 report", 'International Rhino Foundation — 2025 State of the Rhino', 'International Rhino Foundation — 2025 report', 'a 2025 report does not mean every country performed a census in 2025'],
                         $markdown
                     );
                 }
 
-                $annotation = "Illustrative photography; not a promise of wildlife sightings or an endorsement.";
+                $annotation = 'Illustrative photography; not a promise of wildlife sightings or an endorsement.';
                 $bodyImages = $this->ensureBodyImages($markdown, $bodyPhoto, $extraPhoto);
                 $markdown = $bodyImages['markdown'];
 
@@ -121,10 +125,10 @@ class PublishOwnerConfirmedDrafts extends Command
                 if (empty($evidence['last_verified_at'])) {
                     $evidence['last_verified_at'] = $verifiedDate;
                 }
-                $evidence['image_rights'] = "Pexels free-to-use licence: https://www.pexels.com/license/ . "
+                $evidence['image_rights'] = 'Pexels free-to-use licence: https://www.pexels.com/license/ . '
                     ."Hero: {$hero['photographer']} ({$hero['page']}). "
                     ."Inline: {$bodyPhoto['photographer']} ({$bodyPhoto['page']}) and {$extraPhoto['photographer']} ({$extraPhoto['page']}). "
-                    ."Photography is illustrative; credit is shown and no endorsement by photographed people is implied.";
+                    .'Photography is illustrative; credit is shown and no endorsement by photographed people is implied.';
                 $evidence['content_type'] ??= preg_match('/\b(rank|top \d+|best \d+)\b/i', $newTitle) ? 'ranking' : 'guide';
 
                 $needsAuthor = ! $article->author?->is_active || ! $article->author?->hasVerifiedEmail();
@@ -138,6 +142,7 @@ class PublishOwnerConfirmedDrafts extends Command
 
                 if (! $this->option('apply')) {
                     $this->line("PLAN {$article->id} {$article->slug}: hero + inline photos; ".($wouldChange ? 'new revision' : 'unchanged'));
+
                     continue;
                 }
 
@@ -190,11 +195,13 @@ class PublishOwnerConfirmedDrafts extends Command
                 if ($quality['failures']) {
                     $summary['blocked']++;
                     $this->line("BLOCK {$article->id} {$article->slug}: ".implode(' | ', $quality['failures']));
+
                     continue;
                 }
                 if (! $article->author?->is_active || ! $article->author?->hasVerifiedEmail()) {
                     $summary['blocked']++;
                     $this->line("BLOCK {$article->id} {$article->slug}: author not verified");
+
                     continue;
                 }
 
@@ -204,7 +211,7 @@ class PublishOwnerConfirmedDrafts extends Command
                     $this->info("PUBLISHED {$article->id} {$article->slug}");
                 } catch (Throwable $error) {
                     $summary['blocked']++;
-                    $this->line("BLOCK {$article->id} {$article->slug}: publish workflow rejected revision (".mb_substr($error->getMessage(), 0, 180).")");
+                    $this->line("BLOCK {$article->id} {$article->slug}: publish workflow rejected revision (".mb_substr($error->getMessage(), 0, 180).')');
                 }
             } catch (Throwable $error) {
                 $summary['errors']++;
@@ -215,6 +222,7 @@ class PublishOwnerConfirmedDrafts extends Command
         $output = 'AR_EDITORIAL_RELEASE '.json_encode($summary, JSON_UNESCAPED_SLASHES);
         $this->info($output);
         Log::info($output);
+
         // A failed individual article must never interrupt the web service rollout.
         return self::SUCCESS;
     }
@@ -249,6 +257,7 @@ class PublishOwnerConfirmedDrafts extends Command
                 'photographer' => $seed['imageCredit'] ?? 'Pexels contributor',
             ];
         }
+
         return [$hero, $body, $other];
     }
 
@@ -264,8 +273,8 @@ class PublishOwnerConfirmedDrafts extends Command
         preg_match_all('/^#{2,3}\s+[^\n]+$/mu', $markdown, $matches, PREG_OFFSET_CAPTURE);
         $insertions = [];
         foreach ($photos as $i => $photo) {
-            $alt = str_replace([']',"\n"], '', $photo['alt']);
-            $line = "\n\n![".$alt."](".$photo['url'].")\n";
+            $alt = str_replace([']', "\n"], '', $photo['alt']);
+            $line = "\n\n![".$alt.']('.$photo['url'].")\n";
             $headings = $matches[0] ?? [];
             if ($headings) {
                 $target = $headings[min(count($headings) - 1, $i * 3)];
@@ -278,6 +287,7 @@ class PublishOwnerConfirmedDrafts extends Command
         foreach ($insertions as [$offset, $line]) {
             $markdown = substr_replace($markdown, $line, $offset, 0);
         }
+
         return ['markdown' => trim($markdown)];
     }
 

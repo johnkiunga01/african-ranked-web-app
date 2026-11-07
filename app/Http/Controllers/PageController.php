@@ -58,14 +58,15 @@ class PageController extends Controller
         if ($type === 'guide') {
             $articles = $articles->filter(function ($article) {
                 $editorialType = $article['editorialEvidence']['content_type'] ?? null;
-                if ($editorialType) return $editorialType === 'guide';
+                if ($editorialType) {
+                    return $editorialType === 'guide';
+                }
 
                 return (bool) preg_match('/(?:guide|explained|best-time|how-to|vs-|cost|when-to|packing)/i', $article['slug']);
             });
         }
         if ($query !== '') {
-            $articles = $articles->filter(fn ($article) =>
-                mb_stripos(implode(' ', [$article['title'] ?? '', $article['excerpt'] ?? '', $article['category'] ?? '']), $query) !== false);
+            $articles = $articles->filter(fn ($article) => mb_stripos(implode(' ', [$article['title'] ?? '', $article['excerpt'] ?? '', $article['category'] ?? '']), $query) !== false);
         }
 
         return $this->render('rankings', $region, [

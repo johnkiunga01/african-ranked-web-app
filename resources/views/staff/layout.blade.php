@@ -8,7 +8,9 @@
     <meta name="referrer" content="same-origin">
     <meta name="theme-color" content="#171c20">
     <title>@yield('title', 'Editorial workspace') · African Ranked</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.svg?v=dotted-20261103" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png?v=dotted-20261103" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=dotted-20261103" sizes="180x180">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-[#f6f7f8] font-sans text-stone-900">
@@ -18,7 +20,7 @@
     <aside class="staff-sidebar" aria-label="Editorial workspace">
         <div class="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4 lg:px-6 lg:py-7">
             <a href="{{ route('staff.dashboard') }}" class="flex min-w-0 items-center gap-3 rounded-lg focus-visible:outline-amber-300">
-                <img src="/africa-mark.svg" width="31" height="38" alt="" class="h-10 w-8 shrink-0">
+                <img src="/africa-mark.svg?v=dotted-20261103" width="353" height="372" alt="" class="h-10 w-auto object-contain shrink-0">
                 <span class="min-w-0">
                     <span class="block truncate text-base font-extrabold tracking-tight text-white">African Ranked</span>
                     <span class="block text-[11px] font-medium text-stone-400">Editorial workspace</span>
@@ -70,7 +72,7 @@
     </div>
 </div>
 @else
-<header class="border-b border-stone-200 bg-white"><div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5"><a href="/" class="flex items-center gap-2 font-extrabold"><img src="/africa-mark.svg" width="28" height="34" alt="" class="h-8 w-7"><span>African Ranked</span></a><a href="/" class="text-sm font-semibold text-stone-600 hover:text-amber-800">Visit website</a></div></header>
+<header class="border-b border-stone-200 bg-white"><div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5"><a href="/" class="flex items-center gap-2 font-extrabold"><img src="/africa-mark.svg?v=dotted-20261103" width="353" height="372" alt="" class="h-8 w-auto object-contain"><span>African Ranked</span></a><a href="/" class="text-sm font-semibold text-stone-600 hover:text-amber-800">Visit website</a></div></header>
 <main id="staff-main" class="mx-auto max-w-screen-xl px-4 py-7 sm:px-8" tabindex="-1">
     @if(session('status'))<p class="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 text-sm text-green-900" role="status">{{ session('status') }}</p>@endif
     @if($errors->any())<div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900" role="alert"><p class="font-bold">Please check these details:</p><ul class="mt-2 list-disc pl-5">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif

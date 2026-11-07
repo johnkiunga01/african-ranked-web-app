@@ -21,12 +21,12 @@ class PublishingTest extends TestCase
     {
         $catalog = app(Catalog::class);
         foreach ($catalog->regions() as $region) {
-            $response = $this->get($catalog->path($region['code']))->assertOk()->assertSee('The best of Africa,', false)->assertSee($region['tagline']);
+            $response = $this->get($catalog->path($region['code']))->assertOk()->assertSee('Explore rankings')->assertSee($region['name'].' edition');
             $xpath = $this->document($response->getContent());
             $this->assertSame(1, $xpath->query('//h1')->length);
             $this->assertSame(9, $xpath->query('//link[@rel="alternate"][@hreflang]')->length);
             $this->assertSame($catalog->url($catalog->path($region['code'])), $xpath->evaluate('string(//link[@rel="canonical"]/@href)'));
-            $this->assertSame(6, $xpath->query('//section[@id="categories"]//a')->length);
+            $this->assertSame(6, $xpath->query('//*[@id="categories"]//a')->length);
         }
     }
 

@@ -17,7 +17,8 @@ test('bulk publishing, queued research, and SEO metadata editing work on desktop
         await page.getByLabel('Page address', { exact: true }).fill(`bulk-browser-fixture-${number}`);
         await page.getByLabel('Short introduction', { exact: true }).fill('Disposable workflow test content.');
         await page.getByLabel('Article body', { exact: true }).fill(publicationBody('## Test section\n\nFixture text for browser interaction testing only.'));
-        await page.getByLabel('Hero image URL', { exact: true }).fill('https://example.test/fixture.jpg');
+        await page.getByText('Advanced: use a licensed external image URL', { exact: true }).click();
+        await page.getByLabel('Cover image URL', { exact: true }).fill(`https://example.test/fixture-${number}.jpg`);
         await page.getByLabel('Reader FAQs', { exact: true }).fill(publicationFaqs);
         await page.getByLabel('Sources and research notes', { exact: true }).fill('Disposable fixture; no factual reporting or image-rights claim.');
         await publicationEvidence(page);
@@ -34,7 +35,7 @@ test('bulk publishing, queued research, and SEO metadata editing work on desktop
     expect((await request.get('/articles/bulk-browser-fixture-1')).status()).toBe(404);
     await page.getByRole('checkbox').check();
     await page.getByRole('button', { name: 'Publish 2 articles', exact: true }).click();
-    await expect(page.getByRole('status')).toContainText('Selected articles published');
+    await expect(page.locator('#staff-main > p[role="status"]')).toContainText('Selected articles published');
     expect((await request.get('/articles/bulk-browser-fixture-1')).status()).toBe(200);
     await page.goto('/staff/growth/integrations');
     const provider = page.getByRole('heading', { name: 'Google Gemini', exact: true }).locator('..');
@@ -56,7 +57,7 @@ test('bulk publishing, queued research, and SEO metadata editing work on desktop
     await page.getByText('Edit search metadata', { exact: true }).click();
     await page.getByLabel('Search title', { exact: true }).fill('A private metadata replacement');
     await page.getByRole('button', { name: 'Save metadata draft', exact: true }).click();
-    await expect(page.getByRole('status')).toContainText('Search metadata saved');
+    await expect(page.locator('#staff-main > p[role="status"]')).toContainText('Search metadata saved');
     expect(await (await request.get('/articles/bulk-browser-fixture-1')).text()).not.toContain('A private metadata replacement');
     await page.screenshot({ path: 'artifacts/seo-workflow/01-seo-desktop.png', fullPage: true });
     await page.setViewportSize({ width: 390, height: 844 });

@@ -20,6 +20,7 @@ class SeedArticleImporter
             $markdown = collect($record['body'])->map(fn ($block) => match ($block['type']) {
                 'heading' => str_repeat('#', $block['level']).' '.$block['text'],
                 'list' => collect($block['items'])->map(fn ($item) => '- '.$item)->implode("\n"),
+                'image' => '!['.($block['alt'] ?? '').']('.$block['url'].')',
                 'link' => '['.$block['text'].']('.$block['url'].')',
                 'quote' => $block['text'].' — '.($block['attribution'] ?? ''),
                 default => $block['text'],

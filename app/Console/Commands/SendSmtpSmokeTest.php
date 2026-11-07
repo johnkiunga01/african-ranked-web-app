@@ -14,6 +14,7 @@ use Throwable;
 class SendSmtpSmokeTest extends Command
 {
     protected $signature = 'ops:mail-smoke {--to= : A verified inbox expressly approved for the test}';
+
     protected $description = 'Send one transactional SMTP2GO test message and report only whether the SMTP relay accepted it.';
 
     public function handle(): int
@@ -26,6 +27,7 @@ class SendSmtpSmokeTest extends Command
             || ! filled($mailer['username'] ?? null) || ! filled($mailer['password'] ?? null)
             || $from !== 'john@salibay.com') {
             $this->error('AR_SMTP_SMOKE '.json_encode(['smtp_accepted' => false, 'reason' => 'smtp_configuration_or_verified_sender_missing']));
+
             return self::FAILURE;
         }
         try {
@@ -38,12 +40,14 @@ class SendSmtpSmokeTest extends Command
             $receipt = ['smtp_accepted' => true, 'from' => $from, 'to' => $recipient, 'inbox_verified' => false];
             $this->info('AR_SMTP_SMOKE '.json_encode($receipt));
             Log::info('AR_SMTP_SMOKE '.json_encode($receipt));
+
             return self::SUCCESS;
         } catch (Throwable $e) {
             // Exception messages sometimes contain SMTP server responses or auth details.
             $receipt = ['smtp_accepted' => false, 'failure_class' => class_basename($e)];
             $this->error('AR_SMTP_SMOKE '.json_encode($receipt));
             Log::warning('AR_SMTP_SMOKE '.json_encode($receipt));
+
             return self::FAILURE;
         }
     }

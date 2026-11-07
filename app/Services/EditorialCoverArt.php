@@ -12,11 +12,11 @@ class EditorialCoverArt
     {
         $palettes = [
             'wildlife' => ['#fbbf24', '#d97706', '#713f12'],
-            'travel'   => ['#67e8f9', '#0891b2', '#164e63'],
-            'food'     => ['#fdba74', '#ea580c', '#7c2d12'],
-            'music'    => ['#f9a8d4', '#db2777', '#831843'],
+            'travel' => ['#67e8f9', '#0891b2', '#164e63'],
+            'food' => ['#fdba74', '#ea580c', '#7c2d12'],
+            'music' => ['#f9a8d4', '#db2777', '#831843'],
             'business' => ['#86efac', '#16a34a', '#14532d'],
-            'tech'     => ['#93c5fd', '#2563eb', '#1e3a8a'],
+            'tech' => ['#93c5fd', '#2563eb', '#1e3a8a'],
         ];
         [$light, $mid, $deep] = $palettes[$category] ?? $palettes['travel'];
         $seed = hash('sha256', $slug.'-'.$variant);
@@ -40,7 +40,9 @@ class EditorialCoverArt
                 $line = $trial;
             }
         }
-        if ($line !== '') $lines[] = $line;
+        if ($line !== '') {
+            $lines[] = $line;
+        }
         $lines = array_slice($lines, 0, 4);
         $font = count($lines) >= 4 ? 49 : (count($lines) >= 3 ? 56 : 65);
         $y = count($lines) >= 4 ? 240 : 275;
@@ -64,6 +66,7 @@ class EditorialCoverArt
             'food' => '<g fill="none" stroke="'.$light.'"><circle cx="970" cy="370" r="180" stroke-width="9" opacity=".56"/><circle cx="970" cy="370" r="124" stroke-width="4" opacity=".5"/><path d="M904 398q53-85 112-10 M913 329q40-48 92 11" stroke-width="12" stroke-linecap="round"/></g><path d="M790 150v154m-22-154v102m45-102v102m-25-45h-20M1134 150q-45 54-14 124v224" stroke="'.$light.'" stroke-width="11" stroke-linecap="round" fill="none"/>',
             default => '<path d="M690 505c115-170 215-155 320-45 93-158 195-162 315 0v200H690Z" fill="'.$deep.'" opacity=".8"/><path d="M680 562c160-120 283-104 408-12 100-58 165-63 245-39v145H680Z" fill="'.$mid.'" opacity=".44"/><path d="M975 502v-131m-69 60q70-72 140 0m-115 24q48-54 96 0" stroke="'.$light.'" stroke-width="7" stroke-linecap="round" fill="none" opacity=".75"/>',
         };
+
         return '<?xml version="1.0" encoding="UTF-8"?>'
             .'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="'.$safeTitle.' — original African Ranked illustration">'
             .'<title>'.$safeTitle.' — editorial artwork</title>'

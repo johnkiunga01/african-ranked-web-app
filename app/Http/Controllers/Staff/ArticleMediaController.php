@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleMediaAsset;
 use App\Models\AuditEvent;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -68,6 +69,7 @@ class ArticleMediaController extends Controller
         $canvas = imagecreatetruecolor($newWidth, $newHeight);
         if (! $canvas) {
             imagedestroy($source);
+
             return response()->json(['message' => 'Image processing failed.'], 500);
         }
         imagealphablending($canvas, false);
@@ -99,7 +101,7 @@ class ArticleMediaController extends Controller
                 'alt' => $validated['alt'], 'caption' => $validated['caption'] ?? null,
                 'credit' => $validated['credit'] ?? null, 'rights_confirmed_at' => now(),
             ]);
-        } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
+        } catch (UniqueConstraintViolationException $e) {
             Storage::disk('public')->delete($path);
             throw ValidationException::withMessages(['file' => 'This image is already in the media library. Select a different photo.']);
         }

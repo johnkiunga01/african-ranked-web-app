@@ -2,7 +2,7 @@
 <header data-site-header @class(['z-50 inset-x-0 top-0 transition-colors duration-300','fixed home-site-header text-white' => $immersiveHome,'sticky border-b border-stone-200 bg-white/95 text-stone-950 shadow-sm backdrop-blur-lg' => ! $immersiveHome])>
     <div class="mx-auto flex h-[76px] max-w-[1450px] items-center justify-between gap-2 px-4 sm:px-6 lg:px-10">
         <a href="{{ $basePath ?: '/' }}" class="group inline-flex min-w-0 shrink-0 items-center gap-1.5 focus-visible:rounded-lg sm:gap-2.5" aria-label="{{ $site['name'] ?? 'African Ranked' }} home">
-            <img src="/africa-mark.svg" width="37" height="46" alt="" class="h-10 w-8 shrink-0 transition-transform duration-300 group-hover:rotate-[-5deg]" />
+            <img src="/africa-mark.svg?v=dotted-20261103" width="353" height="372" alt="" class="h-10 w-auto object-contain shrink-0 transition-transform duration-300 group-hover:rotate-[-5deg]" />
             <span class="text-[15px] font-extrabold tracking-tight sm:text-[22px]">{{ $site['name'] ?? 'African Ranked' }}</span>
         </a>
         <span class="hidden h-7 w-px bg-current opacity-25 xl:block" aria-hidden="true"></span>

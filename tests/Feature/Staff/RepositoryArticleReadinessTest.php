@@ -33,6 +33,7 @@ class RepositoryArticleReadinessTest extends TestCase
                         $this->assertArrayNotHasKey($position, $numbered, $slug.' has repeated ranking positions');
                         $numbered[$position] = '';
                     }
+
                     continue;
                 }
 
