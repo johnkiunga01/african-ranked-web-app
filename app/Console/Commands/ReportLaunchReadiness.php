@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Article;
 use App\Services\LaunchReadiness;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -27,6 +28,20 @@ class ReportLaunchReadiness extends Command
         $message = 'AR_LAUNCH_READINESS '.json_encode($receipt, JSON_UNESCAPED_SLASHES);
         $this->line($message);
         Log::info($message);
+
+        // Read-only handoff receipt: no article text or personal data is emitted.
+        $articles = Article::query()->whereIn('id', [50, 51, 52])->with('currentRevision')->get()->keyBy('id');
+        $states = collect([50, 51, 52])->map(function (int $id) use ($articles) {
+            $revision = $articles->get($id)?->currentRevision;
+
+            return [
+                'article_id' => $id,
+                'status' => $revision?->status?->value ?? 'missing',
+                'revision' => $revision?->number,
+                'body_words' => $revision ? preg_match_all('/[\pL\pN]+/u', (string) $revision->body_markdown) : 0,
+            ];
+        })->all();
+        $this->line('AR_EDITORIAL_HANDOFF_STATUS '.json_encode($states, JSON_UNESCAPED_SLASHES));
 
         return $this->option('strict') && $blocked !== [] ? self::FAILURE : self::SUCCESS;
     }
