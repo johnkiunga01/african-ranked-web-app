@@ -31,7 +31,7 @@ class EditorialIntegrationApiTest extends TestCase
         ]);
     }
 
-    private function withToken(): static
+    private function withEditorialToken(): static
     {
         return $this->withHeader('Authorization', 'Bearer '.$this->token);
     }
@@ -97,7 +97,7 @@ class EditorialIntegrationApiTest extends TestCase
     {
         $this->editor->email_verified_at = null;
         $this->editor->save();
-        $this->withToken()->getJson('/api/editorial/v1/drafts')->assertStatus(503);
+        $this->withEditorialToken()->getJson('/api/editorial/v1/drafts')->assertStatus(503);
     }
 
     public function test_inventory_excludes_previous_review_and_publication(): void
@@ -109,7 +109,7 @@ class EditorialIntegrationApiTest extends TestCase
         $published->published_revision_id = $published->current_revision_id;
         $published->save();
 
-        $this->withToken()->getJson('/api/editorial/v1/drafts?limit=2')
+        $this->withEditorialToken()->getJson('/api/editorial/v1/drafts?limit=2')
             ->assertOk()->assertJsonCount(1, 'items')
             ->assertJsonPath('items.0.article_id', $fresh->id)
             ->assertJsonPath('items.0.revision_id', $fresh->current_revision_id);
@@ -119,15 +119,15 @@ class EditorialIntegrationApiTest extends TestCase
     {
         $article = $this->createDraft();
         $old = $article->current_revision_id;
-        $this->withToken()->getJson('/api/editorial/v1/articles/'.$article->id)->assertOk()
+        $this->withEditorialToken()->getJson('/api/editorial/v1/articles/'.$article->id)->assertOk()
             ->assertJsonPath('current_revision_id', $old);
         $payload = $this->draftPayload($article);
-        $this->withToken()->putJson('/api/editorial/v1/articles/'.$article->id.'/draft', $payload)
+        $this->withEditorialToken()->putJson('/api/editorial/v1/articles/'.$article->id.'/draft', $payload)
             ->assertCreated()->assertJsonPath('status', 'draft');
         $article->refresh();
         $this->assertNotSame($old, $article->current_revision_id);
         $this->assertSame(2, $article->revisions()->count());
-        $this->withToken()->putJson('/api/editorial/v1/articles/'.$article->id.'/draft', $payload)
+        $this->withEditorialToken()->putJson('/api/editorial/v1/articles/'.$article->id.'/draft', $payload)
             ->assertUnprocessable();
         $this->assertSame('A substantial verified guide', $article->fresh()->currentRevision->title);
     }
@@ -136,20 +136,20 @@ class EditorialIntegrationApiTest extends TestCase
     {
         $article = $this->createDraft();
         $url = '/api/editorial/v1/articles/'.$article->id;
-        $this->withToken()->postJson($url.'/submit',
+        $this->withEditorialToken()->postJson($url.'/submit',
             ['expected_revision_id' => $article->current_revision_id])->assertUnprocessable();
-        $this->withToken()->putJson($url.'/draft', $this->draftPayload($article))->assertCreated();
+        $this->withEditorialToken()->putJson($url.'/draft', $this->draftPayload($article))->assertCreated();
         $article->refresh();
-        $this->withToken()->postJson($url.'/submit',
+        $this->withEditorialToken()->postJson($url.'/submit',
             ['expected_revision_id' => $article->current_revision_id])->assertOk()
             ->assertJsonPath('status', 'in_review');
         $article->refresh();
         $this->assertSame(RevisionStatus::InReview, $article->currentRevision->status);
         $this->assertNull($article->published_revision_id);
-        $this->withToken()->getJson($url)->assertOk()->assertJsonPath('status', 'in_review');
-        $this->withToken()->getJson('/api/editorial/v1/drafts')->assertJsonCount(0, 'items');
-        $this->withToken()->putJson($url.'/draft', $this->draftPayload($article))->assertUnprocessable();
-        $this->withToken()->postJson($url.'/publish',
+        $this->withEditorialToken()->getJson($url)->assertOk()->assertJsonPath('status', 'in_review');
+        $this->withEditorialToken()->getJson('/api/editorial/v1/drafts')->assertJsonCount(0, 'items');
+        $this->withEditorialToken()->putJson($url.'/draft', $this->draftPayload($article))->assertUnprocessable();
+        $this->withEditorialToken()->postJson($url.'/publish',
             ['expected_revision_id' => $article->current_revision_id])->assertNotFound();
     }
 
@@ -158,10 +158,10 @@ class EditorialIntegrationApiTest extends TestCase
         $article = $this->createDraft();
         $payload = $this->draftPayload($article);
         $payload['evidence']['last_verified_at'] = now()->subDay()->format('Y-m-d');
-        $this->withToken()->putJson('/api/editorial/v1/articles/'.$article->id.'/draft', $payload)
+        $this->withEditorialToken()->putJson('/api/editorial/v1/articles/'.$article->id.'/draft', $payload)
             ->assertCreated();
         $article->refresh();
-        $this->withToken()->postJson('/api/editorial/v1/articles/'.$article->id.'/submit',
+        $this->withEditorialToken()->postJson('/api/editorial/v1/articles/'.$article->id.'/submit',
             ['expected_revision_id' => $article->current_revision_id])->assertUnprocessable();
         $this->assertSame(RevisionStatus::Draft, $article->fresh()->currentRevision->status);
     }
