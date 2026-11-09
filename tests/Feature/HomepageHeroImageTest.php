@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Support\Catalog;
+use App\Support\Seo;
 use Tests\TestCase;
 
 class HomepageHeroImageTest extends TestCase
@@ -18,9 +20,9 @@ class HomepageHeroImageTest extends TestCase
             ->assertSee('Hero artwork created with AI for African Ranked.')
             ->assertDontSee('Hero photography by');
 
-        $homepageOg = app(\App\Support\Seo::class)->page(
+        $homepageOg = app(Seo::class)->page(
             'home',
-            app(\App\Support\Catalog::class)->region('global')
+            app(Catalog::class)->region('global')
         );
         $this->assertStringEndsWith('/images/african-ranked-savannah-hero-desktop.webp', $homepageOg['image']);
     }
