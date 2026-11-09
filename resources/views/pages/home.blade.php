@@ -10,15 +10,17 @@
             'tech' => ['photo' => '4913749', 'source' => 'https://www.pexels.com/photo/a-woman-using-a-laptop-4913749/', 'credit' => 'Brian Ngali'],
             'music' => ['photo' => '31177554', 'source' => 'https://www.pexels.com/photo/close-up-of-african-and-latin-percussion-drums-31177554/', 'credit' => 'wr heustis'],
         ];
-        $heroPhoto = 'https://www.pexels.com/photo/group-of-zebras-grazing-grass-in-savanna-amboseli-national-park-in-kenya-19171291/';
         $orderedCategories = $categories->sortBy(fn ($c) => array_search($c['slug'], ['wildlife','travel','food','business','tech','music'], true))->values();
     @endphp
     <section class="ar-hero relative isolate overflow-hidden text-white" aria-labelledby="home-hero-heading">
-        <img
-            class="ar-hero-photo absolute inset-0 -z-20 h-full w-full object-cover"
-            src="https://images.pexels.com/photos/19171291/pexels-photo-19171291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2200"
-            srcset="https://images.pexels.com/photos/19171291/pexels-photo-19171291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1000 1000w, https://images.pexels.com/photos/19171291/pexels-photo-19171291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600 1600w, https://images.pexels.com/photos/19171291/pexels-photo-19171291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2200 2200w"
-            sizes="100vw" alt="Zebras grazing near acacia trees beneath Mount Kilimanjaro" width="2200" height="1467" loading="eager" fetchpriority="high" decoding="async" data-image-fallback>
+        <picture class="absolute inset-0 -z-20 block h-full w-full">
+            <source media="(max-width: 639px)" type="image/webp" srcset="{{ asset('images/african-ranked-savannah-hero-mobile.webp') }}" width="800" height="1000">
+            <img
+                class="ar-hero-photo h-full w-full object-cover"
+                src="{{ asset('images/african-ranked-savannah-hero-desktop.webp') }}"
+                alt="AI-generated illustration of an acacia tree on the African savannah, with a distant snowcapped mountain at sunrise"
+                width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
+        </picture>
         <div class="ar-hero-shade absolute inset-0 -z-10" aria-hidden="true"></div>
         <div class="relative mx-auto flex min-h-[690px] max-w-[1536px] flex-col justify-between gap-12 px-4 pb-7 pt-[148px] sm:min-h-[760px] sm:px-8 sm:pt-[165px] lg:min-h-[790px] lg:px-12 lg:pb-10 xl:px-16">
             <div class="max-w-[760px]">
@@ -68,7 +70,7 @@
                     @endforeach
                 </div>
                 <div class="mt-3 text-right text-[11px] text-white/80">
-                    Hero photography by <a class="underline underline-offset-2 hover:text-amber-300" href="{{ $heroPhoto }}" target="_blank" rel="noopener noreferrer">Wladimir Kühne / Pexels</a>.
+                    Hero artwork created with AI for African Ranked.
                     <details class="relative ml-2 inline-block text-left">
                         <summary class="cursor-pointer underline underline-offset-2 hover:text-amber-300">Other photo credits</summary>
                         <ul class="absolute bottom-full right-0 z-20 mb-2 w-64 rounded-xl border border-white/20 bg-stone-950 p-3 text-xs shadow-2xl">
