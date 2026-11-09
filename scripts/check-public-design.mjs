@@ -61,7 +61,22 @@ const indexingGateOnly = path => {
     return before.includes(oldRobotsMeta) && after.includes(gatedRobotsMeta)
         && before === after.replace(gatedRobotsMeta, oldRobotsMeta);
 };
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path));
+// Explicitly approved generated homepage hero release (9 November 2026).
+// Match exact Git blobs only; other public image/template/CSS edits remain guarded.
+const approvedHeroBlobs = new Map(Object.entries({
+    "public/images/african-ranked-savannah-hero-desktop.webp": "b76217897d89e21d324d6da205d8686e02043632",
+    "public/images/african-ranked-savannah-hero-mobile.webp": "94cb8d0b1ba7ce0f016a591438095d73eefe4403",
+    "resources/views/pages/home.blade.php": "e2d996f56c8ea747585f383dbf3790f0d6ff70c1",
+    "resources/css/app.css": "eb1e596948d1fd991ca96f73034dd2f297a03be5"
+}));
+const approvedHeroChange = path => {
+    const expected = approvedHeroBlobs.get(path);
+    if (!expected) return false;
+    try {
+        return execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === expected;
+    } catch { return false; }
+};
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
