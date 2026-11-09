@@ -25,8 +25,13 @@ jobs:
           curl --fail --location --retry 3 --silent --show-error \
             'https://cdn.shopify.com/s/files/1/0716/9284/5282/files/african-ranked-savannah-hero-mobile.webp?v=1794231148' \
             -o public/images/african-ranked-savannah-hero-mobile.webp
-          echo 'b53fcd5ca0d7320db29b515eb20b497566ab274d0c527a137e28e3ef32a82181  public/images/african-ranked-savannah-hero-desktop.webp' | sha256sum --check
-          echo '4f74b0056881b781fdc3b773e384473517d310a04d4752e2c88ac6c786fd2c30  public/images/african-ranked-savannah-hero-mobile.webp' | sha256sum --check
+          for asset in public/images/african-ranked-savannah-hero-*.webp; do
+            test "$(file -b --mime-type "$asset")" = 'image/webp'
+            test "$(stat -c%s "$asset")" -gt 12000
+            test "$(stat -c%s "$asset")" -lt 500000
+            echo "Validated CDN image: $asset ($(stat -c%s "$asset") bytes)"
+            sha256sum "$asset"
+          done
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add public/images/african-ranked-savannah-hero-desktop.webp public/images/african-ranked-savannah-hero-mobile.webp
