@@ -1,0 +1,31 @@
+name: Verify African Ranked live hero deployment
+
+on:
+  push:
+    branches: [qa/live-hero-verification-20261109]
+
+permissions:
+  contents: read
+
+jobs:
+  live-hero-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm live homepage, responsive assets, and noindex
+        run: |
+          set -euo pipefail
+          ORIGIN=https://african-ranked-web-app-production.up.railway.app
+          curl --fail --location --retry 2 --connect-timeout 10 --max-time 45 -sS -D /tmp/home-headers -o /tmp/home.html "$ORIGIN/"
+          grep -q 'african-ranked-savannah-hero-desktop.webp' /tmp/home.html
+          grep -q 'african-ranked-savannah-hero-mobile.webp' /tmp/home.html
+          grep -q 'Hero artwork created with AI for African Ranked' /tmp/home.html
+          grep -iq '^x-robots-tag: .*noindex' /tmp/home-headers
+          for kind in desktop mobile; do
+            curl --fail --location --retry 2 --connect-timeout 10 --max-time 45 -sS \
+              -D "/tmp/$kind-headers" -o "/tmp/$kind.webp" \
+              "$ORIGIN/images/african-ranked-savannah-hero-$kind.webp"
+            test "$(file -b --mime-type "/tmp/$kind.webp")" = 'image/webp'
+            grep -iq '^content-type: image/webp' "/tmp/$kind-headers"
+            echo "$kind image loaded ($(stat -c%s "/tmp/$kind.webp") bytes)"
+          done
+          echo "Live homepage, two WebP images and noindex: PASS"
