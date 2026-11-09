@@ -15,24 +15,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Import checksummed WebP renditions from temporary asset CDN
+      - name: Import optimized WebP renditions from temporary media transport
         run: |
           set -euo pipefail
           mkdir -p public/images
           curl --fail --location --retry 3 --silent --show-error \
             'https://cdn.shopify.com/s/files/1/0716/9284/5282/files/african-ranked-savannah-hero-desktop.webp?v=1794231128' \
-            -o public/images/african-ranked-savannah-hero-desktop.webp
+            -o /tmp/african-ranked-desktop.jpg
           curl --fail --location --retry 3 --silent --show-error \
             'https://cdn.shopify.com/s/files/1/0716/9284/5282/files/african-ranked-savannah-hero-mobile.webp?v=1794231148' \
-            -o public/images/african-ranked-savannah-hero-mobile.webp
-          ls -lh public/images/african-ranked-savannah-hero-*.webp
-          file public/images/african-ranked-savannah-hero-*.webp
+            -o /tmp/african-ranked-mobile.jpg
+          test "$(file -b --mime-type /tmp/african-ranked-desktop.jpg)" = 'image/jpeg'
+          test "$(file -b --mime-type /tmp/african-ranked-mobile.jpg)" = 'image/jpeg'
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 /tmp/african-ranked-desktop.jpg)" = '1600x900'
+          test "$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 /tmp/african-ranked-mobile.jpg)" = '800x1000'
+          ffmpeg -hide_banner -loglevel error -y -i /tmp/african-ranked-desktop.jpg -frames:v 1 -c:v libwebp -q:v 72 public/images/african-ranked-savannah-hero-desktop.webp
+          ffmpeg -hide_banner -loglevel error -y -i /tmp/african-ranked-mobile.jpg -frames:v 1 -c:v libwebp -q:v 70 public/images/african-ranked-savannah-hero-mobile.webp
           for asset in public/images/african-ranked-savannah-hero-*.webp; do
             test "$(file -b --mime-type "$asset")" = 'image/webp'
             test "$(stat -c%s "$asset")" -gt 12000
-            test "$(stat -c%s "$asset")" -lt 500000
-            echo "Validated CDN image: $asset ($(stat -c%s "$asset") bytes)"
-            sha256sum "$asset"
+            test "$(stat -c%s "$asset")" -lt 400000
+            echo "Validated image: $asset ($(stat -c%s "$asset") bytes)"
           done
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
