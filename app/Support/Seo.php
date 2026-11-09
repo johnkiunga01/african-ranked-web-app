@@ -37,7 +37,7 @@ class Seo
             ? 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.'
             : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline'])));
         $image = $type === 'home'
-            ? 'https://images.pexels.com/photos/19171291/pexels-photo-19171291.jpeg?auto=compress&cs=tinysrgb&w=1200'
+            ? $c->url('/images/african-ranked-savannah-hero-desktop.webp')
             : ($article['image'] ?? $c->articles($code)->first()['image'] ?? $c->articles()->first()['image'] ?? $c->url('/image-placeholder.svg'));
         $breadcrumbs = [['name' => 'Home', 'url' => $c->path($code)]];
         if ($category) {
