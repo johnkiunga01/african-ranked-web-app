@@ -25,6 +25,8 @@ jobs:
           curl --fail --location --retry 3 --silent --show-error \
             'https://cdn.shopify.com/s/files/1/0716/9284/5282/files/african-ranked-savannah-hero-mobile.webp?v=1794231148' \
             -o public/images/african-ranked-savannah-hero-mobile.webp
+          ls -lh public/images/african-ranked-savannah-hero-*.webp
+          file public/images/african-ranked-savannah-hero-*.webp
           for asset in public/images/african-ranked-savannah-hero-*.webp; do
             test "$(file -b --mime-type "$asset")" = 'image/webp'
             test "$(stat -c%s "$asset")" -gt 12000
