@@ -1,0 +1,36 @@
+name: Import approved African Ranked hero assets
+
+on:
+  push:
+    branches:
+      - feat/generated-homepage-hero-20261109
+
+permissions:
+  contents: write
+
+jobs:
+  vendor-generated-hero:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Import checksummed WebP renditions from temporary asset CDN
+        run: |
+          set -euo pipefail
+          mkdir -p public/images
+          curl --fail --location --retry 3 --silent --show-error \
+            'https://cdn.shopify.com/s/files/1/0716/9284/5282/files/african-ranked-savannah-hero-desktop.webp?v=1794231128' \
+            -o public/images/african-ranked-savannah-hero-desktop.webp
+          curl --fail --location --retry 3 --silent --show-error \
+            'https://cdn.shopify.com/s/files/1/0716/9284/5282/files/african-ranked-savannah-hero-mobile.webp?v=1794231148' \
+            -o public/images/african-ranked-savannah-hero-mobile.webp
+          echo 'b53fcd5ca0d7320db29b515eb20b497566ab274d0c527a137e28e3ef32a82181  public/images/african-ranked-savannah-hero-desktop.webp' | sha256sum --check
+          echo '4f74b0056881b781fdc3b773e384473517d310a04d4752e2c88ac6c786fd2c30  public/images/african-ranked-savannah-hero-mobile.webp' | sha256sum --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/images/african-ranked-savannah-hero-desktop.webp public/images/african-ranked-savannah-hero-mobile.webp
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add owner-approved responsive African Ranked hero images'
+            git push origin HEAD:feat/generated-homepage-hero-20261109
+          fi
