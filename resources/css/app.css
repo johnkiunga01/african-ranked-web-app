@@ -110,9 +110,9 @@
   }
 }
 @media (max-width: 639px) {
-  .ar-hero-photo { object-position: 59% 42%; }
+  .ar-hero-photo { object-position: 62% 40%; }
   .ar-hero-shade {
-    background: linear-gradient(180deg, rgba(10,14,18,.64) 0%,rgba(10,14,18,.83) 34%,rgba(10,14,18,.80) 59%,rgba(10,14,18,.95) 100%);
+    background: linear-gradient(180deg, rgba(10,14,18,.76) 0%,rgba(10,14,18,.72) 33%,rgba(10,14,18,.67) 59%,rgba(10,14,18,.94) 100%);
   }
   .ar-hero h1 { letter-spacing: -.045em; }
   .ar-category-tile { min-height: 136px; }
