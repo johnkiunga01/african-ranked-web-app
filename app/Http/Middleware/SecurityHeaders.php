@@ -24,7 +24,11 @@ class SecurityHeaders
                 $connect .= ' '.$origin.' '.($parts['scheme'] === 'https' ? 'wss' : 'ws').'://'.$parts['host'].(isset($parts['port']) ? ':'.$parts['port'] : '');
             }
         }
-        $policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src {$script}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src {$connect}; media-src 'self' https:; frame-src 'none'";
+        $form = "'self'";
+        if ($request->is('oauth/authorize') && config('editorial.mcp_enabled')) {
+            $form .= ' https://chatgpt.com/connector_platform_oauth_redirect';
+        }
+        $policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action {$form}; script-src {$script}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src {$connect}; media-src 'self' https:; frame-src 'none'";
         $response->headers->set('Content-Security-Policy', $policy);
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('X-Frame-Options', 'DENY');
