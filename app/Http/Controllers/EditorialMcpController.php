@@ -31,7 +31,17 @@ class EditorialMcpController extends Controller
             ['name' => 'get_article', 'description' => 'Read an unpublished article, evidence, current revision and review history.', 'inputSchema' => ['type' => 'object', 'properties' => ['article_id' => ['type' => 'integer', 'minimum' => 1]], 'required' => ['article_id'], 'additionalProperties' => false], 'annotations' => ['readOnlyHint' => true, 'openWorldHint' => false]],
         ];
         foreach (['save_draft' => 'Save a new private revision of an existing unpublished article. Requires expected_revision_id and complete manuscript/evidence payload. Never approves or publishes.', 'submit_for_review' => 'Submit a complete unpublished draft for human review. Requires expected_revision_id; all editorial quality gates apply. Never approves or publishes.'] as $name => $description) {
-            $tools[] = ['name' => $name, 'description' => $description, 'inputSchema' => ['type' => 'object', 'properties' => ['article_id' => ['type' => 'integer', 'minimum' => 1], 'payload' => ['type' => 'object', 'properties' => ['expected_revision_id' => ['type' => 'integer', 'minimum' => 1]], 'required' => ['expected_revision_id'], 'additionalProperties' => true]], 'required' => ['article_id', 'payload'], 'additionalProperties' => false], 'annotations' => ['readOnlyHint' => false, 'destructiveHint' => false, 'idempotentHint' => false, 'openWorldHint' => false]];
+            $properties = ['expected_revision_id' => ['type' => 'integer', 'minimum' => 1]];
+            $required = ['expected_revision_id'];
+            if ($name === 'save_draft') {
+                foreach (['title', 'excerpt', 'category_slug', 'body_markdown', 'faqs_text', 'image', 'image_alt', 'source_notes', 'seo_title', 'meta_description', 'focus_keyword'] as $field) {
+                    $properties[$field] = ['type' => 'string'];
+                }
+                $properties['faqs_text']['description'] = 'Question line then answer line; blank line between FAQ pairs.';
+                $properties['evidence'] = ['type' => 'object', 'description' => 'Editorial evidence: answer (40–60 words), content_type (guide/ranking/data), last_verified_at (actual YYYY-MM-DD), image_rights, methodology, facts [{fact, source_url, verified_at}], sources [{title, publisher, url, accessed_at}]. Every date must be actual source access/verification; never invent it.', 'additionalProperties' => true];
+                $required = [...$required, 'title', 'excerpt', 'category_slug', 'body_markdown', 'faqs_text', 'evidence'];
+            }
+            $tools[] = ['name' => $name, 'description' => $description, 'inputSchema' => ['type' => 'object', 'properties' => ['article_id' => ['type' => 'integer', 'minimum' => 1], 'payload' => ['type' => 'object', 'properties' => $properties, 'required' => $required, 'additionalProperties' => false]], 'required' => ['article_id', 'payload'], 'additionalProperties' => false], 'annotations' => ['readOnlyHint' => false, 'destructiveHint' => false, 'idempotentHint' => false, 'openWorldHint' => false]];
         }
         if ($method === 'tools/list') {
             return $reply(['tools' => $tools]);
