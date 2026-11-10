@@ -19,6 +19,8 @@ http {
         root /app/public;
         index index.php;
         client_max_body_size 12m;
+        location = /.well-known/oauth-authorization-server { try_files $uri /index.php?$query_string; }
+        location = /.well-known/oauth-protected-resource { try_files $uri /index.php?$query_string; }
         location / { try_files $uri $uri/ /index.php?$query_string; }
         location /build/assets/ {
             try_files $uri =404;
