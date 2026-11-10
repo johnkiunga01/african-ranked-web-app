@@ -76,7 +76,10 @@ const approvedHeroChange = path => {
         return execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === expected;
     } catch { return false; }
 };
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path));
+// Owner-authorized OAuth bridge dependencies; exact reviewed blobs only.
+const editorialOAuthDependencies = new Map(Object.entries({"composer.json": "c750b611de29bc2ba09fee267b0e12f2632ff1a1", "composer.lock": "749a6e32b1f44f33b812021ddec33db0c80cb4a2"}));
+const approvedOAuthDependency = path => editorialOAuthDependencies.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === editorialOAuthDependencies.get(path);
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);

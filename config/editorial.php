@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'mcp_enabled' => (bool) env('EDITORIAL_MCP_ENABLED', false),
     'repository_owner' => env('CMS_IMPORT_OWNER_EMAIL'),
     // Explicit opt-in; accept only a bearer token digest, never the raw token.
     'integration_enabled' => (bool) env('EDITORIAL_INTEGRATION_ENABLED', false),

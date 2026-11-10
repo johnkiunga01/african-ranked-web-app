@@ -34,3 +34,5 @@ Route::prefix('{region}')->where(['region' => '[a-z]{2}'])->name('regional.')->g
 });
 
 require __DIR__.'/staff.php';
+
+require __DIR__.'/editorial-oauth.php';

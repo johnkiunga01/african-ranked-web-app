@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\User;
 use App\Services\EditorialWorkflow;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
 use Tests\Support\PublicationFixture;
 use Tests\TestCase;
 
@@ -29,6 +30,50 @@ class EditorialIntegrationApiTest extends TestCase
             'editorial.integration_token_sha256' => hash('sha256', $this->token),
             'editorial.integration_actor_email' => $this->editor->email,
         ]);
+    }
+
+    public function test_mcp_discovery_requires_authentication_and_exposes_only_editorial_tools(): void
+    {
+        $message = ['jsonrpc' => '2.0', 'id' => 1, 'method' => 'tools/list'];
+        config(['editorial.mcp_enabled' => true]);
+        $this->postJson('/api/editorial/mcp', $message)->assertUnauthorized();
+        $this->editor->forceFill(['two_factor_confirmed_at' => now()])->save();
+        Passport::actingAs($this->editor, ['editorial'], 'editorial_oauth');
+        $this->withEditorialToken()->postJson('/api/editorial/mcp', $message)
+            ->assertOk()->assertJsonPath('result.tools.0.name', 'list_drafts')
+            ->assertJsonPath('result.tools.1.name', 'get_article')
+            ->assertJsonPath('result.tools.2.name', 'save_draft')
+            ->assertJsonPath('result.tools.3.name', 'submit_for_review')
+            ->assertJsonCount(4, 'result.tools');
+    }
+
+    public function test_mcp_refuses_an_author_even_with_an_editorial_token(): void
+    {
+        config(['editorial.mcp_enabled' => true]);
+        $author = User::factory()->create(['role' => StaffRole::Author, 'two_factor_confirmed_at' => now()]);
+        Passport::actingAs($author, ['editorial'], 'editorial_oauth');
+        $this->withEditorialToken()->postJson('/api/editorial/mcp', ['jsonrpc' => '2.0', 'id' => 1, 'method' => 'tools/list'])->assertUnauthorized();
+    }
+
+    public function test_oauth_discovery_is_disabled_until_explicitly_enabled(): void
+    {
+        $this->getJson('/.well-known/oauth-protected-resource')->assertNotFound();
+        config(['editorial.mcp_enabled' => true]);
+        $this->getJson('/.well-known/oauth-protected-resource')->assertOk()->assertJsonPath('scopes_supported.0', 'editorial');
+        $this->getJson('/.well-known/oauth-authorization-server')->assertOk()->assertJsonPath('code_challenge_methods_supported.0', 'S256');
+    }
+
+    public function test_mcp_reads_fresh_drafts_and_rejects_publication_tools(): void
+    {
+        config(['editorial.mcp_enabled' => true]);
+        $this->editor->forceFill(['two_factor_confirmed_at' => now()])->save();
+        Passport::actingAs($this->editor, ['editorial'], 'editorial_oauth');
+        $draft = $this->createDraft();
+        $result = $this->withEditorialToken()->postJson('/api/editorial/mcp', ['jsonrpc' => '2.0', 'id' => 2, 'method' => 'tools/call', 'params' => ['name' => 'get_article', 'arguments' => ['article_id' => $draft->id]]]);
+        $result->assertOk()->assertJsonPath('result.isError', false);
+        $this->assertSame($draft->id, json_decode($result->json('result.content.0.text'), true)['article_id']);
+        $this->postJson('/api/editorial/mcp', ['jsonrpc' => '2.0', 'id' => 3, 'method' => 'tools/call', 'params' => ['name' => 'publish', 'arguments' => ['article_id' => $draft->id]]])->assertOk()->assertJsonPath('error.code', -32602);
+        $this->assertNull($draft->fresh()->published_revision_id);
     }
 
     private function withEditorialToken(): static
