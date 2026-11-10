@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\ArticleRevision;
 use App\Models\User;
+use App\OAuth\EditorialAccessToken;
 use App\Services\OnsiteSeoDefaults;
 use App\Support\Catalog;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -31,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Passport::$accessTokenEntity = EditorialAccessToken::class;
         Passport::loadKeysFrom(storage_path('app/private/oauth'));
         Passport::tokensCan(['editorial' => 'Read unpublished drafts, save private revisions and submit for human review. No approval or publication.']);
         Passport::tokensExpireIn(now()->addHour());

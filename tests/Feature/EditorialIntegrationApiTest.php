@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\User;
 use App\Services\EditorialWorkflow;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\ClientRepository;
 use Laravel\Passport\Passport;
 use Tests\Support\PublicationFixture;
 use Tests\TestCase;
@@ -76,9 +77,26 @@ class EditorialIntegrationApiTest extends TestCase
         $this->assertNull($draft->fresh()->published_revision_id);
     }
 
+    public function test_real_pkce_consent_token_exchange_and_authenticated_mcp_read(): void
+    {
+        config(['editorial.mcp_enabled' => true]);
+        $this->editor->forceFill(['two_factor_confirmed_at' => now()])->save();
+        $client = app(ClientRepository::class)->createAuthorizationCodeGrantClient('Synthetic integration test', ['https://client.example.test/callback'], false);
+        $verifier = str_repeat('a', 64);
+        $challenge = rtrim(strtr(base64_encode(hash('sha256', $verifier, true)), '+/', '-_'), '=');
+        $parameters = ['client_id' => $client->id, 'redirect_uri' => 'https://client.example.test/callback', 'response_type' => 'code', 'scope' => 'editorial', 'state' => 'synthetic-state', 'code_challenge' => $challenge, 'code_challenge_method' => 'S256', 'resource' => url('/api/editorial/mcp')];
+        $this->actingAs($this->editor)->withSession(['staff_mfa_verified' => $this->editor->session_version])->get('/oauth/authorize?'.http_build_query($parameters))->assertOk()->assertSee('Authorize editorial access');
+        $authToken = session('authToken');
+        $consent = $this->post('/oauth/authorize', ['auth_token' => $authToken, 'client_id' => $client->id, 'state' => 'synthetic-state'])->assertRedirect();
+        parse_str(parse_url($consent->headers->get('Location'), PHP_URL_QUERY), $callback);
+        $this->assertSame(url('/'), $callback['iss']);
+        $token = $this->postJson('/api/editorial/oauth/token', ['grant_type' => 'authorization_code', 'client_id' => $client->id, 'redirect_uri' => 'https://client.example.test/callback', 'code_verifier' => $verifier, 'code' => $callback['code'], 'resource' => url('/api/editorial/mcp')])->assertOk()->json('access_token');
+        $this->withHeader('Authorization', 'Bearer '.$token)->postJson('/api/editorial/mcp', ['jsonrpc' => '2.0', 'id' => 1, 'method' => 'tools/list'])->assertOk()->assertJsonCount(4, 'result.tools');
+    }
+
     private function withEditorialToken(): static
     {
-        return $this->withHeader('Authorization', 'Bearer '.$this->token);
+        return $this->withHeader('Authorization', 'Bearer '.(config('editorial.mcp_enabled') ? 'test.'.rtrim(strtr(base64_encode(json_encode(['iss' => url('/'), 'aud' => [url('/api/editorial/mcp')]])), '+/', '-_'), '=').'.test' : $this->token));
     }
 
     private function createDraft(string $slug = 'untouched-test-draft'): Article
