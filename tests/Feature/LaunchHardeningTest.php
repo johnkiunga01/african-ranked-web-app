@@ -54,4 +54,25 @@ class LaunchHardeningTest extends TestCase
             $this->app['env'] = $original;
         }
     }
+    public function test_production_redirects_canonical_www_host_but_rejects_post_and_unknown_hosts(): void
+    {
+        $previousEnvironment = $this->app['env'];
+        $this->app['env'] = 'production';
+        config(['app.url' => 'https://africanranked.com', 'security.additional_hosts' => []]);
+
+        try {
+            $this->get('https://www.africanranked.com/articles/example?utm_source=test')
+                ->assertStatus(301)
+                ->assertRedirect('https://africanranked.com/articles/example?utm_source=test');
+            $this->get('https://www.africanranked.com/staff/login')
+                ->assertStatus(301)
+                ->assertRedirect('https://africanranked.com/staff/login');
+            $this->post('https://www.africanranked.com/staff/login', [])->assertStatus(400);
+            $this->get('https://fake-africanranked.com/')->assertStatus(400);
+            $this->get('https://africanranked.com/')->assertOk();
+        } finally {
+            $this->app['env'] = $previousEnvironment;
+        }
+    }
+
 }
