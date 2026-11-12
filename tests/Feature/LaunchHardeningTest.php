@@ -54,6 +54,7 @@ class LaunchHardeningTest extends TestCase
             $this->app['env'] = $original;
         }
     }
+
     public function test_production_redirects_canonical_www_host_but_rejects_post_and_unknown_hosts(): void
     {
         $previousEnvironment = $this->app['env'];
@@ -74,5 +75,4 @@ class LaunchHardeningTest extends TestCase
             $this->app['env'] = $previousEnvironment;
         }
     }
-
 }
