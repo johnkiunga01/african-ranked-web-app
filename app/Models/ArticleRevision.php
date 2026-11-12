@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\RevisionStatus;
 use App\Services\ArticleVisuals;
+use App\Support\EditorialMediaUrl;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -32,11 +33,20 @@ class ArticleRevision extends Model
             $mediaCredit = 'African Ranked original illustration';
         }
 
+        $image = EditorialMediaUrl::current($this->image);
+        $body = array_map(function ($block) {
+            if (($block['type'] ?? '') === 'image') {
+                $block['url'] = EditorialMediaUrl::current($block['url'] ?? null);
+            }
+
+            return $block;
+        }, $this->body ?? []);
+
         return [
             'slug' => $article->slug, 'title' => $this->title, 'excerpt' => $this->excerpt,
             'category' => $this->category_slug, 'author' => $this->author_name, 'authorTitle' => $this->author_title,
             'datePublished' => $article->first_published_at->toIso8601String(), 'dateModified' => $this->published_at->toIso8601String(),
-            'readTime' => $this->read_time, 'image' => $this->image, 'body' => app(ArticleVisuals::class)->filterBody($this->image, $this->body ?? []),
+            'readTime' => $this->read_time, 'image' => $image, 'body' => app(ArticleVisuals::class)->filterBody($image, $body),
             'imageCredit' => $mediaCredit, 'imageSource' => $mediaSource,
             'seoTitle' => $this->seo_title, 'metaDescription' => $this->meta_description, 'imageAlt' => $this->image_alt,
             'faqs' => $this->faqs ?? [], 'regions' => $this->regions,

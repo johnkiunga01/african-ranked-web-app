@@ -47,7 +47,7 @@
         @endif
         <p class="mt-3 text-sm text-stone-500">{{ $revision->author_name }}</p>
         @if($revision->image)
-            <img src="{{ $revision->image }}" alt="{{ $revision->image_alt ?: $revision->title }}"
+            <img src="{{ \App\Support\EditorialMediaUrl::current($revision->image) }}" alt="{{ $revision->image_alt ?: $revision->title }}"
                 width="1200" height="675" class="mt-7 aspect-video w-full rounded-xl object-cover" data-image-fallback>
         @endif
         @php($renderedInlineImages = [])
@@ -86,7 +86,7 @@
                             && filled($block['alt'] ?? null))
                             @php($renderedInlineImages[] = $block['url'])
                             <figure class="overflow-hidden rounded-xl">
-                                <img src="{{ $block['url'] }}" alt="{{ $block['alt'] }}"
+                                <img src="{{ \App\Support\EditorialMediaUrl::current($block['url']) }}" alt="{{ $block['alt'] }}"
                                     loading="lazy" class="w-full rounded-xl object-cover">
                                 @if(filled($block['caption'] ?? null) || filled($block['credit'] ?? null))
                                     <figcaption class="mt-2 text-sm text-stone-600">
