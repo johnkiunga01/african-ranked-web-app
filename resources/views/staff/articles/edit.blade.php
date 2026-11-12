@@ -57,7 +57,7 @@
         </label>
         <div class="flex min-h-44 items-center justify-center overflow-hidden rounded-2xl border border-stone-200 bg-white" data-media-preview-wrap>
             @if(old('image', $revision?->image))
-                <img data-media-preview src="{{ old('image', $revision?->image) }}" alt="Current article cover preview" class="h-44 w-full object-cover">
+                <img data-media-preview src="{{ \App\Support\EditorialMediaUrl::current(old('image', $revision?->image)) }}" alt="Current article cover preview" class="h-44 w-full object-cover">
             @else
                 <div data-media-empty class="px-5 text-center text-sm text-stone-500">Your image preview will appear here.</div>
                 <img data-media-preview alt="Selected photo preview" class="hidden h-44 w-full object-cover">
