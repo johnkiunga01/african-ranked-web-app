@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 
-test('author reviews a suggested version, compares the original and accepts publication', async ({ page, request }) => {
+test('author compares a suggestion and saves a private draft for review', async ({ page, request }) => {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/staff/login');
@@ -21,11 +21,13 @@ test('author reviews a suggested version, compares the original and accepts publ
     await page.screenshot({ path: 'artifacts/recommendations/review-desktop.png' });
     await page.setViewportSize({ width: 390, height: 844 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.getByLabel('I’ve reviewed this version and checked its facts, sources, ranking and image permissions.', { exact: true }).check();
-    await page.getByRole('button', { name: 'Accept and publish', exact: true }).click();
-    await expect(page.getByRole('status').filter({ hasText: 'Your accepted version is published' })).toBeVisible();
-    const published = await request.get('/articles/recommendation-browser-demo');
-    expect(published.status()).toBe(200);
-    expect(await published.text()).toContain('Suggested workflow demonstration');
+    await expect(page.getByRole('button', { name: 'Accept and publish', exact: true })).toHaveCount(0);
+    await page.getByRole('button', { name: 'Continue editing this version', exact: true }).click();
+    await expect(page.getByRole('status').filter({ hasText: 'Suggested version saved as a draft' })).toBeVisible();
+    const privateArticle = await request.get('/articles/recommendation-browser-demo');
+    expect(privateArticle.status()).toBe(404);
+    await expect(page.getByLabel('Article title', { exact: true })).toHaveValue('Suggested workflow demonstration');
+    await page.getByRole('button', { name: 'Submit for review', exact: true }).click();
+    await expect(page.getByRole('status').filter({ hasText: 'submitted for review' })).toBeVisible();
     expect(errors).toEqual([]);
 });

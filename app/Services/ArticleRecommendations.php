@@ -84,6 +84,9 @@ class ArticleRecommendations
             $article = Article::lockForUpdate()->findOrFail($request->article_id);
             $request = ArticleRecommendation::lockForUpdate()->findOrFail($request->id);
             Gate::forUser($actor)->authorize('acceptRecommendation', $article);
+            if ($publish) {
+                Gate::forUser($actor)->authorize('publish', $article);
+            }
             $payload = $request->payload;
             if (! $publish && $request->status === 'draft_saved' && (int) $article->current_revision_id === (int) $request->result_revision_id) {
                 return $article;

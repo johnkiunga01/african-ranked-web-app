@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Staff;
 
+use App\Enums\StaffRole;
 use App\Jobs\PrepareArticleRecommendation;
 use App\Models\Article;
 use App\Models\ArticleRecommendation;
@@ -106,42 +107,44 @@ class RecommendationWorkflowTest extends TestCase
         $this->assertSame($saved->id, app(ArticleResearcher::class)->research($article->author, $article, true)->id);
     }
 
-    public function test_author_accepts_and_publishes_only_their_stored_suggestion_and_preserves_original_history(): void
+    public function test_super_admin_accepts_and_publishes_stored_suggestion_and_preserves_original_history(): void
     {
+        $publisher = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $article = $this->article();
         $request = $this->ready($article);
         $original = $article->current_revision_id;
-        $this->actingAs($article->author)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $original, 'human_review' => 1])->assertRedirect();
+        $this->actingAs($publisher)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $original, 'human_review' => 1])->assertRedirect();
         $article->refresh();
         $this->assertNotSame($original, $article->published_revision_id);
         $this->assertSame('published', $article->publishedRevision->status->value);
-        $this->assertSame($article->user_id, $article->publishedRevision->reviewed_by);
+        $this->assertSame($publisher->id, $article->publishedRevision->reviewed_by);
         $this->assertSame('accepted', $request->fresh()->status);
         $this->assertSame('A synthetic guide', $article->revisions()->findOrFail($original)->title);
         $this->get('/articles/'.$article->slug)->assertOk()->assertSee('A clearer synthetic guide');
-        $this->post('/staff/articles/'.$article->id.'/publish', ['revision_id' => $article->current_revision_id])->assertForbidden();
+        $this->actingAs($article->author)->post('/staff/articles/'.$article->id.'/publish', ['revision_id' => $article->current_revision_id])->assertForbidden();
     }
 
     public function test_accept_is_idempotent_and_preserves_first_publication_date(): void
     {
+        $publisher = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $article = $this->article();
         $article->forceFill(['first_published_at' => now()->subMonth()])->save();
         $date = $article->first_published_at;
         $request = $this->ready($article);
-        $first = app(ArticleRecommendations::class)->accept($article->author, $request, $article->current_revision_id);
+        $first = app(ArticleRecommendations::class)->accept($publisher, $request, $article->current_revision_id);
         $this->travel(10)->minutes();
-        $second = app(ArticleRecommendations::class)->accept($article->author, $request->fresh(), $request->source_revision_id);
+        $second = app(ArticleRecommendations::class)->accept($publisher, $request->fresh(), $request->source_revision_id);
         $this->assertSame($first->published_revision_id, $second->published_revision_id);
         $this->assertSame(2, $article->revisions()->count());
         $this->assertTrue($second->first_published_at->equalTo($date));
     }
 
-    public function test_other_authors_cannot_read_request_or_accept_a_foreign_article(): void
+    public function test_other_authors_can_read_suggestions_but_cannot_spend_or_publish_for_the_owner(): void
     {
         $article = $this->article();
         $request = $this->ready($article);
         $other = User::factory()->create();
-        $this->actingAs($other)->get('/staff/articles/'.$article->id.'/suggestions/'.$request->id)->assertForbidden();
+        $this->actingAs($other)->get('/staff/articles/'.$article->id.'/suggestions/'.$request->id)->assertOk();
         $this->post('/staff/articles/'.$article->id.'/suggestions', ['revision_id' => $article->current_revision_id, 'consent' => 1])->assertForbidden();
         $this->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $article->current_revision_id, 'human_review' => 1])->assertForbidden();
         $this->assertNull($article->fresh()->published_revision_id);
@@ -149,32 +152,35 @@ class RecommendationWorkflowTest extends TestCase
 
     public function test_accept_requires_explicit_human_review_and_never_trusts_client_draft_fields(): void
     {
+        $publisher = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $article = $this->article();
         $request = $this->ready($article);
-        $this->actingAs($article->author)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $article->current_revision_id])->assertSessionHasErrors('human_review');
+        $this->actingAs($publisher)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $article->current_revision_id])->assertSessionHasErrors('human_review');
         $this->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $article->current_revision_id, 'human_review' => 1, 'title' => 'Forged incoming title', 'body_markdown' => 'Forged body'])->assertRedirect();
         $this->assertSame('A clearer synthetic guide', $article->fresh()->publishedRevision->title);
     }
 
     public function test_stale_edit_or_reassignment_cannot_publish_a_suggestion(): void
     {
+        $publisher = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $article = $this->article();
         $request = $this->ready($article);
         $data = $this->draft($article) + ['revision_id' => $article->current_revision_id, 'category_slug' => 'travel', 'image' => $article->currentRevision->image, 'source_notes' => 'Test notes'];
         app(EditorialWorkflow::class)->save($article->author, $data, $article);
-        $this->actingAs($article->author)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $request->source_revision_id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
+        $this->actingAs($publisher)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $request->source_revision_id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
         $this->assertNull($article->fresh()->published_revision_id);
         $this->assertSame(2, $article->revisions()->count());
     }
 
     public function test_incomplete_evidence_or_a_thin_proposal_cannot_publish_even_when_accepted(): void
     {
+        $publisher = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $article = $this->article();
         $request = $this->ready($article);
         $payload = $request->payload;
         $payload['draft']['body_markdown'] = 'Thin draft';
         $request->update(['payload' => $payload]);
-        $this->actingAs($article->author)->get('/staff/articles/'.$article->id.'/suggestions/'.$request->id)->assertOk()->assertSee('Finish these checks before publishing')->assertSee('Add more evidence-backed detail');
+        $this->actingAs($publisher)->get('/staff/articles/'.$article->id.'/suggestions/'.$request->id)->assertOk()->assertSee('Finish these checks before publishing')->assertSee('Add more evidence-backed detail');
         $this->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $article->current_revision_id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
         $this->assertNull($article->fresh()->published_revision_id);
         $this->assertSame(1, $article->revisions()->count());
@@ -205,9 +211,10 @@ class RecommendationWorkflowTest extends TestCase
 
     public function test_discard_keeps_the_original_and_cannot_later_be_accepted(): void
     {
+        $publisher = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $article = $this->article();
         $request = $this->ready($article);
-        $this->actingAs($article->author)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/discard')->assertRedirect();
+        $this->actingAs($publisher)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/discard')->assertRedirect();
         $this->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $article->current_revision_id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
         $this->assertSame('A synthetic guide', $article->fresh()->currentRevision->title);
     }
@@ -245,6 +252,7 @@ class RecommendationWorkflowTest extends TestCase
 
     public function test_accept_preserves_existing_live_version_when_any_publication_check_fails(): void
     {
+        $publisher = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $article = $this->article();
         $prior = $article->currentRevision;
         $prior->forceFill(['status' => 'published', 'published_at' => now()])->save();
@@ -253,7 +261,7 @@ class RecommendationWorkflowTest extends TestCase
         $payload = $request->payload;
         $payload['draft']['faqs_text'] = '';
         $request->update(['payload' => $payload]);
-        $this->actingAs($article->author)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $prior->id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
+        $this->actingAs($publisher)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $prior->id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
         $this->assertSame($prior->id, $article->fresh()->published_revision_id);
         $this->assertSame(1, $article->revisions()->count());
     }
@@ -264,7 +272,7 @@ class RecommendationWorkflowTest extends TestCase
         $request = $this->ready($article);
         $originalOwner = $article->author;
         $article->forceFill(['user_id' => User::factory()->create()->id])->save();
-        $this->actingAs($article->fresh()->author)->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $request->source_revision_id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
+        $this->actingAs(User::factory()->create(['role' => StaffRole::SuperAdmin]))->post('/staff/articles/'.$article->id.'/suggestions/'.$request->id.'/accept', ['revision_id' => $request->source_revision_id, 'human_review' => 1])->assertSessionHasErrors('suggestion');
         $this->assertNull($article->fresh()->published_revision_id);
     }
 

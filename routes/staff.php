@@ -12,6 +12,7 @@ use App\Http\Controllers\Staff\ContentReadinessController;
 use App\Http\Controllers\Staff\DashboardController;
 use App\Http\Controllers\Staff\EditorialPlanController;
 use App\Http\Controllers\Staff\GrowthController;
+use App\Http\Controllers\Staff\ProfileController;
 use App\Http\Controllers\Staff\PromotionController;
 use App\Http\Controllers\Staff\ProviderCredentialController;
 use App\Http\Controllers\Staff\SearchIntegrationController;
@@ -74,6 +75,8 @@ Route::prefix('staff')->name('staff.')->group(function () {
             Route::delete('security/two-factor', [SecurityController::class, 'disable'])->name('security.disable');
             Route::delete('security/two-factor/pending', [SecurityController::class, 'cancelSetup'])->name('security.cancel');
         });
+        Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profile', [ProfileController::class, 'update'])->middleware('throttle:10,1')->name('profile.update');
         Route::get('content-readiness', ContentReadinessController::class)->name('content-readiness');
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
@@ -87,6 +90,8 @@ Route::prefix('staff')->name('staff.')->group(function () {
         Route::put('provider-credentials/{provider}', [ProviderCredentialController::class, 'update'])->middleware(['can:manage-staff', 'password.confirm', 'throttle:5,1'])->name('credentials.update');
         Route::delete('provider-credentials/{provider}', [ProviderCredentialController::class, 'destroy'])->middleware(['can:manage-staff', 'password.confirm', 'throttle:5,1'])->name('credentials.destroy');
         Route::post('articles/{article}/curate', [ArticleCurationController::class, 'generate'])->middleware(['can:curate,article', 'password.confirm', 'throttle:2,1'])->name('articles.curate');
+        Route::get('article-batches', fn () => redirect()->route('staff.articles.index'))->name('articles.bulk.return');
+        Route::get('article-batches/execute', fn () => redirect()->route('staff.articles.index'));
         Route::post('article-batches', [ArticleToolsController::class, 'bulk'])->middleware('throttle:10,1')->name('articles.bulk');
         Route::post('article-batches/execute', [BulkArticleController::class, 'execute'])->middleware('throttle:6,1')->name('articles.bulk.execute');
         Route::get('seo-batches/{batch}', [BulkArticleController::class, 'show'])->name('articles.seo-batches.show');
@@ -115,6 +120,8 @@ Route::prefix('staff')->name('staff.')->group(function () {
         Route::middleware(['can:manage-staff', 'password.confirm'])->group(function () {
             Route::get('users', [UserController::class, 'index'])->name('users.index');
             Route::post('invitations', [UserController::class, 'invite'])->name('users.invite');
+            Route::delete('users/{user}', [UserController::class, 'destroy'])->middleware('throttle:6,1')->name('users.destroy');
+            Route::post('users/{user}/restore', [UserController::class, 'restore'])->middleware('throttle:6,1')->name('users.restore');
             Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
             Route::delete('invitations/{invitation}', [UserController::class, 'revoke'])->name('invitations.revoke');
         });

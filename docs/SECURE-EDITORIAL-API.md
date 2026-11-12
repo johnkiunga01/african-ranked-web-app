@@ -35,3 +35,11 @@ Source access and fact-check dates must be actual; the server validates structur
 Installing these routes in Railway does NOT automatically connect them to ChatGPT tools. A registered credentialed API client/connector must be provisioned separately; the current Railway connector can inspect deployment/logs but cannot issue arbitrary authenticated HTTP requests to the CMS. Do not claim two new articles are In Review until the client submits and re-reads each actual CMS record.
 
 Deployment sequence: review CI, deploy API disabled, confirm no regression and unchanged published article counts, set the secure actor/token hash, test read-only inventory, then activate audited writes in a trusted connector. The site stays noindex until the separate explicit indexing launch.
+
+## Staff collaboration and account controls — 12 November 2026
+
+Staff can edit their own name, editorial title and biography at `/staff/profile`. Verified sign-in email transfers are not supported by this release; the interface explains that limit. Existing revision bylines remain immutable until a new draft is saved.
+
+The team workspace now permits all active verified authors to view and manually edit drafts. Authors may approve another author's In Review revision after the required checklist and quality checks; they cannot approve their own or their last-edited revision. Super admins retain their existing review authority and exclusive publication authority, including AI recommendation acceptance. AI spending controls and ownership restrictions remain separate from manual collaboration.
+
+`Remove staff access` archives the membership, revokes sessions and reset tokens, and reserves its email while retaining attribution and audit history. It does not erase the person or their articles. Self-removal and removing the last active verified super admin are blocked. Restoration leaves the account suspended until its access is reviewed.

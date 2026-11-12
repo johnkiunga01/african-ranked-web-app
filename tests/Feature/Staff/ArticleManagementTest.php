@@ -72,6 +72,6 @@ class ArticleManagementTest extends TestCase
         $this->assertSame($admin->name, $prior->fresh()->author_name);
         $this->patch($url, ['user_id' => $other->id, 'revision_id' => $prior->id])->assertSessionHasErrors('assignment');
         $this->actingAs($author)->get('/staff/articles')->assertSee($seed['title']);
-        $this->actingAs($other)->get('/staff/articles')->assertDontSee($seed['title']);
+        $this->actingAs($other)->get('/staff/articles')->assertSee($seed['title']);
     }
 }

@@ -24,6 +24,10 @@ class EditorialIntegrationApiTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        // Disposable keys make OAuth tests independent of production storage or CI secrets.
+        $key = openssl_pkey_new(['private_key_bits' => 2048, 'private_key_type' => OPENSSL_KEYTYPE_RSA]);
+        openssl_pkey_export($key, $private);
+        config(['passport.private_key' => $private, 'passport.public_key' => openssl_pkey_get_details($key)['key']]);
         $this->editor = User::factory()->create(['name' => 'Named Editor', 'role' => StaffRole::SuperAdmin]);
         $this->token = str_repeat('x', 64);
         config([

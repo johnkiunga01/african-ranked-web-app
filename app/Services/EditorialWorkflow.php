@@ -87,6 +87,10 @@ class EditorialWorkflow
                 throw ValidationException::withMessages(['workflow' => 'Restore this article from Trash before publishing or reviewing.']);
             }
             $revision = $article->currentRevision()->lockForUpdate()->firstOrFail();
+            $article->setRelation('currentRevision', $revision);
+            if (in_array($action, ['approve', 'request_changes'], true)) {
+                Gate::forUser($actor)->authorize('review', $article);
+            }
             if ($action === 'submit') {
                 $this->requireStatus($revision, [RevisionStatus::Draft, RevisionStatus::ChangesRequested]);
                 if (! $revision->body || ! $revision->source_notes || ! $revision->image) {
@@ -102,6 +106,9 @@ class EditorialWorkflow
                 $revision->reviewed_at = null;
             } elseif ($action === 'approve') {
                 $this->requireStatus($revision, [RevisionStatus::InReview]);
+                if (! $actor->isSuperAdmin()) {
+                    app(PublicationQuality::class)->assertPublishable($revision);
+                }
                 foreach (self::CHECKS as $check) {
                     if (! filter_var($data[$check] ?? false, FILTER_VALIDATE_BOOLEAN)) {
                         throw ValidationException::withMessages(['workflow' => 'Complete every editorial review check before approval.']);

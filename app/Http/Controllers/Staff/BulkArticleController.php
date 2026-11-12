@@ -55,6 +55,19 @@ class BulkArticleController extends Controller
 
     public function execute(Request $request)
     {
+        try {
+            return $this->executeSelection($request);
+        } catch (ValidationException $exception) {
+            if ($request->expectsJson()) {
+                throw $exception;
+            }
+
+            return redirect()->route('staff.articles.index')->withErrors($exception->errors());
+        }
+    }
+
+    private function executeSelection(Request $request)
+    {
         $operation = $request->input('operation');
         $request->validate($operation === 'publish' ? ['editorial_approval' => ['accepted']] : ['ai_consent' => ['accepted']]);
         try {

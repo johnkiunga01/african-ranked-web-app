@@ -71,6 +71,19 @@ class ArticleToolsController extends Controller
 
     public function bulk(Request $request, EditorialWorkflow $workflow)
     {
+        try {
+            return $this->applyBulk($request, $workflow);
+        } catch (ValidationException $exception) {
+            if ($request->expectsJson()) {
+                throw $exception;
+            }
+
+            return redirect()->route('staff.articles.index', $request->only(['tab', 'q', 'category', 'sort', 'per_page', 'page']))->withErrors($exception->errors());
+        }
+    }
+
+    private function applyBulk(Request $request, EditorialWorkflow $workflow)
+    {
         if (in_array($request->input('operation'), ['publish', 'gemini'], true)) {
             return app(BulkArticleController::class)->prepare($request);
         }

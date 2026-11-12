@@ -67,7 +67,8 @@ class SeoAutomationToolsTest extends TestCase
         $article = app(SeedArticleImporter::class)->import(app(Catalog::class)->data('articles')[0], $owner);
         $this->actingAs($owner)->post('/staff/articles/'.$article->id.'/seo-fix', ['revision_id' => $article->current_revision_id, 'provider' => 'gemini'])->assertForbidden();
         app(SiteSettings::class)->save('general', 0, ['author_ai_enabled' => true], $admin);
-        $this->actingAs($other)->post('/staff/articles/'.$article->id.'/seo-fix', ['revision_id' => $article->current_revision_id, 'provider' => 'local'])->assertForbidden();
+        $this->actingAs($other)->post('/staff/articles/'.$article->id.'/seo-fix', ['revision_id' => $article->current_revision_id, 'provider' => 'local'])->assertRedirect();
+        $this->assertNull($article->fresh()->published_revision_id);
         $this->actingAs($owner)->get('/staff/articles/'.$article->id.'/promotion')->assertOk()->assertSee('Publish the article before sharing');
         Http::assertNothingSent();
     }

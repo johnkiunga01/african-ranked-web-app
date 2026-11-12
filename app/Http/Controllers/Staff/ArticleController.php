@@ -43,7 +43,7 @@ class ArticleController extends Controller
             'page' => ['nullable', 'integer', 'min:1', 'max:100000'],
             'examples_page' => ['nullable', 'integer', 'min:1', 'max:100000'],
         ]);
-        $base = Article::query()->when(! $request->user()->isSuperAdmin(), fn ($q) => $q->where('user_id', $request->user()->id));
+        $base = Article::query();
         $counts = [
             'all' => (clone $base)->whereNull('trashed_at')->count(),
             'drafts' => (clone $base)->whereNull('trashed_at')->whereHas('currentRevision', fn ($q) => $q->whereIn('status', ['draft', 'changes_requested']))->count(),
@@ -62,9 +62,6 @@ class ArticleController extends Controller
                 'published' => $base->whereNotNull('published_revision_id'),
                 default => null,
             };
-        }
-        if (! $request->user()->isSuperAdmin()) {
-            unset($filters['author']);
         }
         $query = (clone $base)->when($filters['author'] ?? null, fn ($q, $author) => $q->where('user_id', $author))
             ->when($filters['publication'] ?? null, function ($q, $publication) {
@@ -110,7 +107,7 @@ class ArticleController extends Controller
         $examplePage = (int) ($filters['examples_page'] ?? 1);
         $perPage = (int) ($filters['per_page'] ?? 10);
         $examples = new LengthAwarePaginator($examples->values()->forPage($examplePage, $perPage), $examples->count(), $perPage, $examplePage, ['path' => $request->url(), 'pageName' => 'examples_page', 'query' => $request->query()]);
-        $owners = $request->user()->isSuperAdmin() ? User::where('is_active', true)->whereNotNull('email_verified_at')->orderBy('name')->get() : collect();
+        $owners = User::where('is_active', true)->whereNotNull('email_verified_at')->orderBy('name')->get();
         $categories = app(Catalog::class)->categories();
 
         $seoBatches = ArticleSeoBatch::when(! $request->user()->isSuperAdmin(), fn ($q) => $q->where('user_id', $request->user()->id))->withCount('items')->latest('id')->limit(3)->get();

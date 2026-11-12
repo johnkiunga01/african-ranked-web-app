@@ -49,6 +49,6 @@ class DraftPreviewTest extends TestCase
         $other = User::factory()->create();
         $article = app(SeedArticleImporter::class)->import(app(Catalog::class)->data('articles')[0], $owner);
 
-        $this->actingAs($other)->get('/staff/articles/'.$article->id.'/preview')->assertForbidden();
+        $this->actingAs($other)->get('/staff/articles/'.$article->id.'/preview')->assertOk();
     }
 }

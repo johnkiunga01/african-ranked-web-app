@@ -42,7 +42,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         const forged = await authorContext.request.post(`/staff/articles/${id}/publish`, { form: { _token: token, revision_id: revision } });
         expect(forged.status()).toBe(403);
         await signIn(other, 'other@browser.example.test');
-        expect((await otherContext.request.get(`/staff/articles/${id}/edit`)).status()).toBe(403);
+        expect((await otherContext.request.get(`/staff/articles/${id}/edit`)).status()).toBe(200);
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
         await expect(author.locator('#staff-main > p[role="status"]')).toContainText('submitted for review');
         await signIn(admin, 'admin@browser.example.test');
@@ -274,4 +274,21 @@ test('authenticator enrollment and single-use recovery protect the full browser 
     await page.getByRole('link', { name: 'Launch checks', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Production readiness', exact: true })).toBeVisible();
     await page.screenshot({ path: 'artifacts/security/launch-readiness.png', fullPage: true });
+});
+
+test('staff can edit their profile and recover safely from a bulk action URL', async ({ page }) => {
+    await signIn(page, 'author@browser.example.test');
+    await page.getByRole('link', { name: 'My profile', exact: true }).first().click();
+    await expect(page).toHaveURL(/\/staff\/profile$/);
+    const originalName = await page.getByLabel('Display name', { exact: true }).inputValue();
+    await page.getByLabel('Display name', { exact: true }).fill('Browser profile editor');
+    await page.getByLabel('Biography', { exact: true }).fill('Disposable browser verification biography.');
+    await page.getByRole('button', { name: 'Save profile', exact: true }).click();
+    await expect(page.getByRole('status')).toContainText('Profile saved');
+    await expect(page.getByLabel('Display name', { exact: true })).toHaveValue('Browser profile editor');
+    await page.getByLabel('Display name', { exact: true }).fill(originalName);
+    await page.getByRole('button', { name: 'Save profile', exact: true }).click();
+    await page.goto('/staff/article-batches');
+    await expect(page).toHaveURL(/\/staff\/articles$/);
+    await expect(page.getByRole('heading', { name: 'Articles', exact: true })).toBeVisible();
 });
