@@ -20,7 +20,7 @@ class ArticlePolicy
 
     public function view(User $user, Article $article): bool
     {
-        return $this->viewAny($user) && ($user->isSuperAdmin() || $article->user_id === $user->id);
+        return $this->viewAny($user);
     }
 
     public function update(User $user, Article $article): bool
@@ -30,7 +30,10 @@ class ArticlePolicy
 
     public function review(User $user, Article $article): bool
     {
-        return $user->isSuperAdmin();
+        return $user->isSuperAdmin() || ($this->viewAny($user)
+            && ! $article->trashed_at
+            && $article->user_id !== $user->id
+            && $article->currentRevision?->created_by !== $user->id);
     }
 
     public function publish(User $user, Article $article): bool
@@ -40,26 +43,26 @@ class ArticlePolicy
 
     public function trash(User $user, Article $article): bool
     {
-        return $this->view($user, $article) && ! $article->trashed_at && ($user->isSuperAdmin() || ! $article->published_revision_id);
+        return $this->view($user, $article) && ! $article->trashed_at && ($user->isSuperAdmin() || ($article->user_id === $user->id && ! $article->published_revision_id));
     }
 
     public function restore(User $user, Article $article): bool
     {
-        return $this->view($user, $article) && (bool) $article->trashed_at;
+        return $this->view($user, $article) && (bool) $article->trashed_at && ($user->isSuperAdmin() || $article->user_id === $user->id);
     }
 
     public function recommend(User $user, Article $article): bool
     {
-        return $this->update($user, $article);
+        return $this->update($user, $article) && ($user->isSuperAdmin() || $article->user_id === $user->id);
     }
 
     public function acceptRecommendation(User $user, Article $article): bool
     {
-        return $this->update($user, $article);
+        return $this->recommend($user, $article);
     }
 
     public function curate(User $user, Article $article): bool
     {
-        return $this->update($user, $article) && ($user->isSuperAdmin() || app(SiteSettings::class)->snapshot('general')['value']['author_ai_enabled']);
+        return $this->recommend($user, $article) && ($user->isSuperAdmin() || app(SiteSettings::class)->snapshot('general')['value']['author_ai_enabled']);
     }
 }

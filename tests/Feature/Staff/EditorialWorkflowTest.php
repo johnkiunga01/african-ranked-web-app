@@ -36,7 +36,7 @@ class EditorialWorkflowTest extends TestCase
         $this->post('/staff/articles/'.$article->id.'/publish', ['revision_id' => $id])->assertRedirect();
     }
 
-    public function test_drafts_are_owned_private_and_cannot_forge_publication_fields(): void
+    public function test_drafts_are_team_private_and_cannot_forge_publication_fields(): void
     {
         $author = User::factory()->create();
         $other = User::factory()->create();
@@ -44,17 +44,17 @@ class EditorialWorkflowTest extends TestCase
         $this->assertSame($author->id, $article->user_id);
         $this->assertNull($article->published_revision_id);
         $this->get('/staff/articles/'.$article->id.'/preview')->assertOk()->assertSee('Private draft preview');
-        $this->actingAs($other)->get('/staff/articles/'.$article->id.'/edit')->assertForbidden();
-        $this->get('/staff/articles/'.$article->id.'/preview')->assertForbidden();
-        $this->put('/staff/articles/'.$article->id, $this->data(['revision_id' => $article->current_revision_id]))->assertForbidden();
-        $this->get('/staff/articles')->assertDontSee($article->currentRevision->title);
+        $this->actingAs($other)->get('/staff/articles/'.$article->id.'/edit')->assertOk();
+        $this->get('/staff/articles/'.$article->id.'/preview')->assertOk();
+        $this->put('/staff/articles/'.$article->id, $this->data(['revision_id' => $article->current_revision_id]))->assertRedirect();
+        $this->get('/staff/articles')->assertSee($article->currentRevision->title);
         auth()->logout();
         $this->get('/articles/'.$article->slug)->assertNotFound();
         $this->get('/sitemap.xml')->assertDontSee($article->slug);
         $this->get('/feed.xml')->assertDontSee($article->currentRevision->title);
     }
 
-    public function test_author_cannot_approve_publish_unpublish_or_review_any_article(): void
+    public function test_author_cannot_approve_own_article_or_publish_or_unpublish(): void
     {
         $author = User::factory()->create();
         $article = $this->createArticle($author);

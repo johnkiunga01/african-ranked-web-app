@@ -58,6 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail, OAuthenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'removed_at' => 'datetime',
             'role' => StaffRole::class,
             'is_active' => 'boolean',
             'session_version' => 'integer',

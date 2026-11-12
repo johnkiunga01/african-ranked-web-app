@@ -47,7 +47,7 @@ class AdvancedEditorialTest extends TestCase
         $this->get('/staff/articles?per_page=10000')->assertSessionHasErrors('per_page');
     }
 
-    public function test_article_library_search_finds_current_draft_body_and_introduction_without_exposing_other_authors(): void
+    public function test_article_library_search_finds_current_draft_body_and_introduction_across_the_shared_editorial_team(): void
     {
         $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $author = User::factory()->create();
@@ -63,7 +63,7 @@ class AdvancedEditorialTest extends TestCase
             ->assertOk()->assertViewHas('articles', fn ($items) => $items->total() === 1);
 
         $this->actingAs($author)->get('/staff/articles?q=rarephraseelephantpath')
-            ->assertOk()->assertViewHas('articles', fn ($items) => $items->total() === 0);
+            ->assertOk()->assertViewHas('articles', fn ($items) => $items->total() === 1);
     }
 
     public function test_seo_fields_and_faqs_stay_private_until_approved_publication_and_can_be_cleared(): void
@@ -103,7 +103,7 @@ class AdvancedEditorialTest extends TestCase
         $this->assertContains('Internal article target is not public', $labels);
         $this->assertSame(1, $analysis['linkCount']);
         $this->get('/staff/articles/'.$article->id.'/seo')->assertOk()->assertSee('Saved revision')->assertSee('Search appearance preview');
-        $this->actingAs(User::factory()->create())->get('/staff/articles/'.$article->id.'/seo')->assertForbidden();
+        $this->actingAs(User::factory()->create())->get('/staff/articles/'.$article->id.'/seo')->assertOk();
         $blocks = app(MarkdownBlocks::class)->parse("[Unsafe](javascript:alert(1))\n\n[Protocol-relative](//evil.test)\n\n[Good](https://example.test/source)");
         $this->assertSame(['paragraph', 'paragraph', 'link'], array_column($blocks, 'type'));
     }
@@ -126,7 +126,7 @@ class AdvancedEditorialTest extends TestCase
         $this->assertNull($article->currentRevision->reviewed_at);
         $this->assertSame(3, $article->currentRevision->number);
         $this->post('/staff/articles/'.$article->id.'/revisions/'.$old->id.'/restore', ['revision_id' => $currentId])->assertSessionHasErrors('revision_id');
-        $this->actingAs(User::factory()->create())->get('/staff/articles/'.$article->id.'/revisions/'.$old->id)->assertForbidden();
+        $this->actingAs(User::factory()->create())->get('/staff/articles/'.$article->id.'/revisions/'.$old->id)->assertOk();
     }
 
     public function test_bulk_changes_roll_back_the_whole_batch_on_stale_or_unauthorized_items(): void

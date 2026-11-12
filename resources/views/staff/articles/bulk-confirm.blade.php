@@ -18,7 +18,7 @@
         <li class="flex flex-wrap items-center justify-between gap-3 p-4"><span class="text-sm font-semibold">{{ $article->currentRevision->title }}</span><span class="text-xs text-stone-500">Revision {{ $article->currentRevision->number }} · {{ ucfirst(str_replace('_', ' ', $article->currentRevision->status->value)) }}</span></li>
     @endforeach
     </ul></div>
-    <form method="POST" action="{{ route('staff.articles.bulk.execute') }}" class="space-y-5" data-bulk-confirm>
+    <form method="POST" action="{{ route('staff.articles.bulk.execute', [], false) }}" class="space-y-5" data-bulk-confirm>
         @csrf
         <input type="hidden" name="operation" value="{{ $operation }}">
         @foreach($articles as $article)
