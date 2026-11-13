@@ -36,6 +36,16 @@ class Seo
             : ($type === 'rankings'
             ? 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.'
             : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline'])));
+        // Regional landing pages have distinct edition URLs; keep their search snippets
+        // informative and unique without changing the underlying editorial claims.
+        if ($code !== 'global') {
+            $description = match ($type) {
+                'home' => 'Explore African destinations, wildlife, food, music, business and technology through the '.$region['name'].' edition of '.$siteName.'.',
+                'category' => 'Browse '.$category['name'].' rankings and guides about Africa in the '.$region['name'].' edition of '.$siteName.'.',
+                'rankings' => 'Discover researched African rankings and practical guides in the '.$region['name'].' edition of '.$siteName.'.',
+                default => $description,
+            };
+        }
         $image = $type === 'home'
             ? $c->url('/images/african-ranked-savannah-hero-desktop.webp')
             : ($article['image'] ?? $c->articles($code)->first()['image'] ?? $c->articles()->first()['image'] ?? $c->url('/image-placeholder.svg'));
