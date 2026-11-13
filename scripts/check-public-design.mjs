@@ -100,7 +100,18 @@ const approvedAnalyticsChange = path => {
     return Boolean(expected) && execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim() === expected;
 };
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path));
+// Owner-approved 13 Nov 2026 newsletter consent and confirmation page additions.
+// Only the exact reviewed frontend blobs are allowed; other design remains protected.
+const approvedNewsletterBlobs = new Map(Object.entries({
+    "resources/views/partials/newsletter.blade.php": "a2239f508733bb0321cc956ea02b1164e6857d65",
+    "resources/views/pages/newsletter-lifecycle.blade.php": "f112d978706c8a3ee8efad0e01815796745b1251"
+}));
+const approvedNewsletterChange = path => {
+    const expected = approvedNewsletterBlobs.get(path);
+    return Boolean(expected) && execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim() === expected;
+};
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);

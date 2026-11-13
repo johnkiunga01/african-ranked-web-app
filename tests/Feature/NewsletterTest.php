@@ -4,11 +4,20 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 class NewsletterTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        config(['editorial.newsletter_enabled' => true]);
+        Mail::fake();
+    }
 
     public function test_subscription_is_persisted_normalized_and_deduplicated(): void
     {
@@ -18,6 +27,8 @@ class NewsletterTest extends TestCase
         $this->assertDatabaseCount('newsletter_subscribers', 1);
         $this->assertDatabaseHas('newsletter_subscribers', ['email' => 'reader@example.com', 'region' => 'ke']);
         $this->assertNotNull(DB::table('newsletter_subscribers')->value('consented_at'));
+        $this->assertNull(DB::table('newsletter_subscribers')->value('verified_at'));
+        $this->assertNotNull(DB::table('newsletter_subscribers')->value('verification_token_hash'));
     }
 
     public function test_invalid_email_missing_consent_and_invalid_region_are_rejected(): void
@@ -41,5 +52,49 @@ class NewsletterTest extends TestCase
         $this->get('/newsletter')->assertStatus(405);
         $this->get('/newsletter/subscribers')->assertNotFound();
         $this->assertDatabaseCount('newsletter_subscribers', 1);
+    }
+
+    public function test_newsletter_signup_is_disabled_unless_explicitly_enabled(): void
+    {
+        config(['editorial.newsletter_enabled' => false]);
+        $this->post('/newsletter', [
+            'email' => 'reader@example.com', 'region' => 'global', 'consent' => '1',
+        ])->assertNotFound();
+        $this->assertDatabaseCount('newsletter_subscribers', 0);
+    }
+
+    public function test_confirmation_is_post_only_and_replays_expire(): void
+    {
+        $token = str_repeat('a', 64);
+        $id = DB::table('newsletter_subscribers')->insertGetId([
+            'email' => 'reader@example.com', 'region' => 'global',
+            'consented_at' => now(), 'verification_token_hash' => hash('sha256', $token),
+            'verification_expires_at' => now()->addDay(),
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
+        $url = route('newsletter.confirm', ['subscriber' => $id, 'token' => $token]);
+        $this->get($url)->assertOk()->assertSee('Confirm subscription');
+        $this->assertNull(DB::table('newsletter_subscribers')->where('id', $id)->value('verified_at'));
+        $this->post(route('newsletter.confirm.submit', ['subscriber' => $id, 'token' => $token]))
+            ->assertRedirect('/');
+        $this->assertNotNull(DB::table('newsletter_subscribers')->where('id', $id)->value('verified_at'));
+        $this->post(route('newsletter.confirm.submit', ['subscriber' => $id, 'token' => $token]))
+            ->assertNotFound();
+    }
+
+    public function test_unsubscribe_requires_valid_signed_url_and_explicit_post(): void
+    {
+        $id = DB::table('newsletter_subscribers')->insertGetId([
+            'email' => 'reader@example.com', 'region' => 'global',
+            'consented_at' => now(), 'verified_at' => now(),
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
+        $signed = URL::signedRoute('newsletter.unsubscribe', ['subscriber' => $id]);
+        $this->get($signed)->assertOk()->assertSee('Unsubscribe');
+        $this->assertNull(DB::table('newsletter_subscribers')->where('id', $id)->value('unsubscribed_at'));
+        $this->post(route('newsletter.unsubscribe.submit', ['subscriber' => $id]))->assertForbidden();
+        $this->post(URL::signedRoute('newsletter.unsubscribe.submit', ['subscriber' => $id]))
+            ->assertRedirect('/');
+        $this->assertNotNull(DB::table('newsletter_subscribers')->where('id', $id)->value('unsubscribed_at'));
     }
 }
