@@ -65,4 +65,5 @@ class DesignSystemRoutesTest extends TestCase
         $this->assertCount(4, array_unique($travelDescriptions));
         $this->assertStringContainsString('United States edition', $travelDescriptions['us']);
         $this->assertStringContainsString('Kenya edition', $homeDescriptions['ke']);
-    }}
+    }
+}
