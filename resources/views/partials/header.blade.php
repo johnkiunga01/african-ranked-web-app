@@ -10,6 +10,7 @@
             <a href="{{ $basePath }}/rankings" class="site-nav-link" @if($pageSuffix === '/rankings' && request('type') !== 'guide') aria-current="page" @endif>Rankings</a>
             <a href="{{ $basePath }}/rankings?type=guide" class="site-nav-link" @if(request('type') === 'guide') aria-current="page" @endif>Guides</a>
             <a href="{{ $basePath }}/strategy" class="site-nav-link" @if($pageSuffix === '/strategy') aria-current="page" @endif>Our approach</a>
+            <a href="/about" class="site-nav-link" @if($pageSuffix === '/about') aria-current="page" @endif>About us</a>
         </nav>
         <div class="flex items-center gap-1 sm:gap-3">
             <details class="relative" data-search-menu>
@@ -40,6 +41,7 @@
         <a href="{{ $basePath }}/rankings" class="site-mobile-link">All rankings</a>
         <a href="{{ $basePath }}/rankings?type=guide" class="site-mobile-link">Practical guides</a>
         <a href="{{ $basePath }}/strategy" class="site-mobile-link">Our editorial approach</a>
+        <a href="/about" class="site-mobile-link" @if($pageSuffix === '/about') aria-current="page" @endif>About us</a>
         <p class="mt-5 px-3 text-xs font-semibold uppercase tracking-[.16em] text-amber-300">Explore topics</p>
         @foreach($categories as $navCategory)
             <a href="{{ $basePath }}/categories/{{ $navCategory['slug'] }}" class="site-mobile-link">{{ $navCategory['name'] }}</a>

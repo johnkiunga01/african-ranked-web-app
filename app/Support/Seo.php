@@ -17,6 +17,7 @@ class Seo
             'article' => '/articles/'.$article['slug'],
             'category' => '/categories/'.$category['slug'],
             'strategy' => '/strategy',
+            'about' => '/about',
             'rankings' => '/rankings',
             default => '',
         };
@@ -27,15 +28,16 @@ class Seo
             'article' => ($article['seoTitle'] ?? null) ?: $article['title'].' | '.$siteName,
             'category' => $category['name'].' | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
             'strategy' => 'Editorial & Search Strategy | '.$siteName,
+            'about' => 'About Us | '.$siteName,
             'rankings' => 'African Rankings & Guides | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
             'not-found' => 'Page not found | '.$siteName,
             default => $siteName.' — The Best of Africa, Ranked'.($code === 'global' ? '' : ' | '.$region['name']),
         };
-        $description = $type === 'home'
+        $description = $type === 'about' ? 'Meet African Ranked: rankings and practical guides to African travel, wildlife, food, music, technology and business.' : ($type === 'home'
             ? 'Discover the best of Africa through researched rankings and practical guides to destinations, wildlife, cuisine, music, technology and business.'
             : ($type === 'rankings'
             ? 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.'
-            : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline'])));
+            : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']))));
         // Regional landing pages have distinct edition URLs; keep their search snippets
         // informative and unique without changing the underlying editorial claims.
         if ($code !== 'global') {
