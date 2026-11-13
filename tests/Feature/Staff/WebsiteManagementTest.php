@@ -6,6 +6,7 @@ use App\Enums\StaffRole;
 use App\Models\Article;
 use App\Models\Region;
 use App\Models\SitePage;
+use App\Models\SiteSetting;
 use App\Models\User;
 use App\Services\SeedArticleImporter;
 use App\Services\SiteSettings;
@@ -130,10 +131,9 @@ class WebsiteManagementTest extends TestCase
     public function test_official_contact_email_is_available_as_public_default_and_blank_setting_fallback(): void
     {
         $this->get('/')->assertOk()->assertSee('mailto:info@africanranked.com', false);
-        \App\Models\SiteSetting::create([
+        SiteSetting::create([
             'key' => 'general', 'value' => ['contact_email' => ''], 'version' => 0,
         ]);
         $this->get('/')->assertOk()->assertSee('mailto:info@africanranked.com', false);
     }
-
 }
