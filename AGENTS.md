@@ -1,3 +1,7 @@
+## Active owner decision — regional editions held from indexing, 13 November 2026
+
+The owner handed project and editorial lead to the Claude session of 13 November and asked for the audit findings to be applied. Country-edition home, category, rankings and strategy pages (`/us`, `/uk`, `/au`, `/ca`, `/ng`, `/za`, `/ke`) list the same articles as the global pages, so they now serve `noindex, follow`, emit no hreflang alternates and are excluded from the sitemap. Article URLs and their global canonicals are unchanged. Re-enable with `SEO_REGIONAL_EDITIONS_INDEXABLE=true` on the web service only once an edition carries distinct content. This supersedes the "self-canonicals and reciprocal alternates" invariant below while the flag is off. Audit and operating plan: the "African Ranked" Claude project doc `audit-and-operating-plan-2026-11-13.md`.
+
 ## Active owner scope — final activation, 13 November 2026
 
 The owner authorized creating the three real CMS policy-page records, live newsletter testing through an owner-controlled inbox, and GA4 activation only after a verified published Privacy Policy and required approval. Leave materially unresolved policies as populated private CMS drafts. Do not edit, submit or publish editorial articles in this assignment. Do not modify administrator MFA settings. The official operator/contact is African Ranked, info@africanranked.com. Keep GA4 and public newsletter registration disabled until their specified privacy and end-to-end gates pass. Earlier production-indexing approval remains valid.

@@ -16,6 +16,10 @@ class DiscoveryController extends Controller
             $c->region($region);
         }
         $codes = $region === null ? array_keys($c->regions()) : [$region];
+        if (! config('seo.regional_editions_indexable')) {
+            // Country-edition listing pages are noindex; a sitemap must not advertise them.
+            $codes = array_values(array_intersect($codes, ['global']));
+        }
         $urls = [];
         foreach ($codes as $code) {
             $articles = $c->articles($code);
