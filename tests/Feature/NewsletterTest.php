@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 class NewsletterTest extends TestCase
@@ -14,7 +16,7 @@ class NewsletterTest extends TestCase
     {
         parent::setUp();
         config(['editorial.newsletter_enabled' => true]);
-        \Illuminate\Support\Facades\Mail::fake();
+        Mail::fake();
     }
 
     public function test_subscription_is_persisted_normalized_and_deduplicated(): void
@@ -51,6 +53,7 @@ class NewsletterTest extends TestCase
         $this->get('/newsletter/subscribers')->assertNotFound();
         $this->assertDatabaseCount('newsletter_subscribers', 1);
     }
+
     public function test_newsletter_signup_is_disabled_unless_explicitly_enabled(): void
     {
         config(['editorial.newsletter_enabled' => false]);
@@ -86,11 +89,11 @@ class NewsletterTest extends TestCase
             'consented_at' => now(), 'verified_at' => now(),
             'created_at' => now(), 'updated_at' => now(),
         ]);
-        $signed = \Illuminate\Support\Facades\URL::signedRoute('newsletter.unsubscribe', ['subscriber' => $id]);
+        $signed = URL::signedRoute('newsletter.unsubscribe', ['subscriber' => $id]);
         $this->get($signed)->assertOk()->assertSee('Unsubscribe');
         $this->assertNull(DB::table('newsletter_subscribers')->where('id', $id)->value('unsubscribed_at'));
         $this->post(route('newsletter.unsubscribe.submit', ['subscriber' => $id]))->assertForbidden();
-        $this->post(\Illuminate\Support\Facades\URL::signedRoute('newsletter.unsubscribe.submit', ['subscriber' => $id]))
+        $this->post(URL::signedRoute('newsletter.unsubscribe.submit', ['subscriber' => $id]))
             ->assertRedirect('/');
         $this->assertNotNull(DB::table('newsletter_subscribers')->where('id', $id)->value('unsubscribed_at'));
     }
