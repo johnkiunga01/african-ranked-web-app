@@ -111,7 +111,14 @@ const approvedNewsletterChange = path => {
     return Boolean(expected) && execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim() === expected;
 };
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path));
+// Owner request: add About Us to desktop/mobile navigation and design its page (13 November 2026).
+const approvedAboutBlobs = new Map(Object.entries({
+    "resources/views/pages/about.blade.php": "6b1a32c56f7a30c3881cfc8715d47c8d21b80da4",
+    "resources/views/partials/header.blade.php": "0f887e15109fc062f541b8b0d9b593535c09154c"
+}));
+const approvedAboutChange = path => approvedAboutBlobs.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedAboutBlobs.get(path);
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);

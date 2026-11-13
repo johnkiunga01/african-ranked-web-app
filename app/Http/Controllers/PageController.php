@@ -29,6 +29,7 @@ class PageController extends Controller
                 'article' => '/articles/'.$data['article']['slug'],
                 'category' => '/categories/'.$data['category']['slug'],
                 'strategy' => '/strategy',
+                'about' => '/about',
                 'rankings' => '/rankings',
                 default => '',
             },
@@ -102,6 +103,19 @@ class PageController extends Controller
     public function regionalArticle(string $region, string $slug): View
     {
         return $this->article($slug, $region);
+    }
+
+    public function about(): View|RedirectResponse
+    {
+        $page = Schema::hasTable('site_pages') ? SitePage::where('slug', 'about-us')->first() : null;
+        if ($page?->published_revision_id && ! $page->trashed_at) {
+            return redirect($page->publicPath(), 301);
+        }
+        if ($page?->first_published_at) {
+            abort(404);
+        }
+
+        return $this->render('about', null);
     }
 
     public function strategy(?string $region = null): View|RedirectResponse
