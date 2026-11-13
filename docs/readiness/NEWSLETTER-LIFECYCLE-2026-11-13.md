@@ -19,3 +19,6 @@ Before enabling:
 6. Re-run SQLite/PostgreSQL, staff/public browser and delivery smoke tests.
 
 Do not set NEWSLETTER_SIGNUP_ENABLED=true until these operations are verified and the owner approves the public policy.
+
+## Verified official public contact
+The owner confirmed the operator name as **African Ranked** and official privacy/contact email as **info@africanranked.com** on 13 November 2026. This resolves the identity/contact draft placeholder; it does not replace actual live newsletter email-delivery testing or legal approval of the privacy policy.

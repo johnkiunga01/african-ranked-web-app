@@ -5,11 +5,11 @@
 **Website:** https://africanranked.com  
 **Last draft update:** 13 November 2026
 
-**Before publication:** The website operator must confirm its legal identity, jurisdiction, publicly monitored privacy-contact email, actual email service provider, actual retention settings, and any additional trackers. Do not remove this warning or publish the document with unresolved information.
+**Operator and official contact verified by owner on 13 November 2026:** African Ranked · info@africanranked.com. **Before publication:** Confirm any legally required registered address or jurisdictional details, the actual email service provider, real retention policies, international-transfer arrangements and any additional trackers. Do not publish the draft with unresolved information.
 
 ## Who operates the website
 
-African Ranked publishes articles, rankings and practical guides. Data-controller identity: **[OWNER TO PROVIDE LEGAL NAME AND BUSINESS ADDRESS]**. Privacy requests: **[OWNER TO PROVIDE WORKING PUBLIC PRIVACY EMAIL]**.
+African Ranked operates the website https://africanranked.com and publishes articles, rankings and practical guides. For privacy requests and other data-protection correspondence, contact **info@africanranked.com**. **[LEGAL REVIEW: confirm whether a registered address or additional identification must be displayed under applicable law.]**
 
 ## Information we process
 
@@ -17,7 +17,7 @@ African Ranked publishes articles, rankings and practical guides. Data-controlle
 - **Editorial team accounts:** If you are a staff or contributor account holder, we process login details, account role, audit records and content-revision activity to protect our editorial workflow.
 - **Newsletter subscriptions:** If newsletter signup is enabled and you voluntarily request it, we store your email address, edition preference, and consent/verification timestamps. We send a confirmation message and activate a subscription only after you confirm your address. Unsubscribed accounts are suppressed from further campaign sends. We retain an appropriate suppression record to respect opt-outs; confirm the actual retention period before publishing.
 - **Optional analytics:** With your permission, our website can load Google Analytics 4, a Google service that uses browser identifiers/cookies and receives browsing events to help us understand aggregate usage, pages viewed and site performance. We use GA4 measurement ID `G-8XMRKYBLQ6`. No Google analytics script loads through this integration until you choose **Allow analytics**. You can choose **Reject analytics** or change the decision from **Analytics preferences** in the footer.
-- **Contact messages:** If a reader emails us, we process the message and email address to respond. Confirm actual contact channel and retention.
+- **Contact messages:** If a reader emails **info@africanranked.com**, we process the message and reply address to respond. Confirm the actual support-message retention period before publication.
 
 ## How and why we use data
 
@@ -33,7 +33,7 @@ Essential session and security storage may be used for staff logins and page sec
 
 ## Keeping data and your rights
 
-We retain records only as needed for stated operations, security and applicable recordkeeping. **[OPERATOR: ADD VERIFIED RETENTION PERIODS]**. You may request access, correction, withdrawal of consent or deletion where applicable. Use **[OWNER TO PROVIDE WORKING PUBLIC PRIVACY EMAIL]**. Unsubscribing from newsletters is available from the signed link in the message.
+We retain records only as needed for stated operations, security and applicable recordkeeping. **[OPERATOR: ADD VERIFIED RETENTION PERIODS]**. You may request access, correction, withdrawal of consent or deletion where applicable. Write to **info@africanranked.com**. Unsubscribing from newsletters is available from the signed link in the message.
 
 ## Children and changes
 
