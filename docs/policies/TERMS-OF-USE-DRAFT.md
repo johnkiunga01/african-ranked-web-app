@@ -4,7 +4,7 @@
 **Website:** https://africanranked.com  
 **Drafted:** 13 November 2026
 
-**Before publication:** Confirm the legal operator, applicable jurisdiction, public contact, licensing and affiliate/advertising practices. Do not invent them.
+**Operator and official contact confirmed by owner on 13 November 2026:** African Ranked · info@africanranked.com. **Before publication:** Confirm the applicable jurisdiction, licensing and affiliate/advertising practices. Do not invent them.
 
 ## Use of the website
 
@@ -12,7 +12,7 @@ African Ranked publishes researched editorial articles, rankings and guides abou
 
 ## Editorial independence and corrections
 
-Rankings may use criteria, datasets and editorial judgment disclosed within articles; they are not guaranteed or permanent assessments. We aim to provide credible linked sources, published dates and correction processes, but no guarantee of completeness or continuous accuracy is offered. Readers may report corrections through **[PUBLIC EDITORIAL CONTACT TO CONFIRM]**.
+Rankings may use criteria, datasets and editorial judgment disclosed within articles; they are not guaranteed or permanent assessments. We aim to provide credible linked sources, published dates and correction processes, but no guarantee of completeness or continuous accuracy is offered. Readers may report factual errors or correction requests to **info@africanranked.com**.
 
 ## Intellectual property
 
@@ -28,6 +28,6 @@ Do not attack the website, access staff-only services without permission, scrape
 
 ## Privacy, changes and contact
 
-Our separate Privacy Policy explains personal-information handling and optional analytics and newsletter preferences. These terms may be updated as the website develops. Contact: **[OWNER TO PROVIDE PUBLIC CONTACT]**. Applicable law and dispute process: **[LEGAL REVIEW REQUIRED]**.
+Our separate Privacy Policy explains personal-information handling and optional analytics and newsletter preferences. These terms may be updated as the website develops. Contact: **info@africanranked.com**. Applicable law and dispute process: **[LEGAL REVIEW REQUIRED]**.
 
 **Approval checkpoint:** Review against actual Kenyan/operator facts before publishing, and do not display the draft warning to readers.

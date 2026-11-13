@@ -126,4 +126,14 @@ class WebsiteManagementTest extends TestCase
         $global = Region::where('code', 'global')->firstOrFail();
         $this->put('/staff/website/regions/'.$global->id, array_replace($data, ['locale' => 'en', 'is_active' => 0, 'version' => $global->version]))->assertSessionHasErrors('is_active');
     }
+
+    public function test_official_contact_email_is_available_as_public_default_and_blank_setting_fallback(): void
+    {
+        $this->get('/')->assertOk()->assertSee('mailto:info@africanranked.com', false);
+        \App\Models\SiteSetting::create([
+            'key' => 'general', 'value' => ['contact_email' => ''], 'version' => 0,
+        ]);
+        $this->get('/')->assertOk()->assertSee('mailto:info@africanranked.com', false);
+    }
+
 }
