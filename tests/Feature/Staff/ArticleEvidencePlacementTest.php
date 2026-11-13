@@ -113,5 +113,6 @@ class ArticleEvidencePlacementTest extends TestCase
         $facts = view('editorial.evidence', ['evidence' => $evidence, 'section' => 'facts'])->render();
         $this->assertStringContainsString('Source-backed key fact marker.', $facts);
         $this->assertStringNotContainsString('Short answer marker for reading order.', $facts);
+        $this->assertStringContainsString('tracking-wider text-stone-600', $facts);
     }
 }

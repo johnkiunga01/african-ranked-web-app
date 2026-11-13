@@ -22,7 +22,7 @@
             @endphp
             <li class="group flex min-w-0 flex-col justify-between gap-5 rounded-2xl border border-stone-200 bg-stone-50/75 p-5 transition-colors hover:border-amber-200 hover:bg-amber-50/40">
                 <div class="flex items-start gap-3">
-                    <span class="mt-0.5 shrink-0 text-xs font-extrabold tabular-nums tracking-wider text-stone-400" aria-hidden="true">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                    <span class="mt-0.5 shrink-0 text-xs font-extrabold tabular-nums tracking-wider text-stone-600" aria-hidden="true">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                     <div class="min-w-0">
                         @if($validSource)
                             <a href="{{ $sourceUrl }}" class="font-semibold leading-relaxed text-stone-900 underline decoration-amber-400 decoration-1 underline-offset-4 transition-colors hover:text-amber-800 hover:decoration-amber-700 focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
