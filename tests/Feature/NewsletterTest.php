@@ -94,5 +94,4 @@ class NewsletterTest extends TestCase
             ->assertRedirect('/');
         $this->assertNotNull(DB::table('newsletter_subscribers')->where('id', $id)->value('unsubscribed_at'));
     }
-
 }
