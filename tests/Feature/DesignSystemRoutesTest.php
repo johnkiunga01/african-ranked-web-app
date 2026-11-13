@@ -41,6 +41,7 @@ class DesignSystemRoutesTest extends TestCase
     {
         $this->get('/rankings?q='.str_repeat('z', 101))->assertSessionHasErrors('q');
     }
+
     public function test_regional_pages_use_distinct_meta_descriptions_and_category_cards_have_h2_parent(): void
     {
         $homeDescriptions = [];
