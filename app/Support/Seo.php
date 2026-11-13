@@ -18,6 +18,7 @@ class Seo
             'category' => '/categories/'.$category['slug'],
             'strategy' => '/strategy',
             'about' => '/about',
+            'safari-planner' => '/plan-safari',
             'rankings' => '/rankings',
             default => '',
         };
@@ -27,17 +28,21 @@ class Seo
         $title = match ($type) {
             'article' => ($article['seoTitle'] ?? null) ?: $article['title'].' | '.$siteName,
             'category' => $category['name'].' | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
-            'strategy' => 'Editorial & Search Strategy | '.$siteName,
+            'strategy' => 'Our Editorial Approach | '.$siteName,
             'about' => 'About Us | '.$siteName,
+            'safari-planner' => 'Plan Your African Safari | '.$siteName,
             'rankings' => 'African Rankings & Guides | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
             'not-found' => 'Page not found | '.$siteName,
             default => $siteName.' — The Best of Africa, Ranked'.($code === 'global' ? '' : ' | '.$region['name']),
         };
-        $description = $type === 'about' ? 'Meet African Ranked: rankings and practical guides to African travel, wildlife, food, music, technology and business.' : ($type === 'home'
-            ? 'Discover the best of Africa through researched rankings and practical guides to destinations, wildlife, cuisine, music, technology and business.'
-            : ($type === 'rankings'
-            ? 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.'
-            : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']))));
+        $description = match ($type) {
+            'home' => 'Discover the best of Africa through researched rankings and practical guides to destinations, wildlife, cuisine, music, technology and business.',
+            'strategy' => 'How to read African Ranked rankings: our approach to research, comparison criteria, source dates, commercial transparency and corrections.',
+            'about' => 'Meet African Ranked: rankings and practical guides to African travel, wildlife, food, music, technology and business.',
+            'safari-planner' => 'Plan your African safari with published guides to destinations, seasons, budgets, packing and wildlife. Choose where to start and explore at your own pace.',
+            'rankings' => 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.',
+            default => ($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']),
+        };
         // Regional landing pages have distinct edition URLs; keep their search snippets
         // informative and unique without changing the underlying editorial claims.
         if ($code !== 'global') {

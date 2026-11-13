@@ -81,13 +81,16 @@
                             @endif
                         </blockquote>
                         @break
+                    @case('video')
+                        <x-editorial-video :block="$block" />
+                        @break
                     @case('image')
                         @if(app(\App\Services\ArticleVisuals::class)->showInline($revision->image, $block['url'] ?? null, $renderedInlineImages)
                             && filled($block['alt'] ?? null))
                             @php($renderedInlineImages[] = $block['url'])
                             <figure class="overflow-hidden rounded-xl">
                                 <img src="{{ \App\Support\EditorialMediaUrl::current($block['url']) }}" alt="{{ $block['alt'] }}"
-                                    loading="lazy" class="w-full rounded-xl object-cover">
+                                    loading="lazy" @if(($block['layout'] ?? null) === 'infographic') width="600" height="750" @endif class="h-auto w-full rounded-xl object-contain">
                                 @if(filled($block['caption'] ?? null) || filled($block['credit'] ?? null))
                                     <figcaption class="mt-2 text-sm text-stone-600">
                                         {{ $block['caption'] ?? '' }}

@@ -79,7 +79,7 @@ class EditorialIntegrationController extends Controller
             'excerpt' => ['required', 'string', 'max:500'],
             'category_slug' => ['required', Rule::in(app(Catalog::class)->categories()->pluck('slug')->all())],
             'body_markdown' => ['required', 'string', 'max:150000'],
-            'faqs_text' => ['required', 'string', 'max:30000'],
+            'faqs_text' => ['sometimes', 'nullable', 'string', 'max:30000'],
             'image' => ['sometimes', 'nullable', 'url:https', 'max:2048'],
             'image_alt' => ['sometimes', 'nullable', 'string', 'max:300'],
             'source_notes' => ['sometimes', 'nullable', 'string', 'max:30000'],

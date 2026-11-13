@@ -33,7 +33,10 @@ class SecurityHeaders
         if ($request->is('oauth/authorize') && config('editorial.mcp_enabled')) {
             $form .= ' https://chatgpt.com/connector_platform_oauth_redirect';
         }
-        $policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action {$form}; script-src {$script}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src {$connect}; media-src 'self' https:; frame-src 'none'";
+        // Only the explicit click-to-load widget needs a frame origin. No YouTube request is made before the click.
+        $frames = str_contains((string) $response->getContent(), '<figure data-youtube-video=')
+            ? 'https://www.youtube-nocookie.com' : "'none'";
+        $policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action {$form}; script-src {$script}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src {$connect}; media-src 'self' https:; frame-src {$frames}";
         $response->headers->set('Content-Security-Policy', $policy);
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('X-Frame-Options', 'DENY');

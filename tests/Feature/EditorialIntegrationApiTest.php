@@ -199,6 +199,19 @@ class EditorialIntegrationApiTest extends TestCase
         $this->assertSame('A substantial verified guide', $article->fresh()->currentRevision->title);
     }
 
+    public function test_media_only_save_can_preserve_existing_faqs(): void
+    {
+        $article = $this->createDraft();
+        $faqs = [['question' => 'An existing question?', 'answer' => 'The existing answer.']];
+        $article->currentRevision->update(['faqs' => $faqs]);
+        $payload = $this->draftPayload($article);
+        unset($payload['faqs_text']);
+        $payload['body_markdown'] .= "\n\n![An explanatory diagram](https://example.test/diagram.svg \"Original conceptual illustration\")";
+        $this->withEditorialToken()->putJson('/api/editorial/v1/articles/'.$article->id.'/draft', $payload)->assertCreated();
+        $this->assertSame($faqs, $article->fresh()->currentRevision->faqs);
+        $this->assertNull($article->fresh()->published_revision_id);
+    }
+
     public function test_submit_enforces_quality_then_reaches_real_in_review_without_publishing(): void
     {
         $article = $this->createDraft();

@@ -118,7 +118,23 @@ const approvedAboutBlobs = new Map(Object.entries({
 }));
 const approvedAboutChange = path => approvedAboutBlobs.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedAboutBlobs.get(path);
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path));
+// Owner-authorized 13 November 2026 approach redesign, safari planning hub and article media.
+// Exact blobs keep this exception restricted to the reviewed templates and original diagrams.
+const approvedEditorialMediaBlobs = new Map(Object.entries({
+    "resources/views/pages/strategy.blade.php": "6c796b27238021a22f7a2b96d4efc6c6f6156d98",
+    "resources/views/pages/safari-planner.blade.php": "9df055814c386672222e51378bde05d90f105785",
+    "resources/views/pages/article.blade.php": "e6456cdc1ae662c01d4d39217afaa0ea939d1e4d",
+    "resources/views/components/content-blocks.blade.php": "f4e74ef92279588cceaaa264ca159e72b5c02449",
+    "resources/views/components/editorial-video.blade.php": "a6df0cba60e2e80afcb5352507707033e4cf60f7",
+    "resources/views/partials/footer.blade.php": "78ff8d2aa2c722aa0be99cd9f5592415639978b2",
+    "public/editorial-art/top-10-safari-destinations-africa-2026/decision-guide.svg": "0b2863c286b84ecd11fd6739c90a05f5928c3f3d",
+    "public/editorial-art/gorilla-trekking-permit-cost-how-to-book/decision-guide.svg": "3d57ffa908c362c68fbf3525defc64a50c5f2139",
+    "public/editorial-art/african-countries-by-mobile-money-adoption/decision-guide.svg": "4e9d7770db73a40dcbaa1fb9549bb0a8285ca6f5",
+    "public/editorial-art/african-music-genres-explained/decision-guide.svg": "ea537eebb4de365b8b40d581b53358f80993bd21"
+}));
+const approvedEditorialMediaChange = path => approvedEditorialMediaBlobs.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedEditorialMediaBlobs.get(path);
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);

@@ -42,6 +42,7 @@ $body = "## Reporting\n\n".str_repeat('Synthetic reporting validates the isolate
 foreach ($sources as $source) {
     $body .= "\n\n[{$source['title']}]({$source['url']})";
 }
+$body .= "\n\n[Video: Synthetic video demonstration](https://www.youtube.com/watch?v=AbCdEf123_-)";
 $faqs = "Synthetic question one?\nSynthetic answer.\n\nSynthetic question two?\nSynthetic answer.\n\nSynthetic question three?\nSynthetic answer.";
 $article = app(EditorialWorkflow::class)->save($author, ['slug' => 'recommendation-browser-demo', 'title' => 'Current workflow demonstration', 'excerpt' => 'Disposable test content, not editorial reporting.',
     'category_slug' => 'travel', 'body_markdown' => $body, 'image' => 'https://image.example.test/recommendation.jpg', 'source_notes' => 'Synthetic isolated notes.', 'faqs_text' => $faqs,

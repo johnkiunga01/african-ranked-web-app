@@ -76,10 +76,13 @@
                             <h2 id="{{ $catalog->headingId($index) }}">{{ $block['text'] }}</h2>
                         @endif
                         @break
+                    @case('video')
+                        <x-editorial-video :block="$block" />
+                        @break
                     @case('image')
                         @if(filter_var($block['url'] ?? '', FILTER_VALIDATE_URL) && parse_url($block['url'], PHP_URL_SCHEME) === 'https' && filled($block['alt'] ?? null))
                             <figure class="my-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-50">
-                                <img src="{{ $block['url'] }}" alt="{{ $block['alt'] }}" loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover">
+                                <img src="{{ $block['url'] }}" alt="{{ $block['alt'] }}" loading="lazy" decoding="async" @if(($block['layout'] ?? null) === 'infographic') width="600" height="750" class="h-auto w-full object-contain" @else class="aspect-[16/10] w-full object-cover" @endif>
                                 @if(filled($block['caption'] ?? null) || filled($block['credit'] ?? null))
                                     <figcaption class="px-4 py-3 text-xs leading-relaxed text-stone-600 sm:text-sm">
                                         @if(filled($block['caption'] ?? null))<span>{{ $block['caption'] }}</span>@endif
