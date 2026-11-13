@@ -88,7 +88,19 @@ const approvedRegionalCategoryHeading = path => {
         === '9953b06b7221335249c09369be5b86d7d163d580';
 };
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path));
+// Owner-requested 13 November 2026 GA4 consent integration, reviewed at exact blob
+// hashes. Does not authorize any unrelated public layout/design changes.
+const approvedAnalyticsBlobs = new Map(Object.entries({
+    "resources/views/layouts/app.blade.php": "d4a02add353836688d3bfb79976527dc4c77ce53",
+    "resources/views/partials/footer.blade.php": "d02d2e60c211f0e8ad39e3f1a0b5ce64933b6c5b",
+    "resources/views/partials/analytics-consent.blade.php": "8b25130b92b5bf0387d70fc6077cb32e5ab826b0"
+}));
+const approvedAnalyticsChange = path => {
+    const expected = approvedAnalyticsBlobs.get(path);
+    return Boolean(expected) && execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim() === expected;
+};
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
