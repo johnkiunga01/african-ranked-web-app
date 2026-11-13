@@ -97,4 +97,21 @@ class NewsletterTest extends TestCase
             ->assertRedirect('/');
         $this->assertNotNull(DB::table('newsletter_subscribers')->where('id', $id)->value('unsubscribed_at'));
     }
+
+    public function test_expired_confirmation_cannot_activate_subscription(): void
+    {
+        $token = str_repeat('b', 64);
+        $id = DB::table('newsletter_subscribers')->insertGetId([
+            'email' => 'expired@example.com', 'region' => 'global',
+            'consented_at' => now(), 'verification_token_hash' => hash('sha256', $token),
+            'verification_expires_at' => now()->subSecond(),
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
+        $url = route('newsletter.confirm', ['subscriber' => $id, 'token' => $token]);
+
+        $this->get($url)->assertNotFound();
+        $this->post($url)->assertNotFound();
+        $this->assertNull(DB::table('newsletter_subscribers')->where('id', $id)->value('verified_at'));
+        Mail::assertNothingSent();
+    }
 }
