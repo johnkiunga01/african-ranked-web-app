@@ -61,6 +61,8 @@ class PublishingTest extends TestCase
             $locations[] = (string) $url->loc;
         }
         $this->assertContains($catalog->url('/'), $locations);
+        $this->assertContains($catalog->url('/rankings'), $locations);
+        $this->assertContains($catalog->url('/strategy'), $locations);
         foreach ($catalog->regions() as $region) {
             if ($region['code'] !== 'global') {
                 $this->assertNotContains($catalog->url('/'.$region['code']), $locations);

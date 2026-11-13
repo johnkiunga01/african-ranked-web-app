@@ -33,6 +33,9 @@ class DiscoveryController extends Controller
             }
         }
         if ($region === null || $region === 'global') {
+            // The full article index and the editorial approach page are indexable global pages.
+            $urls[] = ['loc' => $c->url('/rankings'), 'lastmod' => $c->articles()->max('dateModified')];
+            $urls[] = ['loc' => $c->url('/strategy'), 'lastmod' => null];
             foreach ($c->articles() as $article) {
                 $urls[] = ['loc' => $c->url('/articles/'.$article['slug']), 'lastmod' => $article['dateModified']];
             }
