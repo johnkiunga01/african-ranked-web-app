@@ -114,6 +114,8 @@ class WebsiteManagementTest extends TestCase
 
     public function test_regions_are_editable_dynamic_and_removable_without_code_changes(): void
     {
+        // Sitemap listing of country editions is opt-in; this test covers the opted-in behaviour.
+        config(['seo.regional_editions_indexable' => true]);
         $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $data = ['code' => 'gh', 'name' => 'Ghana edition', 'country_code' => 'GH', 'locale' => 'en-GH', 'currency' => 'GHS', 'currency_symbol' => 'GH₵', 'flag' => '🇬🇭', 'tagline' => 'Africa-focused guides for Ghana readers', 'is_active' => 1, 'sort_order' => 20, 'newsletter_title' => 'Ghana reader updates', 'newsletter_subtitle' => 'New guides from Africa.'];
         $this->actingAs($admin)->post('/staff/website/regions', $data)->assertRedirect('/staff/website/regions');
