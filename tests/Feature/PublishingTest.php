@@ -19,6 +19,7 @@ class PublishingTest extends TestCase
 
     public function test_every_edition_is_server_rendered_with_reciprocal_home_alternates(): void
     {
+        config(['seo.regional_editions_indexable' => true]);
         $catalog = app(Catalog::class);
         foreach ($catalog->regions() as $region) {
             $response = $this->get($catalog->path($region['code']))->assertOk()->assertSee('Explore rankings')->assertSee($region['name'].' edition');
@@ -28,6 +29,46 @@ class PublishingTest extends TestCase
             $this->assertSame($catalog->url($catalog->path($region['code'])), $xpath->evaluate('string(//link[@rel="canonical"]/@href)'));
             $this->assertSame(6, $xpath->query('//*[@id="categories"]//a')->length);
         }
+    }
+
+    public function test_country_editions_are_held_out_of_the_index_by_default(): void
+    {
+        $this->assertFalse(config('seo.regional_editions_indexable'));
+        $catalog = app(Catalog::class);
+        foreach ($catalog->regions() as $region) {
+            foreach (['', '/rankings', '/strategy'] as $suffix) {
+                $response = $this->get($catalog->path($region['code'], $suffix))->assertOk();
+                $xpath = $this->document($response->getContent());
+                $this->assertSame(0, $xpath->query('//link[@hreflang]')->length);
+                if ($region['code'] === 'global') {
+                    $this->assertSame('index, follow, max-image-preview:large', $xpath->evaluate('string(//meta[@name="robots"]/@content)'));
+                    $this->assertSame($catalog->url($catalog->path('global', $suffix)), $xpath->evaluate('string(//link[@rel="canonical"]/@href)'));
+                } else {
+                    $this->assertSame('noindex, follow', $xpath->evaluate('string(//meta[@name="robots"]/@content)'));
+                    $this->assertSame(0, $xpath->query('//link[@rel="canonical"]')->length);
+                }
+            }
+        }
+
+        // Regional article URLs keep consolidating to the indexable global article.
+        $article = $catalog->articles()->first();
+        $xpath = $this->document($this->get('/ke/articles/'.$article['slug'])->assertOk()->getContent());
+        $this->assertSame('index, follow, max-image-preview:large', $xpath->evaluate('string(//meta[@name="robots"]/@content)'));
+        $this->assertSame($catalog->url('/articles/'.$article['slug']), $xpath->evaluate('string(//link[@rel="canonical"]/@href)'));
+
+        $locations = [];
+        foreach (simplexml_load_string($this->get('/sitemap.xml')->assertOk()->getContent())->url as $url) {
+            $locations[] = (string) $url->loc;
+        }
+        $this->assertContains($catalog->url('/'), $locations);
+        foreach ($catalog->regions() as $region) {
+            if ($region['code'] !== 'global') {
+                $this->assertNotContains($catalog->url('/'.$region['code']), $locations);
+                $this->assertNotContains($catalog->url('/'.$region['code'].'/categories/wildlife'), $locations);
+            }
+        }
+        $regional = simplexml_load_string($this->get('/sitemaps/ke.xml')->assertOk()->getContent());
+        $this->assertCount(0, $regional->url);
     }
 
     public function test_articles_faqs_and_metadata_are_present_without_javascript(): void

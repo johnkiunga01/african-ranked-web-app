@@ -57,7 +57,8 @@ class Seo
             $breadcrumbs[] = ['name' => $article['title'], 'url' => $path];
         }
         $alternates = [];
-        if (in_array($type, ['home', 'category', 'rankings'], true)) {
+        $regionalIndexable = (bool) config('seo.regional_editions_indexable');
+        if ($regionalIndexable && in_array($type, ['home', 'category', 'rankings'], true)) {
             foreach ($c->regions() as $alternate) {
                 if ($category && ! $c->articles($alternate['code'])->contains('category', $category['slug'])) {
                     continue;
@@ -98,6 +99,11 @@ class Seo
             ], $breadcrumbs, array_keys($breadcrumbs))];
         }
         $robots = $type === 'not-found' || ($type === 'category' && ! $c->articles($code)->contains('category', $category['slug'])) ? 'noindex, follow' : 'index, follow, max-image-preview:large';
+
+        // Near-duplicate country editions stay crawlable (follow) but out of the index.
+        if (! $regionalIndexable && $code !== 'global' && $type !== 'article') {
+            $robots = 'noindex, follow';
+        }
 
         if (str_starts_with($robots, 'noindex')) {
             $alternates = [];
