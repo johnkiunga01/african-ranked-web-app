@@ -79,7 +79,16 @@ const approvedHeroChange = path => {
 // Owner-authorized OAuth bridge dependencies; exact reviewed blobs only.
 const editorialOAuthDependencies = new Map(Object.entries({"composer.json": "c750b611de29bc2ba09fee267b0e12f2632ff1a1", "composer.lock": "749a6e32b1f44f33b812021ddec33db0c80cb4a2"}));
 const approvedOAuthDependency = path => editorialOAuthDependencies.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === editorialOAuthDependencies.get(path);
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path));
+// Owner-authorized 13 November 2026 technical SEO amendment: add the exact
+// category-list section heading needed for an H1 -> H2 -> H3 hierarchy.
+// Retain the immutable blob check; no other category template changes are allowed.
+const approvedRegionalCategoryHeading = path => {
+    if (path !== 'resources/views/pages/category.blade.php') return false;
+    return execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim()
+        === '9953b06b7221335249c09369be5b86d7d163d580';
+};
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
