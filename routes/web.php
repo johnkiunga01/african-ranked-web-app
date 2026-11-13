@@ -28,7 +28,6 @@ Route::get('/newsletter/unsubscribe/{subscriber}', [NewsletterLifecycleControlle
 Route::post('/newsletter/unsubscribe/{subscriber}', [NewsletterLifecycleController::class, 'unsubscribe'])
     ->whereNumber('subscriber')->middleware(['signed', 'throttle:10,1'])->name('newsletter.unsubscribe.submit');
 
-
 Route::get('/global/{path?}', [PageController::class, 'legacyGlobal'])->where('path', '.*');
 
 Route::get('/', [PageController::class, 'home'])->name('home');
