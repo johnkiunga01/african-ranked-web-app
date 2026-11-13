@@ -44,5 +44,6 @@
     @include('partials.header')
     <main id="main-content" tabindex="-1">@yield('content')</main>
     @include('partials.footer')
+    @include('partials.analytics-consent')
 </body>
 </html>

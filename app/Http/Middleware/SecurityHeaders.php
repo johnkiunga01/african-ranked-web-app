@@ -15,6 +15,11 @@ class SecurityHeaders
         $response = $next($request);
         $script = "'self' 'nonce-{$nonce}'";
         $connect = "'self'";
+        if (config('analytics.enabled')) {
+            // Consent-gated GA4; allow the Google hosts only when the feature is enabled.
+            $script .= ' https://www.googletagmanager.com';
+            $connect .= ' https://www.google-analytics.com https://region1.google-analytics.com';
+        }
         if (app()->environment('local') && is_file(public_path('hot'))) {
             $url = trim(file_get_contents(public_path('hot')));
             $parts = parse_url($url);

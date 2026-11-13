@@ -11,6 +11,6 @@
 @foreach(($footerPages ?? collect()) as $footerPage)<li><a href="{{ $footerPage->publicPath() }}" class="hover:text-amber-500">{{ $footerPage->publishedRevision->title }}</a></li>@endforeach
 @if(filled($site['contact_email'] ?? ''))<li><a href="mailto:{{ $site['contact_email'] }}" class="hover:text-amber-500">Contact us</a></li>@endif<li><a href="/feed.xml" class="hover:text-amber-500">RSS feed</a></li><li><a href="/sitemap.xml" class="hover:text-amber-500">Sitemap</a></li></ul></div>
         </div>
-        <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs sm:flex-row"><p>&copy; {{ now()->year }} {{ $site['name'] ?? 'African Ranked' }}. All rights reserved.</p><p class="flex items-center gap-1.5"><x-icon name="compass" class="h-4 w-4 text-amber-500" />Currently viewing: {{ $region['flag'] }} {{ $region['name'] }}</p></div>
+        <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs sm:flex-row"><p>&copy; {{ now()->year }} {{ $site['name'] ?? 'African Ranked' }}. All rights reserved.</p><div class="flex items-center gap-4"><p class="flex items-center gap-1.5"><x-icon name="compass" class="h-4 w-4 text-amber-500" />Currently viewing: {{ $region['flag'] }} {{ $region['name'] }}</p>@if(config('analytics.enabled'))<button type="button" data-analytics-settings class="text-stone-300 underline underline-offset-2 hover:text-white">Analytics preferences</button>@endif</div></div>
     </div>
 </footer>
