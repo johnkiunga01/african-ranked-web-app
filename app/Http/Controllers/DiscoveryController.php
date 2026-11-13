@@ -37,7 +37,6 @@ class DiscoveryController extends Controller
             $urls[] = ['loc' => $c->url('/rankings'), 'lastmod' => $c->articles()->max('dateModified')];
             $urls[] = ['loc' => $c->url('/strategy'), 'lastmod' => null];
             $urls[] = ['loc' => $c->url('/about'), 'lastmod' => null];
-            $urls[] = ['loc' => $c->url('/plan-safari'), 'lastmod' => $c->articles()->max('dateModified')];
             $urls[] = ['loc' => $c->url('/plan-safari'), 'lastmod' => null];
             foreach ($c->articles() as $article) {
                 $urls[] = ['loc' => $c->url('/articles/'.$article['slug']), 'lastmod' => $article['dateModified']];
