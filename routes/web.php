@@ -34,6 +34,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/rankings', [PageController::class, 'rankings'])->name('rankings');
 Route::get('/categories/{slug}', [PageController::class, 'category'])->name('category');
 Route::get('/articles/{slug}', [PageController::class, 'article'])->name('article');
+Route::get('/plan-safari', [PageController::class, 'safariPlanner'])->name('safari-planner');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/pages/{slug}', [ContentPageController::class, 'show'])->name('content-page');
 Route::get('/strategy', [PageController::class, 'strategy'])->name('strategy');
