@@ -29,7 +29,8 @@ class AnalyticsConsentTest extends TestCase
         $csp = $response->headers->get('Content-Security-Policy');
         $this->assertStringContainsString('https://www.googletagmanager.com', $csp);
         $this->assertStringContainsString('https://www.google-analytics.com', $csp);
-        $this->assertStringNotContainsString("'unsafe-inline'", explode('script-src', $csp)[1]);
+        preg_match('/(?:^|;)\s*script-src\s+([^;]+)/', $csp, $scriptDirective);
+        $this->assertStringNotContainsString("'unsafe-inline'", $scriptDirective[1]);
 
         config(['analytics.enabled' => false]);
         $public = $this->get('/')->assertOk();
