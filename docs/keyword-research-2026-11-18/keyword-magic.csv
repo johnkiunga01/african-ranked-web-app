@@ -1,0 +1,199 @@
+seed,view,keyword,intent,volume_us,kd_pct,cpc_usd,maps_to,cluster,priority_score
+gorilla trekking,all,gorilla trekking rwanda,I,1.6K,34,0.00,NEW: Gorilla trekking in Rwanda,Gorilla trekking,56.5
+gorilla trekking,all,gorilla trekking uganda,I,1.0K,30,3.62,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,40.0
+gorilla trekking,all,rwanda gorilla trekking,I,1.0K,39,3.99,NEW: Gorilla trekking in Rwanda,Gorilla trekking,30.8
+gorilla trekking,all,uganda gorilla trekking,I,1.0K,28,3.62,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,42.9
+gorilla trekking,all,gorilla trekking in rwanda,I,480,34,0.00,NEW: Gorilla trekking in Rwanda,Gorilla trekking,16.9
+gorilla trekking,all,gorilla trekking in uganda,I,390,23,3.19,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,20.3
+gorilla trekking,all,gorilla trekking virunga national park,I,320,29,0.00,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,13.2
+gorilla trekking,all,gorilla trekking tours,I,260,28,3.86,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,11.1
+gorilla trekking,all,luxury gorilla trekking rwanda,C,260,20,7.67,NEW: Gorilla trekking in Rwanda,Gorilla trekking,19.5
+gorilla trekking,all,gorilla trekking africa,I,210,35,3.85,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,7.2
+gorilla trekking,all,gorilla trekking permit,I,210,31,3.52,/articles/gorilla-trekking-permit-cost-how-to-book,Gorilla trekking,8.1
+gorilla trekking,all,kevin hart gorilla trekking,I,210,24,0.00,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,10.5
+gorilla trekking,all,rwanda gorilla trekking tours,I,210,36,6.10,NEW: Gorilla trekking in Rwanda,Gorilla trekking,7.0
+gorilla trekking,all,uganda gorilla trekking tours,C,210,22,2.69,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,14.3
+gorilla trekking,all,best gorilla trekking tours,C,170,29,4.66,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,8.8
+gorilla trekking,all,bwindi gorilla trekking,I,170,26,3.56,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,7.8
+gorilla trekking,all,gorilla trekking rwanda volcanoes national park,C,170,25,2.01,NEW: Gorilla trekking in Rwanda,Gorilla trekking,10.2
+gorilla trekking,all,gorilla trekking volcanoes national park,I,170,22,2.01,NEW: Gorilla trekking in Rwanda,Gorilla trekking,9.3
+gorilla trekking,all,mountain gorilla trekking rwanda,I,170,10,2.73,NEW: Gorilla trekking in Rwanda,Gorilla trekking,20.4
+gorilla trekking,all,bwindi impenetrable national park gorilla trekking,I,140,23,3.39,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,7.3
+gorilla trekking,all,bwindi national park gorilla trekking,I,140,39,3.56,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,4.3
+gorilla trekking,all,gorilla trekking in bwindi,IC,140,24,3.39,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,8.8
+gorilla trekking,all,gorilla trekking safaris,I,140,37,4.88,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,4.5
+gorilla trekking,all,mountain gorilla trekking,I,140,37,2.79,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,4.5
+gorilla trekking,all,congo gorilla trekking,I,110,11,2.43,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,12.0
+gorilla trekking,all,gorilla trekking in africa,I,110,32,4.03,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,4.1
+gorilla trekking,all,mountain gorilla trekking uganda,I,110,29,1.55,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,4.6
+gorilla trekking,all,rwanda vs uganda gorilla trekking,C,110,12,1.52,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,13.8
+gorilla trekking,all,what is gorilla trekking,I,110,22,0.55,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,6.0
+gorilla trekking,questions,what is gorilla trekking,I,110,22,0.55,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,6.0
+safari,all,safari tours,I,60.5K,33,3.84,/articles/top-10-safari-destinations-africa-2026,Safari hub,2520.8
+safari,all,tour safari africa,I,8.1K,35,5.09,/articles/top-10-safari-destinations-africa-2026,Safari hub,296.3
+african safari,all,tour safari africa,I,8.1K,35,5.09,/articles/top-10-safari-destinations-africa-2026,Safari hub,296.3
+african safari,all,south africa safari,n/a,5.4K,40,3.09,NEW: South Africa safari guide,Destination: South Africa,140.9
+african safari,all,african lion safari,N,3.6K,37,4.71,(skip: US attraction / local),Excluded,0
+african safari,all,kruger safari africa,C,3.6K,21,3.39,NEW: Kruger National Park safari guide,Destination: South Africa,192.9
+african safari,all,african safari trip,IC,2.9K,7,5.09,/articles/top-10-safari-destinations-africa-2026,Safari hub,435.0
+african safari,all,safari in africa tanzania,n/a,2.9K,37,4.26,NEW: Tanzania safari guide,Destination: Tanzania,94.1
+african safari,all,south african safari,I,2.9K,38,3.09,NEW: South Africa safari guide,Destination: South Africa,145.0
+african safari,all,safaris kruger park south africa,C,2.4K,25,3.38,NEW: Kruger National Park safari guide,Destination: South Africa,78.3
+african safari,all,african safari south africa,I,1.9K,25,3.07,NEW: South Africa safari guide,Destination: South Africa,91.2
+african safari,all,best safari in africa,C,1.9K,36,4.19,/articles/top-10-safari-destinations-africa-2026,Safari hub,79.2
+african safari,all,safari tours in africa,C,1.9K,40,5.09,/articles/top-10-safari-destinations-africa-2026,Safari hub,71.2
+african safari,all,tipping in south africa safari,I,1.9K,13,0.14,NEW: Safari tipping guide,Safari cost & planning,175.4
+african safari,all,africa safari trip,I,1.6K,36,5.35,/articles/top-10-safari-destinations-africa-2026,Safari hub,53.3
+african safari,all,african safari cost,I,1.6K,20,1.99,/articles/africa-safari-cost-by-destination,Safari cost & planning,96.0
+african safari,all,luxury african safari,C,1.6K,37,6.93,NEW: Luxury African safaris,Safari styles,64.9
+african safari,all,safari african restaurant,T,1.6K,36,1.02,(skip: US attraction / local),Excluded,0
+african safari,all,south africa safari kruger park,C,1.6K,38,2.92,NEW: Kruger National Park safari guide,Destination: South Africa,63.2
+african safari,all,african hunting safari,I,1.3K,12,0.44,"(skip: hunting, off-brand)",Excluded,0
+african safari,all,african safari trips,I,1.3K,35,5.09,/articles/top-10-safari-destinations-africa-2026,Safari hub,44.6
+african safari,all,best african safari tours,C,1.3K,39,5.78,/articles/top-10-safari-destinations-africa-2026,Safari hub,50.0
+african safari,all,safari in south africa,I,1.3K,37,3.07,NEW: South Africa safari guide,Destination: South Africa,42.2
+african safari,all,south africa safari tour,C,1.3K,27,4.55,NEW: South Africa safari guide,Destination: South Africa,72.2
+african safari,all,african safari ohio,TN,1.0K,36,0.51,(skip: US attraction / local),Excluded,0
+african safari,all,best african safari,C,1.0K,25,4.19,/articles/top-10-safari-destinations-africa-2026,Safari hub,60.0
+african safari,all,best safaris in africa,C,1.0K,30,4.25,/articles/top-10-safari-destinations-africa-2026,Safari hub,50.0
+african safari,all,luxury safari africa,C,1.0K,34,6.93,NEW: Luxury African safaris,Safari styles,44.1
+african safari,all,safaris in south africa,I,1.0K,34,2.88,NEW: South Africa safari guide,Destination: South Africa,35.3
+african safari,all,south africa safari packages,I,1.0K,18,4.31,NEW: South Africa safari guide,Destination: South Africa,66.7
+african safari,all,african luxury safari,C,880,38,6.10,NEW: Luxury African safaris,Safari styles,34.7
+african safari,all,african safari kenya,C,880,39,2.91,NEW: Kenya safari guide,Destination: Kenya,33.8
+african safari,all,south africa cape town and safari,I,880,7,2.17,NEW: South Africa safari guide,Destination: South Africa,105.6
+african safari,all,african photo safari,I,720,25,4.16,NEW: African photographic safaris,Safari styles,34.6
+african safari,all,african safari botswana tours,I,720,38,5.98,NEW: Botswana safari guide,Destination: Botswana,22.7
+african safari,all,african safari hunt,I,720,19,0.42,"(skip: hunting, off-brand)",Excluded,0
+african safari,all,african safari vacation packages,C,720,39,5.42,/articles/top-10-safari-destinations-africa-2026,Safari hub,27.7
+african safari,all,african tours and safaris,C,720,37,5.35,/articles/top-10-safari-destinations-africa-2026,Safari hub,29.2
+african safari,all,all inclusive african safari,I,720,34,3.93,/articles/top-10-safari-destinations-africa-2026,Safari hub,25.4
+african safari,all,best african safari packages,C,720,37,5.53,/articles/top-10-safari-destinations-africa-2026,Safari hub,29.2
+african safari,all,best african safari tour companies,C,720,37,9.34,/articles/top-10-safari-destinations-africa-2026,Safari hub,29.2
+african safari,all,best time for african safari,C,720,14,2.57,/articles/best-time-to-visit-african-safari-by-month,Safari timing,77.1
+african safari,all,how much does an african safari cost,I,720,22,2.07,/articles/africa-safari-cost-by-destination,Safari cost & planning,39.3
+african safari,all,how much is an african hunting safari,I,720,0,0.25,"(skip: hunting, off-brand)",Excluded,0
+african safari,all,safari trips south africa,I,720,25,4.55,NEW: South Africa safari guide,Destination: South Africa,34.6
+african safari,all,africa safari tour,C,590,37,5.10,/articles/top-10-safari-destinations-africa-2026,Safari hub,23.9
+african safari,all,africa safari trip cost,I,590,29,2.36,/articles/africa-safari-cost-by-destination,Safari cost & planning,24.4
+african safari,all,africa tours and safari,C,590,38,5.10,/articles/top-10-safari-destinations-africa-2026,Safari hub,23.3
+african safari,all,africa tours and safaris,C,590,38,5.10,/articles/top-10-safari-destinations-africa-2026,Safari hub,23.3
+african safari,all,african safari honeymoon,I,590,1,6.54,NEW: African safari honeymoon,Safari styles,70.8
+african safari,all,african safari tour,IC,590,29,5.10,/articles/top-10-safari-destinations-africa-2026,Safari hub,30.5
+african safari,all,african safari wildlife park tickets,I,590,20,0.53,(skip: US attraction / local),Excluded,0
+african safari,all,animal safari in africa,C,590,38,2.19,/articles/top-10-safari-destinations-africa-2026,Safari hub,23.3
+african safari,all,best african safaris,C,590,24,4.21,/articles/top-10-safari-destinations-africa-2026,Safari hub,36.9
+african safari,all,best safari in south africa,C,590,29,4.26,NEW: South Africa safari guide,Destination: South Africa,30.5
+african safari,all,cost of african safari,I,590,14,1.43,/articles/africa-safari-cost-by-destination,Safari cost & planning,50.6
+african safari,all,how much is an african safari,I,590,16,2.21,/articles/africa-safari-cost-by-destination,Safari cost & planning,44.2
+african safari,all,luxury safari south africa,C,590,24,5.19,NEW: Luxury African safaris,Safari styles,36.9
+african safari,all,luxury south africa safari,C,590,31,5.19,NEW: Luxury African safaris,Safari styles,28.5
+african safari,all,safari africa tour,C,590,31,5.09,/articles/top-10-safari-destinations-africa-2026,Safari hub,28.5
+african safari,all,safari trips in africa,IC,590,36,5.10,/articles/top-10-safari-destinations-africa-2026,Safari hub,24.6
+african safari,all,south africa safari trip,I,590,29,4.31,NEW: South Africa safari guide,Destination: South Africa,24.4
+african safari,all,south african safaris,I,590,34,3.09,NEW: South Africa safari guide,Destination: South Africa,20.8
+african safari,all,travel insurance for african safari,C,590,15,10.96,NEW: Travel insurance for an African safari,Safari cost & planning,59.0
+african safari,all,africa safari packages,I,480,39,5.09,/articles/top-10-safari-destinations-africa-2026,Safari hub,14.8
+african safari,questions,how much does an african safari cost,I,720,22,2.07,/articles/africa-safari-cost-by-destination,Safari cost & planning,39.3
+african safari,questions,how much is an african hunting safari,I,720,0,0.25,"(skip: hunting, off-brand)",Excluded,0
+african safari,questions,how much is an african safari,I,590,16,2.21,/articles/africa-safari-cost-by-destination,Safari cost & planning,44.2
+african safari,questions,how much is a safari in africa,I,320,22,2.25,/articles/africa-safari-cost-by-destination,Safari cost & planning,17.5
+african safari,questions,what travel insurance should i get for african safari trip,I,320,15,0.00,NEW: Travel insurance for an African safari,Safari cost & planning,25.6
+african safari,questions,how much does a 2 week african safari cost,I,260,20,1.78,/articles/africa-safari-cost-by-destination,Safari cost & planning,15.6
+african safari,questions,where to travel in africa for safari,I,260,19,2.28,/articles/top-10-safari-destinations-africa-2026,Safari hub,16.4
+african safari,questions,what to wear on african safari,I,210,17,0.29,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,14.8
+african safari,questions,how much is an african safari trip,I,170,21,2.01,/articles/africa-safari-cost-by-destination,Safari cost & planning,9.7
+african safari,questions,what to pack for african safari,I,170,16,0.33,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,12.8
+african safari,questions,where to safari in africa,C,170,28,1.55,/articles/top-10-safari-destinations-africa-2026,Safari hub,9.1
+african safari,questions,how much does a safari in africa cost,I,140,19,2.11,/articles/africa-safari-cost-by-destination,Safari cost & planning,8.8
+african safari,questions,how much is a safari in south africa,I,140,11,1.82,/articles/africa-safari-cost-by-destination,Safari cost & planning,15.3
+african safari,questions,how much would an african safari cost,I,140,22,2.07,/articles/africa-safari-cost-by-destination,Safari cost & planning,7.6
+african safari,questions,what to wear on safari in south africa,I,140,15,0.33,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,11.2
+african safari,questions,where are safaris in africa,IC,140,28,1.60,/articles/top-10-safari-destinations-africa-2026,Safari hub,7.5
+african safari,questions,where is the best safari in africa,C,140,27,3.10,/articles/top-10-safari-destinations-africa-2026,Safari hub,7.8
+african safari,questions,where to go in africa for a safari,IC,140,25,3.10,/articles/top-10-safari-destinations-africa-2026,Safari hub,8.4
+african safari,questions,are african safaris safe,I,110,7,1.96,NEW: Is an African safari safe?,Safari cost & planning,13.2
+african safari,questions,what clothes to wear on african safari,I,110,15,0.29,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,8.8
+african safari,questions,what to take on safari in south africa,I,110,2,0.41,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,13.2
+african safari,questions,when is the best time to go on african safari,C,110,13,1.98,/articles/best-time-to-visit-african-safari-by-month,Safari timing,12.7
+african safari,questions,where to go on safari in africa,I,110,28,2.75,/articles/top-10-safari-destinations-africa-2026,Safari hub,4.7
+best time to visit serengeti,all,best time to visit serengeti,C,480,22,2.28,/articles/best-time-to-visit-serengeti,Safari timing,32.7
+best time to visit serengeti,all,best time to visit serengeti national park,C,320,20,2.08,/articles/best-time-to-visit-serengeti,Safari timing,24.0
+best time to visit serengeti,all,best time to visit africa serengeti,C,260,22,2.28,/articles/best-time-to-visit-serengeti,Safari timing,17.7
+best time to visit serengeti,all,best time to visit tanzania serengeti,C,210,20,2.28,/articles/best-time-to-visit-serengeti,Safari timing,15.8
+best time to visit serengeti,all,best time to visit the serengeti,C,140,19,2.52,/articles/best-time-to-visit-serengeti,Safari timing,11.1
+best time to visit masai mara,all,best time to visit masai mara,C,590,18,1.43,/articles/best-time-to-visit-masai-mara,Safari timing,49.2
+best time to visit masai mara,all,best time to visit masai mara national park,C,320,16,1.39,/articles/best-time-to-visit-masai-mara,Safari timing,30.0
+best time to visit masai mara,all,best time to visit kenya masai mara,C,210,10,1.43,/articles/best-time-to-visit-masai-mara,Safari timing,31.5
+best time to visit masai mara,all,masai mara best time to visit,C,170,16,1.86,/articles/best-time-to-visit-masai-mara,Safari timing,15.9
+best time to visit masai mara,all,best time to visit masai mara kenya,C,110,17,1.39,/articles/best-time-to-visit-masai-mara,Safari timing,9.7
+best time to visit masai mara,all,best time to visit masai mara national reserve,C,110,14,1.43,/articles/best-time-to-visit-masai-mara,Safari timing,11.8
+best time to visit masai mara,all,masai mara national reserve best time to visit,C,110,15,1.86,/articles/best-time-to-visit-masai-mara,Safari timing,11.0
+best time to visit kruger,all,best time to visit kruger national park,C,320,19,1.44,/articles/best-time-to-visit-kruger,Safari timing,25.3
+best time to visit kruger,all,best time to visit kruger national,C,210,15,1.44,/articles/best-time-to-visit-kruger,Safari timing,21.0
+best time to visit kruger,all,best time to visit kruger south africa,C,210,15,1.44,/articles/best-time-to-visit-kruger,Safari timing,21.0
+best time to visit kruger,all,best time to visit kruger,C,170,21,1.41,/articles/best-time-to-visit-kruger,Safari timing,12.1
+best time to visit kruger,all,best time to visit kruger national park south africa,C,140,22,1.44,/articles/best-time-to-visit-kruger,Safari timing,9.5
+best time to visit kruger,all,best time to visit kruger park,C,140,16,1.41,/articles/best-time-to-visit-kruger,Safari timing,13.1
+best time to visit kruger,all,best time to visit kruger national park in south africa,C,110,14,1.37,/articles/best-time-to-visit-kruger,Safari timing,11.8
+best time to visit kruger,all,best time to visit kruger park south africa,C,110,17,1.41,/articles/best-time-to-visit-kruger,Safari timing,9.7
+best time to visit kruger,all,south africa best time to visit kruger national park,C,110,19,1.41,/articles/best-time-to-visit-kruger,Safari timing,8.7
+best time to visit okavango,all,best time to visit okavango delta,C,320,13,1.74,/articles/best-time-to-visit-okavango-delta,Safari timing,36.9
+best time to visit okavango,all,best time to visit botswana okavango delta,C,110,15,1.74,/articles/best-time-to-visit-okavango-delta,Safari timing,11.0
+best time to visit morocco,all,best time to visit morocco,C,4.4K,16,0.98,/articles/best-time-to-visit-morocco,Morocco & North Africa,275.0
+best time to visit morocco,all,best time of year to visit morocco,C,480,23,1.35,/articles/best-time-to-visit-morocco,Morocco & North Africa,20.9
+best time to visit morocco,all,when is the best time to visit morocco,C,480,23,0.76,/articles/best-time-to-visit-morocco,Morocco & North Africa,20.9
+best time to visit morocco,all,morocco best time to visit,C,390,20,1.00,/articles/best-time-to-visit-morocco,Morocco & North Africa,19.5
+best time to visit morocco,all,best time to visit marrakech morocco,C,320,26,0.65,/articles/best-time-to-visit-morocco,Morocco & North Africa,12.3
+best time to visit morocco,all,best times to visit morocco,C,260,19,0.98,/articles/best-time-to-visit-morocco,Morocco & North Africa,13.7
+best time to visit morocco,all,best time to visit morocco weather,C,140,16,0.41,/articles/best-time-to-visit-morocco,Morocco & North Africa,8.8
+best time to visit morocco,all,what is the best time to visit morocco,C,110,17,0.68,/articles/best-time-to-visit-morocco,Morocco & North Africa,6.5
+african food,all,african food,I,27.1K,39,0.82,/articles/best-african-cuisines-ranked-2026,Food,208.5
+african food,all,west african food,I,8.1K,39,0.32,/articles/best-african-cuisines-ranked-2026,Food,62.3
+african food,all,african cuisine food,I,6.6K,38,0.82,/articles/best-african-cuisines-ranked-2026,Food,52.1
+african food,all,nigerian african food,I,6.6K,30,0.51,/articles/best-african-cuisines-ranked-2026,Food,66.0
+african food,all,south african food,C,5.4K,39,0.35,/articles/best-african-cuisines-ranked-2026,Food,138.5
+african food,all,african foods,I,3.6K,38,0.82,/articles/best-african-cuisines-ranked-2026,Food,28.4
+african food,all,fufu african food,I,3.6K,35,0.63,/articles/best-african-cuisines-ranked-2026,Food,30.9
+african food,all,food in cameroon africa,I,2.4K,19,0.00,/articles/best-african-cuisines-ranked-2026,Food,37.9
+african food,all,south africa food,I,2.4K,30,0.35,/articles/best-african-cuisines-ranked-2026,Food,24.0
+african food,all,african food recipes,I,1.9K,27,0.24,/articles/best-african-cuisines-ranked-2026,Food,21.1
+african food,all,food in uganda africa,I,1.9K,23,0.00,/articles/best-african-cuisines-ranked-2026,Food,24.8
+african food,all,south african foods,I,1.9K,27,0.35,/articles/best-african-cuisines-ranked-2026,Food,21.1
+african food,all,east african food,I,1.0K,39,1.22,/articles/best-african-cuisines-ranked-2026,Food,7.7
+african food,all,ghana african food,I,1.0K,22,1.13,/articles/best-african-cuisines-ranked-2026,Food,13.6
+african food,all,traditional african food,I,1.0K,30,0.24,/articles/best-african-cuisines-ranked-2026,Food,10.0
+african food,all,foods of west africa,I,880,32,0.61,/articles/best-african-cuisines-ranked-2026,Food,8.2
+african food,all,best african food,C,590,24,1.03,/articles/best-african-cuisines-ranked-2026,Food,24.6
+african food,all,best food in africa,C,590,28,0.19,/articles/best-african-cuisines-ranked-2026,Food,21.1
+african food,all,foods of north africa,I,590,24,0.00,/articles/best-african-cuisines-ranked-2026,Food,7.4
+african food,all,traditional south african food,I,590,25,0.20,/articles/best-african-cuisines-ranked-2026,Food,7.1
+african food,all,africa kenya food,I,480,19,0.11,NEW: Kenya safari guide,Destination: Kenya,11.4
+african food,all,african traditional food,I,480,28,2.09,/articles/best-african-cuisines-ranked-2026,Food,5.1
+african food,all,kenya african food,I,480,34,0.11,NEW: Kenya safari guide,Destination: Kenya,6.4
+african music,all,african music from kenya,I,2.4K,38,0.00,NEW: Kenya safari guide,Destination: Kenya,28.4
+african music,all,african music kenya,I,2.4K,34,0.00,NEW: Kenya safari guide,Destination: Kenya,31.8
+african music,all,african musical instruments,I,2.4K,16,0.56,/articles/traditional-african-instruments,Music,45.0
+african music,all,african music instruments,I,1.3K,22,0.56,/articles/traditional-african-instruments,Music,17.7
+african music,all,grammy award for best african music performance,C,1.3K,38,0.00,NEW: African music genres explained,Music,34.2
+african music,all,kenya africa music,IT,880,29,0.00,NEW: Kenya safari guide,Destination: Kenya,13.7
+african music,all,south african music,I,720,32,0.00,NEW: African music genres explained,Music,6.8
+african music,all,southern african music,I,590,29,0.00,/articles/top-10-safari-destinations-africa-2026,Safari hub,9.2
+african music,all,african music artists,I,480,20,0.00,NEW: African music genres explained,Music,7.2
+african music,all,african music congo,I,480,36,0.00,NEW: African music genres explained,Music,4.0
+african music,all,african top music,I,480,35,0.00,NEW: African music genres explained,Music,4.1
+african music,all,popular african music,I,480,38,0.00,NEW: African music genres explained,Music,3.8
+african music,all,top african music,IC,480,35,0.00,NEW: African music genres explained,Music,13.7
+african music,all,african gospel music,I,480,33,4.07,NEW: African music genres explained,Music,4.4
+african music,all,african music genres,I,390,26,0.00,NEW: African music genres explained,Music,4.5
+african music,all,top music in africa,IC,390,37,0.00,NEW: African music genres explained,Music,10.5
+african music,all,african music tanzania,I,320,14,0.00,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania,10.3
+african music,all,grammy award for best african music performance winners,I,320,30,0.00,NEW: African music genres explained,Music,3.2
+largest economies in africa,all,largest economy in africa,I,590,38,2.10,/articles/largest-economies-in-africa,Economy,4.7
+best beaches in africa,all,best beaches in africa,C,1.6K,20,0.87,/articles/best-beaches-africa-ranked,Beaches & islands,80.0
+best beaches in africa,all,best beach in africa,C,320,10,0.87,/articles/best-beaches-africa-ranked,Beaches & islands,32.0
+best beaches in africa,all,best beaches in south africa,C,320,22,0.78,/articles/best-beaches-africa-ranked,Beaches & islands,14.5
+best beaches in africa,all,best beach resorts in south africa,C,210,11,2.94,/articles/best-beaches-africa-ranked,Beaches & islands,19.1
+best beaches in africa,all,best beach resorts in africa,C,140,5,1.60,/articles/best-beaches-africa-ranked,Beaches & islands,14.0
+best beaches in africa,all,best beach in south africa,I,110,14,1.09,/articles/best-beaches-africa-ranked,Beaches & islands,2.4
+best beaches in africa,all,best beaches in cape town south africa,C,110,13,0.88,NEW: South Africa safari guide,Destination: South Africa,12.7

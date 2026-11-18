@@ -39,6 +39,9 @@
     <script type="application/ld+json" nonce="{{ request()->attributes->get('csp_nonce') }}">{!! json_encode($seo['jsonLd'], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) !!}</script>
     @endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if(filled(config('analytics.ahrefs_key')) && ! config('seo.preview') && ! config('review.enabled'))
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="{{ config('analytics.ahrefs_key') }}" async></script>
+    @endif
 </head>
 <body class="min-h-screen bg-stone-50 font-sans text-stone-900 antialiased">
     <a href="#main-content" class="sr-only z-50 rounded bg-amber-400 p-3 font-semibold text-stone-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>

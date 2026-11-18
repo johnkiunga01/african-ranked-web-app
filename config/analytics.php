@@ -8,4 +8,6 @@ return [
         && (bool) env('GA4_PRIVACY_NOTICE_APPROVED', false)
         && preg_match('/^G-[A-Z0-9]{5,20}$/D', $measurementId) === 1,
     'measurement_id' => $measurementId,
+    // Ahrefs Web Analytics (cookieless). Empty disables the script and its CSP allowance.
+    'ahrefs_key' => trim((string) env('AHREFS_ANALYTICS_KEY', '')),
 ];
