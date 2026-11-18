@@ -40,7 +40,7 @@
             </header>
 
             <figure class="mt-7">
-                <img src="{{ $article['image'] }}" alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="aspect-[16/9] w-full rounded-2xl bg-stone-100 object-cover" data-image-fallback>
+                <img src="{{ $article['image'] }}" @if($srcset = \App\Support\ResponsiveEditorialImage::srcset($article['image'] ?? null)) srcset="{{ $srcset }}" sizes="(min-width: 768px) 768px, 100vw" @endif alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="aspect-[16/9] w-full rounded-2xl bg-stone-100 object-cover" data-image-fallback>
                 @if(!empty($article['imageCredit']))
                     <figcaption class="mt-2 text-xs leading-relaxed text-stone-500">{{ str_contains((string) $article['image'], '/editorial-art/') ? 'Original artwork' : 'Featured image' }}: {{ $article['imageCredit'] }}</figcaption>
                 @endif
@@ -82,7 +82,7 @@
                     @case('image')
                         @if(filter_var($block['url'] ?? '', FILTER_VALIDATE_URL) && parse_url($block['url'], PHP_URL_SCHEME) === 'https' && filled($block['alt'] ?? null))
                             <figure class="my-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-50">
-                                <img src="{{ $block['url'] }}" alt="{{ $block['alt'] }}" loading="lazy" decoding="async" @if(($block['layout'] ?? null) === 'infographic') width="600" height="750" class="h-auto w-full object-contain" @else class="aspect-[16/10] w-full object-cover" @endif>
+                                <img src="{{ $block['url'] }}" @if($srcset = \App\Support\ResponsiveEditorialImage::srcset($block['url'])) srcset="{{ $srcset }}" sizes="(min-width: 768px) 768px, 100vw" @endif alt="{{ $block['alt'] }}" loading="lazy" decoding="async" @if(($block['layout'] ?? null) === 'infographic') width="600" height="750" class="h-auto w-full object-contain" @else class="aspect-[16/10] w-full object-cover" @endif>
                                 @if(filled($block['caption'] ?? null) || filled($block['credit'] ?? null))
                                     <figcaption class="px-4 py-3 text-xs leading-relaxed text-stone-600 sm:text-sm">
                                         @if(filled($block['caption'] ?? null))<span>{{ $block['caption'] }}</span>@endif
