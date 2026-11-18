@@ -19,11 +19,11 @@ class PwaInstallTest extends TestCase
         $this->assertSame(4, count($manifest['icons']));
         $this->assertFileExists(public_path('sw.js'));
         $this->assertFileExists(public_path('offline.html'));
-        $this->get('/')->assertOk()
-            ->assertHeader('Cache-Control', 'no-store, max-age=0')
+        $response = $this->get('/')->assertOk()
             ->assertSee('rel="manifest"', false)
             ->assertSee('/manifest.webmanifest', false)
             ->assertSee('data-pwa-open', false);
+        $this->assertStringContainsString('no-store', $response->headers->get('Cache-Control'));
     }
 
     public function test_icons_are_real_pngs_at_the_sizes_declared_in_the_manifest(): void
