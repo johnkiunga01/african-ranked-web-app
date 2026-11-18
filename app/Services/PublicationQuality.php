@@ -22,12 +22,18 @@ class PublicationQuality
         $text = collect($blocks)->map(fn ($b) => $b['text'] ?? implode(' ', $b['items'] ?? []))->implode("\n");
         $words = preg_match_all('/[\pL\pN]+(?:[’\x{0027}-][\pL\pN]+)*/u', strip_tags($text));
         if ($master) {
+            // Ranking articles (title promises "top/best N") count their numbered entries, which must each
+            // carry 60+ words of explanation below. Other guides still exclude numbered sections so that
+            // list modules cannot inflate the reporting minimum.
+            $isRanking = (bool) preg_match('/\b(?:top|best)\s+\d+\b|\b\d+\s+(?:best|most|top)\b/iu', (string) $revision->title);
             $counted = [];
             $excluded = false;
             foreach ($blocks as $block) {
                 if (($block['type'] ?? '') === 'heading') {
                     if (($block['level'] ?? 2) === 2) {
-                        $excluded = (bool) preg_match('/^\d+[.)]\s|^(?:answer block|key facts|ranked items|sources|methodology note|frequently asked questions)$/iu', trim($block['text'] ?? ''));
+                        $heading = trim($block['text'] ?? '');
+                        $excluded = (! $isRanking && (bool) preg_match('/^\d+[.)]\s/u', $heading))
+                            || (bool) preg_match('/^(?:answer block|key facts|ranked items|sources|methodology note|frequently asked questions)$/iu', $heading);
                     }
 
                     continue;
