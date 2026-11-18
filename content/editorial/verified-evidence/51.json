@@ -1,0 +1,76 @@
+{
+  "content_type": "guide",
+  "answer": "Traditional African instruments encompass many distinct musical traditions rather than one shared sound. The mbira uses plucked metal tongues, the kora is a plucked string instrument, and the balafon has struck wooden bars. Yoruba dundun drums change pitch through tension cords. Each instrument has specific local names, makers, performance practices and cultural contexts.",
+  "last_verified_at": "2026-11-07",
+  "verification_scope": "AI-assisted primary/institutional source check performed 2026-11-07 for listed facts only; entire manuscript and image rights require named human editorial approval.",
+  "sources": [
+    {
+      "title": "Nyonganyonga (lamellaphone)",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/503679",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Kisaanji (Chokwe lamellaphone)",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/501102",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Kora by Mamadou Kouyaté",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/503060",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Balafon (struck-bar instrument)",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/504447",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Dundun (iya ilu), Yoruba",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/503288",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Talking Drum (Anacostia Community Museum)",
+      "publisher": "Smithsonian Institution",
+      "url": "https://www.si.edu/object/talking-drum:acm_2003.0032.0362",
+      "accessed_at": "2026-11-07"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "The Met describes the nyonganyonga as a lamellaphone with plucked tongues, tuned by sliding their vibrating lengths.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/503679",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met catalogues a Chokwe kisaanji with 18 tongues tuned using wax and dates it to the late nineteenth century.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/501102",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met identifies the kora as a 21-stringed harp associated with Mandé musical traditions of West Africa.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/503060",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met classifies its late-nineteenth-century balafon as a wooden struck-bar idiophone.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/504447",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met documents a twentieth-century Yoruba dundun (iya ilu) as a variable-tension drum.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/503288",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Smithsonian describes a talking drum’s pitch changing when the performer squeezes its connecting cords.",
+      "source_url": "https://www.si.edu/object/talking-drum:acm_2003.0032.0362",
+      "verified_at": "2026-11-07"
+    }
+  ]
+}

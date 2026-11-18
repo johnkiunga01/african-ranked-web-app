@@ -46,7 +46,7 @@
     <div class="staff-workspace min-w-0">
         <header class="staff-topbar">
             <form action="{{ route('staff.articles.index') }}" method="GET" role="search" class="w-full min-w-0 sm:w-auto sm:max-w-[440px] sm:flex-1">
-                <label for="workspace-search" class="sr-only">Search article titles and content</label>
+                <label for="workspace-search" class="sr-only">Search article titles, introductions and content</label>
                 <div class="flex min-h-11 items-center gap-2 rounded-xl border border-stone-200 bg-[#f7f8fa] px-3 transition focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-100">
                     <x-icon name="search" class="h-4 w-4 shrink-0 text-stone-500" />
                     <input id="workspace-search" name="q" type="search" placeholder="Find an article…" value="{{ request('q', '') }}" maxlength="180" class="min-w-0 flex-1 bg-transparent py-2.5 text-sm text-stone-900 outline-none">

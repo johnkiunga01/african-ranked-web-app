@@ -6,6 +6,7 @@ use App\Enums\StaffRole;
 use App\Models\Article;
 use App\Models\Region;
 use App\Models\SitePage;
+use App\Models\SiteSetting;
 use App\Models\User;
 use App\Services\SeedArticleImporter;
 use App\Services\SiteSettings;
@@ -113,6 +114,8 @@ class WebsiteManagementTest extends TestCase
 
     public function test_regions_are_editable_dynamic_and_removable_without_code_changes(): void
     {
+        // Sitemap listing of country editions is opt-in; this test covers the opted-in behaviour.
+        config(['seo.regional_editions_indexable' => true]);
         $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
         $data = ['code' => 'gh', 'name' => 'Ghana edition', 'country_code' => 'GH', 'locale' => 'en-GH', 'currency' => 'GHS', 'currency_symbol' => 'GH₵', 'flag' => '🇬🇭', 'tagline' => 'Africa-focused guides for Ghana readers', 'is_active' => 1, 'sort_order' => 20, 'newsletter_title' => 'Ghana reader updates', 'newsletter_subtitle' => 'New guides from Africa.'];
         $this->actingAs($admin)->post('/staff/website/regions', $data)->assertRedirect('/staff/website/regions');
@@ -125,5 +128,14 @@ class WebsiteManagementTest extends TestCase
         $this->get('/sitemap.xml')->assertDontSee('/gh');
         $global = Region::where('code', 'global')->firstOrFail();
         $this->put('/staff/website/regions/'.$global->id, array_replace($data, ['locale' => 'en', 'is_active' => 0, 'version' => $global->version]))->assertSessionHasErrors('is_active');
+    }
+
+    public function test_official_contact_email_is_available_as_public_default_and_blank_setting_fallback(): void
+    {
+        $this->get('/')->assertOk()->assertSee('mailto:info@africanranked.com', false);
+        SiteSetting::create([
+            'key' => 'general', 'value' => ['contact_email' => ''], 'version' => 0,
+        ]);
+        $this->get('/')->assertOk()->assertSee('mailto:info@africanranked.com', false);
     }
 }

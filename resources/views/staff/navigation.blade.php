@@ -45,6 +45,7 @@
     </details>
     @endcan
     <div class="staff-account-link">
+        <a class="staff-nav-link {{ request()->routeIs('staff.profile.*') ? 'staff-nav-active' : '' }}" href="{{ route('staff.profile.edit') }}" @if(request()->routeIs('staff.profile.*')) aria-current="page" @endif><x-icon name="settings" class="h-[18px] w-[18px]" /><span>My profile</span></a>
         <a class="staff-nav-link {{ request()->routeIs('staff.security.*') ? 'staff-nav-active' : '' }}" href="{{ route('staff.security.index') }}" @if(request()->routeIs('staff.security.*')) aria-current="page" @endif>
             <x-icon name="shield-check" class="h-[18px] w-[18px]" /><span>Account security</span>
         </a>

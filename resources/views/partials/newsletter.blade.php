@@ -15,14 +15,15 @@
                 <div class="w-full sm:max-w-sm"><label for="newsletter-email" class="sr-only">Email address</label><input id="newsletter-email" name="email" type="email" autocomplete="email" maxlength="254" required value="{{ old('email') }}" placeholder="Enter your email" @error('email') aria-invalid="true" aria-describedby="email-error" @enderror class="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-stone-400 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400"></div>
                 <button type="submit" class="rounded-xl bg-amber-500 px-6 py-3 font-semibold text-stone-950 transition hover:bg-amber-400 disabled:opacity-60">{{ $region['localizedTerms']['subscribe'] }}</button>
             </div>
-            <div class="mt-4 flex items-start justify-center gap-2 text-left text-xs text-stone-300"><input type="checkbox" name="consent" id="newsletter-consent" value="1" required @checked(old('consent')) class="mt-0.5 accent-amber-500"><label for="newsletter-consent">I agree to have my email and edition preference stored for the African Ranked newsletter.</label></div>
+            <div class="mt-4 flex items-start justify-center gap-2 text-left text-xs text-stone-300"><input type="checkbox" name="consent" id="newsletter-consent" value="1" required @checked(old('consent')) class="mt-0.5 accent-amber-500"><label for="newsletter-consent">I agree to receive the African Ranked newsletter and understand that confirmation is required. I can unsubscribe at any time. Read our <a href="/pages/privacy-policy" class="font-semibold text-amber-200 underline underline-offset-2 hover:text-white">Privacy Policy</a>.</label></div>
             <div class="hidden" aria-hidden="true"><label for="newsletter-website">Leave this field empty</label><input id="newsletter-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
             @error('email')<p id="email-error" role="alert" class="mt-3 text-sm text-red-200">{{ $message }}</p>@enderror
             @error('consent')<p role="alert" class="mt-3 text-sm text-red-200">{{ $message }}</p>@enderror
             @error('website')<p role="alert" class="mt-3 text-sm text-red-200">Unable to process this request. Please try again.</p>@enderror
+            @error('newsletter')<p role="alert" class="mt-3 text-sm text-red-200">{{ $message }}</p>@enderror
         </form>
         @endif
-        <p class="mt-3 text-xs text-stone-400">Your details are used only to record a newsletter request. Subscription delivery is not active yet.</p>
+        <p class="mt-3 text-xs text-stone-400">We will send you a verification link before activating your subscription. You can unsubscribe from any email.</p>
     </div>
 </section>
 

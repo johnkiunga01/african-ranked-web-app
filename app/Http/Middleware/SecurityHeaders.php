@@ -15,6 +15,11 @@ class SecurityHeaders
         $response = $next($request);
         $script = "'self' 'nonce-{$nonce}'";
         $connect = "'self'";
+        if (config('analytics.enabled')) {
+            // Consent-gated GA4; allow the Google hosts only when the feature is enabled.
+            $script .= ' https://www.googletagmanager.com';
+            $connect .= ' https://www.google-analytics.com https://region1.google-analytics.com';
+        }
         if (app()->environment('local') && is_file(public_path('hot'))) {
             $url = trim(file_get_contents(public_path('hot')));
             $parts = parse_url($url);
@@ -24,7 +29,14 @@ class SecurityHeaders
                 $connect .= ' '.$origin.' '.($parts['scheme'] === 'https' ? 'wss' : 'ws').'://'.$parts['host'].(isset($parts['port']) ? ':'.$parts['port'] : '');
             }
         }
-        $policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src {$script}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src {$connect}; media-src 'self' https:; frame-src 'none'";
+        $form = "'self'";
+        if ($request->is('oauth/authorize') && config('editorial.mcp_enabled')) {
+            $form .= ' https://chatgpt.com/connector_platform_oauth_redirect';
+        }
+        // Only the explicit click-to-load widget needs a frame origin. No YouTube request is made before the click.
+        $frames = str_contains((string) $response->getContent(), '<figure data-youtube-video=')
+            ? 'https://www.youtube-nocookie.com' : "'none'";
+        $policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action {$form}; script-src {$script}; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data:; connect-src {$connect}; media-src 'self' https:; frame-src {$frames}";
         $response->headers->set('Content-Security-Policy', $policy);
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('X-Frame-Options', 'DENY');

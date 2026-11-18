@@ -40,13 +40,13 @@
             </header>
 
             <figure class="mt-7">
-                <img src="{{ $article['image'] }}" alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="aspect-[16/9] w-full rounded-2xl bg-stone-100 object-cover" data-image-fallback>
+                <img src="{{ $article['image'] }}" @if($srcset = \App\Support\ResponsiveEditorialImage::srcset($article['image'] ?? null)) srcset="{{ $srcset }}" sizes="(min-width: 768px) 768px, 100vw" @endif alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="aspect-[16/9] w-full rounded-2xl bg-stone-100 object-cover" data-image-fallback>
                 @if(!empty($article['imageCredit']))
                     <figcaption class="mt-2 text-xs leading-relaxed text-stone-500">{{ str_contains((string) $article['image'], '/editorial-art/') ? 'Original artwork' : 'Featured image' }}: {{ $article['imageCredit'] }}</figcaption>
                 @endif
             </figure>
 
-            @include('editorial.evidence', ['evidence' => $article['editorialEvidence'] ?? []])
+            @include('editorial.evidence', ['evidence' => $article['editorialEvidence'] ?? [], 'section' => 'answer'])
 
             @if($readingSections->isNotEmpty() || !empty($article['faqs']))
             <details class="mt-8 rounded-2xl border border-stone-200 bg-stone-50 p-4 lg:hidden" data-mobile-toc>
@@ -76,10 +76,13 @@
                             <h2 id="{{ $catalog->headingId($index) }}">{{ $block['text'] }}</h2>
                         @endif
                         @break
+                    @case('video')
+                        <x-editorial-video :block="$block" />
+                        @break
                     @case('image')
                         @if(filter_var($block['url'] ?? '', FILTER_VALIDATE_URL) && parse_url($block['url'], PHP_URL_SCHEME) === 'https' && filled($block['alt'] ?? null))
                             <figure class="my-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-50">
-                                <img src="{{ $block['url'] }}" alt="{{ $block['alt'] }}" loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover">
+                                <img src="{{ $block['url'] }}" @if($srcset = \App\Support\ResponsiveEditorialImage::srcset($block['url'])) srcset="{{ $srcset }}" sizes="(min-width: 768px) 768px, 100vw" @endif alt="{{ $block['alt'] }}" loading="lazy" decoding="async" @if(($block['layout'] ?? null) === 'infographic') width="600" height="750" class="h-auto w-full object-contain" @else class="aspect-[16/10] w-full object-cover" @endif>
                                 @if(filled($block['caption'] ?? null) || filled($block['credit'] ?? null))
                                     <figcaption class="px-4 py-3 text-xs leading-relaxed text-stone-600 sm:text-sm">
                                         @if(filled($block['caption'] ?? null))<span>{{ $block['caption'] }}</span>@endif
@@ -117,7 +120,6 @@
                 @endforeach
             </div>
 
-            @include('editorial.sources', ['evidence' => $article['editorialEvidence'] ?? [], 'reviewer' => $article['reviewer'] ?? null])
 
             @if(!empty($article['faqs']))
             <section id="frequently-asked-questions" class="mt-12 rounded-2xl border border-stone-200 bg-stone-50 p-5 sm:p-7" aria-labelledby="faq-heading">
@@ -129,6 +131,8 @@
                 </div>
             </section>
             @endif
+            @include('editorial.evidence', ['evidence' => $article['editorialEvidence'] ?? [], 'section' => 'facts'])
+            @include('editorial.sources', ['evidence' => $article['editorialEvidence'] ?? [], 'reviewer' => $article['reviewer'] ?? null])
             <a href="{{ $basePath }}/categories/{{ $category['slug'] }}" class="mt-10 inline-flex min-h-11 items-center gap-2 rounded-xl border border-stone-200 px-4 text-sm font-bold text-amber-900 transition hover:border-amber-300 hover:bg-amber-50">
                 <x-icon name="arrow-right" class="h-4 w-4 rotate-180" /> Explore more {{ $category['name'] }}
             </a>

@@ -1,3 +1,21 @@
+## Active owner decision — regional editions held from indexing, 13 November 2026
+
+The owner handed project and editorial lead to the Claude session of 13 November and asked for the audit findings to be applied. Country-edition home, category, rankings and strategy pages (`/us`, `/uk`, `/au`, `/ca`, `/ng`, `/za`, `/ke`) list the same articles as the global pages, so they now serve `noindex, follow`, emit no hreflang alternates and are excluded from the sitemap. Article URLs and their global canonicals are unchanged. Re-enable with `SEO_REGIONAL_EDITIONS_INDEXABLE=true` on the web service only once an edition carries distinct content. This supersedes the "self-canonicals and reciprocal alternates" invariant below while the flag is off. Audit and operating plan: the "African Ranked" Claude project doc `audit-and-operating-plan-2026-11-13.md`.
+
+## Active owner scope — final activation, 13 November 2026
+
+The owner authorized creating the three real CMS policy-page records, live newsletter testing through an owner-controlled inbox, and GA4 activation only after a verified published Privacy Policy and required approval. Leave materially unresolved policies as populated private CMS drafts. Do not edit, submit or publish editorial articles in this assignment. Do not modify administrator MFA settings. The official operator/contact is African Ranked, info@africanranked.com. Keep GA4 and public newsletter registration disabled until their specified privacy and end-to-end gates pass. Earlier production-indexing approval remains valid.
+
+## Active owner decision — staff collaboration, 12 November 2026
+
+The owner requested all active verified authors be able to view and manually edit shared CMS drafts and approve In Review articles for publishing. Authors may review another author's revision, but not their own or a revision they last edited. Super admins retain existing review authority and exclusive publication authority, including AI suggestion acceptance. AI requests remain subject to their existing consent, ownership and quota controls. Draft edits create private revisions and preserve published pointers.
+
+Staff may edit their own display name, editorial title and biography. Existing revision bylines remain immutable; verified email changes need a separate transfer flow. The owner selected African Ranked as the desired display name; a brand byline must not be represented as independent human review. Removing staff revokes access while retaining attribution, audit history and the reserved email; it is not personal-data erasure. Never remove accounts merely to test the interface.
+
+## Active owner decision — 7 November 2026 (supersedes staging launch assumptions)
+
+African Ranked's existing Railway production environment is now the approved running production platform on the temporary Railway HTTPS domain. Enable `APP_ENV=production`, `APP_PREVIEW=false`, and `APP_REVIEW=false` across web, worker and scheduler, but keep `SEO_INDEXING_ENABLED=false` until the owner adds the custom domain and **explicitly authorizes** search indexing next week. Allow public article retrieval by LLM agents and keep the generated `/llms.txt` published-only. Preserve private staff authentication, published article pointers, CMS revisions and credentials. Do not change `APP_URL` to an unverified custom domain, auto-enable indexing or submit a sitemap early. See [production/AI discovery handoff](docs/PRODUCTION-AI-DISCOVERY-2026-11-07.md). Historical staging guidance below is superseded where it conflicts with this decision.
+
 # African Ranked development instructions
 
 ## Active owner decisions — evening of 2 November 2026

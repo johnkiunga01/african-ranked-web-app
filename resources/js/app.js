@@ -462,3 +462,24 @@ if (seoBatch) {
     };
     setTimeout(poll, 3000);
 }
+
+// Videos stay local placeholders until the reader explicitly requests YouTube.
+document.querySelectorAll('[data-youtube-video]').forEach((figure) => {
+    const button = figure.querySelector('[data-load-video]');
+    button?.addEventListener('click', () => {
+        const id = figure.dataset.youtubeVideo;
+        const player = figure.querySelector('[data-video-player]');
+        if (!/^[A-Za-z0-9_-]{11}$/.test(id || '') || !player || player.querySelector('iframe')) return;
+        const frame = document.createElement('iframe');
+        frame.src = `https://www.youtube-nocookie.com/embed/${id}`;
+        frame.title = figure.dataset.videoTitle || 'Article video';
+        frame.className = 'h-full w-full';
+        frame.setAttribute('allow', 'fullscreen; picture-in-picture');
+        frame.setAttribute('allowfullscreen', '');
+        frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+        player.classList.remove('p-5', 'sm:p-8');
+        player.replaceChildren(frame);
+        frame.focus();
+    }, { once: true });
+});

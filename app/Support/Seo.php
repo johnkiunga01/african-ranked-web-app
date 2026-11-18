@@ -17,6 +17,8 @@ class Seo
             'article' => '/articles/'.$article['slug'],
             'category' => '/categories/'.$category['slug'],
             'strategy' => '/strategy',
+            'about' => '/about',
+            'safari-planner' => '/plan-safari',
             'rankings' => '/rankings',
             default => '',
         };
@@ -26,18 +28,33 @@ class Seo
         $title = match ($type) {
             'article' => ($article['seoTitle'] ?? null) ?: $article['title'].' | '.$siteName,
             'category' => $category['name'].' | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
-            'strategy' => 'Editorial & Search Strategy | '.$siteName,
+            'strategy' => 'Our Editorial Approach | '.$siteName,
+            'about' => 'About Us | '.$siteName,
+            'safari-planner' => 'Plan Your African Safari | '.$siteName,
             'rankings' => 'African Rankings & Guides | '.$siteName.($code === 'global' ? '' : ' '.$region['name']),
             'not-found' => 'Page not found | '.$siteName,
             default => $siteName.' — The Best of Africa, Ranked'.($code === 'global' ? '' : ' | '.$region['name']),
         };
-        $description = $type === 'home'
-            ? 'Discover the best of Africa through researched rankings and practical guides to destinations, wildlife, cuisine, music, technology and business.'
-            : ($type === 'rankings'
-            ? 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.'
-            : (($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline'])));
+        $description = match ($type) {
+            'home' => 'Discover the best of Africa through researched rankings and practical guides to destinations, wildlife, cuisine, music, technology and business.',
+            'strategy' => 'How to read African Ranked rankings: our approach to research, comparison criteria, source dates, commercial transparency and corrections.',
+            'about' => 'Meet African Ranked: rankings and practical guides to African travel, wildlife, food, music, technology and business.',
+            'safari-planner' => 'Plan your African safari with published guides to destinations, seasons, budgets, packing and wildlife. Choose where to start and explore at your own pace.',
+            'rankings' => 'Explore researched African rankings and practical guides to travel, wildlife, food, music, technology and business.',
+            default => ($article['metaDescription'] ?? null) ?: ($article['excerpt'] ?? $category['description'] ?? $region['tagline']),
+        };
+        // Regional landing pages have distinct edition URLs; keep their search snippets
+        // informative and unique without changing the underlying editorial claims.
+        if ($code !== 'global') {
+            $description = match ($type) {
+                'home' => 'Explore African destinations, wildlife, food, music, business and technology through the '.$region['name'].' edition of '.$siteName.'.',
+                'category' => 'Browse '.$category['name'].' rankings and guides about Africa in the '.$region['name'].' edition of '.$siteName.'.',
+                'rankings' => 'Discover researched African rankings and practical guides in the '.$region['name'].' edition of '.$siteName.'.',
+                default => $description,
+            };
+        }
         $image = $type === 'home'
-            ? 'https://images.pexels.com/photos/19171291/pexels-photo-19171291.jpeg?auto=compress&cs=tinysrgb&w=1200'
+            ? $c->url('/images/african-ranked-savannah-hero-desktop.webp')
             : ($article['image'] ?? $c->articles($code)->first()['image'] ?? $c->articles()->first()['image'] ?? $c->url('/image-placeholder.svg'));
         $breadcrumbs = [['name' => 'Home', 'url' => $c->path($code)]];
         if ($category) {
@@ -47,7 +64,8 @@ class Seo
             $breadcrumbs[] = ['name' => $article['title'], 'url' => $path];
         }
         $alternates = [];
-        if (in_array($type, ['home', 'category', 'rankings'], true)) {
+        $regionalIndexable = (bool) config('seo.regional_editions_indexable');
+        if ($regionalIndexable && in_array($type, ['home', 'category', 'rankings'], true)) {
             foreach ($c->regions() as $alternate) {
                 if ($category && ! $c->articles($alternate['code'])->contains('category', $category['slug'])) {
                     continue;
@@ -88,6 +106,11 @@ class Seo
             ], $breadcrumbs, array_keys($breadcrumbs))];
         }
         $robots = $type === 'not-found' || ($type === 'category' && ! $c->articles($code)->contains('category', $category['slug'])) ? 'noindex, follow' : 'index, follow, max-image-preview:large';
+
+        // Near-duplicate country editions stay crawlable (follow) but out of the index.
+        if (! $regionalIndexable && $code !== 'global' && $type !== 'article') {
+            $robots = 'noindex, follow';
+        }
 
         if (str_starts_with($robots, 'noindex')) {
             $alternates = [];

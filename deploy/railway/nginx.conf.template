@@ -8,7 +8,11 @@ http {
     default_type application/octet-stream;
     server_tokens off;
     sendfile on;
-    access_log /dev/stdout;
+    map $request_uri $log_newsletter_request {
+        default 1;
+        ~^/newsletter/(confirm|unsubscribe)/ 0;
+    }
+    access_log /dev/stdout combined if=$log_newsletter_request;
     client_body_temp_path /tmp/nginx-client-body;
     fastcgi_temp_path /tmp/nginx-fastcgi;
     gzip on;
@@ -19,6 +23,8 @@ http {
         root /app/public;
         index index.php;
         client_max_body_size 12m;
+        location = /.well-known/oauth-authorization-server { try_files $uri /index.php?$query_string; }
+        location = /.well-known/oauth-protected-resource { try_files $uri /index.php?$query_string; }
         location / { try_files $uri $uri/ /index.php?$query_string; }
         location /build/assets/ {
             try_files $uri =404;

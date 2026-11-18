@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\ArticleRevision;
 use App\Models\User;
+use App\OAuth\EditorialAccessToken;
 use App\Services\OnsiteSeoDefaults;
 use App\Support\Catalog;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(Catalog::class);
+        Passport::ignoreRoutes();
     }
 
     /**
@@ -29,6 +32,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Passport::$accessTokenEntity = EditorialAccessToken::class;
+        Passport::loadKeysFrom(storage_path('app/private/oauth'));
+        Passport::tokensCan(['editorial' => 'Read unpublished drafts, save private revisions and submit for human review. No approval or publication.']);
+        Passport::tokensExpireIn(now()->addHour());
+        Passport::refreshTokensExpireIn(now()->addDays(30));
+        Passport::authorizationView('staff.oauth-consent');
         ArticleRevision::creating(fn ($revision) => app(OnsiteSeoDefaults::class)->apply($revision));
         Gate::define('manage-staff', fn (User $user) => $user->isSuperAdmin());
         RateLimiter::for('staff-two-factor', fn (Request $request) => [

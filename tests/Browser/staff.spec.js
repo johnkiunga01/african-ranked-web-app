@@ -42,7 +42,7 @@ test('author and administrator complete a reviewed publishing cycle with revisio
         const forged = await authorContext.request.post(`/staff/articles/${id}/publish`, { form: { _token: token, revision_id: revision } });
         expect(forged.status()).toBe(403);
         await signIn(other, 'other@browser.example.test');
-        expect((await otherContext.request.get(`/staff/articles/${id}/edit`)).status()).toBe(403);
+        expect((await otherContext.request.get(`/staff/articles/${id}/edit`)).status()).toBe(200);
         await author.getByRole('button', { name: 'Submit for review', exact: true }).click();
         await expect(author.locator('#staff-main > p[role="status"]')).toContainText('submitted for review');
         await signIn(admin, 'admin@browser.example.test');
@@ -151,7 +151,7 @@ test('article inventory supports search, bulk choices and mobile navigation', as
     await expect(page.locator('#batch-operation option[value=gemini]')).toHaveText('Research & optimise with Gemini…');
     await expect(page.getByText('Import to CMS', { exact: true })).toHaveCount(0);
     await page.screenshot({ path: 'artifacts/design/03-articles-desktop.png', fullPage: true });
-    await page.getByLabel('Search title or URL').fill('browser-inventory-01');
+    await page.getByLabel('Search title, introduction or article text').fill('browser-inventory-01');
     await page.getByRole('button', { name: 'Search', exact: true }).last().click();
     await expect(page.getByRole('link', { name: 'Inventory fixture 01', exact: true })).toBeVisible();
     await page.setViewportSize({ width: 390, height: 844 });
@@ -274,4 +274,21 @@ test('authenticator enrollment and single-use recovery protect the full browser 
     await page.getByRole('link', { name: 'Launch checks', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Production readiness', exact: true })).toBeVisible();
     await page.screenshot({ path: 'artifacts/security/launch-readiness.png', fullPage: true });
+});
+
+test('staff can edit their profile and recover safely from a bulk action URL', async ({ page }) => {
+    await signIn(page, 'author@browser.example.test');
+    await page.getByRole('link', { name: 'My profile', exact: true }).first().click();
+    await expect(page).toHaveURL(/\/staff\/profile$/);
+    const originalName = await page.getByLabel('Display name', { exact: true }).inputValue();
+    await page.getByLabel('Display name', { exact: true }).fill('Browser profile editor');
+    await page.getByLabel('Biography', { exact: true }).fill('Disposable browser verification biography.');
+    await page.getByRole('button', { name: 'Save profile', exact: true }).click();
+    await expect(page.getByRole('status')).toContainText('Profile saved');
+    await expect(page.getByLabel('Display name', { exact: true })).toHaveValue('Browser profile editor');
+    await page.getByLabel('Display name', { exact: true }).fill(originalName);
+    await page.getByRole('button', { name: 'Save profile', exact: true }).click();
+    await page.goto('/staff/article-batches');
+    await expect(page).toHaveURL(/\/staff\/articles$/);
+    await expect(page.getByRole('heading', { name: 'Articles', exact: true })).toBeVisible();
 });

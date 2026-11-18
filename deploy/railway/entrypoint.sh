@@ -25,7 +25,7 @@ case "${APP_ROLE:-web}" in
         exec supervisord -n -c /etc/african-ranked/supervisord.conf
         ;;
     worker)
-        exec gosu www-data php artisan queue:work database --sleep=2 --timeout=120 --tries=1 --max-time=3600
+        exec gosu www-data php artisan queue:work database --sleep=2 --timeout=120 --tries=1
         ;;
     scheduler)
         exec gosu www-data php artisan schedule:work

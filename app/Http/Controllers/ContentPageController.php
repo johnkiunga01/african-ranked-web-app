@@ -35,6 +35,6 @@ class ContentPageController extends Controller
         }
         unset($node);
 
-        return view('pages.content', ['page' => $page, 'revision' => $revision, 'catalog' => $catalog, 'region' => $region, 'regions' => $catalog->regions(), 'categories' => $catalog->categories(), 'basePath' => '', 'pageSuffix' => '', 'seo' => $metadata, 'site' => app(SiteSettings::class)->snapshot('general')['value'], 'footerPages' => $catalog->publishedPages()->filter(fn ($p) => $p->publishedRevision->in_footer)]);
+        return view($slug === 'editorial-approach' ? 'pages.strategy' : 'pages.content', ['page' => $page, 'revision' => $revision, 'catalog' => $catalog, 'region' => $region, 'regions' => $catalog->regions(), 'categories' => $catalog->categories(), 'basePath' => '', 'pageSuffix' => $slug === 'editorial-approach' ? '/strategy' : $page->publicPath(), 'seo' => $metadata, 'site' => app(SiteSettings::class)->snapshot('general')['value'], 'footerPages' => $catalog->publishedPages()->filter(fn ($p) => $p->publishedRevision->in_footer)]);
     }
 }

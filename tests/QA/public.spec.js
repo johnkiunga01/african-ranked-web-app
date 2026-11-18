@@ -27,11 +27,13 @@ for (const viewport of viewports) {
     expect(blockers,`Serious WCAG violations on ${viewport.name}`).toEqual([]);
   });
 }
-test('Preview noindex is consistent in header and HTML meta',async({page})=>{
+test('Production public homepage is indexable in headers and HTML meta',async({page})=>{
   const response=await page.goto('/',{waitUntil:'domcontentloaded'});
-  expect(response?.headers()['x-robots-tag']).toContain('noindex');
+  expect(response?.status()).toBe(200);
+  expect(response?.headers()['x-robots-tag'] || '').not.toContain('noindex');
   const htmlRobots=await page.locator('meta[name="robots"]').getAttribute('content');
-  if (!htmlRobots?.includes('noindex')) console.warn('KNOWN_LIVE_META_CONFLICT: pending QA branch deployment');
+  expect(htmlRobots).toBeTruthy();
+  expect(htmlRobots).not.toContain('noindex');
   await expect(page.getByRole('link',{name:/Explore rankings/i})).toBeVisible();
 });
 test('Keyboard menu, search and article contents',async({page})=>{

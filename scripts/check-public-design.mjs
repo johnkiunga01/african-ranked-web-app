@@ -16,15 +16,18 @@ const base = supplied && ! /^0+$/.test(supplied)
     : execFileSync('git', ['merge-base', 'origin/main', 'HEAD'], { encoding: 'utf8' }).trim();
 execFileSync('git', ['rev-parse', '--verify', `${base}^{commit}`], { stdio: 'ignore' });
 const changed = execFileSync('git', ['diff', '--name-only', '-z', base, 'HEAD'], { encoding: 'utf8' }).split('\0').filter(Boolean);
-// This release adds two optional evidence modules to the existing article view.
-// Permit only those exact include lines; every pre-existing byte remains protected.
+// Owner-approved reader-flow change: only move or split exact evidence/source
+// includes. After those statements are stripped, every other template byte
+// (including whitespace and design markup) must match the protected base.
 const articlePath = 'resources/views/pages/article.blade.php';
-const stripEvidenceIncludes = text => text.split('\n').filter(line => !/^\s*@include\('editorial\.(?:evidence|sources)', \['evidence' => \$article\['editorialEvidence'\] \?\? \[\](?:, 'reviewer' => \$article\['reviewer'\] \?\? null)?\]\)\s*$/.test(line)).join('\n');
+const evidenceInclude = /^\s*@include\('editorial\.evidence', \['evidence' => \$article\['editorialEvidence'\] \?\? \[\](?:, 'section' => '(?:answer|facts)')?\]\)\s*$/;
+const sourceInclude = /^\s*@include\('editorial\.sources', \['evidence' => \$article\['editorialEvidence'\] \?\? \[\], 'reviewer' => \$article\['reviewer'\] \?\? null\]\)\s*$/;
+const stripEvidenceIncludes = text => text.split('\n').filter(line => !evidenceInclude.test(line) && !sourceInclude.test(line)).join('\n');
 const evidenceOnly = path => path === articlePath && stripEvidenceIncludes(execFileSync('git', ['show', `${base}:${path}`], { encoding: 'utf8' })) === stripEvidenceIncludes(execFileSync('git', ['show', `HEAD:${path}`], { encoding: 'utf8' }));
 // Owner-approved branding and audited dependency lock are allowed only at their reviewed exact blob hashes.
 // This is an immutable, content-specific exception, not a general bypass of public-design protection.
 const approvedBrandBlobs = new Map(Object.entries({
-    "composer.lock": "d77db28648d6a1bc3296ed17113c4a65cb4c08ec",
+    "composer.lock": "37bdcf1e036afc06a3e250d8fb7fec9d1df16fa1",
     "public/africa-mark.svg": "840b1f16180fcf620343e9534176c52def82f13b",
     "public/apple-touch-icon.png": "e8e36ea96b52b29623bbe6d206b6fea9ef3ecf1d",
     "public/brand-icon.png": "b22dbc2affe959f3edc2e535d577a4c668970f63",
@@ -46,7 +49,101 @@ const approvedRecoveryFile = path => {
         return false;
     }
 };
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !approvedRecoveryFile(path));
+// The SEO launch gate may change only the exact robots-meta expression in
+// the public layout. All other layout bytes remain protected and compared.
+const layoutPath = 'resources/views/layouts/app.blade.php';
+const oldRobotsMeta = "<meta name=\"robots\" content=\"{{ config('seo.preview') || config('review.enabled') ? 'noindex, nofollow, noarchive' : $seo['robots'] }}\">";
+const gatedRobotsMeta = "<meta name=\"robots\" content=\"{{ config('seo.preview') || config('review.enabled') ? 'noindex, nofollow, noarchive' : (config('seo.indexing_enabled') ? $seo['robots'] : 'noindex, follow, noarchive') }}\">";
+const indexingGateOnly = path => {
+    if (path !== layoutPath) return false;
+    const before = execFileSync('git', ['show', `${base}:${path}`], { encoding: 'utf8' });
+    const after = execFileSync('git', ['show', `HEAD:${path}`], { encoding: 'utf8' });
+    return before.includes(oldRobotsMeta) && after.includes(gatedRobotsMeta)
+        && before === after.replace(gatedRobotsMeta, oldRobotsMeta);
+};
+// Explicitly approved generated homepage hero release (9 November 2026).
+// Match exact Git blobs only; other public image/template/CSS edits remain guarded.
+const approvedHeroBlobs = new Map(Object.entries({
+    "public/images/african-ranked-savannah-hero-desktop.webp": "b76217897d89e21d324d6da205d8686e02043632",
+    "public/images/african-ranked-savannah-hero-mobile.webp": "94cb8d0b1ba7ce0f016a591438095d73eefe4403",
+    "resources/views/pages/home.blade.php": "e2d996f56c8ea747585f383dbf3790f0d6ff70c1",
+    "resources/css/app.css": "eb1e596948d1fd991ca96f73034dd2f297a03be5"
+}));
+const approvedHeroChange = path => {
+    const expected = approvedHeroBlobs.get(path);
+    if (!expected) return false;
+    try {
+        return execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === expected;
+    } catch { return false; }
+};
+// Owner-authorized OAuth bridge dependencies; exact reviewed blobs only.
+const editorialOAuthDependencies = new Map(Object.entries({"composer.json": "c750b611de29bc2ba09fee267b0e12f2632ff1a1", "composer.lock": "749a6e32b1f44f33b812021ddec33db0c80cb4a2"}));
+const approvedOAuthDependency = path => editorialOAuthDependencies.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === editorialOAuthDependencies.get(path);
+// Owner-authorized 13 November 2026 technical SEO amendment: add the exact
+// category-list section heading needed for an H1 -> H2 -> H3 hierarchy.
+// Retain the immutable blob check; no other category template changes are allowed.
+const approvedRegionalCategoryHeading = path => {
+    if (path !== 'resources/views/pages/category.blade.php') return false;
+    return execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim()
+        === '9953b06b7221335249c09369be5b86d7d163d580';
+};
+
+// Owner-requested 13 November 2026 GA4 consent integration, reviewed at exact blob
+// hashes. Does not authorize any unrelated public layout/design changes.
+const approvedAnalyticsBlobs = new Map(Object.entries({
+    "resources/views/layouts/app.blade.php": "d4a02add353836688d3bfb79976527dc4c77ce53",
+    "resources/views/partials/footer.blade.php": "d02d2e60c211f0e8ad39e3f1a0b5ce64933b6c5b",
+    "resources/views/partials/analytics-consent.blade.php": "8b25130b92b5bf0387d70fc6077cb32e5ab826b0"
+}));
+const approvedAnalyticsChange = path => {
+    const expected = approvedAnalyticsBlobs.get(path);
+    return Boolean(expected) && execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim() === expected;
+};
+
+// Owner-approved 13 Nov 2026 newsletter consent and confirmation page additions.
+// Only the exact reviewed frontend blobs are allowed; other design remains protected.
+const approvedNewsletterBlobs = new Map(Object.entries({
+    "resources/views/partials/newsletter.blade.php": "a2239f508733bb0321cc956ea02b1164e6857d65",
+    "resources/views/pages/newsletter-lifecycle.blade.php": "f112d978706c8a3ee8efad0e01815796745b1251"
+}));
+const approvedNewsletterChange = path => {
+    const expected = approvedNewsletterBlobs.get(path);
+    return Boolean(expected) && execFileSync('git', ['rev-parse', 'HEAD:' + path], { encoding: 'utf8' }).trim() === expected;
+};
+
+// Owner request: add About Us to desktop/mobile navigation and design its page (13 November 2026).
+const approvedAboutBlobs = new Map(Object.entries({
+    "resources/views/pages/about.blade.php": "6b1a32c56f7a30c3881cfc8715d47c8d21b80da4",
+    "resources/views/partials/header.blade.php": "0f887e15109fc062f541b8b0d9b593535c09154c"
+}));
+const approvedAboutChange = path => approvedAboutBlobs.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedAboutBlobs.get(path);
+
+// Owner-authorized 13 November 2026 approach redesign, safari planning hub and article media.
+// Exact blobs keep this exception restricted to the reviewed templates and original diagrams.
+const approvedEditorialMediaBlobs = new Map(Object.entries({
+    "resources/views/pages/strategy.blade.php": "6c796b27238021a22f7a2b96d4efc6c6f6156d98",
+    "resources/views/pages/safari-planner.blade.php": "9df055814c386672222e51378bde05d90f105785",
+    "resources/views/pages/article.blade.php": "e6456cdc1ae662c01d4d39217afaa0ea939d1e4d",
+    "resources/views/components/content-blocks.blade.php": "f4e74ef92279588cceaaa264ca159e72b5c02449",
+    "resources/views/components/editorial-video.blade.php": "a6df0cba60e2e80afcb5352507707033e4cf60f7",
+    "resources/views/partials/footer.blade.php": "78ff8d2aa2c722aa0be99cd9f5592415639978b2",
+    "public/editorial-art/top-10-safari-destinations-africa-2026/decision-guide.svg": "0b2863c286b84ecd11fd6739c90a05f5928c3f3d",
+    "public/editorial-art/gorilla-trekking-permit-cost-how-to-book/decision-guide.svg": "3d57ffa908c362c68fbf3525defc64a50c5f2139",
+    "public/editorial-art/african-countries-by-mobile-money-adoption/decision-guide.svg": "4e9d7770db73a40dcbaa1fb9549bb0a8285ca6f5",
+    "public/editorial-art/african-music-genres-explained/decision-guide.svg": "ea537eebb4de365b8b40d581b53358f80993bd21"
+}));
+const approvedEditorialMediaChange = path => approvedEditorialMediaBlobs.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedEditorialMediaBlobs.get(path);
+
+// Owner-authorized 18 November cleanup: reviewed font loading, responsive images and build-tool lock updates.
+const approvedNovemberCleanup = new Map(Object.entries({
+    "resources/css/app.css": "c8d46070bd20afb9995af5b6aeec69475e76176c",
+    "resources/views/layouts/app.blade.php": "9f39a8e3319456393fa8c0909adce990059df697",
+    "resources/views/pages/article.blade.php": "9e503973e714fdffb95580c8a0986a1d5d63a432",
+    "package-lock.json": "100011991d75085688a657085a3a037d0e420464"
+}));
+const isApprovedNovemberCleanup = path => approvedNovemberCleanup.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], {encoding: 'utf8'}).trim() === approvedNovemberCleanup.get(path);
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);

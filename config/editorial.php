@@ -1,7 +1,14 @@
 <?php
 
 return [
+    'mcp_enabled' => (bool) env('EDITORIAL_MCP_ENABLED', false),
     'repository_owner' => env('CMS_IMPORT_OWNER_EMAIL'),
+    // Explicit opt-in; accept only a bearer token digest, never the raw token.
+    'newsletter_operator_test_enabled' => (bool) env('NEWSLETTER_OPERATOR_TEST_ENABLED', false),
+    'policy_draft_integration_enabled' => (bool) env('POLICY_DRAFT_INTEGRATION_ENABLED', false),
+    'integration_enabled' => (bool) env('EDITORIAL_INTEGRATION_ENABLED', false),
+    'integration_token_sha256' => env('EDITORIAL_INTEGRATION_TOKEN_SHA256', ''),
+    'integration_actor_email' => env('EDITORIAL_INTEGRATION_ACTOR_EMAIL', ''),
     // Legacy JSON is review material, never an implicit production publication source.
     'legacy_preview' => (bool) env('EDITORIAL_LEGACY_PREVIEW', true),
     // Do not advertise email subscriptions until confirmed delivery and unsubscribe are supported.

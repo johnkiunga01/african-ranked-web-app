@@ -63,6 +63,19 @@ class EditorialEvidenceTest extends TestCase
         $this->assertStringContainsString('1,300', implode(' ', $report['failures']));
     }
 
+    public function test_ranking_articles_count_numbered_entries_toward_the_body_minimum(): void
+    {
+        $entries = '';
+        foreach (range(1, 3) as $position) {
+            $entries .= "\n\n## {$position}. Synthetic item\n\n".str_repeat('ranking ', 400);
+        }
+        $body = '## Reporting'."\n\n".str_repeat('reporting ', 200).$entries."\n\n## How we ranked them\n\n".str_repeat('method ', 100)."\n\n## Sources\n\n".str_repeat('source ', 200);
+        $revision = new ArticleRevision(['title' => 'The 3 best synthetic items', 'excerpt' => 'Test summary', 'body' => app(MarkdownBlocks::class)->parse($body), 'faqs' => array_fill(0, 3, ['question' => 'A fixture question?', 'answer' => 'A fixture answer.']), 'editorial_evidence' => $this->evidence()]);
+        $report = app(PublicationQuality::class)->inspect($revision);
+        $this->assertSame(1500, $report['body_words']);
+        $this->assertStringNotContainsString('1,300', implode(' ', $report['failures']));
+    }
+
     public function test_public_evidence_escapes_unsafe_source_text(): void
     {
         $evidence = $this->evidence();
@@ -70,6 +83,34 @@ class EditorialEvidenceTest extends TestCase
         $html = view('editorial.evidence', compact('evidence'))->render();
         $this->assertStringContainsString('&lt;script&gt;', $html);
         $this->assertStringNotContainsString('<script>', $html);
-        $this->assertStringContainsString('<table', $html);
+        $this->assertStringContainsString('href="https://evidence.example.test/1"', $html);
+        $this->assertStringContainsString('Source-backed key facts', $html);
+        $this->assertStringNotContainsString('<table', $html);
+        $this->assertStringNotContainsString('<th', $html);
+        $this->assertStringNotContainsString('>Source</', $html);
+    }
+
+    public function test_fact_links_use_the_entire_fact_as_anchor_and_keep_source_register_collapsed(): void
+    {
+        $evidence = $this->evidence();
+        $evidence['facts'][0]['fact'] = 'A clear linked finding about history.';
+
+        $html = view('editorial.evidence', compact('evidence'))->render();
+        $this->assertStringContainsString('href="https://evidence.example.test/1"', $html);
+        $this->assertStringContainsString('A clear linked finding about history.', $html);
+        $this->assertStringContainsString('Verified <time', $html);
+        $this->assertStringNotContainsString('<table', $html);
+        $this->assertStringNotContainsString('>Source</', $html);
+        $this->assertStringNotContainsString('>evidence.example.test<', $html);
+
+        $referenceMarkup = view('editorial.sources', ['evidence' => $evidence, 'reviewer' => null])->render();
+        $this->assertStringContainsString('<details', $referenceMarkup);
+        $this->assertStringContainsString('Research references and access dates', $referenceMarkup);
+        $this->assertStringNotContainsString('<details open', $referenceMarkup);
+
+        $evidence['facts'][0]['source_url'] = 'javascript:alert(1)';
+        $unsafeMarkup = view('editorial.evidence', compact('evidence'))->render();
+        $this->assertStringNotContainsString('href="javascript:', $unsafeMarkup);
+        $this->assertStringContainsString('A clear linked finding about history.', $unsafeMarkup);
     }
 }

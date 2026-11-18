@@ -13,7 +13,7 @@ class SiteSettings
 {
     public function defaults(string $key): array
     {
-        return $key === 'homepage' ? ['hero_title' => 'Discover the best of Africa', 'hero_highlight' => 'through rankings and guides.', 'hero_description' => 'Explore Africa’s remarkable destinations, cuisines, music, business, technology and wildlife through researched rankings and practical guides.', 'show_featured' => true, 'featured' => []] : ['name' => 'African Ranked', 'description' => 'Discover Africa through researched rankings and guides to travel, food, culture, business, technology and wildlife.', 'contact_email' => '', 'author_ai_enabled' => false];
+        return $key === 'homepage' ? ['hero_title' => 'Discover the best of Africa', 'hero_highlight' => 'through rankings and guides.', 'hero_description' => 'Explore Africa’s remarkable destinations, cuisines, music, business, technology and wildlife through researched rankings and practical guides.', 'show_featured' => true, 'featured' => []] : ['name' => 'African Ranked', 'description' => 'Discover Africa through researched rankings and guides to travel, food, culture, business, technology and wildlife.', 'contact_email' => 'info@africanranked.com', 'author_ai_enabled' => false];
     }
 
     public function snapshot(string $key): array
@@ -24,6 +24,10 @@ class SiteSettings
         $setting = SiteSetting::where('key', $key)->first();
 
         $value = array_replace($this->defaults($key), $setting?->value ?? []);
+        if ($key === 'general' && blank($value['contact_email'] ?? null)) {
+            // Show the owner-confirmed public contact even with a legacy blank setting.
+            $value['contact_email'] = 'info@africanranked.com';
+        }
         if ($key === 'homepage') {
             // Upgrade only unmodified legacy starter copy. Any custom editorial text stays intact.
             $legacy = [

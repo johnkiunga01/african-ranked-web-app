@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 18
     env:
-      QA_TARGET_URL: https://african-ranked-web-app-production.up.railway.app
+      QA_TARGET_URL: https://africanranked.com
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

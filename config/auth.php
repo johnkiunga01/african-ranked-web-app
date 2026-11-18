@@ -38,6 +38,7 @@ return [
     */
 
     'guards' => [
+        'editorial_oauth' => ['driver' => 'passport', 'provider' => 'users'],
         'web' => [
             'driver' => 'session',
             'provider' => 'users',

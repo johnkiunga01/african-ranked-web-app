@@ -1,0 +1,81 @@
+{
+  "content_type": "guide",
+  "answer": "African textiles differ in their construction, histories and social uses. Kente is traditionally made from woven strips associated with Asante and Ewe communities; Ankara refers to printed cotton shaped by global trade and African design choices. In eastern Africa, kitenge and kanga are distinct terms, with kanga often carrying written messages.",
+  "last_verified_at": "2026-11-07",
+  "verification_scope": "AI-assisted primary/institutional source check performed 2026-11-07 for listed facts only; entire manuscript and image rights require named human editorial approval.",
+  "sources": [
+    {
+      "title": "Africa fashion: cloth of a continent",
+      "publisher": "Victoria and Albert Museum",
+      "url": "https://www.vam.ac.uk/articles/cloth-of-a-continent-africa-fashion",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Asante-Akan kente wrapper",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/316800",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Ewe man’s kente prestige cloth",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/320677",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Asante man’s prestige cloth",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/320679",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Social Fabric: African Textiles Today",
+      "publisher": "British Museum (via Google Arts & Culture)",
+      "url": "https://artsandculture.google.com/story/social-fabric-african-textiles-today-the-british-museum/twWxNsyPc0L4Iw",
+      "accessed_at": "2026-11-07"
+    },
+    {
+      "title": "Kente cloth, attribution uncertain",
+      "publisher": "The Metropolitan Museum of Art",
+      "url": "https://www.metmuseum.org/art/collection/search/312441",
+      "accessed_at": "2026-11-07"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "The V&A describes Ankara as printed cotton linked to industrial European attempts to reproduce Indonesian batik.",
+      "source_url": "https://www.vam.ac.uk/articles/cloth-of-a-continent-africa-fashion",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The V&A identifies kente as strips of handwoven cloth traditionally associated with Asante and Ewe communities.",
+      "source_url": "https://www.vam.ac.uk/articles/cloth-of-a-continent-africa-fashion",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met describes an Asante kente wrapper built from narrow woven strips sewn together.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/316800",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met catalogues an Ewe kente prestige cloth dated circa 1930–1950 from Ghana and western Togo traditions.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/320677",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met describes Asante prestige cloth panels composed of as many as 24 woven bands in one example.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/320679",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The British Museum describes kanga as rectangular printed cloth with inscriptions, often sold and worn in matching pairs.",
+      "source_url": "https://artsandculture.google.com/story/social-fabric-african-textiles-today-the-british-museum/twWxNsyPc0L4Iw",
+      "verified_at": "2026-11-07"
+    },
+    {
+      "fact": "The Met explicitly labels one Ghanaian kente object’s cultural attribution as ‘Asante or Ewe (?)’, reflecting uncertainty.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/312441",
+      "verified_at": "2026-11-07"
+    }
+  ]
+}

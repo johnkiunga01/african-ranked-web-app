@@ -23,6 +23,9 @@ class PreviewIndexing
             if (config('review.enabled')) {
                 $response->headers->set('Cache-Control', 'private, no-store');
             }
+        } elseif (! config('seo.indexing_enabled') && ! $request->is('staff', 'staff/*')) {
+            // Production-ready content is publicly readable, but cannot be indexed yet.
+            $response->headers->set('X-Robots-Tag', 'noindex, follow, noarchive');
         }
 
         return $response;

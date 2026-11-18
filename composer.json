@@ -9,6 +9,7 @@
     "ext-xmlwriter": "*",
     "bacon/bacon-qr-code": "^3.0",
     "laravel/framework": "^12.0",
+    "laravel/passport": "^13",
     "pragmarx/google2fa": "^9.1"
   },
   "require-dev": {
