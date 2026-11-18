@@ -13,6 +13,8 @@ The live Laravel editorial bridge described in `docs/EDITORIAL-MCP.md` and `docs
 | 1 | Waakye Explained: Ghana's Rice and Beans, Traditional Sides and How to Cook It | `waakye-ghana-rice-and-beans-guide` | food | 4,400 | `content/editorial/verified-evidence/proposed-waakye-2026-11-18.json` |
 | 2 | Nigerian Suya Explained: Yaji Spice, Hausa Grilling Traditions and a Home-Cooking Guide | `nigerian-suya-yaji-spice-grilling-guide` | food | 6,600 | `content/editorial/verified-evidence/proposed-suya-2026-11-18.json` |
 | 3 | Fufu and Egusi Soup Explained: The West African Pairing, Ingredients and Eating Traditions | `fufu-and-egusi-soup-west-african-guide` | food | 2,900 | `content/editorial/verified-evidence/proposed-fufu-egusi-2026-11-18.json` |
+| 4 | West African Okra Soup: Ingredients, Regional Styles and the Texture Explained | `west-african-okra-soup-regional-guide` | food | 2,900 | `content/editorial/verified-evidence/proposed-okra-soup-2026-11-18.json` |
+| 5 | South African Bobotie Explained: Spiced Mince, Egg Custard and a Complicated Food History | `south-african-bobotie-spiced-mince-guide` | food | 2,400 | `content/editorial/verified-evidence/proposed-bobotie-2026-11-18.json` |
 
 All editorial evidence access/verification dates record **18 November 2026**, the date the public source pages were opened and checked during preparation. This is *not* a claim of independent cooking tests, human editorial approval or image ownership. All manuscripts are original synthesis, not reproductions of third-party recipe prose. UK Semrush keyword volumes are **estimates** and are not article facts about food.
 
