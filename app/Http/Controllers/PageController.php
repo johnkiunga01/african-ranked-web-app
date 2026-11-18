@@ -7,16 +7,13 @@ use App\Services\SiteSettings;
 use App\Support\Catalog;
 use App\Support\Seo;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
 class PageController extends Controller
 {
-    public function __construct(private Catalog $catalog, private Seo $seo)
-    {
-    }
+    public function __construct(private Catalog $catalog, private Seo $seo) {}
 
     private function render(string $type, ?string $region, array $data = []): View
     {
@@ -46,12 +43,9 @@ class PageController extends Controller
         return redirect('/'.ltrim(substr($request->path(), strlen('global')), '/'), 301);
     }
 
-    public function home(?string $region = null): Response
+    public function home(?string $region = null): View
     {
-        // Homepage copy and featured stories are database-managed in the staff CMS.
-        // Do not let an intermediary or a home-screen web app serve obsolete HTML.
-        return response($this->render('home', $region, ['articles' => $this->catalog->homepageArticles($region ?? 'global')]))
-            ->header('Cache-Control', 'no-store, max-age=0');
+        return $this->render('home', $region, ['articles' => $this->catalog->homepageArticles($region ?? 'global')]);
     }
 
     public function rankings(Request $request, ?string $region = null): View
@@ -132,7 +126,7 @@ class PageController extends Controller
     public function about(): View|RedirectResponse
     {
         $page = Schema::hasTable('site_pages') ? SitePage::where('slug', 'about-us')->first() : null;
-        if ($page?->published_revision_id && !page->trashed_at) {
+        if ($page?->published_revision_id && ! $page->trashed_at) {
             return redirect($page->publicPath(), 301);
         }
         if ($page?->first_published_at) {
