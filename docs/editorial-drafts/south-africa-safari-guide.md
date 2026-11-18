@@ -42,9 +42,9 @@ want to avoid malaria-risk areas, look at reserves in the North West and Eastern
 provinces. [VERIFY: which named reserves are officially in no-risk malaria areas — NICD /
 National Department of Health malaria map, and the parks' own pages.]
 
-## Where to go: South Africa's main safari areas
+## Best safari in South Africa: where to go
 
-### Kruger National Park
+### Kruger National Park safari
 
 Kruger is South Africa's best-known national park and the anchor of most safari itineraries.
 [VERIFY: area in km² — SANParks Kruger page.] Visitors can drive themselves on the park's road
@@ -84,7 +84,7 @@ choose them.
 See also: [Big Five parks ranked](/articles/big-five-parks-ranked-where-to-see-all-five) ·
 [Where to see rhinos in Africa](/articles/where-to-see-rhinos-in-africa).
 
-## National park or private reserve?
+## Safari in South Africa: national park or private reserve?
 
 | | National park (e.g. Kruger rest camps) | Private reserve lodge |
 |---|---|---|
@@ -112,7 +112,7 @@ for the Lowveld, with month ranges.] For month-by-month detail see
 [Best time to visit Kruger](/articles/best-time-to-visit-kruger) and
 [Best time for an African safari](/articles/best-time-to-visit-african-safari-by-month).
 
-## What a South Africa safari costs
+## How much is a safari in South Africa?
 
 The main cost drivers are the type of accommodation, whether drives and meals are included,
 the number of nights, transfers or flights, and daily park fees.
@@ -142,7 +142,7 @@ a planning suggestion, not a rule.
 - **Road travel:** plan drives to reach camp before gates close and avoid driving outside
   parks at night where advised.
 
-## How to book
+## How to book a South Africa safari: packages, tours or independent
 
 1. Decide on your mix of self-drive and guided days.
 2. Book Kruger rest camps directly with SANParks [VERIFY: official booking channel] or a
@@ -156,7 +156,7 @@ For a broader comparison of operators and trip styles, read
 ## Frequently asked questions
 
 **How much is a safari in South Africa?**  
-It depends mainly on whether you self-drive in a national park or stay at an all-inclusive private lodge; see "What a South Africa safari costs" above. [VERIFY: any figure quoted.]
+It depends mainly on whether you self-drive in a national park or stay at an all-inclusive private lodge; see "How much is a safari in South Africa?" above. [VERIFY: any figure quoted.]
 
 **What should I wear on safari in South Africa?**  
 [VERIFY against the packing guide or an official park source before publishing.] See our [safari packing guide](/articles/safari-packing-etiquette-first-timer-guide).

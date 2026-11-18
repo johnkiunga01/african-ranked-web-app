@@ -16,7 +16,7 @@
 > - **Cannibalisation:** the Etosha manuscript is being re-angled to the Etosha park guide (see that file). Keep this page's Etosha section short and link to the Etosha guide instead of duplicating it.
 > - **Changes made:** SEO title now says "Month-by-Month" to match the variants; month-by-month H2 renamed to include "best month to visit Namibia"; one FAQ slot added.
 
-The best time to visit Namibia depends on whether wildlife, desert landscapes, coastal towns or road travel is your main reason for going. For wildlife-focused trips, May to October is the dry-season window highlighted by Namibia's official tourism site. For photographers drawn to Sossusvlei and the Namib Desert, morning light, heat and time spent outdoors may matter more than a single nationwide “best month.” Coastal fog, cold desert nights and seasonal rain mean that a useful itinerary must distinguish regions rather than treat Namibia as one weather zone.
+The best time to visit Namibia depends on whether wildlife, desert landscapes, coastal towns or road travel is your main reason for going. For wildlife-focused trips, May to October is the dry-season window highlighted by Namibia's official tourism site, which makes it the most common answer to the question of the best month to visit Namibia for wildlife. For photographers drawn to Sossusvlei and the Namib Desert, morning light, heat and time spent outdoors may matter more than a single nationwide “best month.” Coastal fog, cold desert nights and seasonal rain mean that a useful itinerary must distinguish regions rather than treat Namibia as one weather zone.
 
 ## The short answer: there is no single best month for every Namibia itinerary
 
@@ -26,7 +26,7 @@ A traveller planning a birding trip or a greener landscape may deliberately choo
 
 For an itinerary covering several environments, write down the single experience that matters most. Is it observing wildlife at a waterhole, exploring dune landscapes, visiting coastal settlements, photographing scenery, or taking a slow road trip? Rank the other experiences behind it. This small decision prevents the common error of selecting travel dates entirely for Etosha and then expecting equally ideal conditions everywhere else.
 
-## How Namibia's seasons vary by region
+## Namibia weather: how the seasons vary by region
 
 Namibia's climate differs sharply across inland, coastal and desert areas. The official tourism climate guide describes generally hot summer conditions between roughly October and April, with a rainy period that may bring relatively brief storms. Winters, roughly May to September, tend to have milder days but can deliver very cold nights in the desert. A person packing only for warm afternoons can be uncomfortable at a pre-dawn viewpoint or campsite.
 
@@ -54,7 +54,7 @@ For this reason, it is better to read national climate descriptions alongside de
 
 This framework is deliberately broad. It does not claim that rain will fall in a particular week, that animals will be at a specific site or that a specific route will be passable. The decision should be checked against current travel advisories and conditions shortly before departure.
 
-## Best time for Etosha: choose the wildlife experience
+## Best time for an Etosha safari: choose the wildlife experience
 
 Etosha is central to many first-time Namibia itineraries. MEFT describes a distinctive salt-pan landscape with savannah, waterholes and species including elephant, rhino, giraffe, lion and zebra. Namibia's tourism site identifies the May–October dry period as especially attractive for game viewing. The practical reason to consider that window is the changing relationship between water availability and wildlife movement, not a guarantee that every waterhole will be busy.
 
@@ -82,7 +82,7 @@ Think about the coast as a useful contrast to the inland trip. A stay around Swa
 
 If you are planning marine or desert excursions, confirm the operator, route, permits and weather policy for the specific activity. General claims about Namibia's climate do not establish whether a boat outing or guided desert trip will run on a particular day. The [Visit Namibia climate reference](https://visitnamibia.com.na/climate/) is an appropriate starting point for regional expectations, but local operational details matter most.
 
-## Choosing between self-drive and a guided itinerary
+## Planning a Namibia trip: self-drive or a guided itinerary?
 
 A self-drive trip provides freedom to choose stops and spend longer in places you enjoy. It also transfers responsibility for navigation, fuel, vehicle readiness and driving fatigue to you. Namibia's tourism site notes that road travel is a common way to move between destinations, while its safari guidance describes guided and fly-in alternatives. These approaches suit different priorities.
 
@@ -102,7 +102,7 @@ One common mistake is assigning one nationwide weather forecast to every destina
 
 Another avoidable mistake is confusing the day of travel with the day of arrival. A three-night holiday can contain only two useful days at a main destination once transfers are deducted. Put arrival, departure and driving days on the calendar before adding activities. This simple step reveals whether the chosen month and route can actually meet the trip's purpose.
 
-## Recommended planning sequence and next steps
+## When to go to Namibia: a planning sequence and next steps
 
 Begin with the highest-priority experience and select a broad seasonal window. Next, choose the destinations that genuinely fit the available nights. Then check the official park descriptions, opening restrictions and accommodation options. Only after that should you compare flights or lock the rest of the itinerary. Keep an alternative option for days when conditions disrupt outdoor plans.
 

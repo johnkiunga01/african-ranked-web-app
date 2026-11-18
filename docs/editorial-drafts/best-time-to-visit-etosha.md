@@ -20,7 +20,7 @@
 
 Etosha is often recommended for dry-season game viewing, but “best” depends on what you want to see and how you want to travel. If you want to spend time at waterholes watching elephants, antelope and predators, the cooler, drier middle of the year offers a sensible starting point. If you prefer greener landscapes, birding and fewer expectations of concentrated waterhole activity, the rainy period may suit you better. Neither season guarantees particular sightings, and the dates should guide a decision rather than act as a promise.
 
-## The short answer: choose the experience before the month
+## Etosha National Park at a glance: choose the experience before the month
 
 For a first Etosha visit centred on observing mammals at established waterholes, consider the dry months, broadly May to October, with June to September a reasonable first shortlist. These are planning windows, not a prediction that every waterhole will be busy. Rainfall timing and available water vary. If photographing greener habitat or spending time with birds matters more than concentrating mammals near water, look at the warmer wet-season months, broadly November to April. The boundaries can shift, and rain does not arrive by calendar appointment.
 
@@ -28,7 +28,7 @@ Etosha's signature landscape is a vast salt pan surrounded by open plains, savan
 
 A useful way to choose is to rank your interests before selecting dates. Give separate weight to wildlife behaviour, landscape colour, road confidence, temperature preferences, camp budget and photographic goals. A family prioritising predictable driving days may choose differently from a photographer who will tolerate heat for a dramatic sky. Avoid interpreting “dry season is best” as the only responsible answer.
 
-## How Etosha's waterholes change the viewing strategy
+## Etosha safari strategy: how the waterholes change game viewing
 
 Waterholes are central to Etosha's appeal, especially in periods when fewer alternative surface-water sources are available. Animals still roam independently, and their presence depends on food, disturbance, temperature and the availability of water elsewhere. A reliable waterhole on a map is not a booking for a wildlife sighting. Plan to return to a viewing location at different times rather than rushing between as many stops as possible.
 
@@ -38,7 +38,7 @@ MEFT lists Okaukuejo, Halali and Namutoni among the park's established accommoda
 
 A visitor focused on wildlife photography can also plan the light. Bright midday light can be harsh against pale dust and reflective water. Early and late legal driving periods may be more comfortable for photography, but the gate schedule changes with daylight. Confirm the current opening and closing arrangements when you arrive; do not assume fixed hours from an old itinerary.
 
-## Month-by-month planning: what each period is good for
+## Best time to visit Etosha: month-by-month planning
 
 **January and February:** These typically fall within the warmer rainy period. Consider them if you want greener vegetation and a broader landscape story, while accepting that seasonal water can reduce animal concentration at established waterholes. After rain, driving conditions may change and wildlife can be harder to find in thicker vegetation. Build an itinerary with fewer long transfers and more time to observe one habitat well.
 
@@ -54,7 +54,7 @@ A visitor focused on wildlife photography can also plan the light. Bright midday
 
 This is an editorial seasonal framework, not a dated meteorological forecast. Before turning any of these month descriptions into a booked itinerary, obtain current weather information and park-condition updates. A year with late rainfall can behave differently from an average year.
 
-## Choosing where to stay: Okaukuejo, Halali and Namutoni
+## Where to stay in Etosha National Park: Okaukuejo, Halali and Namutoni
 
 Your base shapes how much daylight you spend driving. Okaukuejo is a practical starting point for travellers entering from the southern approach. NWR describes its floodlit waterhole and several accommodation categories, including camping and waterhole-facing rooms. Staying here can appeal to visitors who want to combine a full day of driving with quiet evening observation at a designated viewing area. Review [NWR's Okaukuejo resort information](https://www.nwr.com.na/resorts/okaukuejo-resort/).
 
@@ -66,7 +66,7 @@ A longer visit might divide nights between two areas, but moving camp every day 
 
 Do not assume a headline accommodation rate is your entire safari cost. Camp rates can vary by room type, season and occupancy; guided drives and conservation fees may be separate. NWR publishes dated accommodation and activity schedules on individual resort pages. Check the exact dates and booking conditions rather than reproducing a price from an older season in a permanent article.
 
-## A practical self-drive decision framework
+## Self-drive Etosha safari: a practical decision framework
 
 Start with the number of full days you will actually have *inside* the park. A late arrival and early departure can turn a nominal three-night visit into a much shorter wildlife experience. Build a route around your entry point, camp and exit point first; only then add waterholes and scenic stops. Keep the last part of each day conservative so a slow wildlife sighting never creates pressure to race a closing gate.
 
