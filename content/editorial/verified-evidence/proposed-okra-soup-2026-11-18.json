@@ -1,0 +1,71 @@
+{
+  "answer": "West African okra soup is a savoury dish made with chopped or grated okra, which naturally thickens the cooking liquid. Nigerian variations may include peppers, palm oil, greens, meat, fish or crayfish, and are commonly eaten with a starchy accompaniment known as a swallow. Ingredients and methods differ across communities.",
+  "content_type": "guide",
+  "last_verified_at": "2026-11-18",
+  "image_rights": "No image selected. Confirm correct dish, creator attribution, rights and alt text before CMS submission.",
+  "methodology": "Original synthesis of five sources opened 2026-11-18; no first-hand recipe testing or inventorship claim. Semrush UK representative keyword 'okra soup' 2,900, 12-point indexed growth +25%, MoM +25%.",
+  "facts": [
+    {
+      "fact": "Chef Lola describes combining minced and sliced okra to vary texture.",
+      "source_url": "https://cheflolaskitchen.com/okra-soup/",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "A Guardian recipe published on 16 March 2015 describes an okra-and-tomato-sauce tradition.",
+      "source_url": "https://www.theguardian.com/lifeandstyle/2015/mar/16/okra-soup-recipe-ladys-fingers-groundnut-supper-club-cook-residency",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "Google Arts & Culture documents Yoruba obe ila and Efik/Ibibio otong as regional labels for okra preparations.",
+      "source_url": "https://artsandculture.google.com/story/6QUBPDixwYYcKA",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "Google Arts & Culture describes swallows including eba, fufu and pounded yam as soup accompaniments.",
+      "source_url": "https://artsandculture.google.com/story/6QUBPDixwYYcKA",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "The Guardian Nigeria documents examples including ila alasepo and an okra-and-banga preparation.",
+      "source_url": "https://guardian.ng/features/four-delicious-soups-you-can-make-with-okra/",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "Immaculate Bites' okra soup article dated 25 May 2023 includes an optional egusi variation.",
+      "source_url": "https://www.africanbites.com/okra-soup/",
+      "verified_at": "2026-11-18"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Okro Soup with Spinach",
+      "publisher": "Chef Lola's Kitchen / Lola Osinkolu",
+      "url": "https://cheflolaskitchen.com/okra-soup/",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Lady in red: a traditional African okra soup recipe",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/lifeandstyle/2015/mar/16/okra-soup-recipe-ladys-fingers-groundnut-supper-club-cook-residency",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Six Savoury and Sumptuous Soups",
+      "publisher": "Google Arts & Culture / The Centenary Project",
+      "url": "https://artsandculture.google.com/story/6QUBPDixwYYcKA",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Four delicious soups you can make with okra",
+      "publisher": "The Guardian Nigeria",
+      "url": "https://guardian.ng/features/four-delicious-soups-you-can-make-with-okra/",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Okra Soup",
+      "publisher": "Immaculate Bites / Imma Adamu",
+      "url": "https://www.africanbites.com/okra-soup/",
+      "accessed_at": "2026-11-18"
+    }
+  ]
+}
