@@ -20,6 +20,7 @@ class PwaInstallTest extends TestCase
         $this->assertFileExists(public_path('sw.js'));
         $this->assertFileExists(public_path('offline.html'));
         $this->get('/')->assertOk()
+            ->assertHeader('Cache-Control', 'no-store, max-age=0')
             ->assertSee('rel="manifest"', false)
             ->assertSee('/manifest.webmanifest', false)
             ->assertSee('data-pwa-open', false);
