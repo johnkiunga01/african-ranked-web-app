@@ -27,6 +27,13 @@ Requests use the same-origin CSRF token and strict platform/event validation, wi
 
 The homepage's hero heading/highlight/description and featured ID are stored in `site_settings` and rendered server-side by `PageController::home`. Changes to those values do not require a new GitHub deployment. The hero artwork, colour treatment, category cards and section layout are hard-coded in `resources/views/pages/home.blade.php`, so dashboard text settings cannot change those design elements. A featured article that has not been published cannot appear on the public homepage. A feature test proves that saving the homepage intro is immediately reflected by `GET /`. If a specific production change still does not appear, compare the saved `site_settings` version/values to live HTML and browser cache; do not silently overwrite the owner's settings.
 
+## Branded launch refinements (18 November)
+
+- `manifest.webmanifest` now uses the design system's warm ivory background (`#fbfaf7`) rather than stark white, alongside the existing charcoal theme color. The OS-controlled Android startup screen can use the background and app icon but cannot render arbitrary web typography, custom curves, or a progress bar. iOS startup behavior also depends on the installed browser and OS.
+- On **first standalone open of a browser session**, a brief accessible, non-interactive in-app launch treatment appears. It reuses the approved `/africa-mark.svg` asset unmodified, uses the existing `#15191c` ink, `#ffbf24` gold and Plus Jakarta Sans, with soft ivory and subtle decorative dot accents. It includes the wordmark and the exact tagline: “Explore Africa through rankings, culture & stories.”
+- This is intentionally **not a fabricated progress bar** or a blocking loading state. It dismisses when the page loads, with an upper time limit of 1.6 seconds, does not intercept interactions, and is skipped for `prefers-reduced-motion` visitors. Normal browser visitors and the staff CMS do not see it.
+- The install/reporting endpoints and service worker caching rules are unchanged. Existing installed PWAs may need to be reopened or reinstalled for OS-provided splash changes to appear, depending on platform caching. Test a fresh Android and iOS install on real devices before describing pixel-perfect parity with the mockup.
+
 ## Release checklist
 
 1. Run PHP/sqlite and PostgreSQL feature tests, browser tests, JS build, and PWA manifest/icon tests in CI.
