@@ -63,6 +63,19 @@ class EditorialEvidenceTest extends TestCase
         $this->assertStringContainsString('1,300', implode(' ', $report['failures']));
     }
 
+    public function test_ranking_articles_count_numbered_entries_toward_the_body_minimum(): void
+    {
+        $entries = '';
+        foreach (range(1, 3) as $position) {
+            $entries .= "\n\n## {$position}. Synthetic item\n\n".str_repeat('ranking ', 400);
+        }
+        $body = '## Reporting'."\n\n".str_repeat('reporting ', 200).$entries."\n\n## How we ranked them\n\n".str_repeat('method ', 100)."\n\n## Sources\n\n".str_repeat('source ', 200);
+        $revision = new ArticleRevision(['title' => 'The 3 best synthetic items', 'excerpt' => 'Test summary', 'body' => app(MarkdownBlocks::class)->parse($body), 'faqs' => array_fill(0, 3, ['question' => 'A fixture question?', 'answer' => 'A fixture answer.']), 'editorial_evidence' => $this->evidence()]);
+        $report = app(PublicationQuality::class)->inspect($revision);
+        $this->assertSame(1500, $report['body_words']);
+        $this->assertStringNotContainsString('1,300', implode(' ', $report['failures']));
+    }
+
     public function test_public_evidence_escapes_unsafe_source_text(): void
     {
         $evidence = $this->evidence();

@@ -134,7 +134,16 @@ const approvedEditorialMediaBlobs = new Map(Object.entries({
 }));
 const approvedEditorialMediaChange = path => approvedEditorialMediaBlobs.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedEditorialMediaBlobs.get(path);
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path));
+// Owner-authorized 18 November cleanup: reviewed font loading, responsive images and build-tool lock updates.
+const approvedNovemberCleanup = new Map(Object.entries({
+    "resources/css/app.css": "c8d46070bd20afb9995af5b6aeec69475e76176c",
+    "resources/views/layouts/app.blade.php": "9f39a8e3319456393fa8c0909adce990059df697",
+    "resources/views/pages/article.blade.php": "9e503973e714fdffb95580c8a0986a1d5d63a432",
+    "package-lock.json": "100011991d75085688a657085a3a037d0e420464"
+}));
+const isApprovedNovemberCleanup = path => approvedNovemberCleanup.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], {encoding: 'utf8'}).trim() === approvedNovemberCleanup.get(path);
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
