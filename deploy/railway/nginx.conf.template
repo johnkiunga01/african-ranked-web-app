@@ -25,6 +25,18 @@ http {
         client_max_body_size 12m;
         location = /.well-known/oauth-authorization-server { try_files $uri /index.php?$query_string; }
         location = /.well-known/oauth-protected-resource { try_files $uri /index.php?$query_string; }
+        location = /manifest.webmanifest {
+            types { application/manifest+json webmanifest; }
+            default_type application/manifest+json;
+            add_header Cache-Control "public, max-age=3600";
+            try_files $uri =404;
+        }
+        location = /sw.js {
+            types { application/javascript js; }
+            default_type application/javascript;
+            add_header Cache-Control "no-cache, max-age=0, must-revalidate";
+            try_files $uri =404;
+        }
         location / { try_files $uri $uri/ /index.php?$query_string; }
         location /build/assets/ {
             try_files $uri =404;
