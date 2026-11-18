@@ -1,0 +1,40 @@
+diff --git a/routes/web.php b/routes/web.php
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -60,5 +60,10 @@
+     Route::get('/articles/{slug}', [PageController::class, 'regionalArticle'])->name('article');
+     Route::get('/strategy', [PageController::class, 'strategy'])->name('strategy');
++    // These pages have no regional editions. The header's edition switcher still links to
++    // /{region}/<page>, so send those links to the global page instead of a 404.
++    Route::permanentRedirect('/plan-safari', '/plan-safari');
++    Route::permanentRedirect('/about', '/about');
++    Route::permanentRedirect('/pages/{slug}', '/pages/{slug}')->where('slug', '[a-z0-9-]+');
+ });
+ 
+ require __DIR__.'/staff.php';
+diff --git a/tests/Feature/RegionalRedirectsTest.php b/tests/Feature/RegionalRedirectsTest.php
+new file mode 100644
+--- /dev/null
++++ b/tests/Feature/RegionalRedirectsTest.php
+@@ -0,0 +1,21 @@
++<?php
++
++namespace Tests\Feature;
++
++use Tests\TestCase;
++
++class RegionalRedirectsTest extends TestCase
++{
++    public function test_pages_without_regional_editions_redirect_to_the_global_page(): void
++    {
++        $this->get('/us/plan-safari')->assertStatus(301)->assertRedirect('/plan-safari');
++        $this->get('/ke/about')->assertStatus(301)->assertRedirect('/about');
++        $this->get('/uk/pages/privacy-policy')->assertStatus(301)->assertRedirect('/pages/privacy-policy');
++    }
++
++    public function test_regional_pages_that_exist_are_not_redirected(): void
++    {
++        $this->get('/us/rankings')->assertOk();
++        $this->get('/us/strategy')->assertOk();
++    }
++}
