@@ -1,0 +1,101 @@
+keyword,intent,volume_us,kd_pct,cpc_usd,pos_africanranked,pos_safaribookings,pos_go2africa,pos_discoverafrica,pos_africageographic,best_competitor,maps_to,cluster
+shoebill,I,90.5K,45,4.10,0,0,0,15,0,discoverafrica #15,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+caracal,IT,74K,50,4.42,0,0,0,0,42,africageographic #42,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+serval,IT,74K,50,7.56,0,0,0,0,50,africageographic #50,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+impala,n/a,60.5K,41,0.68,0,0,0,0,57,africageographic #57,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+safari tours,C,60.5K,36,3.86,0,1,14,24,0,safaribookings #1,/articles/top-10-safari-destinations-africa-2026,Safari hub
+fossa,IT,49.5K,47,0.18,0,0,0,0,25,africageographic #25,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+wildebeest,I,49.5K,42,0.34,0,0,0,0,26,africageographic #26,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+cape town afrique,I,40.5K,23,0.94,0,0,0,0,3,africageographic #3,(skip: off-topic or low-intent),Excluded
+mount kilimanjaro,IT,40.5K,50,0.77,0,0,0,8,0,discoverafrica #8,NEW: Climbing Kilimanjaro guide,Kilimanjaro
+secretary bird,IT,40.5K,34,0.00,0,11,0,0,0,safaribookings #11,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+warthog,IT,40.5K,42,1.61,0,0,0,0,12,africageographic #12,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+zanzibar and,IT,40.5K,14,1.43,0,0,0,40,0,discoverafrica #40,NEW: Zanzibar guide,Beaches & islands
+african wild dog,I,33.1K,46,4.02,0,0,0,25,0,discoverafrica #25,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+dar es salaam,I,33.1K,36,0.91,0,0,5,0,0,go2africa #5,(deprioritised: geography encyclopedia),Geography encyclopedia
+oryx oryx,I,33.1K,50,0.82,0,0,0,0,2,africageographic #2,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+terrapin,T,33.1K,50,0.52,0,0,0,0,20,africageographic #20,(skip: off-topic or low-intent),Excluded
+aardwolf,IT,27.1K,47,6.30,0,0,0,0,31,africageographic #31,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+comoros,IT,27.1K,33,0.00,0,0,0,0,26,africageographic #26,(deprioritised: geography encyclopedia),Geography encyclopedia
+galago bush,IT,27.1K,35,2.48,0,0,0,0,2,africageographic #2,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+lake victoria,IT,27.1K,36,1.60,0,0,9,0,0,go2africa #9,(deprioritised: geography encyclopedia),Geography encyclopedia
+northern white rhino,I,27.1K,48,3.22,0,0,0,40,0,discoverafrica #40,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+terrapins,I,27.1K,47,0.52,0,0,0,0,12,africageographic #12,(skip: off-topic or low-intent),Excluded
+africa and namibia,I,22.2K,30,0.86,0,0,13,48,0,go2africa #13,NEW: Namibia safari guide,Destination: Namibia
+african elephant,I,22.2K,44,4.12,0,0,0,0,55,africageographic #55,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+afrika tanzania,IT,22.2K,19,1.94,0,0,0,8,0,discoverafrica #8,NEW: Tanzania safari guide,Destination: Tanzania
+baobab tree,I,22.2K,42,0.13,0,0,0,0,22,africageographic #22,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+cites,I,22.2K,28,0.92,0,0,0,0,72,africageographic #72,(skip: off-topic or low-intent),Excluded
+sao tome and principe,IT,22.2K,32,0.56,0,0,0,0,14,africageographic #14,(deprioritised: geography encyclopedia),Geography encyclopedia
+eland,I,18.1K,27,0.00,0,6,0,0,0,safaribookings #6,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+elephants in african,IT,18.1K,49,5.49,0,17,0,0,54,safaribookings #17,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+kalahari desert,IT,18.1K,46,1.81,0,3,0,0,0,safaribookings #3,(deprioritised: geography encyclopedia),Geography encyclopedia
+african lion,IT,14.8K,40,4.70,0,0,0,0,55,africageographic #55,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+african penguin,IT,14.8K,28,5.60,0,0,0,46,0,discoverafrica #46,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+african wildcat,I,14.8K,34,0.00,0,0,0,0,13,africageographic #13,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+afrika kenya,IT,14.8K,36,1.40,0,0,8,0,0,go2africa #8,NEW: Kenya safari guide,Destination: Kenya
+black leopard,I,14.8K,34,2.00,0,0,0,0,24,africageographic #24,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+boland mountains leopard images,I,14.8K,20,0.00,0,0,0,48,6,africageographic #6,(skip: off-topic or low-intent),Excluded
+g e n e t,I,14.8K,36,0.00,0,0,0,0,16,africageographic #16,(skip: off-topic or low-intent),Excluded
+kenya great rift,IT,14.8K,37,1.03,0,0,6,0,0,go2africa #6,NEW: Kenya safari guide,Destination: Kenya
+shoebill bird,IT,14.8K,46,0.34,0,0,0,14,0,discoverafrica #14,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+zanzibar a tanzania,n/a,14.8K,33,1.43,0,62,0,0,0,safaribookings #62,NEW: Zanzibar guide,Beaches & islands
+africa and people,I,12.1K,21,0.00,0,0,0,0,9,africageographic #9,(skip: off-topic or low-intent),Excluded
+cape town south,IT,12.1K,46,0.00,0,0,18,14,0,discoverafrica #14,NEW: South Africa safari guide,Destination: South Africa
+fossa animal,IT,12.1K,48,0.18,0,0,0,0,6,africageographic #6,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+gemsbok,I,12.1K,26,0.61,0,9,0,0,0,safaribookings #9,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+lake natron,IT,12.1K,26,1.03,0,8,0,0,33,safaribookings #8,(deprioritised: geography encyclopedia),Geography encyclopedia
+maasai mara,IT,12.1K,40,1.66,0,13,12,27,0,go2africa #12,NEW: Masai Mara safari guide,Destination: Kenya
+nairobi kenya,IT,12.1K,44,1.17,0,0,0,0,23,africageographic #23,NEW: Kenya safari guide,Destination: Kenya
+nambia,IT,12.1K,32,0.89,0,0,0,18,0,discoverafrica #18,NEW: Namibia safari guide,Destination: Namibia
+ostrich ostrich ostrich,I,12.1K,43,1.03,0,11,0,0,0,safaribookings #11,(skip: off-topic or low-intent),Excluded
+republic of namibia,IT,12.1K,35,0.86,0,0,0,16,0,discoverafrica #16,NEW: Namibia safari guide,Destination: Namibia
+south africa south african,IT,12.1K,32,0.00,0,0,8,0,0,go2africa #8,NEW: South Africa safari guide,Destination: South Africa
+spotted hyena,IT,12.1K,38,4.93,0,11,0,0,39,safaribookings #11,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+africa namib,I,9.9K,44,0.00,0,20,0,9,0,discoverafrica #9,NEW: Namibia safari guide,Destination: Namibia
+african cities,I,9.9K,38,0.94,0,12,0,0,0,safaribookings #12,(deprioritised: geography encyclopedia),Geography encyclopedia
+african safari safari,C,9.9K,50,3.32,0,9,1,0,0,go2africa #1,/articles/top-10-safari-destinations-africa-2026,Safari hub
+are turtles reptiles,I,9.9K,23,0.67,0,0,0,0,21,africageographic #21,(skip: off-topic or low-intent),Excluded
+congo basin,T,9.9K,38,8.74,0,0,0,9,0,discoverafrica #9,(deprioritised: geography encyclopedia),Geography encyclopedia
+genets,IT,9.9K,39,0.00,0,0,0,0,11,africageographic #11,(skip: off-topic or low-intent),Excluded
+honeybadger,IT,9.9K,46,1.00,0,35,0,0,0,safaribookings #35,(skip: off-topic or low-intent),Excluded
+namibia namibia,IT,9.9K,49,0.86,0,0,73,0,0,go2africa #73,NEW: Namibia safari guide,Destination: Namibia
+stone town,IT,9.9K,39,0.91,0,0,0,17,0,discoverafrica #17,NEW: Zanzibar guide,Beaches & islands
+striped hyena hyena,IT,9.9K,36,0.00,0,0,0,0,22,africageographic #22,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+wild african canine,I,9.9K,27,4.02,0,0,0,76,0,discoverafrica #76,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+wild dog,n/a,9.9K,32,3.65,0,0,0,34,0,discoverafrica #34,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+african forest elephant,I,8.1K,43,6.64,0,0,0,0,45,africageographic #45,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+african people,I,8.1K,42,0.00,0,0,0,0,32,africageographic #32,(skip: off-topic or low-intent),Excluded
+african safari packages,CI,8.1K,41,4.90,0,14,2,38,0,go2africa #2,/articles/top-10-safari-destinations-africa-2026,Safari hub
+black-footed cat,I,8.1K,43,1.43,0,0,0,0,13,africageographic #13,(skip: off-topic or low-intent),Excluded
+bongo animal,IT,8.1K,44,0.00,0,0,0,0,5,africageographic #5,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+capital of kenya,I,8.1K,36,0.00,0,0,0,0,23,africageographic #23,NEW: Kenya safari guide,Destination: Kenya
+kilimanjaro peak,IT,8.1K,46,1.06,0,0,0,5,0,discoverafrica #5,NEW: Climbing Kilimanjaro guide,Kilimanjaro
+kudu animal,I,8.1K,37,0.30,0,0,0,0,30,africageographic #30,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+lake tanganyika,IT,8.1K,20,0.00,0,0,22,0,0,go2africa #22,(deprioritised: geography encyclopedia),Geography encyclopedia
+maasai,I,8.1K,32,1.07,0,19,0,0,0,safaribookings #19,(deprioritised: geography encyclopedia),Geography encyclopedia
+serengeti-mara,N,8.1K,36,1.79,0,12,0,0,0,safaribookings #12,NEW: Masai Mara safari guide,Destination: Kenya
+sokoke,I,8.1K,40,0.00,0,0,0,0,8,africageographic #8,(skip: off-topic or low-intent),Excluded
+south africa in south africa,N,8.1K,26,0.08,0,0,3,0,0,go2africa #3,NEW: South Africa safari guide,Destination: South Africa
+south african currency,I,8.1K,46,0.00,0,0,0,15,0,discoverafrica #15,(skip: off-topic or low-intent),Excluded
+tortoise vs turtle,I,8.1K,23,0.75,0,0,0,0,1,africageographic #1,(skip: off-topic or low-intent),Excluded
+tour safari africa,CI,8.1K,41,4.90,0,7,2,0,0,go2africa #2,/articles/top-10-safari-destinations-africa-2026,Safari hub
+africa safari,C,6.6K,45,3.54,0,9,2,7,0,go2africa #2,/articles/top-10-safari-destinations-africa-2026,Safari hub
+african rock python,I,6.6K,39,0.00,0,9,0,0,0,safaribookings #9,(skip: off-topic or low-intent),Excluded
+african rock python snakes,IT,6.6K,38,0.00,0,5,0,0,0,safaribookings #5,(skip: off-topic or low-intent),Excluded
+african wild cat,IT,6.6K,17,0.00,0,0,0,0,9,africageographic #9,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+bongo antelope,I,6.6K,32,0.00,0,0,0,0,30,africageographic #30,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+cheetah where does it live,I,6.6K,40,4.02,0,0,0,0,26,africageographic #26,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+cities in africa,I,6.6K,38,0.94,0,12,0,40,0,safaribookings #12,(deprioritised: geography encyclopedia),Geography encyclopedia
+forest elephant,I,6.6K,42,6.64,0,0,0,0,22,africageographic #22,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+genet mammal,I,6.6K,27,0.00,0,0,0,0,6,africageographic #6,(skip: off-topic or low-intent),Excluded
+how many northern white rhinos are left,I,6.6K,43,5.60,0,0,0,40,0,discoverafrica #40,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+impala animal,I,6.6K,31,0.00,0,0,0,0,7,africageographic #7,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+is a turtle a reptile,I,6.6K,5,0.00,0,0,0,0,32,africageographic #32,(skip: off-topic or low-intent),Excluded
+lago malawi africa,IT,6.6K,27,1.41,0,0,0,0,17,africageographic #17,(deprioritised: geography encyclopedia),Geography encyclopedia
+lake malawi,IT,6.6K,33,1.41,0,0,0,0,3,africageographic #3,(deprioritised: geography encyclopedia),Geography encyclopedia
+madagascar animals,I,6.6K,32,1.11,0,25,0,0,0,safaribookings #25,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+namibia african,I,6.6K,49,0.86,0,0,0,7,0,discoverafrica #7,NEW: Namibia safari guide,Destination: Namibia
+ngorongoro crater,T,6.6K,47,1.98,0,0,8,31,0,go2africa #8,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania
+roan antelope,I,6.6K,26,0.00,0,0,0,0,54,africageographic #54,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+sa languages,I,6.6K,29,0.03,0,0,0,4,0,discoverafrica #4,(skip: off-topic or low-intent),Excluded

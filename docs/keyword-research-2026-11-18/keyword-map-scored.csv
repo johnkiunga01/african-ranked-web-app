@@ -1,0 +1,382 @@
+keyword,intent,volume_us,kd_pct,cpc_usd,source,maps_to,cluster,intent_fit,priority_score
+safari tours,C,60.5K,36,3.86,"gap-untapped,magic:safari",/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,2520.8
+zanzibar and,IT,40.5K,14,1.43,gap-untapped,NEW: Zanzibar guide,Beaches & islands,0.3,867.9
+afrika tanzania,IT,22.2K,19,1.94,gap-untapped,NEW: Tanzania safari guide,Destination: Tanzania,0.3,525.8
+african safari trip,IC,2.9K,7,5.09,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,435.0
+africa and namibia,I,22.2K,30,0.86,gap-untapped,NEW: Namibia safari guide,Destination: Namibia,0.3,333.0
+shoebill,I,90.5K,45,4.10,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,301.7
+african safari safari,C,9.9K,50,3.32,gap-untapped,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,297.0
+african safari packages,CI,8.1K,41,4.90,gap-untapped,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,296.3
+tour safari africa,CI,8.1K,41,4.90,"gap-untapped,magic:safari,magic:african safari",/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,296.3
+best time to visit morocco,C,4.4K,16,0.98,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,275.0
+mount kilimanjaro,IT,40.5K,50,0.77,gap-untapped,NEW: Climbing Kilimanjaro guide,Kilimanjaro,0.3,243.0
+caracal,IT,74K,50,4.42,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,222.0
+serval,IT,74K,50,7.56,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,222.0
+impala,n/a,60.5K,41,0.68,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,221.3
+africa safari,C,6.6K,45,3.54,gap-untapped,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,220.0
+african food,I,27.1K,39,0.82,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,208.5
+kruger safari africa,C,3.6K,28,3.13,"gap-missing,magic:african safari",NEW: Kruger National Park safari guide,Destination: South Africa,1.0,192.9
+afrika kenya,IT,14.8K,36,1.40,gap-untapped,NEW: Kenya safari guide,Destination: Kenya,0.3,185.0
+kenya great rift,IT,14.8K,37,1.03,gap-untapped,NEW: Kenya safari guide,Destination: Kenya,0.3,180.0
+secretary bird,IT,40.5K,34,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,178.7
+wildebeest,I,49.5K,42,0.34,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,176.8
+tipping in south africa safari,I,1.9K,13,0.14,magic:african safari,NEW: Safari tipping guide,Safari cost & planning,0.8,175.4
+nambia,IT,12.1K,32,0.89,gap-untapped,NEW: Namibia safari guide,Destination: Namibia,0.3,170.2
+south africa south african,IT,12.1K,32,0.00,gap-untapped,NEW: South Africa safari guide,Destination: South Africa,0.3,170.2
+fossa,IT,49.5K,47,0.18,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,158.0
+republic of namibia,IT,12.1K,35,0.86,gap-untapped,NEW: Namibia safari guide,Destination: Namibia,0.3,155.6
+kruger national park safari,C,4.4K,45,3.05,gap-missing,NEW: Kruger National Park safari guide,Destination: South Africa,1.0,146.7
+kenya safari,C,3.6K,37,2.96,gap-missing,NEW: Kenya safari guide,Destination: Kenya,1.0,145.9
+south african safari,C,2.9K,30,3.19,"gap-missing,magic:african safari",NEW: South Africa safari guide,Destination: South Africa,1.0,145.0
+warthog,IT,40.5K,42,1.61,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,144.6
+south africa safari,I,5.4K,46,3.19,"gap-missing,magic:african safari",NEW: South Africa safari guide,Destination: South Africa,0.8,140.9
+south africa in south africa,N,8.1K,26,0.08,gap-untapped,NEW: South Africa safari guide,Destination: South Africa,0.3,140.2
+south african food,C,5.4K,39,0.35,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,1.0,138.5
+dar es salaam,I,33.1K,36,0.91,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,137.9
+maasai mara,IT,12.1K,40,1.66,gap-untapped,NEW: Masai Mara safari guide,Destination: Kenya,0.3,136.1
+zanzibar a tanzania,n/a,14.8K,33,1.43,gap-untapped,NEW: Zanzibar guide,Beaches & islands,0.3,134.5
+safari of kenya,C,3.6K,43,2.88,gap-missing,NEW: Kenya safari guide,Destination: Kenya,1.0,125.6
+nairobi kenya,IT,12.1K,44,1.17,gap-untapped,NEW: Kenya safari guide,Destination: Kenya,0.3,123.8
+comoros,IT,27.1K,33,0.00,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,123.2
+cape town south,IT,12.1K,46,0.00,gap-untapped,NEW: South Africa safari guide,Destination: South Africa,0.3,118.4
+galago bush,IT,27.1K,35,2.48,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,116.1
+lake victoria,IT,27.1K,36,1.60,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,112.9
+african wild dog,I,33.1K,46,4.02,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,107.9
+south africa cape town and safari,I,880,7,2.17,magic:african safari,NEW: South Africa safari guide,Destination: South Africa,0.8,105.6
+sao tome and principe,IT,22.2K,32,0.56,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,104.1
+africa namib,I,9.9K,44,0.00,gap-untapped,NEW: Namibia safari guide,Destination: Namibia,0.3,101.2
+capital of kenya,I,8.1K,36,0.00,gap-untapped,NEW: Kenya safari guide,Destination: Kenya,0.3,101.2
+serengeti-mara,N,8.1K,36,1.79,gap-untapped,NEW: Masai Mara safari guide,Destination: Kenya,0.3,101.2
+eland,I,18.1K,27,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,100.6
+masai mara safari,n/a,3.6K,43,2.90,gap-missing,NEW: Masai Mara safari guide,Destination: Kenya,0.8,100.5
+oryx oryx,I,33.1K,50,0.82,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,99.3
+african safari cost,I,1.6K,20,1.99,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,96.0
+safari in africa tanzania,n/a,2.9K,37,4.26,magic:african safari,NEW: Tanzania safari guide,Destination: Tanzania,0.8,94.1
+african safari south africa,I,1.9K,25,3.07,magic:african safari,NEW: South Africa safari guide,Destination: South Africa,0.8,91.2
+namibia namibia,IT,9.9K,49,0.86,gap-untapped,NEW: Namibia safari guide,Destination: Namibia,0.3,90.9
+aardwolf,IT,27.1K,47,6.30,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,86.5
+northern white rhino,I,27.1K,48,3.22,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,84.7
+best beaches in africa,C,1.6K,20,0.87,magic:best beaches in africa,/articles/best-beaches-africa-ranked,Beaches & islands,1.0,80.0
+baobab tree,I,22.2K,42,0.13,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,79.3
+african penguin,IT,14.8K,28,5.60,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,79.3
+south africa safaris,C,1.9K,36,3.19,gap-missing,NEW: South Africa safari guide,Destination: South Africa,1.0,79.2
+best safari in africa,C,1.9K,36,4.19,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,79.2
+safaris kruger park south africa,C,2.4K,46,4.41,"gap-missing,magic:african safari",NEW: Kruger National Park safari guide,Destination: South Africa,1.0,78.3
+best time for african safari,C,720,14,2.57,magic:african safari,/articles/best-time-to-visit-african-safari-by-month,Safari timing,1.0,77.1
+stone town,IT,9.9K,39,0.91,gap-untapped,NEW: Zanzibar guide,Beaches & islands,0.3,76.2
+african elephant,I,22.2K,44,4.12,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,75.7
+south africa safari tour,C,1.3K,27,4.55,"gap-missing,magic:african safari",NEW: South Africa safari guide,Destination: South Africa,1.0,72.2
+safari tours in africa,C,1.9K,40,5.09,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,71.2
+african safari honeymoon,I,590,1,6.54,magic:african safari,NEW: African safari honeymoon,Safari styles,0.8,70.8
+gemsbok,I,12.1K,26,0.61,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,69.8
+lake natron,IT,12.1K,26,1.03,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,69.8
+south africa safari packages,I,1.0K,18,4.31,magic:african safari,NEW: South Africa safari guide,Destination: South Africa,0.8,66.7
+nigerian african food,I,6.6K,30,0.51,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,66.0
+african wildcat,I,14.8K,34,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,65.3
+black leopard,I,14.8K,34,2.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,65.3
+luxury african safari,C,1.6K,37,6.93,magic:african safari,NEW: Luxury African safaris,Safari styles,1.0,64.9
+african safari south,C,1.9K,44,2.99,gap-missing,NEW: South Africa safari guide,Destination: South Africa,1.0,64.8
+ngorongoro crater,T,6.6K,47,1.98,gap-untapped,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania,0.3,63.2
+south africa safari kruger park,C,1.6K,38,2.92,magic:african safari,NEW: Kruger National Park safari guide,Destination: South Africa,1.0,63.2
+west african food,I,8.1K,39,0.32,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,62.3
+lake tanganyika,IT,8.1K,20,0.00,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,60.8
+namibia african,I,6.6K,49,0.86,gap-untapped,NEW: Namibia safari guide,Destination: Namibia,0.3,60.6
+best african safari,C,1.0K,25,4.19,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,60.0
+kalahari desert,IT,18.1K,46,1.81,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,59.0
+travel insurance for african safari,C,590,15,10.96,magic:african safari,NEW: Travel insurance for an African safari,Safari cost & planning,1.0,59.0
+best place for safari in africa,C,390,10,3.16,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,58.5
+african wild cat,IT,6.6K,17,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,58.2
+zambia safari,I,1.3K,27,2.74,gap-missing,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe,0.8,57.8
+gorilla trekking rwanda,I,1.6K,34,0.00,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,0.8,56.5
+victoria falls zambia zimbabwe,C,1.6K,43,1.13,gap-missing,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe,1.0,55.8
+african lion,IT,14.8K,40,4.70,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,55.5
+elephants in african,IT,18.1K,49,5.49,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,55.4
+wild african canine,I,9.9K,27,4.02,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,55.0
+africa safari trip,I,1.6K,36,5.35,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.8,53.3
+kilimanjaro peak,IT,8.1K,46,1.06,gap-untapped,NEW: Climbing Kilimanjaro guide,Kilimanjaro,0.3,52.8
+african cuisine food,I,6.6K,38,0.82,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,52.1
+cost of african safari,I,590,14,1.43,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,50.6
+best african safari tours,C,1.3K,39,5.78,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,50.0
+best safaris in africa,C,1.0K,30,4.25,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,50.0
+best time to visit masai mara,C,590,18,1.43,magic:best time to visit masai mara,/articles/best-time-to-visit-masai-mara,Safari timing,1.0,49.2
+shoebill bird,IT,14.8K,46,0.34,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,48.3
+spotted hyena,IT,12.1K,38,4.93,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,47.8
+wild dog,n/a,9.9K,32,3.65,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,46.4
+african musical instruments,I,2.4K,16,0.56,magic:african music,/articles/traditional-african-instruments,Music,0.3,45.0
+african safari trips,I,1.3K,35,5.09,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.8,44.6
+how much is an african safari,I,590,16,2.21,"magic:african safari,magic:african safari",/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,44.2
+luxury safari africa,C,1.0K,34,6.93,magic:african safari,NEW: Luxury African safaris,Safari styles,1.0,44.1
+uganda gorilla trekking,I,1.0K,28,3.62,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,0.8,42.9
+safari in south africa,I,1.3K,37,3.07,magic:african safari,NEW: South Africa safari guide,Destination: South Africa,0.8,42.2
+striped hyena hyena,IT,9.9K,36,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,41.2
+gorilla trekking uganda,I,1.0K,30,3.62,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,0.8,40.0
+how much does an african safari cost,I,720,22,2.07,"magic:african safari,magic:african safari",/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,39.3
+african cities,I,9.9K,38,0.94,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,39.1
+congo basin,T,9.9K,38,8.74,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,39.1
+roan antelope,I,6.6K,26,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,38.1
+maasai,I,8.1K,32,1.07,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,38.0
+food in cameroon africa,I,2.4K,19,0.00,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,37.9
+fossa animal,IT,12.1K,48,0.18,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,37.8
+best african safaris,C,590,24,4.21,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,36.9
+luxury safari south africa,C,590,24,5.19,magic:african safari,NEW: Luxury African safaris,Safari styles,1.0,36.9
+best time to visit okavango delta,C,320,13,1.74,magic:best time to visit okavango,/articles/best-time-to-visit-okavango-delta,Safari timing,1.0,36.9
+lago malawi africa,IT,6.6K,27,1.41,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,36.7
+safaris in south africa,I,1K,34,2.88,"gap-missing,magic:african safari",NEW: South Africa safari guide,Destination: South Africa,0.8,35.3
+african luxury safari,C,880,38,6.10,"gap-missing,magic:african safari",NEW: Luxury African safaris,Safari styles,1.0,34.7
+african photo safari,I,720,25,4.16,magic:african safari,NEW: African photographic safaris,Safari styles,0.8,34.6
+safari trips south africa,I,720,25,4.55,magic:african safari,NEW: South Africa safari guide,Destination: South Africa,0.8,34.6
+grammy award for best african music performance,C,1.3K,38,0.00,magic:african music,NEW: African music genres explained,Music,1.0,34.2
+african safari kenya,C,880,39,2.91,magic:african safari,NEW: Kenya safari guide,Destination: Kenya,1.0,33.8
+kudu animal,I,8.1K,37,0.30,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,32.8
+best time to visit serengeti,C,480,22,2.28,magic:best time to visit serengeti,/articles/best-time-to-visit-serengeti,Safari timing,1.0,32.7
+best beach in africa,C,320,10,0.87,magic:best beaches in africa,/articles/best-beaches-africa-ranked,Beaches & islands,1.0,32.0
+impala animal,I,6.6K,31,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,31.9
+african music kenya,I,2.4K,34,0.00,magic:african music,NEW: Kenya safari guide,Destination: Kenya,0.3,31.8
+best time to visit kenya masai mara,C,210,10,1.43,magic:best time to visit masai mara,/articles/best-time-to-visit-masai-mara,Safari timing,1.0,31.5
+luxury african safaris,C,880,42,6.26,gap-missing,NEW: Luxury African safaris,Safari styles,1.0,31.4
+bongo antelope,I,6.6K,32,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,30.9
+madagascar animals,I,6.6K,32,1.11,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,30.9
+fufu african food,I,3.6K,35,0.63,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,30.9
+rwanda gorilla trekking,I,1.0K,39,3.99,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,0.8,30.8
+kruger safari,C,1K,49,4.41,gap-missing,NEW: Kruger National Park safari guide,Destination: South Africa,1.0,30.6
+african safari tour,IC,590,29,5.10,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,30.5
+best safari in south africa,C,590,29,4.26,magic:african safari,NEW: South Africa safari guide,Destination: South Africa,1.0,30.5
+lake malawi,IT,6.6K,33,1.41,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,30.0
+best time to visit masai mara national park,C,320,16,1.39,magic:best time to visit masai mara,/articles/best-time-to-visit-masai-mara,Safari timing,1.0,30.0
+african tours and safaris,C,720,37,5.35,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,29.2
+best african safari packages,C,720,37,5.53,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,29.2
+best african safari tour companies,C,720,37,9.34,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,29.2
+luxury south africa safari,C,590,31,5.19,magic:african safari,NEW: Luxury African safaris,Safari styles,1.0,28.5
+safari africa tour,C,590,31,5.09,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,28.5
+african foods,I,3.6K,38,0.82,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,28.4
+african music from kenya,I,2.4K,38,0.00,magic:african music,NEW: Kenya safari guide,Destination: Kenya,0.3,28.4
+african forest elephant,I,8.1K,43,6.64,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,28.3
+timbavati game reserve,C,590,32,2.13,gap-missing,NEW: Kruger National Park safari guide,Destination: South Africa,1.0,27.7
+african safari vacation packages,C,720,39,5.42,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,27.7
+bongo animal,IT,8.1K,44,0.00,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,27.6
+cities in africa,I,6.6K,38,0.94,gap-untapped,(deprioritised: geography encyclopedia),Geography encyclopedia,0.3,26.1
+what travel insurance should i get for african safari trip,I,320,15,0.00,magic:african safari,NEW: Travel insurance for an African safari,Safari cost & planning,0.8,25.6
+africa in december,CI,170,6,2.82,gap-missing,/articles/best-time-to-visit-african-safari-by-month,Safari timing,1.0,25.5
+all inclusive african safari,I,720,34,3.93,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.8,25.4
+best time to visit kruger national park,C,320,19,1.44,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,25.3
+victoria falls zambia,I,1.9K,34,1.08,gap-missing,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe,0.3,25.1
+cheetah where does it live,I,6.6K,40,4.02,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,24.8
+food in uganda africa,I,1.9K,23,0.00,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,24.8
+safari trips in africa,IC,590,36,5.10,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,24.6
+best african food,C,590,24,1.03,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,1.0,24.6
+south africa safari trip,I,590,29,4.31,"gap-missing,magic:african safari",NEW: South Africa safari guide,Destination: South Africa,0.8,24.4
+africa safari trip cost,I,590,29,2.36,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,24.4
+best time to visit serengeti national park,C,320,20,2.08,magic:best time to visit serengeti,/articles/best-time-to-visit-serengeti,Safari timing,1.0,24.0
+south africa food,I,2.4K,30,0.35,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,24.0
+africa safari tour,C,590,37,5.10,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,23.9
+forest elephant,I,6.6K,42,6.64,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,23.6
+africa tours and safari,C,590,38,5.10,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,23.3
+africa tours and safaris,C,590,38,5.10,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,23.3
+animal safari in africa,C,590,38,2.19,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,23.3
+how many northern white rhinos are left,I,6.6K,43,5.60,gap-untapped,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,23.0
+african safari botswana tours,I,720,38,5.98,magic:african safari,NEW: Botswana safari guide,Destination: Botswana,0.8,22.7
+african food recipes,I,1.9K,27,0.24,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,21.1
+south african foods,I,1.9K,27,0.35,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,21.1
+best food in africa,C,590,28,0.19,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,1.0,21.1
+best time to visit kruger national,C,210,15,1.44,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,21.0
+best time to visit kruger south africa,C,210,15,1.44,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,21.0
+best time of year to visit morocco,C,480,23,1.35,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,20.9
+when is the best time to visit morocco,C,480,23,0.76,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,20.9
+south african safaris,I,590,34,3.09,"gap-missing,magic:african safari",NEW: South Africa safari guide,Destination: South Africa,0.8,20.8
+mountain gorilla trekking rwanda,I,170,10,2.73,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,0.8,20.4
+gorilla trekking in uganda,I,390,23,3.19,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,0.8,20.3
+best safari in africa to see the big 5,C,170,13,4.11,gap-missing,/articles/big-five-parks-ranked-where-to-see-all-five,Wildlife,1.0,19.6
+walking safaris,C,170,13,2.28,gap-missing,NEW: Walking safaris in Africa,Safari styles,1.0,19.6
+luxury gorilla trekking rwanda,C,260,20,7.67,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,1.0,19.5
+morocco best time to visit,C,390,20,1.00,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,19.5
+photo safaris,I,480,30,2.90,gap-missing,NEW: African photographic safaris,Safari styles,0.8,19.2
+best beach resorts in south africa,C,210,11,2.94,magic:best beaches in africa,/articles/best-beaches-africa-ranked,Beaches & islands,1.0,19.1
+best time to visit africa serengeti,C,260,22,2.28,magic:best time to visit serengeti,/articles/best-time-to-visit-serengeti,Safari timing,1.0,17.7
+african music instruments,I,1.3K,22,0.56,magic:african music,/articles/traditional-african-instruments,Music,0.3,17.7
+how much is a safari in africa,I,320,22,2.25,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,17.5
+gorilla trekking in rwanda,I,480,34,0.00,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,0.8,16.9
+beach and safari vacations,I,140,7,0.00,gap-missing,NEW: Safari and beach combinations,Safari styles,0.8,16.8
+photography tours africa,I,140,4,5.79,gap-missing,NEW: African photographic safaris,Safari styles,0.8,16.8
+where to travel in africa for safari,I,260,19,2.28,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.8,16.4
+trip to safari south africa,I,590,44,4.30,gap-missing,NEW: South Africa safari guide,Destination: South Africa,0.8,16.1
+masai mara best time to visit,C,170,16,1.86,magic:best time to visit masai mara,/articles/best-time-to-visit-masai-mara,Safari timing,1.0,15.9
+best time to visit tanzania serengeti,C,210,20,2.28,magic:best time to visit serengeti,/articles/best-time-to-visit-serengeti,Safari timing,1.0,15.8
+how much does a 2 week african safari cost,I,260,20,1.78,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,15.6
+how much is a safari in south africa,I,140,11,1.82,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,15.3
+where to see lions in africa,CI,140,14,2.59,gap-missing,/articles/big-five-parks-ranked-where-to-see-all-five,Wildlife,1.0,15.0
+africa safari packages,I,480,39,5.09,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.8,14.8
+what to wear on african safari,I,210,17,0.29,magic:african safari,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,0.8,14.8
+best beaches in south africa,C,320,22,0.78,magic:best beaches in africa,/articles/best-beaches-africa-ranked,Beaches & islands,1.0,14.5
+mara masai,I,1.3K,41,1.55,gap-missing,NEW: Masai Mara safari guide,Destination: Kenya,0.3,14.3
+safari in victoria falls,C,210,22,2.85,gap-missing,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe,1.0,14.3
+uganda gorilla trekking tours,C,210,22,2.69,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,1.0,14.3
+hwange national park zimbabwe,I,880,28,1.51,gap-missing,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe,0.3,14.1
+best beach resorts in africa,C,140,5,1.60,magic:best beaches in africa,/articles/best-beaches-africa-ranked,Beaches & islands,1.0,14.0
+best walking safaris in africa,C,110,12,5.30,gap-missing,NEW: Walking safaris in Africa,Safari styles,1.0,13.8
+rwanda vs uganda gorilla trekking,C,110,12,1.52,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,1.0,13.8
+best times to visit morocco,C,260,19,0.98,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,13.7
+kenya africa music,IT,880,29,0.00,magic:african music,NEW: Kenya safari guide,Destination: Kenya,0.3,13.7
+top african music,IC,480,35,0.00,magic:african music,NEW: African music genres explained,Music,1.0,13.7
+safari and beach,I,170,15,3.10,gap-missing,NEW: Safari and beach combinations,Safari styles,0.8,13.6
+ghana african food,I,1.0K,22,1.13,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,13.6
+south africa in february,CI,90,9,2.86,gap-missing,/articles/best-time-to-visit-african-safari-by-month,Safari timing,1.0,13.5
+best time for safari,C,170,19,1.90,gap-missing,/articles/best-time-to-visit-african-safari-by-month,Safari timing,1.0,13.4
+african safari and beach vacation,I,110,7,5.36,gap-missing,NEW: Safari and beach combinations,Safari styles,0.8,13.2
+safari malawi africa,I,110,9,1.54,gap-missing,NEW: Malawi safari guide,Destination: other,0.8,13.2
+what to take on safari in south africa,I,110,2,0.41,"gap-missing,magic:african safari",/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,0.8,13.2
+gorilla trekking virunga national park,I,320,29,0.00,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,13.2
+are african safaris safe,I,110,7,1.96,magic:african safari,NEW: Is an African safari safe?,Safari cost & planning,0.8,13.2
+africa photography tours,C,140,16,4.87,gap-missing,NEW: African photographic safaris,Safari styles,1.0,13.1
+best time to visit kruger park,C,140,16,1.41,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,13.1
+photographic safaris,I,260,24,1.65,gap-missing,NEW: African photographic safaris,Safari styles,0.8,13.0
+what to pack for african safari,I,170,16,0.33,magic:african safari,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,0.8,12.8
+when is the best time to go on african safari,C,110,13,1.98,magic:african safari,/articles/best-time-to-visit-african-safari-by-month,Safari timing,1.0,12.7
+best beaches in cape town south africa,C,110,13,0.88,magic:best beaches in africa,NEW: South Africa safari guide,Destination: South Africa,1.0,12.7
+best time of year to go on safari,C,140,17,2.28,gap-missing,/articles/best-time-to-visit-african-safari-by-month,Safari timing,1.0,12.4
+best time to visit marrakech morocco,C,320,26,0.65,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,12.3
+best time to visit kruger,C,170,21,1.41,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,12.1
+congo gorilla trekking,I,110,11,2.43,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,12.0
+best time to visit masai mara national reserve,C,110,14,1.43,magic:best time to visit masai mara,/articles/best-time-to-visit-masai-mara,Safari timing,1.0,11.8
+best time to visit kruger national park in south africa,C,110,14,1.37,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,11.8
+africa kenya food,I,480,19,0.11,magic:african food,NEW: Kenya safari guide,Destination: Kenya,0.3,11.4
+african safari botswana,I,320,34,4.59,gap-missing,NEW: Botswana safari guide,Destination: Botswana,0.8,11.3
+what to wear on safari in south africa,I,140,15,0.33,magic:african safari,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,0.8,11.2
+gorilla trekking tours,I,260,28,3.86,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,11.1
+best time to visit the serengeti,C,140,19,2.52,magic:best time to visit serengeti,/articles/best-time-to-visit-serengeti,Safari timing,1.0,11.1
+masai mara national reserve best time to visit,C,110,15,1.86,magic:best time to visit masai mara,/articles/best-time-to-visit-masai-mara,Safari timing,1.0,11.0
+best time to visit botswana okavango delta,C,110,15,1.74,magic:best time to visit okavango,/articles/best-time-to-visit-okavango-delta,Safari timing,1.0,11.0
+walking safari africa,I,170,19,3.21,gap-missing,NEW: Walking safaris in Africa,Safari styles,0.8,10.7
+kevin hart gorilla trekking,I,210,24,0.00,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,10.5
+top music in africa,IC,390,37,0.00,magic:african music,NEW: African music genres explained,Music,1.0,10.5
+best time to visit okavango,C,90,13,2.19,gap-missing,/articles/best-time-to-visit-okavango-delta,Safari timing,1.0,10.4
+africa luxury safari,C,260,38,6.10,gap-missing,NEW: Luxury African safaris,Safari styles,1.0,10.3
+best time to visit safari,C,110,16,2.28,gap-missing,/articles/best-time-to-visit-african-safari-by-month,Safari timing,1.0,10.3
+safari victoria falls,C,110,16,2.85,gap-missing,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe,1.0,10.3
+african music tanzania,I,320,14,0.00,magic:african music,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania,0.3,10.3
+gorilla trekking rwanda volcanoes national park,C,170,25,2.01,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,1.0,10.2
+traditional african food,I,1.0K,30,0.24,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,10.0
+how much is an african safari trip,I,170,21,2.01,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,9.7
+best time to visit masai mara kenya,C,110,17,1.39,magic:best time to visit masai mara,/articles/best-time-to-visit-masai-mara,Safari timing,1.0,9.7
+best time to visit kruger park south africa,C,110,17,1.41,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,9.7
+masai mara kenya,IT,1K,47,1.84,gap-missing,NEW: Masai Mara safari guide,Destination: Kenya,0.3,9.6
+best time to visit kruger national park south africa,C,140,22,1.44,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,9.5
+african safari masai mara,I,320,41,2.67,gap-missing,NEW: Masai Mara safari guide,Destination: Kenya,0.8,9.4
+gorilla trekking volcanoes national park,I,170,22,2.01,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,0.8,9.3
+southern african music,I,590,29,0.00,magic:african music,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.3,9.2
+where to safari in africa,C,170,28,1.55,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,9.1
+best gorilla trekking tours,C,170,29,4.66,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,1.0,8.8
+gorilla trekking in bwindi,IC,140,24,3.39,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,1.0,8.8
+how much does a safari in africa cost,I,140,19,2.11,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,8.8
+what clothes to wear on african safari,I,110,15,0.29,magic:african safari,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning,0.8,8.8
+best time to visit morocco weather,C,140,16,0.41,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,8.8
+south africa best time to visit kruger national park,C,110,19,1.41,magic:best time to visit kruger,/articles/best-time-to-visit-kruger,Safari timing,1.0,8.7
+kwando,IN,880,47,3.62,gap-missing,NEW: Botswana safari guide,Destination: Botswana,0.3,8.4
+african photographic safari,I,140,20,4.77,gap-missing,NEW: African photographic safaris,Safari styles,0.8,8.4
+where to go in africa for a safari,IC,140,25,3.10,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,8.4
+best place to do a safari in africa,C,110,20,3.30,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,8.2
+foods of west africa,I,880,32,0.61,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,8.2
+top safaris in africa,C,140,26,4.18,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,8.1
+gorilla trekking permit,I,210,31,3.52,magic:gorilla trekking,/articles/gorilla-trekking-permit-cost-how-to-book,Gorilla trekking,0.8,8.1
+samburu national reserve safari,I,140,21,0.00,gap-missing,NEW: Kenya safari guide,Destination: Kenya,0.8,8.0
+safaris south africa,C,210,40,3.07,gap-missing,NEW: South Africa safari guide,Destination: South Africa,1.0,7.9
+bwindi gorilla trekking,I,170,26,3.56,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,0.8,7.8
+where is the best safari in africa,C,140,27,3.10,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,7.8
+safari southern africa,C,170,33,2.88,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,7.7
+east african food,I,1.0K,39,1.22,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,7.7
+how much would an african safari cost,I,140,22,2.07,magic:african safari,/articles/africa-safari-cost-by-destination,Safari cost & planning,0.8,7.6
+photo safaris africa,C,110,22,4.16,gap-missing,NEW: African photographic safaris,Safari styles,1.0,7.5
+where are safaris in africa,IC,140,28,1.60,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,7.5
+foods of north africa,I,590,24,0.00,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,7.4
+bwindi impenetrable national park gorilla trekking,I,140,23,3.39,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,0.8,7.3
+what to do in botswana,CI,110,23,1.07,gap-missing,NEW: Botswana safari guide,Destination: Botswana,1.0,7.2
+gorilla trekking africa,I,210,35,3.85,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,7.2
+african music artists,I,480,20,0.00,magic:african music,NEW: African music genres explained,Music,0.3,7.2
+traditional south african food,I,590,25,0.20,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,7.1
+samburu national park safari,I,140,24,0.00,gap-missing,NEW: Kenya safari guide,Destination: Kenya,0.8,7.0
+rwanda gorilla trekking tours,I,210,36,6.10,magic:gorilla trekking,NEW: Gorilla trekking in Rwanda,Gorilla trekking,0.8,7.0
+kwando africa,N,260,17,2.08,gap-missing,NEW: Botswana safari guide,Destination: Botswana,0.3,6.9
+south african music,I,720,32,0.00,magic:african music,NEW: African music genres explained,Music,0.3,6.8
+great migration safari packages,I,140,25,6.93,gap-missing,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania,0.8,6.7
+s africa safari,I,170,31,2.88,gap-missing,NEW: South Africa safari guide,Destination: South Africa,0.8,6.6
+south luangwa national park zambia safari,I,110,20,6.59,gap-missing,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe,0.8,6.6
+what is the best time to visit morocco,C,110,17,0.68,magic:best time to visit morocco,/articles/best-time-to-visit-morocco,Morocco & North Africa,1.0,6.5
+africa travel resource tipping on safari,I,90,17,0.00,gap-missing,NEW: Safari tipping guide,Safari cost & planning,0.8,6.4
+kenya african food,I,480,34,0.11,magic:african food,NEW: Kenya safari guide,Destination: Kenya,0.3,6.4
+best places for african safari,C,110,26,3.32,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,6.3
+southern africa safari,I,140,27,3.62,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.8,6.2
+best place in africa for safari,C,110,27,3.37,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,6.1
+stone town in zanzibar,I,720,36,0.86,gap-missing,NEW: Zanzibar guide,Beaches & islands,0.3,6.0
+what is gorilla trekking,I,110,22,0.55,"magic:gorilla trekking,magic:gorilla trekking",/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,6.0
+safari in south africa kruger national park,C,90,23,3.13,gap-missing,NEW: Kruger National Park safari guide,Destination: South Africa,1.0,5.9
+great migration safari tanzania,CI,110,29,8.63,gap-missing,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania,1.0,5.7
+safari walk,I,140,31,2.08,gap-missing,NEW: Walking safaris in Africa,Safari styles,0.8,5.4
+kruger park game reserve,I,480,41,1.80,gap-missing,NEW: Kruger National Park safari guide,Destination: South Africa,0.3,5.3
+safari in southern africa,C,90,26,2.88,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,1.0,5.2
+african traditional food,I,480,28,2.09,magic:african food,/articles/best-african-cuisines-ranked-2026,Food,0.3,5.1
+safari chobe national park botswana,C,110,34,3.54,gap-missing,NEW: Botswana safari guide,Destination: Botswana,1.0,4.9
+are there safaris in south africa,CI,70,22,2.13,gap-missing,NEW: South Africa safari guide,Destination: South Africa,1.0,4.8
+where to go on safari in africa,I,110,28,2.75,magic:african safari,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.8,4.7
+largest economy in africa,I,590,38,2.10,magic:largest economies in africa,/articles/largest-economies-in-africa,Economy,0.3,4.7
+mountain gorilla trekking uganda,I,110,29,1.55,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,0.8,4.6
+safari tour south africa,C,110,37,4.55,gap-missing,NEW: South Africa safari guide,Destination: South Africa,1.0,4.5
+photography safari in africa,C,90,30,4.16,gap-missing,NEW: African photographic safaris,Safari styles,1.0,4.5
+gorilla trekking safaris,I,140,37,4.88,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,4.5
+mountain gorilla trekking,I,140,37,2.79,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,4.5
+african music genres,I,390,26,0.00,magic:african music,NEW: African music genres explained,Music,0.3,4.5
+masaimara,IT,480,49,1.55,gap-missing,NEW: Masai Mara safari guide,Destination: Kenya,0.3,4.4
+african gospel music,I,480,33,4.07,magic:african music,NEW: African music genres explained,Music,0.3,4.4
+bwindi national park gorilla trekking,I,140,39,3.56,magic:gorilla trekking,NEW: Gorilla trekking in Uganda (Bwindi),Gorilla trekking,0.8,4.3
+gorilla safari africa,C,90,33,2.92,gap-missing,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,1.0,4.1
+gorilla trekking in africa,I,110,32,4.03,magic:gorilla trekking,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking,0.8,4.1
+african top music,I,480,35,0.00,magic:african music,NEW: African music genres explained,Music,0.3,4.1
+african music congo,I,480,36,0.00,magic:african music,NEW: African music genres explained,Music,0.3,4.0
+victoria falls in zambia,I,320,37,1.07,gap-missing,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe,0.3,3.9
+popular african music,I,480,38,0.00,magic:african music,NEW: African music genres explained,Music,0.3,3.8
+victoria falls attractions,I,140,17,0.56,gap-missing,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe,0.3,3.7
+african safari in south africa,I,110,37,3.07,gap-missing,NEW: South Africa safari guide,Destination: South Africa,0.8,3.6
+kenya laikipia,IT,110,15,1.87,gap-missing,NEW: Kenya safari guide,Destination: Kenya,0.3,3.3
+african bush camps safety protocols for families with young kids,I,70,8,0.00,gap-missing,NEW: Is an African safari safe?,Safari cost & planning,0.3,3.2
+grammy award for best african music performance winners,I,320,30,0.00,magic:african music,NEW: African music genres explained,Music,0.3,3.2
+liwonde national park,IT,260,41,1.92,gap-missing,NEW: Malawi safari guide,Destination: other,0.3,2.9
+best beach in south africa,I,110,14,1.09,magic:best beaches in africa,/articles/best-beaches-africa-ranked,Beaches & islands,0.3,2.4
+game reserve kruger,I,170,35,1.87,gap-missing,NEW: Kruger National Park safari guide,Destination: South Africa,0.3,2.2
+african safari tours south africa,C,70,50,4.31,gap-missing,NEW: South Africa safari guide,Destination: South Africa,1.0,2.1
+madikwe game,I,170,41,1.24,gap-missing,NEW: Kruger National Park safari guide,Destination: South Africa,0.3,1.9
+zimbabwe hwange,I,90,27,1.47,gap-missing,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe,0.3,1.5
+giraffes in africa,IT,210,23,1.06,gap-missing,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,1.4
+ngorongoro crater in tanzania,I,110,37,1.53,gap-missing,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania,0.3,1.3
+exotic animals from africa,I,110,14,0.00,gap-missing,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,1.2
+animals in east africa,I,140,20,0.00,gap-missing,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia,0.3,1.1
+masari mara,I,90,36,1.57,gap-missing,NEW: Masai Mara safari guide,Destination: Kenya,0.3,1.1
+african wildlife trip,I,90,39,3.59,gap-missing,/articles/top-10-safari-destinations-africa-2026,Safari hub,0.3,1.0
+local partner for african safaris,I,170,45,0.00,gap-missing,(skip: navigational/noise),Excluded,0.8,0
+zagat travel african safari,I,140,27,0.00,gap-missing,(skip: navigational/noise),Excluded,0.8,0
+lolebezi,I,90,22,1.34,gap-missing,(skip: navigational/noise),Excluded,0.3,0
+cape town afrique,I,40.5K,23,0.94,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+terrapin,T,33.1K,50,0.52,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+terrapins,I,27.1K,47,0.52,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+cites,I,22.2K,28,0.92,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+boland mountains leopard images,I,14.8K,20,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+g e n e t,I,14.8K,36,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+africa and people,I,12.1K,21,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+ostrich ostrich ostrich,I,12.1K,43,1.03,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+are turtles reptiles,I,9.9K,23,0.67,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+genets,IT,9.9K,39,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+honeybadger,IT,9.9K,46,1.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+african people,I,8.1K,42,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+black-footed cat,I,8.1K,43,1.43,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+sokoke,I,8.1K,40,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+south african currency,I,8.1K,46,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+tortoise vs turtle,I,8.1K,23,0.75,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+african rock python,I,6.6K,39,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+african rock python snakes,IT,6.6K,38,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+genet mammal,I,6.6K,27,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+is a turtle a reptile,I,6.6K,5,0.00,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+sa languages,I,6.6K,29,0.03,gap-untapped,(skip: off-topic or low-intent),Excluded,0.3,0
+african lion safari,N,3.6K,37,4.71,magic:african safari,(skip: US attraction / local),Excluded,0.8,0
+safari african restaurant,T,1.6K,36,1.02,magic:african safari,(skip: US attraction / local),Excluded,0.0,0
+african hunting safari,I,1.3K,12,0.44,magic:african safari,"(skip: hunting, off-brand)",Excluded,0.8,0
+african safari ohio,TN,1.0K,36,0.51,magic:african safari,(skip: US attraction / local),Excluded,0.0,0
+african safari hunt,I,720,19,0.42,magic:african safari,"(skip: hunting, off-brand)",Excluded,0.8,0
+how much is an african hunting safari,I,720,0,0.25,"magic:african safari,magic:african safari","(skip: hunting, off-brand)",Excluded,0.8,0
+african safari wildlife park tickets,I,590,20,0.53,magic:african safari,(skip: US attraction / local),Excluded,0.0,0
