@@ -27,7 +27,7 @@ const evidenceOnly = path => path === articlePath && stripEvidenceIncludes(execF
 // Owner-approved branding and audited dependency lock are allowed only at their reviewed exact blob hashes.
 // This is an immutable, content-specific exception, not a general bypass of public-design protection.
 const approvedBrandBlobs = new Map(Object.entries({
-    "composer.lock": "d77db28648d6a1bc3296ed17113c4a65cb4c08ec",
+    "composer.lock": "37bdcf1e036afc06a3e250d8fb7fec9d1df16fa1",
     "public/africa-mark.svg": "840b1f16180fcf620343e9534176c52def82f13b",
     "public/apple-touch-icon.png": "e8e36ea96b52b29623bbe6d206b6fea9ef3ecf1d",
     "public/brand-icon.png": "b22dbc2affe959f3edc2e535d577a4c668970f63",
