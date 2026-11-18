@@ -48,7 +48,41 @@
             // The normal website remains fully functional without service worker support.
         });
     }
+    const showLaunchSplash = () => {
+        const splash = document.querySelector('[data-pwa-launch]');
+        if (!splash || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Show once per standalone app session, never on ordinary mobile web
+        // visits. Native Android/iOS launch screens are OS-controlled.
+        try {
+            const key = 'ar.pwa.splash.session.v1';
+            if (sessionStorage.getItem(key)) return;
+            sessionStorage.setItem(key, 'shown');
+        } catch {
+            // Browsers may disable storage; a one-off launch remains harmless.
+        }
+
+        splash.hidden = false;
+        let dismissed = false;
+        const dismiss = () => {
+            if (dismissed) return;
+            dismissed = true;
+            splash.classList.add('is-leaving');
+            window.setTimeout(() => { splash.hidden = true; }, 180);
+        };
+
+        // The accent is decorative, not a fake progress indicator. Release
+        // the screen when the page finishes loading, with a strict timeout.
+        if (document.readyState === 'complete') {
+            window.setTimeout(dismiss, 520);
+        } else {
+            window.addEventListener('load', () => window.setTimeout(dismiss, 160), { once: true });
+        }
+        window.setTimeout(dismiss, 1600);
+    };
+
     if (installed()) {
+        showLaunchSplash();
         recordFirstOpen();
         return;
     }
