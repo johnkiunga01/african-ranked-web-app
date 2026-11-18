@@ -20,6 +20,11 @@ class SecurityHeaders
             $script .= ' https://www.googletagmanager.com';
             $connect .= ' https://www.google-analytics.com https://region1.google-analytics.com';
         }
+        if (filled(config('analytics.ahrefs_key'))) {
+            // Cookieless Ahrefs Web Analytics; allowed only when a key is configured.
+            $script .= ' https://analytics.ahrefs.com';
+            $connect .= ' https://analytics.ahrefs.com';
+        }
         if (app()->environment('local') && is_file(public_path('hot'))) {
             $url = trim(file_get_contents(public_path('hot')));
             $parts = parse_url($url);
