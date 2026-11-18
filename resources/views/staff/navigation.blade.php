@@ -25,7 +25,7 @@
         </a>
     </div>
     @php
-        $showAdditionalTools = request()->routeIs('staff.growth*', 'staff.users.*', 'staff.website.regions*', 'staff.website.settings*', 'staff.launch-readiness');
+        $showAdditionalTools = request()->routeIs('staff.growth*', 'staff.users.*', 'staff.website.regions*', 'staff.website.settings*', 'staff.launch-readiness', 'staff.pwa-installs');
     @endphp
     <details class="staff-more-tools" @if($showAdditionalTools) open @endif>
         <summary class="staff-more-trigger">
@@ -37,6 +37,7 @@
             <a class="staff-nav-link {{ request()->is('staff/growth/analytics') ? 'staff-nav-active' : '' }}" href="{{ route('staff.growth', 'analytics') }}">Analytics</a>
             <a class="staff-nav-link {{ request()->is('staff/growth/revenue') ? 'staff-nav-active' : '' }}" href="{{ route('staff.growth', 'revenue') }}">Revenue</a>
             <a class="staff-nav-link {{ request()->is('staff/growth/integrations') ? 'staff-nav-active' : '' }}" href="{{ route('staff.growth', 'integrations') }}">Integrations</a>
+            <a class="staff-nav-link {{ request()->routeIs('staff.pwa-installs') ? 'staff-nav-active' : '' }}" href="{{ route('staff.pwa-installs') }}">PWA installations</a>
             <a class="staff-nav-link {{ request()->routeIs('staff.website.regions*') ? 'staff-nav-active' : '' }}" href="{{ route('staff.website.regions') }}">Regional editions</a>
             <a class="staff-nav-link {{ request()->routeIs('staff.website.settings*') ? 'staff-nav-active' : '' }}" href="{{ route('staff.website.settings') }}">Site settings</a>
             <a class="staff-nav-link {{ request()->routeIs('staff.users.*') ? 'staff-nav-active' : '' }}" href="{{ route('staff.users.index') }}">Team</a>
