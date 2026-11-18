@@ -143,7 +143,12 @@ const approvedNovemberCleanup = new Map(Object.entries({
 }));
 const isApprovedNovemberCleanup = path => approvedNovemberCleanup.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], {encoding: 'utf8'}).trim() === approvedNovemberCleanup.get(path);
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path));
+// Owner-approved 18 November 2026: Ahrefs Web Analytics script tag in the public layout (PR #41).
+// Exact reviewed blob only; any other layout change stays protected.
+const approvedAhrefsLayout = path => path === 'resources/views/layouts/app.blade.php'
+    && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === 'fc38db407da1007f5298a1cf6c421bd365463453';
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path) && !approvedAhrefsLayout(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
