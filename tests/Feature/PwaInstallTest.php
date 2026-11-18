@@ -34,13 +34,13 @@ class PwaInstallTest extends TestCase
     {
         $this->get('/staff/login')->assertOk()->assertDontSee('data-pwa-launch', false);
         $this->assertStringContainsString('sessionStorage', file_get_contents(resource_path('js/pwa.js')));
-        $this->assertStringContainsString("if (installed())", file_get_contents(resource_path('js/pwa.js')));
-        $this->assertStringContainsString("prefers-reduced-motion: reduce", file_get_contents(resource_path('js/pwa.js')));
+        $this->assertStringContainsString('if (installed())', file_get_contents(resource_path('js/pwa.js')));
+        $this->assertStringContainsString('prefers-reduced-motion: reduce', file_get_contents(resource_path('js/pwa.js')));
     }
 
     public function test_icons_are_real_pngs_at_the_sizes_declared_in_the_manifest(): void
     {
-        if (! extension_loaded('gd')) {
+        if (!extension_loaded('gd')) {
             $this->markTestSkipped('GD extension required for icon resizing.');
         }
 
