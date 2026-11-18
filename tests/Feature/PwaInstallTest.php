@@ -15,6 +15,7 @@ class PwaInstallTest extends TestCase
     {
         $manifest = json_decode(file_get_contents(public_path('manifest.webmanifest')), true, 512, JSON_THROW_ON_ERROR);
         $this->assertSame('standalone', $manifest['display']);
+        $this->assertSame('#fbfaf7', $manifest['background_color']);
         $this->assertSame('/', $manifest['scope']);
         $this->assertSame(4, count($manifest['icons']));
         $this->assertFileExists(public_path('sw.js'));
@@ -22,8 +23,19 @@ class PwaInstallTest extends TestCase
         $response = $this->get('/')->assertOk()
             ->assertSee('rel="manifest"', false)
             ->assertSee('/manifest.webmanifest', false)
-            ->assertSee('data-pwa-open', false);
+            ->assertSee('data-pwa-open', false)
+            ->assertSee('data-pwa-launch', false)
+            ->assertSee('Explore Africa through rankings, culture &amp; stories', false)
+            ->assertSee('/africa-mark.svg?v=dotted-20261103', false);
         $this->assertStringContainsString('no-store', $response->headers->get('Cache-Control'));
+    }
+
+    public function test_public_launch_treatment_never_appears_in_staff_workspace(): void
+    {
+        $this->get('/staff/login')->assertOk()->assertDontSee('data-pwa-launch', false);
+        $this->assertStringContainsString('sessionStorage', file_get_contents(resource_path('js/pwa.js')));
+        $this->assertStringContainsString('if (installed())', file_get_contents(resource_path('js/pwa.js')));
+        $this->assertStringContainsString('prefers-reduced-motion: reduce', file_get_contents(resource_path('js/pwa.js')));
     }
 
     public function test_icons_are_real_pngs_at_the_sizes_declared_in_the_manifest(): void

@@ -160,7 +160,17 @@ const approvedPwaBlobs = new Map(Object.entries({
 const isApprovedPwaChange = path => approvedPwaBlobs.has(path)
     && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedPwaBlobs.get(path);
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path) && !approvedAhrefsLayout(path) && !isApprovedPwaChange(path));
+// Owner-approved African Ranked PWA splash refinement. Keep the exact
+// production brand mark untouched and permit only these reviewed public blobs.
+const approvedPwaLaunchBlobs = new Map(Object.entries({
+    "public/manifest.webmanifest": "1e8a59e181a92eeb3d3027742794f703850764c8",
+    "resources/views/partials/pwa-install.blade.php": "dff3546f8ebc6b9876a412c6dae89d203826293e",
+    "resources/views/partials/pwa-launch.blade.php": "a1a356990d7ec866a62ddc5913cdaedc5ba8eafd"
+}));
+const isApprovedPwaLaunch = path => approvedPwaLaunchBlobs.has(path)
+    && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedPwaLaunchBlobs.get(path);
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path) && !approvedAhrefsLayout(path) && !isApprovedPwaChange(path) && !isApprovedPwaLaunch(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
