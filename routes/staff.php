@@ -86,6 +86,7 @@ Route::prefix('staff')->name('staff.')->group(function () {
             return view('staff.launch-readiness', ['report' => $readiness->report()]);
         })->middleware('can:manage-staff')->name('launch-readiness');
         Route::get('growth/{section}', [GrowthController::class, 'index'])->middleware('can:manage-staff')->name('growth');
+        Route::post('growth/google-reports/refresh', [GrowthController::class, 'refreshGoogle'])->middleware(['can:manage-staff', 'throttle:6,1'])->name('google-reports.refresh');
         Route::put('growth-plans/{provider}', [GrowthController::class, 'update'])->middleware(['can:manage-staff', 'password.confirm'])->name('growth.update');
         Route::put('provider-credentials/{provider}', [ProviderCredentialController::class, 'update'])->middleware(['can:manage-staff', 'password.confirm', 'throttle:5,1'])->name('credentials.update');
         Route::delete('provider-credentials/{provider}', [ProviderCredentialController::class, 'destroy'])->middleware(['can:manage-staff', 'password.confirm', 'throttle:5,1'])->name('credentials.destroy');
