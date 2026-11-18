@@ -15,6 +15,7 @@ use App\Http\Controllers\Staff\GrowthController;
 use App\Http\Controllers\Staff\ProfileController;
 use App\Http\Controllers\Staff\PromotionController;
 use App\Http\Controllers\Staff\ProviderCredentialController;
+use App\Http\Controllers\Staff\PwaInstallController;
 use App\Http\Controllers\Staff\SearchIntegrationController;
 use App\Http\Controllers\Staff\SecurityController;
 use App\Http\Controllers\Staff\SeoFixController;
@@ -44,6 +45,7 @@ Route::prefix('staff')->name('staff.')->group(function () {
             Route::post('editorial-plan/import', [EditorialPlanController::class, 'commit'])->middleware(['password.confirm', 'throttle:6,1'])->name('editorial-plan.commit');
             Route::post('editorial-plan/{brief}/start', [EditorialPlanController::class, 'start'])->name('editorial-plan.start');
             Route::post('editorial-plan/{brief}/link', [EditorialPlanController::class, 'link'])->name('editorial-plan.link');
+            Route::get('pwa-installs', PwaInstallController::class)->name('pwa-installs');
             Route::get('website/homepage', [WebsiteController::class, 'homepage'])->name('website.homepage');
             Route::put('website/homepage', [WebsiteController::class, 'saveHomepage'])->name('website.homepage.save');
             Route::post('website/featured/{article}', [WebsiteController::class, 'feature'])->name('website.feature');
