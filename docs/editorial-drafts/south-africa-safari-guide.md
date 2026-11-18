@@ -1,6 +1,12 @@
 # South Africa Safari Guide: Best Parks, Costs and When to Go
 
 **Editorial status:** Private manuscript draft for author and reviewer; not published. Not
+
+> **Keyword update (Semrush US database, read 18 Nov 2026 via the Semrush connector; figures are monthly volume / keyword difficulty (KD).)**
+> - Confirmed: south africa safari — 5.4K / KD 40 (was 46 in the 17 Nov Semrush gap export). SERP: go2africa, SafariBookings, krugerpark.co.za, safari.com, Tauck, Wilderness Travel, Abercrombie & Kent.
+> - Added: best time to visit south africa for safari — 480 / KD 10 (the "When to go" H2 now uses this phrase); malaria free safari south africa — 110 / KD 2 (matches the malaria-free section).
+> - Questions added as FAQs: how much is a safari in south africa — 140; what to wear on safari in south africa — 140; what to take on safari in south africa — 110.
+
 ready for review until every `[VERIFY]` slot is filled from the named primary source.
 **Planned slug:** `south-africa-safari-guide`
 **Primary search query:** south africa safari (5.4K / KD 46, Semrush US, 17 Nov 2026)
@@ -58,7 +64,7 @@ and in many reserves vehicles may leave the road to follow animals under the res
 association's official site.] Expect higher nightly rates because guiding, meals and drives
 are usually included.
 
-### Malaria-free reserves
+### Malaria-free safari options in South Africa
 
 [VERIFY with NICD / National Department of Health before writing this section's claims.]
 Candidates to check: Madikwe Game Reserve and Pilanesberg National Park (North West), and the
@@ -97,7 +103,7 @@ visitors combine both: a few self-drive days in Kruger, then two or three nights
 lodge. Our guide to [self-drive safari destinations](/articles/best-self-drive-safari-destinations-africa)
 compares South Africa with other countries.
 
-## When to go
+## Best time to visit South Africa for a safari
 
 South Africa's main safari areas have dry winters and rainy summers. In winter, thinner
 vegetation and fewer water sources make animals easier to find; in summer the bush is green
@@ -148,6 +154,12 @@ For a broader comparison of operators and trip styles, read
 [How to plan an African safari](/articles/how-to-choose-an-african-safari).
 
 ## Frequently asked questions
+
+**How much is a safari in South Africa?**  
+It depends mainly on whether you self-drive in a national park or stay at an all-inclusive private lodge; see "What a South Africa safari costs" above. [VERIFY: any figure quoted.]
+
+**What should I wear on safari in South Africa?**  
+[VERIFY against the packing guide or an official park source before publishing.] See our [safari packing guide](/articles/safari-packing-etiquette-first-timer-guide).
 
 **Is Kruger good for a first safari?** Yes for most travellers: it has a wide range of
 accommodation, a large road network and the option of self-driving or guided drives.

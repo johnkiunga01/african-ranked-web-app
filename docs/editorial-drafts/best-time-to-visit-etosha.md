@@ -1,13 +1,22 @@
-# Best Time to Visit Etosha National Park: A Practical Month-by-Month Guide
+# Etosha National Park Safari Guide: When to Go, Where to Stay and How to Self-Drive
 
 **Status:** Editorial manuscript for CMS review — NOT published or independently fact-certified  
-**Target slug:** `best-time-to-visit-etosha`  
-**Target query:** best time to visit Etosha National Park  
+**Target slug:** `etosha-national-park-safari-guide` (was `best-time-to-visit-etosha`; unpublished, so the slug can change)  
+**Target query:** etosha national park / etosha safari (was: best time to visit Etosha National Park — only 20 searches/month)  
 **Format:** T2 guide, based on the saved African Ranked editorial master plan  
 **Research prepared:** 7 November 2026  
-**Proposed SEO title:** Best Time to Visit Etosha National Park: Season Guide  
-**Proposed meta description:** Compare Etosha's dry and rainy seasons, waterhole viewing, camp choices and practical travel trade-offs before choosing when to visit.  
+**Proposed SEO title:** Etosha National Park Guide: When to Go and Where to Stay (56)  
+**Proposed meta description:** Plan an Etosha National Park safari in Namibia: the best time to go, waterhole viewing, Okaukuejo, Halali and Namutoni camps, and self-drive tips. (146)  
 **Editorial handling:** Do not overwrite a current CMS revision or mark reviewed; use the author review workflow to compare and save a private revision. Confirm image licences and source access before publication.
+
+> **Keyword targeting (Semrush US database, read 18 Nov 2026 via the Semrush connector; figures are monthly volume / keyword difficulty (KD).)**
+> - **Re-angle:** the original target, *best time to visit etosha*, has **20 searches/month**. The park itself has far more demand, so this manuscript becomes the Etosha park guide, with timing as one section.
+> - **Primary:** etosha national park — 3.6K / KD 47; etosha national park namibia — 1.9K / KD 37.
+> - **Safari variants (lower KD — the realistic first wins):** etosha safari 170 / 13; etosha namibia safari 260 / 11; namibia etosha safari 260 / 18; namibia safari etosha 260 / 19; etosha safari namibia 320 / 23; etosha national park safari 390 / 50.
+> - **Questions (small but exact):** where is etosha national park — 40; how far is etosha from windhoek — 20; how many days in etosha national park — 20; how big is etosha national park — 20. Added as FAQ slots that must be filled from official sources.
+> - **SERP:** Tripadvisor, etoshanationalpark.org, lodge pages (Gondwana), Audley, Yellow Zebra and SafariBookings — operators and listings, few independent guides.
+> - **Body work needed (not done here):** add a short opening section "Where is Etosha and what makes it different" before the timing sections, using sourced facts only. Existing sections (waterholes, months, camps, self-drive, costs) already fit the new angle; rename "The short answer" lead to cover the park, not just timing.
+> - **Changes made:** H1, slug, target, SEO title/description and FAQ slots.
 
 Etosha is often recommended for dry-season game viewing, but “best” depends on what you want to see and how you want to travel. If you want to spend time at waterholes watching elephants, antelope and predators, the cooler, drier middle of the year offers a sensible starting point. If you prefer greener landscapes, birding and fewer expectations of concentrated waterhole activity, the rainy period may suit you better. Neither season guarantees particular sightings, and the dates should guide a decision rather than act as a promise.
 
@@ -98,6 +107,15 @@ If mammal-focused waterhole watching is your highest priority, shortlist the coo
 Before booking, verify dates, routes, entry charges, road conditions, park rules and resort terms with the relevant authorities. Use the [MEFT Etosha park profile](https://www.meft.gov.na/national-parks/etosha-national-park/217), [MEFT permit guidance](https://www.meft.gov.na/frequently-asked-questions/what-are-the-entry-permit-requirements-for-the-various-parks-in-namibia-/136/), and [NWR's Etosha resort overview](https://www.nwr.com.na/etosha-national-park/) as starting points. Record the date of each actual verification in the CMS rather than inheriting the date of this research draft.
 
 ## Frequently asked questions
+
+**Where is Etosha National Park?**  
+[VERIFY: location (region of Namibia) from Namibia Wildlife Resorts / MEFT.]
+
+**How many days do you need in Etosha?**  
+[VERIFY or base only on the manuscript's own camp-and-route discussion; do not state a fixed rule.]
+
+**How far is Etosha from Windhoek?**  
+[VERIFY: road distance to the nearest gate from an official or mapping source, dated.]
 
 **Is July a good month to visit Etosha?**  
 July falls within the commonly recommended cooler dry-season planning window for waterhole-focused wildlife watching. It can be attractive for travellers who prefer drier conditions, but wildlife encounters are never guaranteed. Accommodation demand and early-morning cold are also worth considering.

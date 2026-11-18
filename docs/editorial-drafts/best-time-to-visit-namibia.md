@@ -5,9 +5,16 @@
 **Primary search query:** best time to visit Namibia  
 **Plan template:** T2 Guide; master target 1,600 body words  
 **Research prepared:** 7 November 2026  
-**Suggested SEO title:** Best Time to Visit Namibia: A Season-by-Season Guide  
+**Suggested SEO title:** Best Time to Visit Namibia: Month-by-Month Guide (48)  
 **Suggested search description:** Find the best time for Namibia's Etosha wildlife, Sossusvlei dunes and Atlantic coast, with season trade-offs and practical itinerary advice.  
 **Verification:** Primary-source review prepared; no human `last_verified_at` claim, photo licence confirmation or permission to publish is implied.
+
+> **Keyword targeting (Semrush US database, read 18 Nov 2026 via the Semrush connector; figures are monthly volume / keyword difficulty (KD).)**
+> - **Primary:** best time to visit namibia — 1.6K / KD 15. Strong, low-difficulty target. Current top results are tour operators (Wilderness Travel, Intrepid, SafariBookings, Audley, Wayfairer, Trailfinders); an independent, primary-source guide is a credible alternative.
+> - **Close variants (use in H2s/intro):** best time to visit namibia africa 390 / 13; best time to travel to namibia 260 / 10; best time to go to namibia 210 / 12; best month to visit namibia 170 / 11; namibia weather 320 / 27.
+> - **Adjacent questions:** is namibia safe — 1.0K; is namibia a safe country — 170 / 26; what to do in namibia — 480. Answer "is Namibia safe" only from an official travel-advice source (see the FAQ slot added below); otherwise omit.
+> - **Cannibalisation:** the Etosha manuscript is being re-angled to the Etosha park guide (see that file). Keep this page's Etosha section short and link to the Etosha guide instead of duplicating it.
+> - **Changes made:** SEO title now says "Month-by-Month" to match the variants; month-by-month H2 renamed to include "best month to visit Namibia"; one FAQ slot added.
 
 The best time to visit Namibia depends on whether wildlife, desert landscapes, coastal towns or road travel is your main reason for going. For wildlife-focused trips, May to October is the dry-season window highlighted by Namibia's official tourism site. For photographers drawn to Sossusvlei and the Namib Desert, morning light, heat and time spent outdoors may matter more than a single nationwide “best month.” Coastal fog, cold desert nights and seasonal rain mean that a useful itinerary must distinguish regions rather than treat Namibia as one weather zone.
 
@@ -29,7 +36,7 @@ The Namib and Naukluft landscapes should also be understood as more than a weath
 
 For this reason, it is better to read national climate descriptions alongside destination-specific information. A single average temperature for Namibia is rarely the most useful number. The conditions that matter are the early-morning cold at your camp, midday heat on an exposed walking route, road status after recent rain, coastal visibility and the time it will take to reach a safe overnight stop.
 
-## Month-by-month: a decision guide rather than a promise
+## Best month to visit Namibia: a month-by-month decision guide
 
 **January and February:** These sit in Namibia's warm summer and rainy-season period. The landscape may be greener in areas receiving rainfall, and travellers interested in contrasting a desert itinerary with a more seasonal ecological picture may appreciate the timing. But rain is uneven, road conditions vary and heat management remains important. Avoid scheduling every day around a strict arrival time when you expect to drive long distances.
 
@@ -104,6 +111,9 @@ For wildlife-centred travel, start with May–October and refine according to th
 Before booking, recheck the tourism board's [climate](https://visitnamibia.com.na/climate/) and [travel FAQ](https://visitnamibia.com.na/faq/), the [MEFT park information](https://meft.gov.na/national-parks/namib-naukluft-park/224/), and current operator and camp notices. Record actual source-review dates in the CMS only after a human reviewer opens the relevant material. This manuscript does not create that attestation.
 
 ## Frequently asked questions
+
+**Is Namibia safe to visit?**  
+[VERIFY before publishing: answer only from current official travel advice (e.g. the US State Department or UK FCDO Namibia page), with the date checked. If not verified, delete this question.]
 
 **Which month is best for Etosha wildlife?**  
 The official tourism board identifies May to October as the principal dry-season wildlife-viewing period. Actual sightings depend on conditions and animal movement. Choose several full park days and a camp suited to the area you want to explore.

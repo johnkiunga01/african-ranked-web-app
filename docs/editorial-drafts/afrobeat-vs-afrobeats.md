@@ -5,9 +5,15 @@
 **Editorial template:** T3 Comparison; target 1,700 substantive body words  
 **Primary intent:** Understand Afrobeat versus Afrobeats, their history, sound and relationship  
 **Research prepared:** 7 November 2026  
-**Proposed SEO title:** Afrobeat vs Afrobeats: Origins, Sound and Key Differences  
-**Proposed search description:** Afrobeat and Afrobeats are related but distinct. Explore Fela Kuti's band-led Afrobeat, contemporary West African pop, their shared roots and differences.  
+**Proposed SEO title:** Afrobeat vs Afrobeats: What's the Difference? (45)  
+**Proposed search description:** What is Afrobeat and what is Afrobeats? Fela Kuti's band-led Afrobeat versus today's West African pop, and how their sound and history differ. (142)  
 **Status:** Private editorial manuscript — no CMS update, verification attestation or publication.
+
+> **Keyword targeting (Semrush US database, read 18 Nov 2026 via the Semrush connector; figures are monthly volume / keyword difficulty (KD).)**
+> - **Primary:** afrobeat vs afrobeats — 110 / KD 24. Low volume but exact intent; current top results are revolt.tv, bantunauts.com, Wikipedia, Reddit and small music blogs, so a sourced, well-structured comparison can compete.
+> - **Definition questions (put in FAQ and answer in the first 100 words):** what is afrobeat — 320; what is afrobeats — 320; what are afrobeats — 110; what is afrobeat music — 110; who created afrobeat — 50; is afrobeats a genre — 40.
+> - **Head terms (support, don't chase):** afrobeats 8.1K / KD 53; afrobeat 3.6K / KD 44; afrobeats artists 590 / KD 38. Too competitive for this page alone; use naturally in H2s and link to `/articles/top-african-musicians-2026`.
+> - **Changes made to this manuscript:** SEO title/description rewritten to lead with the two definition questions; two FAQ entries added whose answers restate the manuscript's own opening definitions (no new facts).
 
 Afrobeat and Afrobeats are not simply two spellings for the same music. **Afrobeat**, usually singular, refers to the band-led musical style pioneered in the late twentieth century by Nigerian musician and activist Fela Kuti, drawing together highlife, jazz, funk and African rhythmic traditions. **Afrobeats**, with an “s,” is a much broader label for contemporary African pop and its cross-border styles, shaped especially by Nigerian and Ghanaian artists and global diasporic audiences. The names overlap because modern artists can draw from Afrobeat, but using them interchangeably obscures two different musical histories.
 
@@ -92,6 +98,12 @@ Begin by listening to one extended Afrobeat performance and noting its instrumen
 If you are creating an Africa-focused article collection, the next logical destinations are an explainer on African music genres and the separate histories of Afrobeats and other traditions. Link to those pages only when their CMS revisions are published and verified. The purpose of this comparison is to give readers a careful starting point, not to pretend that two labels explain a continent's entire musical life.
 
 ## Frequently asked questions
+
+**What is Afrobeat?**  
+Afrobeat, usually singular, is the band-led style pioneered by Nigerian musician and activist Fela Kuti, drawing together highlife, jazz, funk and African rhythmic traditions.
+
+**What is Afrobeats?**  
+Afrobeats, with an "s", is a broader label for contemporary African pop and its cross-border styles, shaped especially by Nigerian and Ghanaian artists and diaspora audiences.
 
 **Did Fela Kuti invent Afrobeats?**  
 Fela Kuti is a pioneer of Afrobeat, singular. Afrobeats is the later, broader label associated with contemporary African pop, especially Nigerian and Ghanaian musical developments. The two are connected, but they are not the same genre or historical movement.
