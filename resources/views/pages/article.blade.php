@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
 @php
+    // Pexels serves resized images via the w= query parameter. Build a srcset so phones
+    // download a ~480-800px file instead of the 1400px original. Other hosts are left unchanged.
+    $pexelsSrcset = static function (?string $url): ?string {
+        if (! $url || ! str_starts_with($url, 'https://images.pexels.com/')) {
+            return null;
+        }
+        return collect([480, 800, 1200, 1400])
+            ->map(fn (int $w) => preg_replace('/([?&])w=\d+/', '${1}w='.$w, str_contains($url, 'w=') ? $url : $url.(str_contains($url, '?') ? '&' : '?').'w=1400').' '.$w.'w')
+            ->implode(', ');
+    };
+@endphp
+@php
     $readingSections = collect($article['body'] ?? [])->filter(fn ($block) => ($block['type'] ?? null) === 'heading');
     $moreTopics = $categories->filter(fn ($topic) => $topic['slug'] !== $category['slug'])->take(5);
 @endphp
@@ -40,7 +52,7 @@
             </header>
 
             <figure class="mt-7">
-                <img src="{{ $article['image'] }}" alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="aspect-[16/9] w-full rounded-2xl bg-stone-100 object-cover" data-image-fallback>
+                <img src="{{ $article['image'] }}" @if($heroSrcset = $pexelsSrcset($article['image'] ?? null)) srcset="{{ $heroSrcset }}" sizes="(min-width: 768px) 768px, 100vw" @endif alt="{{ ($article['imageAlt'] ?? null) ?: $article['title'] }}" width="1200" height="675" fetchpriority="high" class="aspect-[16/9] w-full rounded-2xl bg-stone-100 object-cover" data-image-fallback>
                 @if(!empty($article['imageCredit']))
                     <figcaption class="mt-2 text-xs leading-relaxed text-stone-500">{{ str_contains((string) $article['image'], '/editorial-art/') ? 'Original artwork' : 'Featured image' }}: {{ $article['imageCredit'] }}</figcaption>
                 @endif
@@ -82,7 +94,7 @@
                     @case('image')
                         @if(filter_var($block['url'] ?? '', FILTER_VALIDATE_URL) && parse_url($block['url'], PHP_URL_SCHEME) === 'https' && filled($block['alt'] ?? null))
                             <figure class="my-8 overflow-hidden rounded-2xl border border-stone-200 bg-stone-50">
-                                <img src="{{ $block['url'] }}" alt="{{ $block['alt'] }}" loading="lazy" decoding="async" @if(($block['layout'] ?? null) === 'infographic') width="600" height="750" class="h-auto w-full object-contain" @else class="aspect-[16/10] w-full object-cover" @endif>
+                                <img src="{{ $block['url'] }}" @if($blockSrcset = $pexelsSrcset($block['url'])) srcset="{{ $blockSrcset }}" sizes="(min-width: 768px) 768px, 100vw" @endif alt="{{ $block['alt'] }}" loading="lazy" decoding="async" @if(($block['layout'] ?? null) === 'infographic') width="600" height="750" class="h-auto w-full object-contain" @else class="aspect-[16/10] w-full object-cover" @endif>
                                 @if(filled($block['caption'] ?? null) || filled($block['credit'] ?? null))
                                     <figcaption class="px-4 py-3 text-xs leading-relaxed text-stone-600 sm:text-sm">
                                         @if(filled($block['caption'] ?? null))<span>{{ $block['caption'] }}</span>@endif
