@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(scripts/check-public-design.mjs)",
+      "Bash(composer audit)",
+      "Bash(php artisan test)",
+      "Bash(vendor/bin/pint --test)",
+      "Bash(npm audit:*)"
+    ]
+  }
+}

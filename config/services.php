@@ -3,6 +3,14 @@
 return [
     'gemini' => ['key' => env('GEMINI_API_KEY'), 'model' => env('GEMINI_SEO_MODEL', 'gemini-3.5-flash-lite')],
     'openai' => ['key' => env('OPENAI_API_KEY'), 'article_model' => env('OPENAI_ARTICLE_MODEL', 'gpt-5-mini')],
+    // Read-only Google reporting (GA4 Data API, Search Console API) via a service account.
+    // GOOGLE_SERVICE_ACCOUNT_JSON may be raw JSON or base64-encoded JSON. Never commit it.
+    'google_reports' => [
+        'credentials' => env('GOOGLE_SERVICE_ACCOUNT_JSON'),
+        'ga4_property_id' => env('GA4_PROPERTY_ID'),
+        'search_console_site' => env('SEARCH_CONSOLE_SITE_URL'),
+        'cache_minutes' => (int) env('GOOGLE_REPORTS_CACHE_MINUTES', 60),
+    ],
     'openseo' => ['key' => env('OPENSEO_API_KEY'), 'project_id' => env('OPENSEO_PROJECT_ID', '61feee07-a792-4ac8-a675-bf4aa842c222'), 'location_code' => (int) env('OPENSEO_LOCATION_CODE', 2840)],
 
     /*
