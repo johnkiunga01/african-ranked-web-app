@@ -89,6 +89,9 @@ class PublishingTest extends TestCase
                 $schema = collect($graph)->firstWhere('@type', 'Article');
                 $this->assertSame($article['title'], $schema['headline']);
                 $this->assertSame($article['dateModified'], $schema['dateModified']);
+                $publisher = collect($graph)->firstWhere('@id', $schema['publisher']['@id']);
+                $this->assertSame($catalog->url('/brand-icon.png'), $publisher['logo']['url']);
+                $this->assertFileExists(public_path('brand-icon.png'));
                 $crumbs = collect($graph)->firstWhere('@type', 'BreadcrumbList');
                 $this->assertStringNotContainsString('/'.$region.'/'.$region.'/', json_encode($crumbs));
                 foreach ($article['faqs'] ?? [] as $faq) {
