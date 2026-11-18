@@ -1,0 +1,74 @@
+diff --git a/config/analytics.php b/config/analytics.php
+--- a/config/analytics.php
++++ b/config/analytics.php
+@@ -8,4 +8,6 @@ return [
+         && (bool) env('GA4_PRIVACY_NOTICE_APPROVED', false)
+         && preg_match('/^G-[A-Z0-9]{5,20}$/D', $measurementId) === 1,
+     'measurement_id' => $measurementId,
++    // Ahrefs Web Analytics (cookieless). Empty disables the script and its CSP allowance.
++    'ahrefs_key' => trim((string) env('AHREFS_ANALYTICS_KEY', '')),
+ ];
+diff --git a/app/Http/Middleware/SecurityHeaders.php b/app/Http/Middleware/SecurityHeaders.php
+--- a/app/Http/Middleware/SecurityHeaders.php
++++ b/app/Http/Middleware/SecurityHeaders.php
+@@ -21,6 +21,11 @@ class SecurityHeaders
+             $script .= ' https://www.googletagmanager.com';
+             $connect .= ' https://www.google-analytics.com https://region1.google-analytics.com';
+         }
++        if (filled(config('analytics.ahrefs_key'))) {
++            // Cookieless Ahrefs Web Analytics; allowed only when a key is configured.
++            $script .= ' https://analytics.ahrefs.com';
++            $connect .= ' https://analytics.ahrefs.com';
++        }
+         if (app()->environment('local') && is_file(public_path('hot'))) {
+             $url = trim(file_get_contents(public_path('hot')));
+             $parts = parse_url($url);
+diff --git a/resources/views/layouts/app.blade.php b/resources/views/layouts/app.blade.php
+--- a/resources/views/layouts/app.blade.php
++++ b/resources/views/layouts/app.blade.php
+@@ -39,6 +39,9 @@
+     <script type="application/ld+json" nonce="{{ request()->attributes->get('csp_nonce') }}">{!! json_encode($seo['jsonLd'], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) !!}</script>
+     @endif
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
++    @if(filled(config('analytics.ahrefs_key')) && ! config('seo.preview') && ! config('review.enabled'))
++    <script src="https://analytics.ahrefs.com/analytics.js" data-key="{{ config('analytics.ahrefs_key') }}" async></script>
++    @endif
+ </head>
+ <body class="min-h-screen bg-stone-50 font-sans text-stone-900 antialiased">
+     <a href="#main-content" class="sr-only z-50 rounded bg-amber-400 p-3 font-semibold text-stone-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
+diff --git a/tests/Feature/AhrefsAnalyticsTest.php b/tests/Feature/AhrefsAnalyticsTest.php
+new file mode 100644
+--- /dev/null
++++ b/tests/Feature/AhrefsAnalyticsTest.php
+@@ -0,0 +1,31 @@
++<?php
++
++namespace Tests\Feature;
++
++use Tests\TestCase;
++
++class AhrefsAnalyticsTest extends TestCase
++{
++    public function test_ahrefs_script_and_csp_are_absent_without_a_key(): void
++    {
++        config(['analytics.ahrefs_key' => '']);
++
++        $response = $this->get('/')->assertOk()->assertDontSee('analytics.ahrefs.com', false);
++        $this->assertStringNotContainsString('analytics.ahrefs.com', $response->headers->get('Content-Security-Policy'));
++    }
++
++    public function test_ahrefs_script_loads_with_key_and_scoped_csp(): void
++    {
++        config(['analytics.ahrefs_key' => 'TEST-KEY-123']);
++
++        $response = $this->get('/')->assertOk()
++            ->assertSee('<script src="https://analytics.ahrefs.com/analytics.js" data-key="TEST-KEY-123" async></script>', false);
++
++        $csp = $response->headers->get('Content-Security-Policy');
++        preg_match('/(?:^|;)\s*script-src\s+([^;]+)/', $csp, $script);
++        preg_match('/(?:^|;)\s*connect-src\s+([^;]+)/', $csp, $connect);
++        $this->assertStringContainsString('https://analytics.ahrefs.com', $script[1]);
++        $this->assertStringContainsString('https://analytics.ahrefs.com', $connect[1]);
++        $this->assertStringNotContainsString("'unsafe-inline'", $script[1]);
++    }
++}
