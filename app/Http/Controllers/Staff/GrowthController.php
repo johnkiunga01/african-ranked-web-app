@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Staff;
 use App\Http\Controllers\Controller;
 use App\Models\AuditEvent;
 use App\Models\GrowthPlan;
+use App\Services\GoogleReports;
 use App\Services\GrowthOverview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,11 +14,25 @@ use Illuminate\Validation\ValidationException;
 
 class GrowthController extends Controller
 {
-    public function index(string $section, GrowthOverview $overview)
+    public function index(string $section, GrowthOverview $overview, GoogleReports $google)
     {
         abort_unless(in_array($section, ['seo', 'analytics', 'revenue', 'integrations'], true), 404);
+        $reports = [
+            'ga4' => $section === 'analytics' ? $google->analytics() : null,
+            'gsc' => $section === 'seo' ? $google->searchConsole() : null,
+            'googleEmail' => $google->serviceAccountEmail(),
+        ];
 
-        return view('staff.growth', ['section' => $section] + $overview->data());
+        return view('staff.growth', ['section' => $section] + $reports + $overview->data());
+    }
+
+    public function refreshGoogle(Request $request, GoogleReports $google)
+    {
+        $section = $request->validate(['section' => ['required', Rule::in(['seo', 'analytics'])]])['section'];
+        $google->forget();
+        AuditEvent::record($request->user(), 'growth.google_reports_refreshed', $request->user(), ['section' => $section]);
+
+        return redirect()->route('staff.growth', $section)->with('status', 'Reports refreshed from Google.');
     }
 
     public function update(Request $request, string $provider)

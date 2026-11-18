@@ -1,0 +1,1 @@
+<form action="{{ route('staff.google-reports.refresh') }}" method="POST" class="inline">@csrf<input type="hidden" name="section" value="{{ $section }}"><button type="submit" class="staff-secondary text-sm">Refresh from Google</button></form>
