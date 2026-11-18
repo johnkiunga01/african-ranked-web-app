@@ -1,4 +1,5 @@
 {{-- Opt-in install interface, visible only on supported mobile browsers via pwa.js. --}}
+@include('partials.pwa-launch')
 <div data-pwa-root>
     <button type="button" data-pwa-open hidden
         class="fixed bottom-5 right-4 z-[60] inline-flex min-h-11 items-center gap-2 rounded-full border border-amber-300 bg-[#171c20] px-4 py-2 text-xs font-extrabold text-white shadow-xl shadow-black/20 transition hover:bg-stone-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 sm:right-6">
