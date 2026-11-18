@@ -75,7 +75,9 @@ class GoogleReportsTest extends TestCase
             'oauth2.googleapis.com/*' => Http::response(['access_token' => 'test-token']),
             'www.googleapis.com/webmasters/*' => function ($request) {
                 $dim = $request['dimensions'][0] ?? null;
-                $key = match ($dim) { 'query' => 'best safari in africa', 'page' => 'https://africanranked.com/articles/top-10-safari-destinations-africa-2026', 'date' => '2026-11-01', default => null };
+                $key = match ($dim) {
+                    'query' => 'best safari in africa', 'page' => 'https://africanranked.com/articles/top-10-safari-destinations-africa-2026', 'date' => '2026-11-01', default => null
+                };
 
                 return Http::response(['rows' => [['keys' => $key ? [$key] : [], 'clicks' => 30, 'impressions' => 900, 'ctr' => 0.0333, 'position' => 14.2]]]);
             },
