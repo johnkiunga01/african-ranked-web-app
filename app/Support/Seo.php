@@ -74,7 +74,11 @@ class Seo
             }
             $alternates[] = ['locale' => 'x-default', 'url' => $c->url($suffix ?: '/')];
         }
-        $organization = ['@type' => 'Organization', '@id' => $c->url().'/#organization', 'name' => $siteName, 'url' => $c->url()];
+        $organization = [
+            '@type' => 'Organization', '@id' => $c->url().'/#organization', 'name' => $siteName, 'url' => $c->url(),
+            // Publisher logo for Article rich results; the file is the site's own brand icon.
+            'logo' => ['@type' => 'ImageObject', 'url' => $c->url('/brand-icon.png'), 'width' => 192, 'height' => 192],
+        ];
         $schemas = [
             $organization,
             ['@type' => 'WebSite', '@id' => $c->url().'/#website', 'name' => $siteName, 'url' => $c->url(), 'publisher' => ['@id' => $organization['@id']], 'inLanguage' => 'en'],
