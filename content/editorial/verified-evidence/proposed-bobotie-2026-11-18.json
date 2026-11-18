@@ -1,0 +1,71 @@
+{
+  "answer": "Bobotie is a South African baked dish of seasoned minced meat, often flavoured with curry spices, sometimes fruit or chutney, and topped with a mixture of eggs and milk. It is associated with Cape food traditions and is commonly served with rice. Its historical influences are debated, so no single origin story should be treated as settled fact.",
+  "content_type": "guide",
+  "last_verified_at": "2026-11-18",
+  "image_rights": "No image selected. Verify accurate dish depiction, photographer, licence and alt before CMS submission.",
+  "methodology": "Original synthesis of five sources opened 2026-11-18, with caution on disputed origin stories. No recipe testing. Semrush UK primary query bobotie recipe 2,400, 12-point indexed +25.6%, MoM +25.6%; low competitive opportunity versus major publishers.",
+  "facts": [
+    {
+      "fact": "The Dictionary of South African English defines bobotie as curried minced meat with a savoury custard topping.",
+      "source_url": "https://dsae.co.za/entry/bobotie/e00925",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "The dictionary documents differing historical spellings and written attestations of the term.",
+      "source_url": "https://dsae.co.za/entry/bobotie/e00925",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "BBC Good Food describes a South African spiced meat-and-fruit bake with a golden topping.",
+      "source_url": "https://www.bbcgoodfood.com/recipes/bobotie",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "South African Tourism includes bobotie among foods associated with Cape Malay culinary influences.",
+      "source_url": "https://www.southafrica.net/za/en/travel/article/ceremonies-and-traditions-food-of-south-africa/1000",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "TASTE South Africa publishes a bobotie recipe as one modern South African home interpretation.",
+      "source_url": "https://taste.co.za/recipes/bobotie/",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "The Guardian published Thomasina Miers' family bobotie recipe on 21 October 2019.",
+      "source_url": "https://www.theguardian.com/food/2019/oct/21/a-south-african-shepherds-pie-thomasina-miers-family-recipe-for-bobotie",
+      "verified_at": "2026-11-18"
+    }
+  ],
+  "sources": [
+    {
+      "title": "bobotie",
+      "publisher": "Dictionary of South African English",
+      "url": "https://dsae.co.za/entry/bobotie/e00925",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Bobotie",
+      "publisher": "BBC Good Food / Sara Buenfeld",
+      "url": "https://www.bbcgoodfood.com/recipes/bobotie",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "The South African melting pot",
+      "publisher": "South African Tourism",
+      "url": "https://www.southafrica.net/za/en/travel/article/ceremonies-and-traditions-food-of-south-africa/1000",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Bobotie",
+      "publisher": "TASTE South Africa",
+      "url": "https://taste.co.za/recipes/bobotie/",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "A South African shepherd's pie: Thomasina Miers' family recipe for bobotie",
+      "publisher": "The Guardian / Thomasina Miers",
+      "url": "https://www.theguardian.com/food/2019/oct/21/a-south-african-shepherds-pie-thomasina-miers-family-recipe-for-bobotie",
+      "accessed_at": "2026-11-18"
+    }
+  ]
+}

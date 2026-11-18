@@ -1,0 +1,71 @@
+{
+  "answer": "Suya is a Nigerian grilled-meat dish associated especially with Hausa food traditions in northern Nigeria. Thin pieces of meat are coated with yaji, a spicy dry seasoning often made with groundnut cake, chilli and other aromatics, then grilled over high heat. It is commonly served with onions, tomatoes and extra seasoning.",
+  "content_type": "guide",
+  "last_verified_at": "2026-11-18",
+  "image_rights": "No image selected. Verify photographer, accurate dish depiction, licence and alt before CMS submission.",
+  "methodology": "Original editorial synthesis of five opened sources, including a scholarly PDF whose relevant table was visually inspected on 2026-11-18; no kitchen testing. Semrush UK suya primary keyword volume 6,600 and 12-month indexed growth +50%.",
+  "facts": [
+    {
+      "fact": "A 2023 peer-reviewed review identifies suya or tsire-suya as originating in northern Nigeria and now found across the country.",
+      "source_url": "https://www.food.actapol.net/pub/6_3_2023.pdf",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "The 2023 review describes yaji-kuli-kuli and charcoal grilling as characteristic parts of suya.",
+      "source_url": "https://www.food.actapol.net/pub/6_3_2023.pdf",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "The Washington Post's 30 September 2021 article describes groundnut-based yaji on thin meat skewers.",
+      "source_url": "https://www.washingtonpost.com/food/2021/09/30/suya-nigerian-recipe-skewers/",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "The Guardian published a UK-focused suya cultural feature on 13 November 2022.",
+      "source_url": "https://www.theguardian.com/food/2022/nov/13/i-think-of-suya-and-im-on-a-lagos-beach-with-mum-celebrating-nigerias-spice-dish",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "Immaculate Bites published a 2022 oven/grill adaptation of suya.",
+      "source_url": "https://www.africanbites.com/suyaspicy-grilled-kebab/",
+      "verified_at": "2026-11-18"
+    },
+    {
+      "fact": "Serious Eats has a Nigerian beef suya recipe describing a seasoned grilled-skewer preparation.",
+      "source_url": "https://www.seriouseats.com/nigerian-beef-suya",
+      "verified_at": "2026-11-18"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Nigerian Beef Suya (Spiced Grilled Skewers)",
+      "publisher": "Serious Eats / Ozoz Sokoh",
+      "url": "https://www.seriouseats.com/nigerian-beef-suya",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Smoky, spicy, nutty suya is a Nigerian street food staple",
+      "publisher": "The Washington Post / G. Daniela Galarza",
+      "url": "https://www.washingtonpost.com/food/2021/09/30/suya-nigerian-recipe-skewers/",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Celebrating Nigeria's spice dish",
+      "publisher": "The Guardian / Jimi Famurewa",
+      "url": "https://www.theguardian.com/food/2022/nov/13/i-think-of-suya-and-im-on-a-lagos-beach-with-mum-celebrating-nigerias-spice-dish",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "Suya Recipe",
+      "publisher": "Immaculate Bites / Imma Adamu",
+      "url": "https://www.africanbites.com/suyaspicy-grilled-kebab/",
+      "accessed_at": "2026-11-18"
+    },
+    {
+      "title": "The Nigerian meat industry: an overview of products, market, fraud situations, and potential ways out",
+      "publisher": "Acta Scientiarum Polonorum Technologia Alimentaria / Adenuga and Montowska",
+      "url": "https://www.food.actapol.net/pub/6_3_2023.pdf",
+      "accessed_at": "2026-11-18"
+    }
+  ]
+}
