@@ -7,6 +7,7 @@ use App\Services\SiteSettings;
 use App\Support\Catalog;
 use App\Support\Seo;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -43,9 +44,12 @@ class PageController extends Controller
         return redirect('/'.ltrim(substr($request->path(), strlen('global')), '/'), 301);
     }
 
-    public function home(?string $region = null): View
+    public function home(?string $region = null): Response
     {
-        return $this->render('home', $region, ['articles' => $this->catalog->homepageArticles($region ?? 'global')]);
+        // Homepage copy and featured stories are database-managed in the staff CMS.
+        // Do not let an intermediary or a home-screen web app serve obsolete HTML.
+        return response($this->render('home', $region, ['articles' => $this->catalog->homepageArticles($region ?? 'global')]))
+            ->header('Cache-Control', 'no-store, max-age=0');
     }
 
     public function rankings(Request $request, ?string $region = null): View
