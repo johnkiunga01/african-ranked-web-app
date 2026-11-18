@@ -1,0 +1,101 @@
+keyword,intent,volume_us,kd_pct,cpc_usd,pos_africanranked,pos_safaribookings,pos_go2africa,pos_discoverafrica,pos_africageographic,best_competitor,maps_to,cluster
+south africa safari,I,5.4K,46,3.19,0,6,5,12,62,go2africa #5,NEW: South Africa safari guide,Destination: South Africa
+kruger national park safari,C,4.4K,45,3.05,0,2,63,17,18,safaribookings #2,NEW: Kruger National Park safari guide,Destination: South Africa
+kenya safari,C,3.6K,37,2.96,0,1,6,65,15,safaribookings #1,NEW: Kenya safari guide,Destination: Kenya
+kruger safari africa,C,3.6K,28,3.13,0,17,79,7,2,africageographic #2,NEW: Kruger National Park safari guide,Destination: South Africa
+masai mara safari,n/a,3.6K,43,2.90,0,6,5,36,14,go2africa #5,NEW: Masai Mara safari guide,Destination: Kenya
+safari of kenya,C,3.6K,43,2.88,0,1,5,43,27,safaribookings #1,NEW: Kenya safari guide,Destination: Kenya
+south african safari,C,2.9K,30,3.19,0,3,5,40,26,safaribookings #3,NEW: South Africa safari guide,Destination: South Africa
+safaris kruger park south africa,C,2.4K,46,4.41,0,34,64,37,7,africageographic #7,NEW: Kruger National Park safari guide,Destination: South Africa
+african safari south,C,1.9K,44,2.99,0,3,1,4,34,go2africa #1,NEW: South Africa safari guide,Destination: South Africa
+south africa safaris,C,1.9K,36,3.19,0,17,23,60,49,safaribookings #17,NEW: South Africa safari guide,Destination: South Africa
+victoria falls zambia,I,1.9K,34,1.08,0,26,16,25,8,africageographic #8,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe
+victoria falls zambia zimbabwe,C,1.6K,43,1.13,0,17,3,16,46,go2africa #3,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe
+mara masai,I,1.3K,41,1.55,0,17,12,10,8,africageographic #8,NEW: Masai Mara safari guide,Destination: Kenya
+south africa safari tour,C,1.3K,27,4.55,0,5,26,17,13,safaribookings #5,NEW: South Africa safari guide,Destination: South Africa
+zambia safari,I,1.3K,27,2.74,0,5,4,36,68,go2africa #4,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe
+kruger safari,C,1K,49,4.41,0,3,61,16,19,safaribookings #3,NEW: Kruger National Park safari guide,Destination: South Africa
+masai mara kenya,IT,1K,47,1.84,0,16,12,10,30,discoverafrica #10,NEW: Masai Mara safari guide,Destination: Kenya
+safaris in south africa,I,1K,34,2.88,0,2,7,14,13,safaribookings #2,NEW: South Africa safari guide,Destination: South Africa
+african luxury safari,C,880,38,6.10,0,49,13,61,55,go2africa #13,NEW: Luxury African safaris,Safari styles
+hwange national park zimbabwe,I,880,28,1.51,0,10,7,8,13,go2africa #7,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe
+kwando,IN,880,47,3.62,0,5,27,43,21,safaribookings #5,NEW: Botswana safari guide,Destination: Botswana
+luxury african safaris,C,880,42,6.26,0,54,15,74,46,go2africa #15,NEW: Luxury African safaris,Safari styles
+stone town in zanzibar,I,720,36,0.86,0,18,14,23,28,go2africa #14,NEW: Zanzibar guide,Beaches & islands
+south africa safari trip,I,590,29,4.31,0,3,9,85,22,safaribookings #3,NEW: South Africa safari guide,Destination: South Africa
+south african safaris,I,590,34,3.09,0,2,8,18,26,safaribookings #2,NEW: South Africa safari guide,Destination: South Africa
+timbavati game reserve,C,590,32,2.13,0,43,16,47,31,go2africa #16,NEW: Kruger National Park safari guide,Destination: South Africa
+trip to safari south africa,I,590,44,4.30,0,1,2,7,52,safaribookings #1,NEW: South Africa safari guide,Destination: South Africa
+kruger park game reserve,I,480,41,1.80,0,17,13,15,26,go2africa #13,NEW: Kruger National Park safari guide,Destination: South Africa
+masaimara,IT,480,49,1.55,0,9,3,14,16,go2africa #3,NEW: Masai Mara safari guide,Destination: Kenya
+photo safaris,I,480,30,2.90,0,42,5,48,13,go2africa #5,NEW: African photographic safaris,Safari styles
+best place for safari in africa,C,390,10,3.16,0,12,4,19,25,go2africa #4,/articles/top-10-safari-destinations-africa-2026,Safari hub
+african safari botswana,I,320,34,4.59,0,7,2,24,55,go2africa #2,NEW: Botswana safari guide,Destination: Botswana
+african safari masai mara,I,320,41,2.67,0,2,4,22,11,safaribookings #2,NEW: Masai Mara safari guide,Destination: Kenya
+victoria falls in zambia,I,320,37,1.07,0,25,6,7,11,go2africa #6,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe
+africa luxury safari,C,260,38,6.10,0,46,13,58,56,go2africa #13,NEW: Luxury African safaris,Safari styles
+kwando africa,N,260,17,2.08,0,10,15,29,14,safaribookings #10,NEW: Botswana safari guide,Destination: Botswana
+liwonde national park,IT,260,41,1.92,0,7,5,26,18,go2africa #5,NEW: Malawi safari guide,Destination: other
+photographic safaris,I,260,24,1.65,0,33,3,38,9,go2africa #3,NEW: African photographic safaris,Safari styles
+giraffes in africa,IT,210,23,1.06,0,8,12,3,37,discoverafrica #3,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+safari in victoria falls,C,210,22,2.85,0,4,6,62,37,safaribookings #4,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe
+safaris south africa,C,210,40,3.07,0,2,4,8,16,safaribookings #2,NEW: South Africa safari guide,Destination: South Africa
+africa in december,CI,170,6,2.82,0,16,1,6,17,go2africa #1,/articles/best-time-to-visit-african-safari-by-month,Safari timing
+best safari in africa to see the big 5,C,170,13,4.11,0,39,1,41,15,go2africa #1,/articles/big-five-parks-ranked-where-to-see-all-five,Wildlife
+best time for safari,C,170,19,1.90,0,4,2,25,47,go2africa #2,/articles/best-time-to-visit-african-safari-by-month,Safari timing
+game reserve kruger,I,170,35,1.87,0,13,4,17,18,go2africa #4,NEW: Kruger National Park safari guide,Destination: South Africa
+local partner for african safaris,I,170,45,0.00,0,15,1,2,56,go2africa #1,(skip: navigational/noise),Excluded
+madikwe game,I,170,41,1.24,0,13,28,51,32,safaribookings #13,NEW: Kruger National Park safari guide,Destination: South Africa
+s africa safari,I,170,31,2.88,0,4,2,13,25,go2africa #2,NEW: South Africa safari guide,Destination: South Africa
+safari and beach,I,170,15,3.10,0,61,2,81,78,go2africa #2,NEW: Safari and beach combinations,Safari styles
+safari southern africa,C,170,33,2.88,0,14,7,15,22,go2africa #7,/articles/top-10-safari-destinations-africa-2026,Safari hub
+walking safari africa,I,170,19,3.21,0,31,4,20,19,go2africa #4,NEW: Walking safaris in Africa,Safari styles
+walking safaris,C,170,13,2.28,0,40,3,43,33,go2africa #3,NEW: Walking safaris in Africa,Safari styles
+africa photography tours,C,140,16,4.87,0,23,5,35,38,go2africa #5,NEW: African photographic safaris,Safari styles
+african photographic safari,I,140,20,4.77,0,32,5,53,10,go2africa #5,NEW: African photographic safaris,Safari styles
+animals in east africa,I,140,20,0.00,0,45,40,15,52,discoverafrica #15,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+beach and safari vacations,I,140,7,0.00,0,17,3,71,15,go2africa #3,NEW: Safari and beach combinations,Safari styles
+best time of year to go on safari,C,140,17,2.28,0,8,2,18,60,go2africa #2,/articles/best-time-to-visit-african-safari-by-month,Safari timing
+great migration safari packages,I,140,25,6.93,0,26,3,46,22,go2africa #3,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania
+photography tours africa,I,140,4,5.79,0,28,5,39,40,go2africa #5,NEW: African photographic safaris,Safari styles
+safari walk,I,140,31,2.08,0,28,11,44,32,go2africa #11,NEW: Walking safaris in Africa,Safari styles
+samburu national park safari,I,140,24,0.00,0,3,6,46,25,safaribookings #3,NEW: Kenya safari guide,Destination: Kenya
+samburu national reserve safari,I,140,21,0.00,0,5,6,48,15,safaribookings #5,NEW: Kenya safari guide,Destination: Kenya
+southern africa safari,I,140,27,3.62,0,9,11,17,45,safaribookings #9,/articles/top-10-safari-destinations-africa-2026,Safari hub
+top safaris in africa,C,140,26,4.18,0,17,10,34,29,go2africa #10,/articles/top-10-safari-destinations-africa-2026,Safari hub
+victoria falls attractions,I,140,17,0.56,0,63,6,17,55,go2africa #6,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe
+where to see lions in africa,CI,140,14,2.59,0,27,1,2,35,go2africa #1,/articles/big-five-parks-ranked-where-to-see-all-five,Wildlife
+zagat travel african safari,I,140,27,0.00,0,49,22,10,82,discoverafrica #10,(skip: navigational/noise),Excluded
+african safari and beach vacation,I,110,7,5.36,0,24,3,75,29,go2africa #3,NEW: Safari and beach combinations,Safari styles
+african safari in south africa,I,110,37,3.07,0,12,1,16,13,go2africa #1,NEW: South Africa safari guide,Destination: South Africa
+best place in africa for safari,C,110,27,3.37,0,13,6,44,27,go2africa #6,/articles/top-10-safari-destinations-africa-2026,Safari hub
+best place to do a safari in africa,C,110,20,3.30,0,10,6,25,29,go2africa #6,/articles/top-10-safari-destinations-africa-2026,Safari hub
+best places for african safari,C,110,26,3.32,0,9,7,15,37,go2africa #7,/articles/top-10-safari-destinations-africa-2026,Safari hub
+best time to visit safari,C,110,16,2.28,0,6,2,27,45,go2africa #2,/articles/best-time-to-visit-african-safari-by-month,Safari timing
+best walking safaris in africa,C,110,12,5.30,0,13,3,10,2,africageographic #2,NEW: Walking safaris in Africa,Safari styles
+exotic animals from africa,I,110,14,0.00,0,22,30,1,24,discoverafrica #1,"(deprioritised: wildlife encyclopedia, ads-only)",Wildlife encyclopedia
+great migration safari tanzania,CI,110,29,8.63,0,49,43,27,40,discoverafrica #27,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania
+kenya laikipia,IT,110,15,1.87,0,15,4,49,16,go2africa #4,NEW: Kenya safari guide,Destination: Kenya
+ngorongoro crater in tanzania,I,110,37,1.53,0,7,4,31,16,go2africa #4,/articles/great-migration-guide-best-months-viewing-spots,Destination: Tanzania
+photo safaris africa,C,110,22,4.16,0,31,3,38,17,go2africa #3,NEW: African photographic safaris,Safari styles
+safari chobe national park botswana,C,110,34,3.54,0,27,4,28,22,go2africa #4,NEW: Botswana safari guide,Destination: Botswana
+safari malawi africa,I,110,9,1.54,0,1,24,3,12,safaribookings #1,NEW: Malawi safari guide,Destination: other
+safari tour south africa,C,110,37,4.55,0,3,11,8,30,safaribookings #3,NEW: South Africa safari guide,Destination: South Africa
+safari victoria falls,C,110,16,2.85,0,6,4,33,43,go2africa #4,NEW: Victoria Falls guide (Zambia vs Zimbabwe),Destination: Zambia & Zimbabwe
+south luangwa national park zambia safari,I,110,20,6.59,0,8,5,69,15,go2africa #5,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe
+what to do in botswana,CI,110,23,1.07,0,32,9,40,52,go2africa #9,NEW: Botswana safari guide,Destination: Botswana
+what to take on safari in south africa,I,110,2,0.41,0,23,35,16,66,discoverafrica #16,/articles/safari-packing-etiquette-first-timer-guide,Safari cost & planning
+africa travel resource tipping on safari,I,90,17,0.00,0,17,47,61,40,safaribookings #17,NEW: Safari tipping guide,Safari cost & planning
+african wildlife trip,I,90,39,3.59,0,39,1,26,23,go2africa #1,/articles/top-10-safari-destinations-africa-2026,Safari hub
+best time to visit okavango,C,90,13,2.19,0,4,3,5,22,go2africa #3,/articles/best-time-to-visit-okavango-delta,Safari timing
+gorilla safari africa,C,90,33,2.92,0,30,1,8,14,go2africa #1,/articles/best-gorilla-trekking-africa-ranked,Gorilla trekking
+lolebezi,I,90,22,1.34,0,54,5,43,85,go2africa #5,(skip: navigational/noise),Excluded
+masari mara,I,90,36,1.57,0,4,5,21,32,safaribookings #4,NEW: Masai Mara safari guide,Destination: Kenya
+photography safari in africa,C,90,30,4.16,0,27,3,16,22,go2africa #3,NEW: African photographic safaris,Safari styles
+safari in south africa kruger national park,C,90,23,3.13,0,23,70,12,13,discoverafrica #12,NEW: Kruger National Park safari guide,Destination: South Africa
+safari in southern africa,C,90,26,2.88,0,17,7,13,19,go2africa #7,/articles/top-10-safari-destinations-africa-2026,Safari hub
+south africa in february,CI,90,9,2.86,0,14,2,6,52,go2africa #2,/articles/best-time-to-visit-african-safari-by-month,Safari timing
+zimbabwe hwange,I,90,27,1.47,0,12,23,10,7,africageographic #7,NEW: Zambia & Zimbabwe safari guide,Destination: Zambia & Zimbabwe
+african bush camps safety protocols for families with young kids,I,70,8,0.00,0,28,15,8,79,discoverafrica #8,NEW: Is an African safari safe?,Safari cost & planning
+african safari tours south africa,C,70,50,4.31,0,3,8,4,25,safaribookings #3,NEW: South Africa safari guide,Destination: South Africa
+are there safaris in south africa,CI,70,22,2.13,0,8,49,5,31,discoverafrica #5,NEW: South Africa safari guide,Destination: South Africa
