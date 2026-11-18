@@ -1,4 +1,6 @@
-# Draft article recovery — editorial source of truth
+# Historical draft article recovery — research reference
+
+> **18 November reconciliation:** This register records research and dashboard observations from 7 November. It is not the current CMS inventory or production operating policy. The site is now live on africanranked.com with owner-approved indexing. Current owner decisions, published CMS revisions and application publication checks take precedence over historical staging instructions below. See [current reconciliation](CMS-RECONCILIATION-2026-11-18.md). No manuscript in this folder is an approval to publish or replace a live article.
 
 Prepared 7 November 2026. **Review workspace only: no CMS publication or change to existing published revisions.**
 
