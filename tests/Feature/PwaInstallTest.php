@@ -40,7 +40,7 @@ class PwaInstallTest extends TestCase
 
     public function test_icons_are_real_pngs_at_the_sizes_declared_in_the_manifest(): void
     {
-        if (!extension_loaded('gd')) {
+        if (! extension_loaded('gd')) {
             $this->markTestSkipped('GD extension required for icon resizing.');
         }
 
