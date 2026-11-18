@@ -8,6 +8,7 @@ use App\Http\Controllers\NewsletterLifecycleController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PwaController;
 use App\Http\Controllers\Staff\ArticleMediaController;
+use App\Http\Middleware\FreshHomepage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/pwa/icon/{size}.png', [PwaController::class, 'icon'])->where('size', '(?:192|512)(?:-maskable)?')->name('pwa.icon');
@@ -34,7 +35,7 @@ Route::post('/newsletter/unsubscribe/{subscriber}', [NewsletterLifecycleControll
 
 Route::get('/global/{path?}', [PageController::class, 'legacyGlobal'])->where('path', '.*');
 
-Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/', [PageController::class, 'home'])->middleware(FreshHomepage::class)->name('home');
 Route::get('/rankings', [PageController::class, 'rankings'])->name('rankings');
 Route::get('/categories/{slug}', [PageController::class, 'category'])->name('category');
 Route::get('/articles/{slug}', [PageController::class, 'article'])->name('article');
@@ -43,7 +44,7 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/pages/{slug}', [ContentPageController::class, 'show'])->name('content-page');
 Route::get('/strategy', [PageController::class, 'strategy'])->name('strategy');
 Route::prefix('{region}')->where(['region' => '[a-z]{2}'])->name('regional.')->group(function () {
-    Route::get('/', [PageController::class, 'home'])->name('home');
+    Route::get('/', [PageController::class, 'home'])->middleware(FreshHomepage::class)->name('home');
     Route::get('/rankings', [PageController::class, 'rankings'])->name('rankings');
     Route::get('/categories/{slug}', [PageController::class, 'regionalCategory'])->name('category');
     Route::get('/articles/{slug}', [PageController::class, 'regionalArticle'])->name('article');
