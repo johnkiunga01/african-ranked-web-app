@@ -122,7 +122,7 @@ Planning across countries also requires an independent check of changing entry, 
 - **19 November 2026:** The FCDO advises travellers to check country travel guidance and insurance terms before booking. [UK travel checklist](https://www.gov.uk/guidance/foreign-travel-checklist).
 - **19 November 2026:** The US State Department maintains current Tanzania travel advice, which is separate from operator marketing. [US travel advisory](https://travel.state.gov/en/international-travel/travel-advisories/tanzania.html).
 
-## Source register — accessed 19 November 2026
+## Sources — accessed 19 November 2026
 
 1. Kenya Wildlife Service, Frequently asked questions — https://kws.go.ke/faqs/
 2. Tanzania National Parks Authority, Official park tariff information — https://www.tanzaniaparks.go.tz/tourism/visitor-information/tariff
