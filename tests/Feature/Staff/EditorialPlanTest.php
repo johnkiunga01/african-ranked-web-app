@@ -156,6 +156,87 @@ class EditorialPlanTest extends TestCase
             ->assertRedirect(route('staff.editorial-plan'));
     }
 
+    public function test_phase_two_workbook_reuses_existing_slug_without_overwriting_manuscript_or_article(): void
+    {
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $importer = app(EditorialPlanImport::class);
+            $original = app(EditorialWorkbook::class)->read($path, 'first-phase.xlsx');
+            $original['records'][0]['plan']['team_draft'] = 'Original human-edited team draft.';
+            $importer->commit($admin, $original);
+            $oldBrief = EditorialBrief::firstOrFail();
+            $article = $importer->start($admin, $oldBrief);
+            $currentRevision = $article->current_revision_id;
+
+            $phaseTwo = $original;
+            $phaseTwo['records'][0]['plan_id'] = 'AR-26001';
+            $phaseTwo['records'][0]['title'] = 'Phase two improved safari planning';
+            $phaseTwo['records'][0]['keyword'] = 'semrush-researched safari intent';
+            $phaseTwo['records'][0]['plan']['team_draft'] = 'Replacement that must not overwrite the original manuscript.';
+            $phaseTwo['hash'] = 'phase-two-test';
+
+            $inspection = $importer->inspect($phaseTwo['records']);
+            $this->assertSame(1, $inspection['counts']['reused_slug']);
+            $this->assertSame('AR-001', $inspection['items'][0]['matched_id']);
+
+            $this->assertSame(1, $importer->commit($admin, $phaseTwo)['reused_slug']);
+            $this->assertSame(1, $importer->commit($admin, $phaseTwo)['reused_slug']);
+            $this->assertDatabaseCount('editorial_briefs', 1);
+            $this->assertDatabaseCount('articles', 1);
+
+            $brief = EditorialBrief::firstOrFail()->refresh();
+            $this->assertSame('AR-001', $brief->plan_id);
+            $this->assertSame('AR-26001', $brief->plan['source_workbook_plan_id']);
+            $this->assertSame('Phase two improved safari planning', $brief->title);
+            $this->assertSame('semrush-researched safari intent', $brief->keyword);
+            $this->assertSame('Original human-edited team draft.', $brief->plan['team_draft']);
+            $this->assertSame($article->id, $brief->article_id);
+            $this->assertSame($article->id, $importer->start($admin, $brief)->id);
+            $this->assertSame($currentRevision, $article->fresh()->current_revision_id);
+            $this->assertNull($article->fresh()->published_revision_id);
+            $this->assertSame(1, $article->revisions()->count());
+        } finally {
+            unlink($path);
+        }
+    }
+
+    public function test_reused_plan_id_for_different_slug_is_rejected_atomically(): void
+    {
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $importer = app(EditorialPlanImport::class);
+            $original = app(EditorialWorkbook::class)->read($path, 'first-phase.xlsx');
+            $importer->commit($admin, $original);
+
+            $new = $original['records'][0];
+            $new['plan_id'] = 'AR-26001';
+            $new['slug'] = 'a-completely-new-safari-topic';
+            $new['title'] = 'New and unrelated topic';
+
+            $conflicting = $original['records'][0];
+            $conflicting['slug'] = 'different-slug-than-original';
+            $conflicting['title'] = 'Dangerous ID reuse';
+
+            $incoming = ['records' => [$new, $conflicting], 'hash' => 'conflict-test', 'drafts' => 0];
+            $this->assertSame(1, $importer->inspect($incoming['records'])['counts']['conflict']);
+
+            try {
+                $importer->commit($admin, $incoming);
+                $this->fail('The import should reject a plan ID assigned to another slug.');
+            } catch (ValidationException $e) {
+                $this->assertStringContainsString('AR-001', $e->errors()['workbook'][0]);
+            }
+
+            $this->assertDatabaseCount('editorial_briefs', 1);
+            $this->assertDatabaseMissing('editorial_briefs', ['plan_id' => 'AR-26001']);
+            $this->assertDatabaseHas('editorial_briefs', ['plan_id' => 'AR-001', 'slug' => 'a-real-planning-question']);
+        } finally {
+            unlink($path);
+        }
+    }
+
     public function test_author_cannot_read_or_import_the_admin_plan(): void
     {
         $this->actingAs(User::factory()->create())->get('/staff/editorial-plan')->assertForbidden();

@@ -40,7 +40,7 @@ class EditorialPlanController extends Controller
         return redirect()->route('staff.editorial-plan.preview.show', [], 303);
     }
 
-    public function showPreview(Request $request)
+    public function showPreview(Request $request, EditorialPlanImport $importer)
     {
         $intake = $request->session()->get('editorial_intake');
         if (! is_array($intake) || empty($intake['records']) || ($intake['expires'] ?? 0) < now()->timestamp) {
@@ -51,7 +51,9 @@ class EditorialPlanController extends Controller
             ]);
         }
 
-        return response()->view('staff.editorial-plan-preview', ['intake' => $intake])
+        $reconciliation = $importer->inspect($intake['records']);
+
+        return response()->view('staff.editorial-plan-preview', ['intake' => $intake, 'reconciliation' => $reconciliation])
             ->header('Cache-Control', 'private, no-store');
     }
 
@@ -62,10 +64,14 @@ class EditorialPlanController extends Controller
         if (! $intake || $intake['expires'] < now()->timestamp) {
             throw ValidationException::withMessages(['workbook' => 'The preview expired or was already imported. Upload and preview again.']);
         }
-        $count = $importer->commit($request->user(), $intake);
+        $counts = $importer->commit($request->user(), $intake);
         $request->session()->forget('editorial_intake');
 
-        return redirect()->route('staff.editorial-plan')->with('status', $count.' private briefs imported. Existing articles and publication decisions were preserved.');
+        $message = "{$counts['new']} new private briefs created; {$counts['linked_article']} linked to existing articles; "
+            ."{$counts['existing']} existing briefs refreshed; {$counts['reused_slug']} existing slugs reconciled. "
+            .'No article bodies, author assignments, approvals or publications were changed.';
+
+        return redirect()->route('staff.editorial-plan')->with('status', $message);
     }
 
     public function start(Request $request, EditorialBrief $brief, EditorialPlanImport $importer)
