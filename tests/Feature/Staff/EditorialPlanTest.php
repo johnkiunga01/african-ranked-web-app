@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Services\EditorialPlanImport;
 use App\Services\EditorialWorkbook;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
@@ -93,6 +94,66 @@ class EditorialPlanTest extends TestCase
         } finally {
             unlink($path);
         }
+    }
+
+    public function test_upload_redirects_to_get_preview_and_import_remains_private(): void
+    {
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $this->actingAs($admin)->withSession(['auth.password_confirmed_at' => time()])
+                ->post(route('staff.editorial-plan.preview'), [
+                    'workbook' => new UploadedFile($path, 'master.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', null, true),
+                ])->assertStatus(303)->assertRedirect(route('staff.editorial-plan.preview.show'));
+
+            $this->get(route('staff.editorial-plan.preview.show'))
+                ->assertOk()
+                ->assertSee('A real planning question')
+                ->assertHeader('Cache-Control', 'no-store, private');
+
+            $this->post(route('staff.editorial-plan.commit'), ['confirm_private' => 1])
+                ->assertRedirect(route('staff.editorial-plan'));
+
+            $this->assertDatabaseCount('editorial_briefs', 1);
+            $this->assertDatabaseCount('articles', 0);
+        } finally {
+            unlink($path);
+        }
+    }
+
+    public function test_import_validation_error_returns_to_a_readable_preview_instead_of_405(): void
+    {
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $this->actingAs($admin)->withSession(['auth.password_confirmed_at' => time()])
+                ->post(route('staff.editorial-plan.preview'), [
+                    'workbook' => new UploadedFile($path, 'master.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', null, true),
+                ])->assertStatus(303);
+
+            $this->get(route('staff.editorial-plan.preview.show'))->assertOk();
+
+            $this->from(route('staff.editorial-plan.preview.show'))
+                ->post(route('staff.editorial-plan.commit'), ['confirm_private' => '0'])
+                ->assertRedirect(route('staff.editorial-plan.preview.show'));
+
+            $this->get(route('staff.editorial-plan.preview.show'))
+                ->assertOk()
+                ->assertSee('The confirm private field must be accepted.');
+
+            $this->assertDatabaseCount('editorial_briefs', 0);
+            $this->assertDatabaseCount('articles', 0);
+        } finally {
+            unlink($path);
+        }
+    }
+
+    public function test_direct_or_expired_preview_get_recovers_to_editorial_plan(): void
+    {
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $this->actingAs($admin)->withSession(['auth.password_confirmed_at' => time()]);
+        $this->get(route('staff.editorial-plan.preview.show'))
+            ->assertRedirect(route('staff.editorial-plan'));
     }
 
     public function test_author_cannot_read_or_import_the_admin_plan(): void

@@ -35,7 +35,24 @@ class EditorialPlanController extends Controller
         // Server-side session; no workbook path, body or capability is trusted from a hidden form.
         $request->session()->put('editorial_intake', $intake + ['expires' => now()->addMinutes(30)->timestamp]);
 
-        return view('staff.editorial-plan-preview', ['intake' => $intake]);
+        // Post/Redirect/Get: validation errors from the later import POST must
+        // redirect to a GET-capable preview, not back to a POST-only URL.
+        return redirect()->route('staff.editorial-plan.preview.show', [], 303);
+    }
+
+    public function showPreview(Request $request)
+    {
+        $intake = $request->session()->get('editorial_intake');
+        if (! is_array($intake) || empty($intake['records']) || ($intake['expires'] ?? 0) < now()->timestamp) {
+            $request->session()->forget('editorial_intake');
+
+            return redirect()->route('staff.editorial-plan')->withErrors([
+                'workbook' => 'The workbook preview expired or its upload was interrupted. Select the file and preview it again.',
+            ]);
+        }
+
+        return response()->view('staff.editorial-plan-preview', ['intake' => $intake])
+            ->header('Cache-Control', 'private, no-store');
     }
 
     public function commit(Request $request, EditorialPlanImport $importer)

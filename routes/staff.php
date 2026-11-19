@@ -41,6 +41,7 @@ Route::prefix('staff')->name('staff.')->group(function () {
     Route::middleware(['auth', 'staff'])->group(function () {
         Route::middleware('can:manage-staff')->group(function () {
             Route::get('editorial-plan', [EditorialPlanController::class, 'index'])->name('editorial-plan');
+            Route::get('editorial-plan/preview', [EditorialPlanController::class, 'showPreview'])->middleware('password.confirm')->name('editorial-plan.preview.show');
             Route::post('editorial-plan/preview', [EditorialPlanController::class, 'preview'])->middleware(['password.confirm', 'throttle:6,1'])->name('editorial-plan.preview');
             Route::post('editorial-plan/import', [EditorialPlanController::class, 'commit'])->middleware(['password.confirm', 'throttle:6,1'])->name('editorial-plan.commit');
             Route::post('editorial-plan/{brief}/start', [EditorialPlanController::class, 'start'])->name('editorial-plan.start');
