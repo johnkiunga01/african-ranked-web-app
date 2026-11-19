@@ -109,7 +109,8 @@ class EditorialPlanController extends Controller
     public function showDraftBatch(Request $request, EditorialDraftBatch $batch)
     {
         $counts = $batch->items()->select('status')
-            ->selectRaw('COUNT(*) as total')->groupBy('status')->pluck('total', 'status');
+            ->selectRaw('COUNT(*) as total')->groupBy('status')->pluck('total', 'status')
+            ->map(fn ($total) => (int) $total);
         $remaining = (int) ($counts['queued'] ?? 0) + (int) ($counts['running'] ?? 0);
         if ($request->expectsJson()) {
             return response()->json([
