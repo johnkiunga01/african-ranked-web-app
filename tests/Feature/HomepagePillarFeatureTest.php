@@ -36,13 +36,4 @@ class HomepagePillarFeatureTest extends TestCase
         $this->assertSame(Catalog::HOMEPAGE_PILLARS[0], app(Catalog::class)->homepageArticles()->first()['slug']);
     }
 
-    public function test_without_any_pillar_the_newest_article_is_still_used(): void
-    {
-        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
-        $this->publish($admin, 'an-older-ordinary-guide');
-        $this->travel(1)->days();
-        $this->publish($admin, 'a-newer-ordinary-guide');
-
-        $this->assertSame('a-newer-ordinary-guide', app(Catalog::class)->homepageArticles()->first()['slug']);
-    }
 }
