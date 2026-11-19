@@ -8,6 +8,10 @@
     <meta name="description" content="{{ $seo['description'] }}">
     <meta name="robots" content="{{ config('seo.preview') || config('review.enabled') ? 'noindex, nofollow, noarchive' : (config('seo.indexing_enabled') ? $seo['robots'] : 'noindex, follow, noarchive') }}">
     <meta name="theme-color" content="#15191c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="African Ranked">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="/manifest.webmanifest" type="application/manifest+json">
     @if(!str_starts_with($seo['robots'], 'noindex'))<link rel="canonical" href="{{ $seo['canonical'] }}">@endif
     @foreach($seo['alternates'] as $alternate)
     <link rel="alternate" hreflang="{{ $alternate['locale'] }}" href="{{ $alternate['url'] }}">
@@ -48,6 +52,7 @@
     @include('partials.header')
     <main id="main-content" tabindex="-1">@yield('content')</main>
     @include('partials.footer')
+    @include('partials.pwa-install')
     @include('partials.analytics-consent')
 </body>
 </html>

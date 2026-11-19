@@ -1,3 +1,4 @@
+import './pwa.js';
 import './recommendations.js';
 import { animate, inView, stagger } from 'motion';
 
