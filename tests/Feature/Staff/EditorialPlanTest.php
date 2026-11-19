@@ -109,7 +109,7 @@ class EditorialPlanTest extends TestCase
             $this->get(route('staff.editorial-plan.preview.show'))
                 ->assertOk()
                 ->assertSee('A real planning question')
-                ->assertHeader('Cache-Control', 'private, no-store');
+                ->assertHeader('Cache-Control', 'no-store, private');
 
             $this->post(route('staff.editorial-plan.commit'), ['confirm_private' => 1])
                 ->assertRedirect(route('staff.editorial-plan'));
