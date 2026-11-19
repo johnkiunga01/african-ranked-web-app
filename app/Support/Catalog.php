@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Schema;
 
 class Catalog
 {
+    /** Pillar guides used for the homepage feature when no article is selected on the dashboard, in priority order. */
+    public const HOMEPAGE_PILLARS = [
+        'top-10-safari-destinations-africa-2026',
+        'how-to-choose-an-african-safari',
+        'best-african-cuisines-ranked-2026',
+        'largest-economies-in-africa',
+    ];
+
     private array $data = [];
 
     public function data(string $name): array
@@ -72,6 +80,9 @@ class Catalog
         $selected = $settings['featured'][$region] ?? $settings['featured']['global'] ?? null;
         $slug = $selected ? Article::whereNull('trashed_at')->whereKey($selected)->value('slug') : null;
         $featured = $slug ? $articles->firstWhere('slug', $slug) : null;
+        // No dashboard pick (or it is unpublished): feature a pillar guide, never simply the newest article.
+        $featured ??= collect(self::HOMEPAGE_PILLARS)->map(fn ($pillar) => $articles->firstWhere('slug', $pillar))->filter()->first();
+        $slug = $featured['slug'] ?? $slug;
 
         return $featured ? collect([$featured])->concat($articles->reject(fn ($a) => $a['slug'] === $slug))->values() : $articles;
     }
