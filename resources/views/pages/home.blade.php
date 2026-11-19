@@ -86,8 +86,32 @@
     @if($articles->isNotEmpty() && $homepage['show_featured'])
     <section id="featured" class="mx-auto max-w-7xl px-4 sm:px-6" aria-labelledby="featured-heading"><div class="mb-8 flex items-center gap-2"><x-icon name="TrendingUp" class="h-5 w-5 text-amber-600" /><h2 id="featured-heading" class="text-2xl font-bold sm:text-3xl">{{ $region['localizedTerms']['featured'] }}</h2></div>@include('partials.card', ['item' => $articles->first(), 'featured' => true])</section>
     @endif
-    @if($articles->count() > ($homepage['show_featured'] ? 1 : 0))
-    <section class="mx-auto max-w-7xl px-4 sm:px-6" aria-labelledby="trending-heading"><div class="mb-8"><h2 id="trending-heading" class="text-2xl font-bold sm:text-3xl">{{ $region['localizedTerms']['trending'] }}</h2><p class="mt-1 text-stone-600">More rankings from across the continent</p></div><div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">@foreach($articles->skip($homepage['show_featured'] ? 1 : 0)->take(6) as $item)@include('partials.card', ['featured' => false])@endforeach</div><div class="mt-7 text-center"><a href="{{ $basePath }}/rankings" class="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-white px-5 py-3 text-sm font-bold text-amber-900 transition hover:bg-amber-50">Browse every ranking and guide <x-icon name="arrow-right" class="h-4 w-4" /></a></div></section>
+    @php
+        $latestArticles = $articles->skip($homepage['show_featured'] ? 1 : 0)->take(6)->values();
+        $shownSlugs = $articles->take(($homepage['show_featured'] ? 1 : 0) + 6)->pluck('slug')->all();
+        $topicRails = $orderedCategories->map(fn ($c) => [
+            'category' => $c,
+            'total' => $articles->where('category', $c['slug'])->count(),
+            'items' => $articles->where('category', $c['slug'])->reject(fn ($a) => in_array($a['slug'], $shownSlugs, true))->take(4)->values(),
+        ])->filter(fn ($rail) => $rail['items']->isNotEmpty())->values();
+    @endphp
+    @if($latestArticles->isNotEmpty())
+    <section class="mx-auto max-w-7xl px-4 sm:px-6" aria-labelledby="trending-heading"><div class="mb-8"><h2 id="trending-heading" class="text-2xl font-bold sm:text-3xl">{{ $region['localizedTerms']['trending'] }}</h2><p class="mt-1 text-stone-600">The newest rankings and guides from across the continent</p></div><div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">@foreach($latestArticles as $item)@include('partials.card', ['featured' => false])@endforeach</div>@if($topicRails->isEmpty())<div class="mt-7 text-center"><a href="{{ $basePath }}/rankings" class="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-white px-5 py-3 text-sm font-bold text-amber-900 transition hover:bg-amber-50">Browse every ranking and guide <x-icon name="arrow-right" class="h-4 w-4" /></a></div>@endif</section>
+    @endif
+    @if($topicRails->isNotEmpty())
+    <section class="mx-auto max-w-7xl space-y-14 px-4 sm:px-6" aria-labelledby="topics-heading">
+        <div class="max-w-2xl"><p class="text-sm font-semibold uppercase tracking-wider text-amber-700">Explore by topic</p><h2 id="topics-heading" class="mt-2 text-2xl font-bold sm:text-3xl">More rankings and guides</h2></div>
+        @foreach($topicRails as $rail)
+        <section aria-labelledby="topic-{{ $rail['category']['slug'] }}-heading">
+            <div class="mb-6 flex flex-wrap items-end justify-between gap-3 border-b border-stone-200 pb-4">
+                <h3 id="topic-{{ $rail['category']['slug'] }}-heading" class="flex items-center gap-2.5 text-xl font-bold text-stone-900 sm:text-2xl"><span class="flex h-9 w-9 items-center justify-center rounded-xl bg-stone-950 text-amber-300"><x-icon :name="$rail['category']['icon']" class="h-5 w-5" /></span>{{ $rail['category']['name'] }}</h3>
+                <a href="{{ $basePath }}/categories/{{ $rail['category']['slug'] }}" class="inline-flex items-center gap-1.5 text-sm font-bold text-amber-800 hover:text-amber-950">See all {{ $rail['total'] }}<x-icon class="h-4 w-4" /></a>
+            </div>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">@foreach($rail['items'] as $item)@include('partials.card', ['featured' => false])@endforeach</div>
+        </section>
+        @endforeach
+        <div class="text-center"><a href="{{ $basePath }}/rankings" class="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-white px-5 py-3 text-sm font-bold text-amber-900 transition hover:bg-amber-50">Browse every ranking and guide <x-icon name="arrow-right" class="h-4 w-4" /></a></div>
+    </section>
     @endif
     <section class="mx-auto max-w-7xl px-4 sm:px-6" aria-labelledby="editorial-heading">
         <div class="grid gap-8 rounded-2xl border border-stone-200 bg-stone-50 p-8 md:grid-cols-2 md:p-12">
