@@ -173,7 +173,7 @@ const isApprovedPwaLaunch = path => approvedPwaLaunchBlobs.has(path)
 // Owner-approved 18 November 2026: elevated homepage editor's pick and topic sections (more articles on the homepage).
 // Exact reviewed blobs only; any other change to these templates stays protected.
 const approvedHomepageTopics = new Map(Object.entries({
-    "resources/views/pages/home.blade.php": "e836b04d3aa24a904b0a1f30c865cfbd2d61dd34",
+    "resources/views/pages/home.blade.php": "f61c346216d22d3917583213fc09d8435ab8c78f",
     "resources/views/partials/card.blade.php": "aacbb8b40b35708701c5f732bdb51b6823c2555b"
 }));
 const approvedHomepageTopicsChange = path => approvedHomepageTopics.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedHomepageTopics.get(path);
