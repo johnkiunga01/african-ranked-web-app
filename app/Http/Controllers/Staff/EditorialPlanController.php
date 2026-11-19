@@ -68,6 +68,7 @@ class EditorialPlanController extends Controller
         $request->session()->forget('editorial_intake');
 
         $message = "{$counts['new']} new private briefs created; {$counts['linked_article']} linked to existing articles; "
+            ."{$counts['linked_elsewhere']} research briefs referenced existing articles without duplicate links; "
             ."{$counts['existing']} existing briefs refreshed; {$counts['reused_slug']} existing slugs reconciled. "
             .'No article bodies, author assignments, approvals or publications were changed.';
 

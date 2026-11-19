@@ -7,11 +7,12 @@
 <div class="staff-panel mt-5">
     <h2 class="font-bold">Existing content and duplicate check</h2>
     <p class="mt-2 text-sm text-stone-600">The CMS reconciles plan IDs and article slugs before making changes. A matching slug reuses the existing brief and keeps its original ID; it does not create a duplicate article.</p>
-    <dl class="mt-4 grid grid-cols-2 gap-4 text-sm sm:grid-cols-5">
+    <dl class="mt-4 grid grid-cols-2 gap-4 text-sm sm:grid-cols-3">
         <div><dt class="text-stone-500">New briefs</dt><dd class="font-bold">{{ $reconciliation['counts']['new'] }}</dd></div>
         <div><dt class="text-stone-500">Existing ID</dt><dd class="font-bold">{{ $reconciliation['counts']['existing'] }}</dd></div>
         <div><dt class="text-stone-500">Existing slug</dt><dd class="font-bold">{{ $reconciliation['counts']['reused_slug'] }}</dd></div>
-        <div><dt class="text-stone-500">Existing article</dt><dd class="font-bold">{{ $reconciliation['counts']['linked_article'] }}</dd></div>
+        <div><dt class="text-stone-500">Existing article (unclaimed)</dt><dd class="font-bold">{{ $reconciliation['counts']['linked_article'] }}</dd></div>
+        <div><dt class="text-stone-500">Article linked to another brief</dt><dd class="font-bold">{{ $reconciliation['counts']['linked_elsewhere'] }}</dd></div>
         <div><dt class="text-stone-500">Needs resolution</dt><dd class="font-bold">{{ $reconciliation['counts']['conflict'] }}</dd></div>
     </dl>
     @if($reconciliation['counts']['conflict'] > 0)
@@ -55,6 +56,8 @@
                             Reuse {{ $reconciliation['items'][$i]['matched_id'] }} (same slug)
                         @elseif($reconciliation['items'][$i]['status'] === 'linked_article')
                             Link existing CMS article
+                        @elseif($reconciliation['items'][$i]['status'] === 'linked_elsewhere')
+                            <span title="The CMS article already belongs to another editorial brief. This row will be stored as separate private research without an article link.">Reference existing article (owned by {{ $reconciliation['items'][$i]['matched_id'] }})</span>
                         @else
                             <span class="font-bold text-red-700">Plan ID conflict</span>
                         @endif
