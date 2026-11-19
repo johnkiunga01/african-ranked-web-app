@@ -237,6 +237,59 @@ class EditorialPlanTest extends TestCase
         }
     }
 
+    public function test_phase_two_research_does_not_claim_an_article_already_owned_by_another_brief(): void
+    {
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $importer = app(EditorialPlanImport::class);
+            $phaseOne = app(EditorialWorkbook::class)->read($path, 'first-phase.xlsx');
+            $phaseOne['records'][0]['plan']['team_draft'] = 'Original human-written content remains untouched.';
+            $importer->commit($admin, $phaseOne);
+
+            $owner = EditorialBrief::firstOrFail();
+            $article = $importer->start($admin, $owner);
+            $currentRevision = $article->current_revision_id;
+
+            // Historic master guide brief references the same article using
+            // another planning slug. The actual article slug is still unchanged.
+            $owner->update(['slug' => 'historic-safari-research-brief']);
+
+            $phaseTwo = $phaseOne;
+            $phaseTwo['records'][0]['plan_id'] = 'AR-26064';
+            $phaseTwo['records'][0]['plan']['team_draft'] = 'Unverified Phase 2 Semrush research brief.';
+            $phaseTwo['hash'] = 'phase-two-owned-article';
+
+            $inspection = $importer->inspect($phaseTwo['records']);
+            $this->assertSame(1, $inspection['counts']['linked_elsewhere']);
+            $this->assertSame('AR-001', $inspection['items'][0]['matched_id']);
+
+            $result = $importer->commit($admin, $phaseTwo);
+            $this->assertSame(1, $result['linked_elsewhere']);
+            $this->assertSame(1, $importer->commit($admin, $phaseTwo)['existing']);
+
+            $this->assertDatabaseCount('editorial_briefs', 2);
+            $this->assertDatabaseCount('articles', 1);
+            $this->assertSame($article->id, $owner->fresh()->article_id);
+            $this->assertSame('Original human-written content remains untouched.', $owner->fresh()->plan['team_draft']);
+
+            $research = EditorialBrief::where('plan_id', 'AR-26064')->firstOrFail();
+            $this->assertNull($research->article_id);
+            $this->assertSame($article->id, $research->plan['related_existing_article_id']);
+            $this->assertSame('AR-001', $research->plan['related_existing_plan_id']);
+            $this->assertSame('Unverified Phase 2 Semrush research brief.', $research->plan['team_draft']);
+            $this->assertSame($currentRevision, $article->fresh()->current_revision_id);
+            $this->assertNull($article->fresh()->published_revision_id);
+            $this->assertSame(1, $article->revisions()->count());
+
+            $this->actingAs($admin)->get(route('staff.editorial-plan'))
+                ->assertOk()
+                ->assertSee('Research brief only; the existing CMS article belongs to plan AR-001.');
+        } finally {
+            unlink($path);
+        }
+    }
+
     public function test_author_cannot_read_or_import_the_admin_plan(): void
     {
         $this->actingAs(User::factory()->create())->get('/staff/editorial-plan')->assertForbidden();
