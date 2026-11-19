@@ -11,6 +11,13 @@
             'music' => ['photo' => '31177554', 'source' => 'https://www.pexels.com/photo/close-up-of-african-and-latin-percussion-drums-31177554/', 'credit' => 'wr heustis'],
         ];
         $orderedCategories = $categories->sortBy(fn ($c) => array_search($c['slug'], ['wildlife','travel','food','business','tech','music'], true))->values();
+        $latestArticles = $articles->skip($homepage['show_featured'] ? 1 : 0)->take(6)->values();
+        $shownSlugs = $articles->take(($homepage['show_featured'] ? 1 : 0) + 6)->pluck('slug')->all();
+        $topicRails = $orderedCategories->map(fn ($c) => [
+            'category' => $c,
+            'total' => $articles->where('category', $c['slug'])->count(),
+            'items' => $articles->where('category', $c['slug'])->reject(fn ($a) => in_array($a['slug'], $shownSlugs, true))->take(4)->values(),
+        ])->filter(fn ($rail) => $rail['items']->isNotEmpty())->values();
     @endphp
     <section class="ar-hero relative isolate overflow-hidden text-white" aria-labelledby="home-hero-heading">
         <picture class="absolute inset-0 -z-20 block h-full w-full">
@@ -86,15 +93,6 @@
     @if($articles->isNotEmpty() && $homepage['show_featured'])
     <section id="featured" class="mx-auto max-w-7xl px-4 sm:px-6" aria-labelledby="featured-heading"><div class="mb-8 flex items-center gap-2"><x-icon name="TrendingUp" class="h-5 w-5 text-amber-600" /><h2 id="featured-heading" class="text-2xl font-bold sm:text-3xl">{{ $region['localizedTerms']['featured'] }}</h2></div>@include('partials.card', ['item' => $articles->first(), 'featured' => true])</section>
     @endif
-    @php
-        $latestArticles = $articles->skip($homepage['show_featured'] ? 1 : 0)->take(6)->values();
-        $shownSlugs = $articles->take(($homepage['show_featured'] ? 1 : 0) + 6)->pluck('slug')->all();
-        $topicRails = $orderedCategories->map(fn ($c) => [
-            'category' => $c,
-            'total' => $articles->where('category', $c['slug'])->count(),
-            'items' => $articles->where('category', $c['slug'])->reject(fn ($a) => in_array($a['slug'], $shownSlugs, true))->take(4)->values(),
-        ])->filter(fn ($rail) => $rail['items']->isNotEmpty())->values();
-    @endphp
     @if($latestArticles->isNotEmpty())
     <section class="mx-auto max-w-7xl px-4 sm:px-6" aria-labelledby="trending-heading"><div class="mb-8"><h2 id="trending-heading" class="text-2xl font-bold sm:text-3xl">{{ $region['localizedTerms']['trending'] }}</h2><p class="mt-1 text-stone-600">The newest rankings and guides from across the continent</p></div><div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">@foreach($latestArticles as $item)@include('partials.card', ['featured' => false])@endforeach</div>@if($topicRails->isEmpty())<div class="mt-7 text-center"><a href="{{ $basePath }}/rankings" class="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-white px-5 py-3 text-sm font-bold text-amber-900 transition hover:bg-amber-50">Browse every ranking and guide <x-icon name="arrow-right" class="h-4 w-4" /></a></div>@endif</section>
     @endif
