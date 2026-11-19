@@ -44,6 +44,9 @@ Route::prefix('staff')->name('staff.')->group(function () {
             Route::get('editorial-plan/preview', [EditorialPlanController::class, 'showPreview'])->middleware('password.confirm')->name('editorial-plan.preview.show');
             Route::post('editorial-plan/preview', [EditorialPlanController::class, 'preview'])->middleware(['password.confirm', 'throttle:6,1'])->name('editorial-plan.preview');
             Route::post('editorial-plan/import', [EditorialPlanController::class, 'commit'])->middleware(['password.confirm', 'throttle:6,1'])->name('editorial-plan.commit');
+            Route::get('editorial-plan/bulk-drafts/preview', [EditorialPlanController::class, 'previewPrivateDrafts'])->middleware('password.confirm')->name('editorial-plan.draft-batches.preview');
+            Route::post('editorial-plan/bulk-drafts', [EditorialPlanController::class, 'queuePrivateDrafts'])->middleware(['password.confirm', 'throttle:3,1'])->name('editorial-plan.draft-batches.queue');
+            Route::get('editorial-plan/bulk-drafts/{batch}', [EditorialPlanController::class, 'showDraftBatch'])->name('editorial-plan.draft-batches.show');
             Route::post('editorial-plan/{brief}/start', [EditorialPlanController::class, 'start'])->name('editorial-plan.start');
             Route::post('editorial-plan/{brief}/link', [EditorialPlanController::class, 'link'])->name('editorial-plan.link');
             Route::get('pwa-installs', PwaInstallController::class)->name('pwa-installs');
