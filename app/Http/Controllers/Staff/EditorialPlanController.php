@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\AuditEvent;
 use App\Models\EditorialBrief;
+use App\Models\EditorialDraftBatch;
+use App\Services\EditorialDraftBatchService;
 use App\Services\EditorialPlanImport;
 use App\Services\EditorialWorkbook;
 use Illuminate\Http\Request;
@@ -14,7 +16,7 @@ use Illuminate\Validation\ValidationException;
 
 class EditorialPlanController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, EditorialDraftBatchService $draftBatches)
     {
         $filters = $request->validate(['wave' => ['nullable', 'in:1,2,3'], 'drafts' => ['nullable', 'in:1'], 'q' => ['nullable', 'string', 'max:180']]);
         $briefs = EditorialBrief::with('article.currentRevision', 'article.author')
@@ -25,7 +27,10 @@ class EditorialPlanController extends Controller
 
         $linkable = Article::whereNull('trashed_at')->with('currentRevision')->orderBy('slug')->get();
 
-        return view('staff.editorial-plan', compact('briefs', 'filters', 'linkable'));
+        $sources = $draftBatches->sources();
+        $recentDraftBatches = EditorialDraftBatch::latest('id')->limit(6)->get();
+
+        return view('staff.editorial-plan', compact('briefs', 'filters', 'linkable', 'sources', 'recentDraftBatches'));
     }
 
     public function preview(Request $request, EditorialWorkbook $reader)
@@ -73,6 +78,52 @@ class EditorialPlanController extends Controller
             .'No article bodies, author assignments, approvals or publications were changed.';
 
         return redirect()->route('staff.editorial-plan')->with('status', $message);
+    }
+
+    public function previewPrivateDrafts(Request $request, EditorialDraftBatchService $draftBatches)
+    {
+        $data = $request->validate(['source_hash' => ['required', 'regex:/^[a-f0-9]{64}$/D']]);
+        $inspection = $draftBatches->inspect($data['source_hash']);
+        $source = EditorialBrief::where('source_hash', $data['source_hash'])->firstOrFail();
+
+        return response()->view('staff.editorial-draft-batch-preview', [
+            'inspection' => $inspection,
+            'sourceHash' => $data['source_hash'],
+            'filename' => $source->plan['file'] ?? 'Imported workbook',
+        ])->header('Cache-Control', 'private, no-store');
+    }
+
+    public function queuePrivateDrafts(Request $request, EditorialDraftBatchService $draftBatches)
+    {
+        $data = $request->validate([
+            'source_hash' => ['required', 'regex:/^[a-f0-9]{64}$/D'],
+            'confirm_private' => ['accepted'],
+        ]);
+
+        $batch = $draftBatches->queue($request->user(), $data['source_hash']);
+
+        return redirect()->route('staff.editorial-plan.draft-batches.show', $batch, 303)
+            ->with('status', 'The selected eligible briefs were queued for private draft creation. Existing and held topics are skipped.');
+    }
+
+    public function showDraftBatch(Request $request, EditorialDraftBatch $batch)
+    {
+        $counts = $batch->items()->select('status')
+            ->selectRaw('COUNT(*) as total')->groupBy('status')->pluck('total', 'status');
+        $remaining = (int) ($counts['queued'] ?? 0) + (int) ($counts['running'] ?? 0);
+        if ($request->expectsJson()) {
+            return response()->json([
+                'total' => $batch->total,
+                'counts' => $counts,
+                'remaining' => $remaining,
+                'complete' => $remaining === 0,
+            ])->header('Cache-Control', 'private, no-store');
+        }
+
+        $items = $batch->items()->with(['brief', 'article'])->orderBy('id')->paginate(50);
+
+        return response()->view('staff.editorial-draft-batch', compact('batch', 'items', 'counts', 'remaining'))
+            ->header('Cache-Control', 'private, no-store');
     }
 
     public function start(Request $request, EditorialBrief $brief, EditorialPlanImport $importer)
