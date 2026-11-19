@@ -8,6 +8,7 @@ use App\Models\EditorialBrief;
 use App\Models\User;
 use App\Services\EditorialPlanImport;
 use App\Services\EditorialWorkbook;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
@@ -102,7 +103,7 @@ class EditorialPlanTest extends TestCase
         try {
             $this->actingAs($admin)->withSession(['auth.password_confirmed_at' => time()])
                 ->post(route('staff.editorial-plan.preview'), [
-                    'workbook' => new \\Illuminate\\Http\\UploadedFile($path, 'master.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', null, true),
+                    'workbook' => new UploadedFile($path, 'master.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', null, true),
                 ])->assertStatus(303)->assertRedirect(route('staff.editorial-plan.preview.show'));
 
             $this->get(route('staff.editorial-plan.preview.show'))
@@ -127,7 +128,7 @@ class EditorialPlanTest extends TestCase
         try {
             $this->actingAs($admin)->withSession(['auth.password_confirmed_at' => time()])
                 ->post(route('staff.editorial-plan.preview'), [
-                    'workbook' => new \\Illuminate\\Http\\UploadedFile($path, 'master.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', null, true),
+                    'workbook' => new UploadedFile($path, 'master.xlsx', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', null, true),
                 ])->assertStatus(303);
 
             $this->get(route('staff.editorial-plan.preview.show'))->assertOk();
