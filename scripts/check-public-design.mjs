@@ -148,7 +148,37 @@ const isApprovedNovemberCleanup = path => approvedNovemberCleanup.has(path) && e
 const approvedAhrefsLayout = path => path === 'resources/views/layouts/app.blade.php'
     && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === 'fc38db407da1007f5298a1cf6c421bd365463453';
 
-const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path) && !approvedAhrefsLayout(path));
+// Owner-requested PWA release (18 November 2026). Only these exact reviewed
+// asset/layout hashes are exempted; no general design-protection bypass.
+const approvedPwaBlobs = new Map(Object.entries({
+    "public/manifest.webmanifest": "83e4cc8fc7a7559e2a434675ae138108f7ca25bc",
+    "public/offline.html": "b156d29a94ae16a8acc89ef57b9c611b3a8dd77d",
+    "public/sw.js": "689afd2d118cfc7505d642a733bcbc57ba197771",
+    "resources/views/layouts/app.blade.php": "876364a738d6e90271af7cd12186bf84d86e265f",
+    "resources/views/partials/pwa-install.blade.php": "62cfbcacd786d397c94fc9b247a5ce70e13fd9b4"
+}));
+const isApprovedPwaChange = path => approvedPwaBlobs.has(path)
+    && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedPwaBlobs.get(path);
+
+// Owner-approved African Ranked PWA splash refinement. Keep the exact
+// production brand mark untouched and permit only these reviewed public blobs.
+const approvedPwaLaunchBlobs = new Map(Object.entries({
+    "public/manifest.webmanifest": "1e8a59e181a92eeb3d3027742794f703850764c8",
+    "resources/views/partials/pwa-install.blade.php": "dff3546f8ebc6b9876a412c6dae89d203826293e",
+    "resources/views/partials/pwa-launch.blade.php": "a1a356990d7ec866a62ddc5913cdaedc5ba8eafd"
+}));
+const isApprovedPwaLaunch = path => approvedPwaLaunchBlobs.has(path)
+    && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedPwaLaunchBlobs.get(path);
+
+// Owner-approved 18 November 2026: elevated homepage editor's pick and topic sections (more articles on the homepage).
+// Exact reviewed blobs only; any other change to these templates stays protected.
+const approvedHomepageTopics = new Map(Object.entries({
+    "resources/views/pages/home.blade.php": "e836b04d3aa24a904b0a1f30c865cfbd2d61dd34",
+    "resources/views/partials/card.blade.php": "aacbb8b40b35708701c5f732bdb51b6823c2555b"
+}));
+const approvedHomepageTopicsChange = path => approvedHomepageTopics.has(path) && execFileSync('git', ['rev-parse', `HEAD:${path}`], { encoding: 'utf8' }).trim() === approvedHomepageTopics.get(path);
+
+const violations = changed.filter(path => protectedPaths.some(rule => rule.test(path)) && !evidenceOnly(path) && !indexingGateOnly(path) && !approvedRecoveryFile(path) && !approvedHeroChange(path) && !approvedOAuthDependency(path) && !approvedRegionalCategoryHeading(path) && !approvedAnalyticsChange(path) && !approvedNewsletterChange(path) && !approvedAboutChange(path) && !approvedEditorialMediaChange(path) && !isApprovedNovemberCleanup(path) && !approvedAhrefsLayout(path) && !isApprovedPwaChange(path) && !isApprovedPwaLaunch(path) && !approvedHomepageTopicsChange(path));
 if (violations.length) {
     console.error('Protected public design/content/dependency files changed:\n' + violations.join('\n'));
     process.exit(1);
