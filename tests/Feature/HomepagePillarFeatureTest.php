@@ -35,5 +35,4 @@ class HomepagePillarFeatureTest extends TestCase
 
         $this->assertSame(Catalog::HOMEPAGE_PILLARS[0], app(Catalog::class)->homepageArticles()->first()['slug']);
     }
-
 }
