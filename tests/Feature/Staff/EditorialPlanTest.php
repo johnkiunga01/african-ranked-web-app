@@ -2,15 +2,20 @@
 
 namespace Tests\Feature\Staff;
 
+use App\Enums\RevisionStatus;
 use App\Enums\StaffRole;
+use App\Jobs\CreateEditorialPlanDraft;
 use App\Models\Article;
 use App\Models\EditorialBrief;
+use App\Models\EditorialDraftBatchItem;
 use App\Models\User;
+use App\Services\EditorialDraftBatchService;
 use App\Services\EditorialPlanImport;
 use App\Services\EditorialWorkbook;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 use ZipArchive;
@@ -288,6 +293,141 @@ class EditorialPlanTest extends TestCase
         } finally {
             unlink($path);
         }
+    }
+
+    public function test_bulk_private_drafts_are_queued_and_created_only_after_worker_runs(): void
+    {
+        Queue::fake();
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $intake = app(EditorialWorkbook::class)->read($path, 'phase-two.xlsx');
+            $intake['records'][0]['plan']['team_draft'] = '# A private research brief'."\n\nResearch to verify before review.";
+            $intake['records'][0]['plan']['fields']['Deduplication decision'] = 'CREATE_IF_UNIQUE';
+            app(EditorialPlanImport::class)->commit($admin, $intake);
+            $service = app(EditorialDraftBatchService::class);
+            $preview = $service->inspect($intake['hash']);
+            $this->assertSame(1, $preview['counts']['ready']);
+            $this->assertDatabaseCount('articles', 0);
+
+            $batch = $service->queue($admin, $intake['hash']);
+            $this->assertSame(1, $batch->total);
+            Queue::assertPushed(CreateEditorialPlanDraft::class, 1);
+            $this->assertDatabaseCount('articles', 0);
+
+            $this->actingAs($admin)->get(route('staff.editorial-plan.draft-batches.show', $batch))
+                ->assertOk()->assertSee('Bulk private draft creation');
+            $this->getJson(route('staff.editorial-plan.draft-batches.show', $batch))
+                ->assertOk()->assertJsonPath('remaining', 1);
+
+            $item = $batch->items()->firstOrFail();
+            (new CreateEditorialPlanDraft($item->id))->handle(app(EditorialPlanImport::class), $service);
+            $item->refresh();
+            $this->assertSame('created', $item->status);
+            $this->assertDatabaseCount('articles', 1);
+            $article = $item->article;
+            $this->assertSame(RevisionStatus::Draft, $article->currentRevision->status);
+            $this->assertNull($article->published_revision_id);
+            $this->assertSame(1, $article->revisions()->count());
+
+            (new CreateEditorialPlanDraft($item->id))->handle(app(EditorialPlanImport::class), $service);
+            $this->assertSame(1, $article->revisions()->count());
+            $this->getJson(route('staff.editorial-plan.draft-batches.show', $batch))
+                ->assertOk()->assertJsonPath('counts.created', 1)->assertJsonPath('complete', true);
+            $this->assertSame(0, $service->inspect($intake['hash'])['counts']['ready']);
+        } finally {
+            unlink($path);
+        }
+    }
+
+    public function test_bulk_queue_skips_held_duplicates_existing_links_and_related_article_research(): void
+    {
+        Queue::fake();
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $intake = app(EditorialWorkbook::class)->read($path, 'phase-two.xlsx');
+            $base = $intake['records'][0];
+            $base['plan']['team_draft'] = 'A private outline.';
+            $base['plan']['fields']['Deduplication decision'] = 'CREATE_IF_UNIQUE';
+
+            $held = $base;
+            $held['plan_id'] = 'AR-002';
+            $held['slug'] = 'overlapping-safari-topic';
+            $held['plan']['team_status'] = 'Hold — duplicate topic';
+
+            $related = $base;
+            $related['plan_id'] = 'AR-003';
+            $related['slug'] = 'safari-research-with-existing-link';
+            $related['plan']['related_existing_article_id'] = 123;
+
+            $noDraft = $base;
+            $noDraft['plan_id'] = 'AR-004';
+            $noDraft['slug'] = 'another-safari-topic';
+            $noDraft['plan']['team_draft'] = '';
+
+            $intake['records'] = [$base, $held, $related, $noDraft];
+            $importer = app(EditorialPlanImport::class);
+            $importer->commit($admin, $intake);
+
+            $service = app(EditorialDraftBatchService::class);
+            $inspection = $service->inspect($intake['hash']);
+            $this->assertSame(1, $inspection['counts']['ready']);
+            $this->assertSame(1, $inspection['counts']['hold']);
+            $this->assertSame(1, $inspection['counts']['related']);
+            $this->assertSame(1, $inspection['counts']['no_draft']);
+
+            $batch = $service->queue($admin, $intake['hash']);
+            $this->assertSame(1, $batch->total);
+            Queue::assertPushed(CreateEditorialPlanDraft::class, 1);
+            $this->assertDatabaseCount('editorial_draft_batch_items', 1);
+            $this->assertDatabaseCount('articles', 0);
+
+            $again = $service->queue($admin, $intake['hash']);
+            $this->assertSame($batch->id, $again->id);
+            $this->assertDatabaseCount('editorial_draft_batches', 1);
+            Queue::assertPushed(CreateEditorialPlanDraft::class, 1);
+        } finally {
+            unlink($path);
+        }
+    }
+
+    public function test_bulk_worker_skips_brief_modified_after_queue_and_creates_no_draft(): void
+    {
+        Queue::fake();
+        $admin = User::factory()->create(['role' => StaffRole::SuperAdmin]);
+        $path = $this->workbook();
+        try {
+            $intake = app(EditorialWorkbook::class)->read($path, 'phase-two.xlsx');
+            $intake['records'][0]['plan']['team_draft'] = 'Unverified draft outline.';
+            app(EditorialPlanImport::class)->commit($admin, $intake);
+
+            $service = app(EditorialDraftBatchService::class);
+            $batch = $service->queue($admin, $intake['hash']);
+            $item = EditorialDraftBatchItem::where('editorial_draft_batch_id', $batch->id)->firstOrFail();
+            $brief = $item->brief;
+            $plan = $brief->plan;
+            $plan['team_status'] = 'Hold — manual editorial review';
+            $brief->update(['plan' => $plan]);
+
+            (new CreateEditorialPlanDraft($item->id))->handle(app(EditorialPlanImport::class), $service);
+            $this->assertSame('skipped', $item->fresh()->status);
+            $this->assertDatabaseCount('articles', 0);
+            $this->assertSame(0, $service->inspect($intake['hash'])['counts']['ready']);
+        } finally {
+            unlink($path);
+        }
+    }
+
+    public function test_only_administrator_can_queue_bulk_private_drafts(): void
+    {
+        $author = User::factory()->create();
+        $this->actingAs($author)->post(route('staff.editorial-plan.draft-batches.queue'), [
+            'source_hash' => str_repeat('a', 64), 'confirm_private' => '1',
+        ])->assertForbidden();
+        $this->get(route('staff.editorial-plan.draft-batches.preview', [
+            'source_hash' => str_repeat('a', 64),
+        ]))->assertForbidden();
     }
 
     public function test_author_cannot_read_or_import_the_admin_plan(): void
