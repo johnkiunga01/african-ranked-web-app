@@ -21,7 +21,8 @@ class EditorialPlanImport
         $byId = EditorialBrief::whereIn('plan_id', array_column($records, 'plan_id'))->get()->keyBy('plan_id');
         $bySlug = EditorialBrief::whereIn('slug', array_column($records, 'slug'))->get()->keyBy('slug');
         $articleSlugs = Article::whereIn('slug', array_column($records, 'slug'))->pluck('id', 'slug');
-        $counts = ['new' => 0, 'existing' => 0, 'reused_slug' => 0, 'linked_article' => 0, 'conflict' => 0];
+        $articleOwners = EditorialBrief::whereIn('article_id', $articleSlugs->values()->all())->get()->keyBy('article_id');
+        $counts = ['new' => 0, 'existing' => 0, 'reused_slug' => 0, 'linked_article' => 0, 'linked_elsewhere' => 0, 'conflict' => 0];
         $items = [];
 
         foreach ($records as $record) {
@@ -41,7 +42,9 @@ class EditorialPlanImport
                 $status = 'reused_slug';
                 $matchedId = $slug->plan_id;
             } elseif ($articleSlugs->has($record['slug'])) {
-                $status = 'linked_article';
+                $owner = $articleOwners->get($articleSlugs->get($record['slug']));
+                $status = $owner ? 'linked_elsewhere' : 'linked_article';
+                $matchedId = $owner?->plan_id;
             }
 
             $counts[$status]++;
@@ -61,7 +64,7 @@ class EditorialPlanImport
 
         return DB::transaction(function () use ($actor, $intake) {
             User::lockForUpdate()->findOrFail($actor->id);
-            $counts = ['new' => 0, 'existing' => 0, 'reused_slug' => 0, 'linked_article' => 0];
+            $counts = ['new' => 0, 'existing' => 0, 'reused_slug' => 0, 'linked_article' => 0, 'linked_elsewhere' => 0];
 
             foreach ($intake['records'] as $record) {
                 $byId = EditorialBrief::where('plan_id', $record['plan_id'])->lockForUpdate()->first();
@@ -97,6 +100,20 @@ class EditorialPlanImport
                 }
 
                 $articleId = $existing?->article_id ?? Article::where('slug', $record['slug'])->value('id');
+                $articleOwner = $articleId
+                    ? EditorialBrief::where('article_id', $articleId)->lockForUpdate()->first()
+                    : null;
+                $linkedElsewhere = $articleOwner && (! $existing || $articleOwner->id !== $existing->id);
+
+                if ($linkedElsewhere) {
+                    // A published or draft article may already have a brief under a
+                    // different planning slug. Keep its unique owner unchanged and
+                    // retain the incoming Semrush brief as a private research record.
+                    $record['plan']['related_existing_article_id'] = $articleId;
+                    $record['plan']['related_existing_plan_id'] = $articleOwner->plan_id;
+                    $articleId = $existing?->article_id;
+                }
+
                 $values = $record + [
                     'source_hash' => $intake['hash'],
                     'imported_by' => $actor->id,
@@ -109,7 +126,7 @@ class EditorialPlanImport
                     $counts[$matchedBySlug ? 'reused_slug' : 'existing']++;
                 } else {
                     EditorialBrief::create($values);
-                    $counts[$articleId ? 'linked_article' : 'new']++;
+                    $counts[$linkedElsewhere ? 'linked_elsewhere' : ($articleId ? 'linked_article' : 'new')]++;
                 }
             }
 
