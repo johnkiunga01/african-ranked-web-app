@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" role="img" aria-labelledby="title desc">
+<title id="title">Safari route checklist</title>
+<desc id="desc">Record travel dates, overnight stops, parks and transfers. Compare the itinerary with destination guidance and take it to a travel health clinician.</desc>
+<rect width="600" height="750" rx="24" fill="#191713"/>
+<g font-family="sans-serif">
+<text x="35" y="56" font-size="19" font-weight="bold" fill="#ffbf24">AFRICAN RANKED · PLANNING A SAFARI</text>
+<text x="35" y="118" font-size="37" font-weight="bold" fill="white">Check the whole route</text>
+<g fill="#302a20"><rect x="35" y="155" width="530" height="117" rx="12"/><rect x="35" y="293" width="530" height="117" rx="12"/><rect x="35" y="431" width="530" height="117" rx="12"/></g>
+<g fill="#ffbf24" font-weight="bold" font-size="24"><text x="60" y="193">Record the details</text><text x="60" y="331">Read destination guidance</text><text x="60" y="469">Ask a travel health clinician</text></g>
+<g fill="white" font-size="21"><text x="60" y="229">Dates, parks, lodges and transfers.</text><text x="60" y="368">Check the exact locations and dates.</text><text x="60" y="506">Bring the route and flag any changes.</text></g>
+<text x="35" y="616" fill="#d6d3d1" font-size="18">Based on CDC Yellow Book malaria guidance.</text>
+<text x="35" y="651" fill="#d6d3d1" font-size="18">Sources checked 20 November 2026.</text>
+<text x="35" y="704" fill="#d6d3d1" font-size="17">Original AI-assisted editorial diagram</text>
+</g></svg>
