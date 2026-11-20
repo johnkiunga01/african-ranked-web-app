@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Equatorial Guinea and the Spanish language</title>
+<desc id="desc">An editorial graphic with three panels showing constitutional status, independence from Spain in 1968 and the need for separate evidence about everyday use.</desc>
+<rect width="1200" height="675" fill="#191713"/>
+<path d="M0 0h1200v15H0z" fill="#ffbf24"/>
+<g font-family="sans-serif">
+<text x="65" y="96" fill="#ffbf24" font-size="27" font-weight="700">AFRICAN RANKED · LANGUAGE AND HISTORY</text>
+<text x="65" y="178" fill="#fff" font-size="65" font-weight="700">Equatorial Guinea</text>
+<text x="65" y="236" fill="#d6d3d1" font-size="30">Three ways to understand the role of Spanish</text>
+<g fill="#302a20"><rect x="65" y="301" width="340" height="190" rx="18"/><rect x="430" y="301" width="340" height="190" rx="18"/><rect x="795" y="301" width="340" height="190" rx="18"/></g>
+<g fill="#ffbf24" font-size="23" font-weight="700"><text x="90" y="349">LEGAL STATUS</text><text x="455" y="349">HISTORICAL CONTEXT</text><text x="820" y="349">EVERYDAY USE</text></g>
+<g fill="#fff" font-size="26"><text x="90" y="408">Article 4 names</text><text x="90" y="445">Spanish and French.</text><text x="455" y="408">Independence from</text><text x="455" y="445">Spain in 1968.</text><text x="820" y="408">Use depends on the</text><text x="820" y="445">person and setting.</text></g>
+<text x="65" y="578" fill="#d6d3d1" font-size="22">Sources: Constitute Project and U.S. Office of the Historian · 20 November 2026</text>
+<text x="65" y="620" fill="#d6d3d1" font-size="21">Original AI-assisted editorial graphic</text>
+</g>
+</svg>
